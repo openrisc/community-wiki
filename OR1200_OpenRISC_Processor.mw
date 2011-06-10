@@ -1,6 +1,17 @@
 == Overview ==
-Add text and picture
 
+'''General Microarchitecture'''
+* Central CPU/DSP block
+* IEEE 754 compliant single precision FPU
+* Direct mapped data cache
+* Direct mapped instruction cache
+* Data MMU based on hash-based DTLB
+* Instruction MMU based on hash-based ITLB
+* Power management unit and power management interface
+* Tick timer
+* Debug unit and development interface
+* Interrupt controller and interrupt interface
+* Instruction and Data WISHBONE B3 compliant interfaces
 
 == Status ==
 RTL coding is finished and is being tested in different test applications. It has also been implemented in various commercial ASICs and FPGA.
