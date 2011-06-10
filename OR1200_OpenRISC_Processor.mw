@@ -17,8 +17,12 @@
 RTL coding is finished and is being tested in different test applications. It has also been implemented in various commercial ASICs and FPGA.
 If you would like to help with the development, please post to the OpenRISC forum or send an email to openrisc_team@opencores.org. 
 
-'''Implementation information'''
-:Default configuration
+== Implementation information ==
+When implemented in a worst-case 0.18u 6LM process it should provide over 150 dhrystone 2.1 MIPS at 150MHz and 150 DSP MAC 32x32 operations.
+The default OR1200 configuration is about 40k ASIC gates. 
+
+
+:Default configuration in FPGA technologies
 ::* 15K core cells (1850 FFs, 48 block RAMs) at 25MHz on Actel ProASIC3 technology
 ::* 4K LUTs, 7 block RAM at 60MHz on Xilinx Virtex 5 technology
 
@@ -35,6 +39,6 @@ If you would like to help with the development, please post to the OpenRISC foru
 ::* Dhrystone (500,000 runs): 50,000 Dhrystones/second
 ::* CoreMark 1.0 : 66.788100 (1.34 CoreMark/MHz) / GCC4.5.1-or32-1.0rc1 -O3 -mhard-mul -mhard-div -msoft-float -nostdlib / STACK
 
-:Minimal configuration
+:Minimal configuration in FPGA technologies
 ::* 7K core cells (1100 FFs, 4 block RAMs) at 35MHz on Actel ProASIC3 technology
 ::* 2.4K LUTs, 1 block RAM at 125MHz on Xilinx Virtex 5 technology
