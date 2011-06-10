@@ -1,5 +1,9 @@
 == Overview ==
 
+
+[[File:Or1200_blocks.png|link=http://opencores.org/or1k/File:Or1200_blocks.png||border|300px]]
+
+
 '''General Microarchitecture'''
 * Central CPU/DSP block
 * IEEE 754 compliant single precision FPU
