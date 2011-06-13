@@ -54,7 +54,9 @@ You may checkout the latest version of Or1ksim from SVN using:
 
 '''Note.''' The checkout process may take a while. The current top of SVN tree is not considered stable, but should always build correctly.
 
-The latest version, which in time will become release 05.2 adds the following features:
+==== New features ====
+
+The latest version, which in time will become release 0.5.2 adds the following features:
 * Support for GDB 7.2
 * IEEE 745 (2008) compliant single precision floating point.
 * A direct GDB Remote Serial Protocol interface to the library version of Or1ksim.
@@ -62,15 +64,18 @@ The latest version, which in time will become release 05.2 adds the following fe
 * An improved parser for configuration files, although it currently cannot handle ATA disc specifications.
 * An up to date commented reference configuration file in the distribution.
 
+==== Features removed ====
 The following feature is obsolete and dropped as planned.
 * Support for the OpenRISC JTAG GDB interface (replaced by RSP)
 
+==== Features for future addition ====
 The following other features are being considered for inclusion in future releases.
 * Support for multiple instances (Stefan Wallentowitz).
 * Adding double precision floating point support. This is only feasible if a 64-bit version is also developed.
 * Letting memory blocks identify using their "name" field.
 * Fix the memory controller component and get its tests working in the regression suite.
 
+==== Features for future removal ====
 Some features of the current Or1ksim appear incomplete or obsolete. The following features are being considered for removal.
 * '''stall''' and '''unstall''' commands in the CLI.
 * The custom unit compiler.
