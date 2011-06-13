@@ -1,0 +1,32 @@
+At present OpenRISC is supported by a 32-bit GNU tool chain offering C and C++ support with static libraries only. The tool chain is available in * for bare metal use, based on the newlib library
+* for Linux application use, based on the uClibc library. 
+
+The tool chains are available as pre-compiled binaries, and stable source code snapshots and in development versions under SVN.
+
+== Installation ==
+
+The stable versions of the tools are based on binutils 2.20.1, GCC 4.5.1 and GDB 7.2. For the bare metal tool chain, they use newlib 0.18.0 and for the Linux application tool chain uClibc 0.9.32. Both tool chains are tested using or1ksim-0.5.1. 
+
+=== Precompiled binaries ===
+
+Pre-compiled binaries are only available for the 1.0rc1 version of the Newlib toolchain. All commands have the prefix or32-elf- (for example or32-elf-gcc). Or1ksim 0.5.1 and newlib 0.18.0 are included.
+* [ftp://ocuser:oc@opencores.org/toolchain/or32-elf-1.0rc1-x86.tar.bz2 for Ubuntu x86/i686 (32-bit)]
+* [ftp://ocuser:oc@opencores.org/toolchain/or32-elf-1.0rc1-CentOS-x86_64.tar.bz2 for CentOS-5.5 x86_64 (64-bit)]
+* [ftp://ocuser:oc@opencores.org/toolchain/or32-elf-1.0rc1-OS_X-10.6.3.tar.bz2 for OS X 10.6 (Snow Leopard)] ('''Note.''' no C++ libraries)
+
+The following commands indicate how to install the toolchain from the download archive. The tools are installed to the /opt path and symbolic links are created to more general path names (which helps with switching to more updated versions of the toolchain later.) The shell's PATH environment variable must be updated. You may choose to install in any other directory to which you have write access.
+
+ cd /opt
+ tar xjf ''path to downloaded archive''/''archive name''
+ sudo ln -s or32-elf-1.0rc1 or32-elf
+ sudo ln -s or1ksim-0.5.1rc1 or1ksim
+
+Having installed the software, add the relevant directories to your path. Under sh or bash use
+
+ export PATH=$PATH:/opt/or32-elf/bin:/opt/or1ksim/bin
+
+Under csh or tcsh use:
+
+ export PATH=$PATH:/opt/or32-elf/bin:/opt/or1ksim/bin
+
+These will typically be added to your .bash_profile or .login file as appropriate. Note. If the toolchain was installed in a directory other than /opt, substitute that directory's path for /opt.
