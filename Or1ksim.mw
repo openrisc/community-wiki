@@ -20,21 +20,29 @@ Or1ksim maintains a stable release, recommended for general use, and a developme
 
 === Stable release ===
 
-The latest stable version, 0.4.0, was released in June 2010 after 15 months of new development. This release of Or1ksim matches current OpenRISC Reference Plaform SoC definition, including the OpenRISC 1200 version 2 procesor. The following features are new in this release.
+The latest stable version, 0.4.0, was released in June 2010 after 15 months of new development. This release of Or1ksim matches current OpenRISC Reference Plaform SoC definition, including the OpenRISC 1200 version 2 procesor.
+
+A compressed tar image of the Or1ksim 0.4.0 release is available on the [http://opencores.org/openrisc,downloads download] page.
+
+==== New features ====
+
+The following features are new in this release.
 * A full DejaGNU base regression test suite with 2,499 tests of the standalone simulator and library.
 * A library interface modeling the JTAG debug interface. This will enable a GDB interface to the library version of Or1ksim via JTAG.
 * Single precision floating point instructions (implemented by JungSook Yang).
 * A configuration option, allowing l.xori to treat its operand as unsigned. Note. Using this option will require changes to the GCC compiler to generate valid code.
 
-The current stable version has been tested under Fedora 11 Linux and Ubuntu 10.4 Linux.
-
-An important input to this release has been Waqas Ahmed's Master's dissertation at the Royal Institute of Technology, Sweden, Implementation and Verification of a CPU Subsystem for Multimode RF Transceivers. His work identified a large number of bugs in Or1ksim, which have been fixed (and tested) in this release. Waqas has kindly made his dissertation available on the [http://opencores.org/openrisc,downloads download] page.
-
 The debug interface to the standalone simulator is compatible with GDB 6.8 for OpenRISC 1000 using the GDB Remote Serial Protocol. See the tool chain page for further details.
 
-For backwards compatibility, the old OpenRISC JTAG interface to GDB continues to be supported. However this interface is now deprecated and will be discontinued in a future release. All new applications should use the GDB Remote Serial Protocol. If a JTAG interface to standalone Or1ksim is required that should be implemented via a GDB RSP server.
-
 Or1ksim 0.4.0 introduces a new interface to the library, which models the JTAG interface to the OpenRISC debug unit. This is intended for use with transactional models of the debug interface, and is currently the only way to connect a debugger to the Or1ksim library.
+
+'''Note.''' When used as a library, only a single instance of Or1ksim may be used, due to widespread use of static and global variables in the code. Remedying this limitation is a long term objective of the project.
+
+==== Deprecated features ====
+
+For backwards compatibility, the old OpenRISC JTAG interface to GDB continues to be supported. However this interface is now deprecated and will be discontinued in the next release. All new applications should use the GDB Remote Serial Protocol. If a JTAG interface to standalone Or1ksim is required that should be implemented via a GDB RSP server.
+
+==== Missing features ====
 
 The following are not yet supported in Or1ksim
 * 64-bit instructions (ORBIS64)
@@ -42,9 +50,9 @@ The following are not yet supported in Or1ksim
 * vector instructions (ORVDX64)
 * GDB Remote Serial Protocol interface to the Or1ksim library.
 
-'''Note.''' When used as a library, only a single instance of Or1ksim may be used, due to widespread use of static and global variables in the code. Remedying this limitation is a long term objective of the project.
+==== Tested host platforms ====
 
-A compressed tar image of the Or1ksim 0.4.0 release is available on the [http://opencores.org/openrisc,downloads download] page.
+The current stable version has been tested under Fedora 11 Linux and Ubuntu 10.4 Linux.
 
 === Development release ===
 
