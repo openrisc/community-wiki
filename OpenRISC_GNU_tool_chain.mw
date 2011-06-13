@@ -98,3 +98,15 @@ Under csh or tcsh
 These commands will typically be added to your .profile or .login file.
 
 '''Note.''' Some users have reported problems when rebuilding the uClibc tool chain a second time, due to the existing headers on the search path. The solution is to remove the existing implementation from the PATH variable.
+
+=== Support for non-Linux systems ===
+
+==== Microsoft Windows with Cygwin ====
+
+At present only the older pre-compiled OpenRISC toolchains exist for Cygwin. The OpenRISC project currently does not have a maintainer for the toolchain on the Cygwin platform. Without one it is not certain that each toolchain release will be built for Cygwin.
+
+If you would like to contribute to the project by maintaining a build script and guide for Cygwin platforms, please contact the OpenRISC team.
+
+==== Apple Mac OS X ====
+
+Robert Guenzel has provided an [chschroeder.gamiro.de/rg/or1ksim_macOS10.4.pdf application note] on building the toolchain (excluding GDB) for Mac OS 10.4. Users will find this provides valuable additional information beyond the instructions above.
