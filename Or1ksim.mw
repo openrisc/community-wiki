@@ -50,7 +50,7 @@ A compressed tar image of the Or1ksim 0.4.0 release is available on the [http://
 
 You may checkout the latest version of Or1ksim from SVN using:
 
- svn co http://opencores.org/ocsvn/openrisc/openrisc/trunk/or1ksim
+ <nowiki>svn co http://opencores.org/ocsvn/openrisc/openrisc/trunk/or1ksim</nowiki>
 
 '''Note.''' The checkout process may take a while. The current top of SVN tree is not considered stable, but should always build correctly.
 
