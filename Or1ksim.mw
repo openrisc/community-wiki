@@ -14,17 +14,17 @@ Or1ksim provides a range of features:
 * Remote debugging via TCP/IP with the GNU Debugger (GDB) using either the GDB Remote Serial Protocol or through a modeled JTAG interface.
 * A library interface allowing simple OSCI TLM 2.0 SystemC integration.
 
-== Download ==
+=== Download ===
 
-Or1ksim maintains a stable release, recommended for general use, and a development release, available through SVN.
+Or1ksim maintains a [[#Stable release]], recommended for general use, and a [[#Development release]], available through SVN.
 
-=== Stable release ===
+== Stable release ==
 
 The latest stable version, 0.4.0, was released in June 2010 after 15 months of new development. This release of Or1ksim matches current OpenRISC Reference Plaform SoC definition, including the OpenRISC 1200 version 2 procesor.
 
 A compressed tar image of the Or1ksim 0.4.0 release is available on the [http://opencores.org/openrisc,downloads download] page.
 
-==== New features ====
+=== New features ===
 
 The following features are new in this release.
 * A full DejaGNU base regression test suite with 2,499 tests of the standalone simulator and library.
@@ -38,11 +38,11 @@ Or1ksim 0.4.0 introduces a new interface to the library, which models the JTAG i
 
 '''Note.''' When used as a library, only a single instance of Or1ksim may be used, due to widespread use of static and global variables in the code. Remedying this limitation is a long term objective of the project.
 
-==== Deprecated features ====
+=== Deprecated features ===
 
 For backwards compatibility, the old OpenRISC JTAG interface to GDB continues to be supported. However this interface is now deprecated and will be discontinued in the next release. All new applications should use the GDB Remote Serial Protocol. If a JTAG interface to standalone Or1ksim is required that should be implemented via a GDB RSP server.
 
-==== Missing features ====
+=== Missing features ===
 
 The following are not yet supported in Or1ksim
 * 64-bit instructions (ORBIS64)
@@ -50,11 +50,11 @@ The following are not yet supported in Or1ksim
 * vector instructions (ORVDX64)
 * GDB Remote Serial Protocol interface to the Or1ksim library.
 
-==== Tested host platforms ====
+=== Tested host platforms ===
 
 The current stable version has been tested under Fedora 11 Linux and Ubuntu 10.4 Linux.
 
-=== Development release ===
+== Development release ==
 
 You may checkout the latest version of Or1ksim from SVN using:
 
@@ -62,7 +62,7 @@ You may checkout the latest version of Or1ksim from SVN using:
 
 '''Note.''' The checkout process may take a while. The current top of SVN tree is not considered stable, but should always build correctly.
 
-==== New features ====
+=== New features ===
 
 The latest version, which in time will become release 0.5.2 adds the following features:
 * Support for GDB 7.2
@@ -72,18 +72,18 @@ The latest version, which in time will become release 0.5.2 adds the following f
 * An improved parser for configuration files, although it currently cannot handle ATA disc specifications.
 * An up to date commented reference configuration file in the distribution.
 
-==== Features removed ====
+=== Features removed ===
 The following feature is obsolete and dropped as planned.
 * Support for the OpenRISC JTAG GDB interface (replaced by RSP)
 
-==== Features for future addition ====
+=== Features for future addition ===
 The following other features are being considered for inclusion in future releases.
 * Support for multiple instances (Stefan Wallentowitz).
 * Adding double precision floating point support. This is only feasible if a 64-bit version is also developed.
 * Letting memory blocks identify using their "name" field.
 * Fix the memory controller component and get its tests working in the regression suite.
 
-==== Features for future removal ====
+=== Features for future removal ===
 Some features of the current Or1ksim appear incomplete or obsolete. The following features are being considered for removal.
 * '''stall''' and '''unstall''' commands in the CLI.
 * The custom unit compiler.
@@ -93,11 +93,11 @@ Users are encouraged to suggest other features via the OpenRISC forum or through
 
 === SystemC TLM 2.0 interface for Or1ksim ===
 
-A demonstration wrapper has been developed by Embecosm to provide an OSCI SystemC TLM 2.0 interface to Or1ksim. This comprises both an application note and reference software.
+A demonstration wrapper has been developed by Embecosm to provide an OSCI SystemC TLM 2.0 interface to Or1ksim. This comprises both an [http://www.embecosm.com/download/ean1.html application note] and [http://www.embecosm.com/download/esp1.html reference software].
 
 Robert Guenzel's [chschroeder.gamiro.de/rg/or1ksim_macOS10.4.pdf application note] mentioned above has extensive discussion of the SystemC TLM 2.0 version. He makes some important suggestions for improving performance.
 
-== Multiple instantiations of Ork1sim
+=== Multiple instantiations of Ork1sim ===
 
 Or1ksim can be used as a library as well as a standalone program. However, because the code makes heavy use of global variables, only one instance can ever be present. This is very inconvenient for those wishing to model a multi-core system.
 
@@ -162,7 +162,7 @@ For booting Linux, use the sim.cfg file in the root directory of the Linux distr
 
 More details on Linux for OpenRISC 1000 may be found on the operating systems page.
 
-The Embecosm Application Note EAN2 described in the Installation section above includes examples of using Or1ksim. The User Guide for the OpenRISC 1000 port of GDB 6.8 includes details of running Or1ksim with GDB.
+[http://www.embecosm.com/download/ean2.html Embecosm Application Note EAN2] described in the Installation section above includes examples using Or1ksim. The User Guide for the OpenRISC 1000 port of GDB 6.8 includes details of running Or1ksim with GDB.
 
 == Discussion Forum ==
 
@@ -174,29 +174,24 @@ We are constantly looking for developers to help in the development of the simul
 
 A few items to get you started.
 
-; Extend the documentation.
-: Or1ksim now has a User Guide. However this would benefit from some good tutorial material. This is an excellent task for anyone new to or1ksim. This would involve the following.
+* Extend the documentation. Or1ksim now has a User Guide. However this would benefit from some good tutorial material. This is an excellent task for anyone new to or1ksim. This would involve the following.
 ** Documenting, in the form of well narated passages (not point form!), how to get started using Or1ksim, the general pitfalls that someone new to Or1ksim may take and how to avoid them.
 ** Some neat examples of how to use some of the more "cool" peripherals of the sim (esp. how to make use of the Ethernet peripheral).
 ** Documenting the interface that is used to implement the peripherals.
 ** Documenting the more arcane features of the simulator, including the various execution models, branch prediction, super scaler emulation and in general what they are useful for.
 : If you have any questions about the above, don't hesitate to contact us on the mailing list.
-; Improve the testsuite
-: We now have a proper test suite, based on the old tests and with a set of new tests for the Or1ksim library interface. But it is far from complete.
+* Improve the testsuite. We now have a proper test suite, based on the old tests and with a set of new tests for the Or1ksim library interface. But it is far from complete.
 ** A number of the old tests build, but don't run correctly, since they need VAPI to drive their inputs. Fixing this would allow the UART and GPIO tests to be added.
 ** There is an attempt at a comprehensive test of the integer instruction set, but it does not compile correctly. Fixing this would be valuable.
 ** Many of the existing tests of peripherals are crude. In particular, the Ethernet could benefit from a robust set of tests.
-; Test or1ksim on non-Linux platforms (various UNIX and Cygwin platforms) :
-: The developers do not have acess to every operating system out there. We would like the simulator to run on as many platforms as possible. Mark Jarvin already provides valuable help by running the code on Mac OS X.
+* Test or1ksim on non-Linux platforms (various UNIX and Cygwin platforms). The developers do not have acess to every operating system out there. We would like the simulator to run on as many platforms as possible. Mark Jarvin already provides valuable help by running the code on Mac OS X.
 : If you are running on anything other than Linux you would help us a great deal if you could periodically check if the simulator builds (and works) on your prefered platform, reporting any failures to the mailing list.
-;Add additional models of OpenCores peripherals and system controllers:
-:Only a small subset of the great peripherals availible at opencores are currently modeled. Some examples of peripherals to write a model for might have been suggested.
+* Add additional models of OpenCores peripherals and system controllers. Only a small subset of the great number of peripherals available at opencores are currently modeled. Some examples of peripherals to write a model for might have been suggested.
 ** WishBone Real Time Clock.
 ** IrDA communication core.
 ** USB 2.0 function core.
 ** Most things that connect to the WishBone bus. A good list may be found here.
-;Add a new feature
-:The section on the [[#Development release]] above lists several new features. Coders wishing to help are very welcome.
+* Add a new feature. The section on the [[#Development release]] above lists several new features. Coders wishing to help are very welcome.
 
 If you have a suggestion that you'd like to see developed, feel free to add it to the [http://opencores.org/openrisc,bugtracker tracker] or start a discussion on the OpenRISC forum.
 
