@@ -198,10 +198,10 @@ If you have a suggestion that you'd like to see developed, feel free to add it t
 == Developers ==
 
 The team currently working on or1ksim:
-* Jeremy Bennett, jeremybennett@opencores.org
-* JungSook Yang, jungsook.yang@gmail.com (floating point support)
-* Stefan Wallentowitz stefan.wallentowitz@tum.de (multiple instantiation)
-* Mark Jarvin mark.jarvin@opencores.org (MAC OS X support).
+* [[User:Jeremybennett|Jeremy Bennett]]
+* [[User:Jungsook|JungSook Yang]]
+* [[User:Stefan|Stefan Wallentowitz]]
+* [[User:Markjarvin|Mark Jarvin]]
 
 An important input to the current stable release has been Waqas Ahmed's Master's dissertation at the Royal Institute of Technology, Sweden, Implementation and Verification of a CPU Subsystem for Multimode RF Transceivers. His work identified a large number of bugs in Or1ksim, which have been fixed (and tested) in this release. Waqas has kindly made his dissertation available on the [http://opencores.org/openrisc,downloads download] page.
 
