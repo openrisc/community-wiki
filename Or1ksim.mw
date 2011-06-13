@@ -1,0 +1,210 @@
+The aim of this project is to develop and maintain an OpenRISC 1000 architectural simulator which acts as the functional golden reference for HDL implementations.
+
+== Overview ==
+
+Or1ksim is a generic OpenRISC 1000 architecture simulator capable of emulating OpenRISC based computer systems at the instruction level. It includes models of a range of peripherals, allowing complete systems to be modelled.
+
+=== Key features ===
+
+Or1ksim provides a range of features:
+* Free, open source code, which can be used as a standalone simulator, or as a library.
+* High level, fast, architecture simulation that allows early code analysis and system performance evaluation.
+* Models of all major OpenCores peripheral and system controller cores and easy addition of new peripheral models.
+* Easy configuration for different environments (memory configurations and sizes, OR1K processor model, configuration of peripheral devices).
+* Remote debugging via TCP/IP with the GNU Debugger (GDB) using either the GDB Remote Serial Protocol or through a modeled JTAG interface.
+* A library interface allowing simple OSCI TLM 2.0 SystemC integration.
+
+== Download ==
+
+Or1ksim maintains a stable release, recommended for general use, and a development release, available through SVN.
+
+=== Stable release ===
+
+The latest stable version, 0.4.0, was released in June 2010 after 15 months of new development. This release of Or1ksim matches current OpenRISC Reference Plaform SoC definition, including the OpenRISC 1200 version 2 procesor. The following features are new in this release.
+* A full DejaGNU base regression test suite with 2,499 tests of the standalone simulator and library.
+* A library interface modeling the JTAG debug interface. This will enable a GDB interface to the library version of Or1ksim via JTAG.
+* Single precision floating point instructions (implemented by JungSook Yang).
+* A configuration option, allowing l.xori to treat its operand as unsigned. Note. Using this option will require changes to the GCC compiler to generate valid code.
+
+The current stable version has been tested under Fedora 11 Linux and Ubuntu 10.4 Linux.
+
+An important input to this release has been Waqas Ahmed's Master's dissertation at the Royal Institute of Technology, Sweden, Implementation and Verification of a CPU Subsystem for Multimode RF Transceivers. His work identified a large number of bugs in Or1ksim, which have been fixed (and tested) in this release. Waqas has kindly made his dissertation available on the [http://opencores.org/openrisc,downloads download] page.
+
+The debug interface to the standalone simulator is compatible with GDB 6.8 for OpenRISC 1000 using the GDB Remote Serial Protocol. See the tool chain page for further details.
+
+For backwards compatibility, the old OpenRISC JTAG interface to GDB continues to be supported. However this interface is now deprecated and will be discontinued in a future release. All new applications should use the GDB Remote Serial Protocol. If a JTAG interface to standalone Or1ksim is required that should be implemented via a GDB RSP server.
+
+Or1ksim 0.4.0 introduces a new interface to the library, which models the JTAG interface to the OpenRISC debug unit. This is intended for use with transactional models of the debug interface, and is currently the only way to connect a debugger to the Or1ksim library.
+
+The following are not yet supported in Or1ksim
+* 64-bit instructions (ORBIS64)
+* double precision floating point instructions (ORFPX32/ORFPX64)
+* vector instructions (ORVDX64)
+* GDB Remote Serial Protocol interface to the Or1ksim library.
+
+'''Note.''' When used as a library, only a single instance of Or1ksim may be used, due to widespread use of static and global variables in the code. Remedying this limitation is a long term objective of the project.
+
+A compressed tar image of the Or1ksim 0.4.0 release is available on the [http://opencores.org/openrisc,downloads download] page.
+
+=== Development release ===
+
+You may checkout the latest version of Or1ksim from SVN using:
+
+ svn co http://opencores.org/ocsvn/openrisc/openrisc/trunk/or1ksim
+
+'''Note.''' The checkout process may take a while. The current top of SVN tree is not considered stable, but should always build correctly.
+
+The latest version, which in time will become release 05.2 adds the following features:
+* Support for GDB 7.2
+* IEEE 745 (2008) compliant single precision floating point.
+* A direct GDB Remote Serial Protocol interface to the library version of Or1ksim.
+* Extended library interface, so Or1ksim can be used as a built-in simulator with GDB.
+* An improved parser for configuration files, although it currently cannot handle ATA disc specifications.
+* An up to date commented reference configuration file in the distribution.
+
+The following feature is obsolete and dropped as planned.
+* Support for the OpenRISC JTAG GDB interface (replaced by RSP)
+
+The following other features are being considered for inclusion in future releases.
+* Support for multiple instances (Stefan Wallentowitz).
+* Adding double precision floating point support. This is only feasible if a 64-bit version is also developed.
+* Letting memory blocks identify using their "name" field.
+* Fix the memory controller component and get its tests working in the regression suite.
+
+Some features of the current Or1ksim appear incomplete or obsolete. The following features are being considered for removal.
+* '''stall''' and '''unstall''' commands in the CLI.
+* The custom unit compiler.
+* Dynamic execution (a build option, not completed)
+
+Users are encouraged to suggest other features via the OpenRISC forum or through the [http://opencores.org/openrisc,bugtracker OpenRISC bug tracker].
+
+=== SystemC TLM 2.0 interface for Or1ksim ===
+
+A demonstration wrapper has been developed by Embecosm to provide an OSCI SystemC TLM 2.0 interface to Or1ksim. This comprises both an application note and reference software.
+
+Robert Guenzel's [chschroeder.gamiro.de/rg/or1ksim_macOS10.4.pdf application note] mentioned above has extensive discussion of the SystemC TLM 2.0 version. He makes some important suggestions for improving performance.
+
+== Multiple instantiations of Ork1sim
+
+Or1ksim can be used as a library as well as a standalone program. However, because the code makes heavy use of global variables, only one instance can ever be present. This is very inconvenient for those wishing to model a multi-core system.
+
+Stefan Wallentowitz has implemented a prototype version of Ork1sim, based on the stable Or1ksim 0.3.0 release, which fixes this problem.
+
+A full description and the source code as a patch for Or1ksim 0.3.0 is currently available from www.wallentowitz.de/or1ksim.html.
+
+== Installation ==
+
+The installation instructions are the same for both stable and development releases. Or1ksim is always built from source - there are no binary distributions.
+
+=== Installation under Linux/Cygwin ===
+
+First download the sources either from the download page or from SVN and unpack if necessary. The following instructions assume the unpacked source is in directory '''or1ksim-0.4.0''', and the code is to be installed in '''/opt/or1ksim'''. Build and install Or1ksim as follows.
+
+ <nowiki>
+mkdir builddir_or1ksim
+cd builddir_or1ksim
+../or1ksim-0.4.0/configure --target=or32-elf --prefix=/opt/or1ksim
+make all
+make install
+export PATH=/opt/or1ksim/bin:$PATH
+</nowiki>
+
+If DejaGNU and the OpenRISC GNU tool chain are installed, the build can be tested as follows.
+
+ make check
+
+All tests should past. Any failures should be reported, with as much detail as possible using the OpenRISC bug tracker.
+
+Or1ksim can also be installed using the OpenRISC toolchain installation script (a more automated installation), which is available from the GNU Toolchain page.
+
+'''Note.''' This script is currently awaiting update to use the latest stable version. At present it will install the previous stable version.
+
+More detailed information on installing Or1ksim (and the rest of the OpenRISC 1000 tool chain) with examples of the simulator in use may be found in [http://www.embecosm.com/download/ean2.html Embecosm Application Note EAN2: The OpenCores OpenRISC 1000 Simulator and Tool Chain: Installation Guide].
+
+=== Installation on Mac OS X ===
+
+The current stable build, Or1ksim 0.4.0, incorporates patches from Mark Jarvin, so that it should build on Mac OS X (Snow Leopard).
+
+Robert Guenzel has provided an [chschroeder.gamiro.de/rg/or1ksim_macOS10.4.pdf application note] on building the previous stable release, Or1ksim 0.3.0, for Mac OS 10.4: . This may be of interest to Mac users.
+
+== Documentation ==
+
+Or1ksim includes a User Guide. This provides information on using and configurating Or1ksim, both as a standalone tool and as a library. It also gives some guidance on the internal structure of Or1ksim. It is available in PDF on the download page.
+
+The documentation can also be generated from the source to give HTML, info, DVI and PostScript.
+
+The code is documented to take advantage of the Doxygen documentation system, which provides automatically generated, structured documentation on the files, functions and data-structures of the entire program, together with their interrelationships.
+
+Documentation would benefit from extending, particularly with tutorial material and with more detail on the internals of the program (see Contributing, below).
+
+== Usage ==
+
+A summary of the command options can be seen with
+
+ or32-elf-sim --help
+
+For booting Linux, use the sim.cfg file in the root directory of the Linux distribution with the command
+
+ or32-elf-sim -f arch/openrisc/or1ksim.cfg vmlinux
+
+More details on Linux for OpenRISC 1000 may be found on the operating systems page.
+
+The Embecosm Application Note EAN2 described in the Installation section above includes examples of using Or1ksim. The User Guide for the OpenRISC 1000 port of GDB 6.8 includes details of running Or1ksim with GDB.
+
+== Discussion Forum ==
+
+Or1ksim is discussed within the OpenRISC Forum and on IRC at freenode.net, channel #opencores. All users are encouraged to contribute suggestions and advice.
+
+== Contributing ==
+
+We are constantly looking for developers to help in the development of the simulator, though you don't need to be a highly skilled developer to do so. Many (very useful) projects may be performed without any C programming knowledge or without an intricate knowledge of the openrisc architecture.
+
+A few items to get you started.
+
+; Extend the documentation.
+: Or1ksim now has a User Guide. However this would benefit from some good tutorial material. This is an excellent task for anyone new to or1ksim. This would involve the following.
+** Documenting, in the form of well narated passages (not point form!), how to get started using Or1ksim, the general pitfalls that someone new to Or1ksim may take and how to avoid them.
+** Some neat examples of how to use some of the more "cool" peripherals of the sim (esp. how to make use of the Ethernet peripheral).
+** Documenting the interface that is used to implement the peripherals.
+** Documenting the more arcane features of the simulator, including the various execution models, branch prediction, super scaler emulation and in general what they are useful for.
+: If you have any questions about the above, don't hesitate to contact us on the mailing list.
+; Improve the testsuite
+: We now have a proper test suite, based on the old tests and with a set of new tests for the Or1ksim library interface. But it is far from complete.
+** A number of the old tests build, but don't run correctly, since they need VAPI to drive their inputs. Fixing this would allow the UART and GPIO tests to be added.
+** There is an attempt at a comprehensive test of the integer instruction set, but it does not compile correctly. Fixing this would be valuable.
+** Many of the existing tests of peripherals are crude. In particular, the Ethernet could benefit from a robust set of tests.
+; Test or1ksim on non-Linux platforms (various UNIX and Cygwin platforms) :
+: The developers do not have acess to every operating system out there. We would like the simulator to run on as many platforms as possible. Mark Jarvin already provides valuable help by running the code on Mac OS X.
+: If you are running on anything other than Linux you would help us a great deal if you could periodically check if the simulator builds (and works) on your prefered platform, reporting any failures to the mailing list.
+;Add additional models of OpenCores peripherals and system controllers:
+:Only a small subset of the great peripherals availible at opencores are currently modeled. Some examples of peripherals to write a model for might have been suggested.
+** WishBone Real Time Clock.
+** IrDA communication core.
+** USB 2.0 function core.
+** Most things that connect to the WishBone bus. A good list may be found here.
+;Add a new feature
+:The section on the [[#Development release]] above lists several new features. Coders wishing to help are very welcome.
+
+If you have a suggestion that you'd like to see developed, feel free to add it to the [http://opencores.org/openrisc,bugtracker tracker] or start a discussion on the OpenRISC forum.
+
+== Developers ==
+
+The team currently working on or1ksim:
+* Jeremy Bennett, jeremybennett@opencores.org
+* JungSook Yang, jungsook.yang@gmail.com (floating point support)
+* Stefan Wallentowitz stefan.wallentowitz@tum.de (multiple instantiation)
+* Mark Jarvin mark.jarvin@opencores.org (MAC OS X support).
+
+=== Past Contributors ===
+
+These are the people who are currently not working on the or1ksim, but have contributed in significant ways in the past:
+* Waqas Ahmed
+* Erez Volk
+* Johan Rydberg
+* Jimmy Chen-Min Chen
+* Chris Ziomkowskig
+* Marko Mlinar
+* Simon Srot
+* Matjaz Breskvar
+* Gyorgy Jeney
+* Damjan Lampret
