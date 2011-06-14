@@ -12,13 +12,6 @@ These are the latest results from newlib tool chain testing. Unless otherwise in
 
 runtest completed at Tue Nov  2 16:03:16 2010</nowiki>
 
-==== UNSUPPORTED tests ====
-
-;strip empty file
-:This test is for use with Linux targets only.
-;unordered .debug_info references to .debug_ranges
-:This test, which confusingly duplicates the name of the previous test (a binutils bug), is only for execution on ia64 targets.
-
 === Linker ===
 
  <nowiki>
