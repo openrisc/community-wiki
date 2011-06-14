@@ -240,9 +240,9 @@ For more information about uClibc see the [http://www.uclibc.org/about.html proj
 
 == Testing ==
 
-=== Newlib tool chain ===
+Each tool is tested using the GNU tool regression test suites. The newlib tool chain is tested using the GDB simulator (which is [[Or1ksim]]) standalone. The uClibc tool chain is tested using OpenRISC linux running on Or1ksim, using FTP and telnet through a TUN/TAP Ethernet interface.
 
-=== uClibc tool chain ===
+The results are large, so there is a separate page for the [[newlib tool chain test results]] and the [[uClibc tool chain test results]].
 
 == Release program ==
 
