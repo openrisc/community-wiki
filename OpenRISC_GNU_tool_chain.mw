@@ -116,6 +116,12 @@ Robert Guenzel has provided an [http://chschroeder.gamiro.de/rg/or1ksim_macOS10.
 
 === binutils ===
 
+This is a collection of tools for the manipulation of object code in various object file formats. Among its many tools, it provides the assembler and linker.
+
+Version 2.20.1 of binutils, 2.20.1, has been ported to OpenRISC and can be [http://www.opencores.org/ocsvn/openrisc/openrisc/trunk/gnu-src/binutils-2.20.1 downloaded from SVN].
+
+More information about the GNU project's release of binutils can be found at its [http://www.gnu.org/software/binutils/ GNU homepage].
+
 === GCC ===
 
 === GDB ===
