@@ -181,6 +181,8 @@ Known issues are:
 * there are still many regression failures, which remain to be investigated.
 * gdbserver relies on a range of Linux system calls, not all of which are fully implemented.
 * OpenRISC Linux does not currently generate valid core files.
+* Message "Value being assigned to is no longer active" is given when trying to alter a register immediately after loading a new program image. This is a known bug in GDB. It is one feature of a complex problem with the way GDB represents stack frames.
+:One workaround is to set a breakpoint on the first instruction of the loaded image, run to that breakpoint (which will do nothing), and then GDB will allow registers to be set. However user nyawn has found a small [cvs.fedoraproject.org/viewvc/devel/gdb/gdb-6.8-bz436037-reg-no-longer-active.patch?view=log patch] from the Fedora project which fixes this particular problem. 
 
 Details of the internal workings of the GDB port for OpenRISC 1000 can be found in the application note [http://www.embecosm.com/download/ean3.html Howto: Porting the GNU Debugger: Practical Experience with the OpenRISC 1000 Architecture] published by Embecosm. Although based on GDB 6.8, much of the content is relevant to GDB 7.2.
 
