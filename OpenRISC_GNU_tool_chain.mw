@@ -214,6 +214,10 @@ The library is automatically linked when using the newlib version of the GCC com
 
 Further information is availble in [http://www.embecosm.com/download/ean9.html Embecosm Application Note 9] ''Howto: Porting Newlib: A Simple Guide'', which explains in full detail how the port for the OpenRISC 1000 architecture was done.
 
+==== Future plans for newlib ====
+
+* Add more boards
+
 ==== newlib port acknowledgements ====
 
 This [http://www.doc.ic.ac.uk/~jab00/or32-newlib/ original port] was for newlib 1.13.0 by Jacob Bower, then of Imperial College, London.
