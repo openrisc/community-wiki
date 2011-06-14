@@ -165,6 +165,36 @@ A number of backwards compatibility issues have been identified.
 
 === GDB ===
 
+The GNU Project Debugger (GDB) is a standard debugging tool. It is used for debugging code while it is executing on any OpenRISC target, be it simulated (architectural simulator or RTL) or physical (FPGA, or ASIC.) It also provides a convenient mechanism for transferring and running code in any OpenRISC based system.
+
+==== Stable version of GDB ====
+
+GDB 7.2 has now been ported to the OpenRISC 1000 architecture and is regarded as the stable implementation.
+
+Key new features are:
+* support for DWARF2 debug format by default.
+* support for GCC 4.5.1.
+* support for gdbserver under [[Linux|OpenRISC Linux]].
+* support for core file debugging
+
+Known issues are:
+* there are still many regression failures, which remain to be investigated.
+* gdbserver relies on a range of Linux system calls, not all of which are fully implemented.
+* OpenRISC Linux does not currently generate valid core files.
+
+Details of the internal workings of the GDB port for OpenRISC 1000 can be found in the application note [http://www.embecosm.com/download/ean3.html Howto: Porting the GNU Debugger: Practical Experience with the OpenRISC 1000 Architecture] published by Embecosm. Although based on GDB 6.8, much of the content is relevant to GDB 7.2.
+
+Details of the implementation of the RSP server functionality for Or1ksim can be found in the application note Howto: GDB Remote Serial Protocol: Writing a RSP Server published by Embecosm.
+
+This version of GDB works with the graphical user interface DDD. It has also been tested with the Insight graphical debugger and appears to work.
+
+==== Backwards compatibility ====
+
+The following compatibility issues have been noted.
+* The current stable version is only compatible with OpenRISC GCC 4.5.1 and later, due to the change in global symbol handling and changes to function prologues.
+* Support for the legacy OpenRISC Remote JTAG Protocol has now been dropped.
+* Only version 0.3.0 or later of the architectural simulator, [[Or1ksim]] is supported.
+
 == Libraries ==
 
 === newlib ===
