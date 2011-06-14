@@ -109,4 +109,4 @@ If you would like to contribute to the project by maintaining a build script and
 
 ==== Apple Mac OS X ====
 
-Robert Guenzel has provided an [chschroeder.gamiro.de/rg/or1ksim_macOS10.4.pdf application note] on building the toolchain (excluding GDB) for Mac OS 10.4. Users will find this provides valuable additional information beyond the instructions above.
+Robert Guenzel has provided an [http://chschroeder.gamiro.de/rg/or1ksim_macOS10.4.pdf application note] on building the toolchain (excluding GDB) for Mac OS 10.4. Users will find this provides valuable additional information beyond the instructions above.
