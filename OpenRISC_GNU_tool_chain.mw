@@ -234,6 +234,10 @@ At present the OpenRISC port of uClibc is hosted on a git repository provided by
 
 For more information about uClibc see the [http://www.uclibc.org/about.html project's homepage].
 
+==== Future plans for uClibc ====
+
+* Write optimized versions of routines in uClibc instead of using generic ones.
+
 == Testing ==
 
 === Newlib tool chain ===
