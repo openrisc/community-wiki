@@ -89,7 +89,7 @@ Some features of the current Or1ksim appear incomplete or obsolete. The followin
 * The custom unit compiler.
 * Dynamic execution (a build option, not completed)
 
-Users are encouraged to suggest other features via the OpenRISC forum or through the [http://opencores.org/openrisc,bugtracker OpenRISC bug tracker].
+Users are encouraged to suggest other features via the OpenRISC forum or through the [http://bugzilla.opencores.org/ OpenRISC bug tracker].
 
 === SystemC TLM 2.0 interface for Or1ksim ===
 
@@ -126,7 +126,7 @@ If DejaGNU and the OpenRISC GNU tool chain are installed, the build can be teste
 
  make check
 
-All tests should past. Any failures should be reported, with as much detail as possible using the OpenRISC bug tracker.
+All tests should past. Any failures should be reported, with as much detail as possible using the [http://bugzilla.opencores.org/ OpenRISC bug tracker].
 
 Or1ksim can also be installed using the OpenRISC toolchain installation script (a more automated installation), which is available from the GNU Toolchain page.
 
@@ -193,7 +193,7 @@ A few items to get you started.
 ** Most things that connect to the WishBone bus. A good list may be found here.
 * Add a new feature. The section on the [[#Development release]] above lists several new features. Coders wishing to help are very welcome.
 
-If you have a suggestion that you'd like to see developed, feel free to add it to the [http://opencores.org/openrisc,bugtracker tracker] or start a discussion on the OpenRISC forum.
+If you have a suggestion that you'd like to see developed, feel free to add it to the [http://bugzilla.opencores.org/ OpenRISC bug tracker] or start a discussion on the OpenRISC forum.
 
 == Developers ==
 
