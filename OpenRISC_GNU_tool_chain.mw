@@ -238,11 +238,77 @@ For more information about uClibc see the [http://www.uclibc.org/about.html proj
 
 == Release program ==
 
+We plan to move towards a scheduled development and release plan for the OpenRISC tool chain. The goal is to provide stable releases of the entire tool chain, libraries and architectural simulator every six months, containing the most stable ports of the latest tools and libraries available.
+
+We intend to release two tool chains, one based on the newlib C library and aimed at bare-metal use, and one based on the uClibc C library aimed at Linux userspace applications. The development and release schedule of these tool chains might not coincide.
+
+'''Note.''' As of the beginning of April 2011, this toolchain release plan has been changed to split the releases into newlib and uClibc tool chains.
+
 === Project team ===
+
+* Release Manager: [[User:Julius|Julius Baxter]]
+* GNU binutils: [[User:Jeremybennett|Jeremy Bennett]]
+* GCC: [[User:Jeremybennett|Jeremy Bennett]]
+* GDB: [[User:Jeremybennett|Jeremy Bennett]]
+* newlib: [[User:Jeremybennett|Jeremy Bennett]]
+* uClibc: [[User:Jonibo|Jonas Bonn]]
+* Or1ksim: [[User:Jeremybennett|Jeremy Bennett]]
+* Installation script: [[User:Julius|Julius Baxter]]
 
 === newlib tool chain release schedule ===
 
+Candidate components for next release:
+
+{|
+!align="left"|Tool!!Version
+|-
+|GNU binutils||2.20.1
+|-
+|GCC||4.5.1
+|-
+|GDB||7.2
+|-
+|newlib||1.18.0
+|-
+|Or1ksim||0.5.1
+|}
+
+Schedule for next release:
+
+{|
+!align="left"|Date!!align="left"|Status
+|-
+|10 April 2011||RC 1 versions tagged in SVN, precompiled binaries available
+|-
+|24 April 2011||Public release of precompiled binaries
+|}
+
 === uClibc tool chain release schedule ===
+
+
+Candidate components for next release:
+
+{|
+!align="left"|Tool!!Version
+|-
+|GNU binutils||2.20.1
+|-
+|GCC||4.5.1
+|-
+|GDB||7.2
+|-
+|uClibc||0.9.32
+|-
+|Or1ksim||0.5.1
+|}
+
+Schedule for next release:
+
+{|
+!align="left"|Date!!align="left"|Status
+|-
+|TBA||TBA
+|}
 
 == Future Plans ==
 
