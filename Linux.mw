@@ -1,3 +1,5 @@
 == Introduction ==
 
 This section of the project contains information on using the [http://www.kernel.org/ Linux kernel] port for the OpenRISC 1000 family.
+
+Information about Linux on OpenRISC as well as updated toolchains can be found at http://openrisc.net
