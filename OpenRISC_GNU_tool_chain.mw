@@ -310,4 +310,37 @@ Schedule for next release:
 |TBA||TBA
 |}
 
-=== Contributing ===
+== Bugs ==
+
+The project uses [http://bugzilla.opencores.org/ Bugzilla] to track all the bugs in its hardware and software. That's a good place to look for existing bugs, or to report a new bug.
+
+=== Support ===
+
+This is an open source project, so the community provides support (although there are companies offering commercial support as well). The various [[OR1K:Community_Portal#Mailing lists|mailing lists]] and [[OR1K:Community_Portal#IRC|IRC]] are good places to seek assistance.
+
+== Future plans ==
+
+Individual tools above have their own plans laid out for future work. At a tool chain level, there is one issue that needs resolving:
+* Reconsider toolchain prefix (should it be or1k rather than or32)
+
+=== Wishlist ===
+
+There are some things we would really like to have in place:
+* A nice tutorial, showing off the installation and use of the new toolchain.
+* Maintainers for various platforms (Cygwin, Mac OS X)
+* Maintainers for packaging toolchain for Debian (apt) and Fedora (yum) package managers.
+
+Feel free to post any suggestions or offers to assist the project to the [[OR1K:Community_Portal#Mailing lists|mailing lists]] or talk to us on [[OR1K:Community_Portal#IRC|IRC]].
+
+=== The tool chain development team ===
+
+* [[User:Jeremybennett|Jeremy Bennett]] (binutils, GCC, GDB, Newlib, Or1ksim)
+* [[User:Marcus_ericsson|Marcus Erlandsson]]
+* [[User:julius|Julius Baxter]] (program manager, install script, newlib, Or1ksim)
+* [[User:jonibo|Jonas Bonn]] (uClibc)
+
+=== Why and How to Volunteer ===
+
+Taking responsibility for maintaining a package is a great way to gain experience of practical program management. If you are a student, or early in your career, it adds important credibility to your resume. And since it is all open source, your expertise can be publicly verified by any potential employer.
+
+To take part, post a message on the [[OR1K:Community_Portal#Mailing lists|mailing lists]] , or email the Release Manager, [mailto:julius@opencores.org Julius Baxter] or come and talk to us on [[OR1K:Community_Portal#IRC|IRC]].
