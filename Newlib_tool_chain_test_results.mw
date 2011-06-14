@@ -1,0 +1,134 @@
+These are the latest results from newlib tool chain testing. Unless otherwise indicated, the tools are the SVN versions on the date shown, and record the number of tests in each [[test result category]]. For each tool an explanation is provided of any tests with a FAIL, XPASS or UNRESOLVED outcome.
+
+== binutils 2.20.1 ==
+
+=== General ===
+
+ <nowiki>
+                === binutils Summary ===
+
+# of expected passes		64
+# of unsupported tests		2
+
+runtest completed at Tue Nov  2 16:03:16 2010</nowiki>
+
+==== UNSUPPORTED tests ====
+
+;strip empty file
+:This test is for use with Linux targets only.
+;unordered .debug_info references to .debug_ranges
+:This test, which confusingly duplicates the name of the previous test (a binutils bug), is only for execution on ia64 targets.
+
+=== Linker ===
+
+ <nowiki>
+                === ld Summary ===
+
+# of expected passes		131
+# of unexpected failures	5
+# of unexpected successes	11
+# of expected failures		12
+# of unsupported tests		3
+
+runtest completed at Fri Aug 20 11:47:49 2010</nowiki>
+
+==== FAIL tests ====
+
+;Check --gc-sections on tls variable
+;Check --gc-section
+;Check --gc-section/-q
+;Check --gc-section/-r/-e
+;Check --gc-section/-r/-u
+:--gc-sections is not actually supported for the OpenRISC 1000, yet the linker --help reports that it is, so these tests are run
+
+==== XPASS tests ====
+
+;ld-discard/extern
+;ld-discard/start 	
+;ld-discard/static 
+;ld-discard/zero-rel
+;ld-elf/empty2 	
+;ld-elf/group1 	
+;ld-elf/merge2 	
+;ld-elf/orphan3 
+;ld-elf/warn1 	
+;ld-elf/warn2 	
+;weak symbols
+:To be investigated.
+
+=== Assembler ===
+
+ <nowiki>
+		=== gas Summary ===
+
+# of expected passes		108
+# of expected failures		1
+
+runtest completed at Tue Nov  2 16:04:12 2010M</nowiki>
+
+== GCC 4.5.1 ==
+
+=== C compiler ===
+
+ <nowiki>
+		=== gcc Summary ===
+
+# of expected passes		53377
+# of unexpected failures	1
+# of expected failures		84
+# of unsupported tests		724
+
+runtest completed at Tue Jun 14 19:11:40 2011</nowiki>
+
+==== FAIL tests ====
+
+;gcc.dg/builtin-apply4.c execution test
+;Under investigation.
+
+=== C++ compiler ===
+
+ <nowiki>
+		=== g++ Summary ===
+
+# of expected passes		21112
+# of expected failures		149
+# of unsupported tests		247
+
+runtest completed at Tue Jun 14 19:11:54 2011</nowiki>
+
+=== C++ library ===
+
+ <nowiki>
+		=== libstdc++ Summary ===
+
+# of expected passes		52869
+# of expected failures		77
+# of unsupported tests		728
+
+runtest completed at Sat Sep  4 18:30:46 2010</nowiki>
+
+==== FAIL tests ====
+
+All test failures are due to lack of wchar support.
+
+== GDB 7.2 ==
+
+ <nowiki>
+
+
+</nowiki>
+
+== Newlib 1.18.0 ==
+
+ <nowiki>
+		=== newlib Summary ===
+
+# of expected passes		23
+# of unexpected failures	1
+
+runtest completed at Tue Nov  2 16:06:59 2010</nowiki>
+
+=== FAIL tests ===
+
+;newlib.locale/UTF-8.c output
+:This is a failure to select a new language locale. This may be due to the absence of a file system, but more investigation is needed.
