@@ -1,4 +1,5 @@
-At present OpenRISC is supported by a 32-bit GNU tool chain offering C and C++ support with static libraries only. The tool chain is available in * for bare metal use, based on the newlib library
+At present OpenRISC is supported by a 32-bit GNU tool chain offering C and C++ support with static libraries only. The tool chain is available in two forms
+* for bare metal use, based on the newlib library
 * for Linux application use, based on the uClibc library. 
 
 The tool chains are available as pre-compiled binaries, and stable source code snapshots and in development versions under SVN.
