@@ -167,7 +167,7 @@ A number of backwards compatibility issues have been identified.
 
 The GNU Project Debugger (GDB) is a standard debugging tool. It is used for debugging code while it is executing on any OpenRISC target, be it simulated (architectural simulator or RTL) or physical (FPGA, or ASIC.) It also provides a convenient mechanism for transferring and running code in any OpenRISC based system.
 
-==== Stable version of GDB ====
+==== GDB stable version ====
 
 GDB 7.2 has now been ported to the OpenRISC 1000 architecture and is regarded as the stable implementation.
 
