@@ -83,7 +83,7 @@ The builtins for applying functions are currently not supported on OpenRISC, whi
 # of expected failures		149
 # of unsupported tests		247
 
-runtest completed at Tue Jun 14 19:11:54 2011</nowiki>
+runtest completed at Wed Jun 15 15:01:53 2011</nowiki>
 
 === C++ library ===
 
