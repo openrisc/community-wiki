@@ -1,0 +1,11 @@
+The DejaGNU testing can yield the following results, which are consistent with POSIX 1003.3.
+
+* '''PASS'''. The test passed as expected.
+* '''FAIL'''. The test failed
+* '''XPASS'''. A test that was expected to fail in fact passed.
+* '''XFAIL'''. A test failed as expected
+* '''UNRESOLVED'''. A test gave indeterminate results. For example due to a timeout
+* '''UNTESTED'''. A place holder, where a test has yet to be written
+* '''UNSUPPORTED'''. The system does not have the necessary functionality for this test. For example the test requires a Linux interface, but is being run on a bare metal target.
+
+Note that '''XPASS''' and '''XFAIL''' are extensions to POSIX 1003.3 for clarity and convenience.
