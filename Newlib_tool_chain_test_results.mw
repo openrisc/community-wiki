@@ -94,15 +94,22 @@ runtest completed at Tue Jun 14 19:11:54 2011</nowiki>
  <nowiki>
 		=== libstdc++ Summary ===
 
-# of expected passes		52869
-# of expected failures		77
-# of unsupported tests		728
+# of expected passes		5905
+# of unexpected failures	66
+# of unexpected successes	1
+# of expected failures		84
+# of unsupported tests		581
 
-runtest completed at Sat Sep  4 18:30:46 2010</nowiki>
+runtest completed at Tue Jun 14 19:34:56 2011</nowiki>
 
 ==== FAIL tests ====
 
-All test failures are due to lack of wchar support.
+All test failures are due to lack of correct wchar support.
+
+==== XPASS tests ====
+
+;27_io/objects/wchar_t/12048-5.cc execution test
+:This unexpected success is due to lack of correct wchar support.
 
 == GDB 7.2 ==
 
