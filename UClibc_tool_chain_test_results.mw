@@ -1,0 +1,96 @@
+These are the latest results from uClibc tool chain testing. Tests have been carried out using Or1ksim running Linux as a target. For performance reasons, the tests have been heavily parallelized (beyond the level in the standard GNU scripts), and the results combined.
+
+Unless otherwise indicated, the tools (and libraries and Linux) are the SVN or git versions on the date shown, and record the number of tests in each [[test result category]]. For each tool an explanation is provided of any tests with a FAIL, XPASS or UNRESOLVED outcome.
+
+== binutils 2.20.1 ==
+
+=== General ===
+
+Not yet available.
+
+=== Linker ===
+
+Not yet available.
+
+=== Assembler ===
+
+Not yet available.
+
+== GCC 4.5.1 ==
+
+=== C compiler ===
+
+ <nowiki>
+		=== gcc Summary ===
+
+# of expected passes		53601
+# of unexpected failures	0
+# of expected failures		85
+# of unresolved tests		1
+# of unsupported tests		715
+
+runtest completed at Mon Jun  6 19:37:02 2011</nowiki>
+
+==== UNRESOLVED tests ====
+
+;gcc.c-torture/execute/vla-dealloc-1.c execution,  -O0
+:This is a very long running and large test, which cannot complete in simulated hardware.
+
+=== C++ compiler ===
+
+ <nowiki>
+		=== g++ Summary ===
+
+# of expected passes		21189
+# of expected failures		149
+# of unsupported tests		244
+
+runtest completed at Sun Jun  5 23:47:39 2011</nowiki>
+
+=== C++ library ===
+
+ <nowiki>
+		=== libstdc++ Summary ===
+
+# of expected passes		5678
+# of unexpected failures	2
+# of unexpected successes	2
+# of expected failures		94
+# of unresolved tests		9
+# of unsupported tests		581
+
+runtest completed at Sun Jun 12 19:58:22 2011</nowiki>
+
+==== FAIL tests ====
+
+;ext/rope/pthread7-rope.cc execution test
+;23_containers/list/pthread1.cc execution test
+:Failure due to limitations of the underlying Linux thread support.
+
+==== XPASS tests ====
+
+;26_numerics/headers/cmath/c99_classification_macros_c++.cc
+:This appears to be an out of date test, expecting a failure in compilation with uClibc that is no longer the case.
+;27_io/basic_istream/extractors_arithmetic/char/12.cc execution test
+:This appears to be an out of date test, expecting failure in strtofp with uClibc, that is no longer the case.
+
+==== UNRESOLVED tests ====
+
+;tr1/2_general_utilities/shared_ptr/thread/default_weaktoshared.cc execution test
+;tr1/2_general_utilities/shared_ptr/thread/mutex_weaktoshared.cc execution test
+;30_threads/timed_mutex/try_lock_for/3.cc execution test
+;20_util/shared_ptr/thread/default_weaktoshared.cc execution test
+;20_util/shared_ptr/thread/mutex_weaktoshared.cc execution test
+;23_containers/list/pthread5.cc execution test
+;23_containers/map/pthread6.cc execution test
+;27_io/basic_ofstream/pthread2.cc execution test
+;27_io/basic_ostringstream/pthread3.cc execution test
+:Failure due to limitations of the underlying Linux thread support.
+
+== GDB 7.2 ==
+
+Not yet available.
+
+== uClibc 0.9.32 ==
+
+Remote testing of the library is not currently supported in uClibc.
