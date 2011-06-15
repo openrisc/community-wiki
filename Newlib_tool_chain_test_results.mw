@@ -67,16 +67,12 @@ runtest completed at Tue Nov  2 16:04:12 2010M</nowiki>
 		=== gcc Summary ===
 
 # of expected passes		53377
-# of unexpected failures	1
 # of expected failures		84
 # of unsupported tests		724
 
-runtest completed at Tue Jun 14 19:11:40 2011</nowiki>
+runtest completed at Wed Jun 15 15:01:44 2011</nowiki>
 
-==== FAIL tests ====
-
-;gcc.dg/builtin-apply4.c execution test
-:This functionality is not supported on OpenRISC
+The builtins for applying functions are currently not supported on OpenRISC, which means that the builtin-apply4.c execution test occasionally fails.
 
 === C++ compiler ===
 
