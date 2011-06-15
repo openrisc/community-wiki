@@ -114,9 +114,34 @@ All test failures are due to lack of correct wchar support.
 == GDB 7.2 ==
 
  <nowiki>
+		=== gdb Summary ===
 
+# of expected passes		12003
+# of unexpected failures	253
+# of expected failures		42
+# of untested testcases		12
+# of unresolved testcases	6
+# of unsupported tests		107
 
-</nowiki>
+runtest completed at Wed Jun 15 09:02:32 2011</nowiki>
+
+=== FAIL tests ===
+
+This is a work in progress, with failures currently being addressed.
+
+=== UNRESOLVED tests ===
+
+;gdb.base/valgrind-db-attach.exp<nowiki>:</nowiki> valgrind started
+:valgrind not available for OpenRISC.
+;gdb.dwarf2/dw2-modula2-self-type.exp<nowiki>:</nowiki> set language modula-2 ptype v
+:Modula 2 is not supported on OpenRISC.
+;gdb.dwarf2/dw2-noloc.exp<nowiki>:</nowiki> no-run<nowiki>:</nowiki> print file_locaddr_resolvable
+:Failure to find DWARF abbreviation (number 101).
+;gdb.dwarf2/dw2-ref-missing-frame.exp<nowiki>:</nowiki> setting breakpoint at func_nofb
+;gdb.dwarf2/dw2-ref-missing-frame.exp<nowiki>:</nowiki> setting breakpoint at func_loopfb
+:Failure to find DWARF abbreviation (number 43).
+;gdb.dwarf2/dw2-unresolved.exp<nowiki>:</nowiki> setting breakpoint at main
+:Failure to find DWARF abbreviation (number 108).
 
 == Newlib 1.18.0 ==
 
