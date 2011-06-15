@@ -76,7 +76,7 @@ runtest completed at Tue Jun 14 19:11:40 2011</nowiki>
 ==== FAIL tests ====
 
 ;gcc.dg/builtin-apply4.c execution test
-;Under investigation.
+:This functionality is not supported on OpenRISC
 
 === C++ compiler ===
 
