@@ -90,22 +90,15 @@ runtest completed at Wed Jun 15 15:01:53 2011</nowiki>
  <nowiki>
 		=== libstdc++ Summary ===
 
-# of expected passes		5905
-# of unexpected failures	66
-# of unexpected successes	1
-# of expected failures		84
+# of expected passes		5922
+# of expected failures		134
 # of unsupported tests		581
 
-runtest completed at Tue Jun 14 19:34:56 2011</nowiki>
+runtest completed at Thu Jun 16 18:17:16 2011</nowiki>
 
-==== FAIL tests ====
+A number of tests require file I/O support or <tt>gettimeofday</tt> support, which is not provided in the OpenRISC newlib implementation. These tests have been marked as expecting to fail when run with OpenRISC.
 
-All test failures are due to lack of correct wchar support.
-
-==== XPASS tests ====
-
-;27_io/objects/wchar_t/12048-5.cc execution test
-:This unexpected success is due to lack of correct wchar support.
+Two of the standard tests will not work with newlib generically, due to a bug in the handling of wide char stream I/O and <tt>is_scan</tt> support for wide characters. These tests have been marked as expecting to fail when run with newlib.
 
 == GDB 7.2 ==
 
