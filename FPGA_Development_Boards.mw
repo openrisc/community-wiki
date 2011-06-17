@@ -21,3 +21,17 @@
 ** SDRAM (256MB)
 ** SPI
 ** UART
+
+== Digilent Atlys ==
+(Not yet pushed to main orpsoc repo. Git repo can be found at git://git.chokladfabriken.org/orpsocv2)
+* Board path: xilinx/atlys
+* Clock speed: 50MHz
+* Supported devices
+** AC97
+** Ethernet
+** GPIO
+** PS/2
+** SDRAM (128MB)
+** SPI
+** UART
+** VGA
