@@ -1,5 +1,4 @@
 == Introduction ==
-
 ORPSoC is the OpenRISC Reference Platform System-on-Chip. This project implements a platform for OpenRISC development. It provides a reference SoC, primarily for the testing and development of OpenRISC processors, and a set of pre-built SoCs for various FPGA boards.
 
 The project's structure makes it simple to develop (and contribute) an OpenRISC-based design for implementation on hardware.
@@ -8,45 +7,105 @@ The project's structure makes it simple to develop (and contribute) an OpenRISC-
 
 
 == Download ORPSoC ==
-
 The RTL source, test software and scripts can be downloaded from the OpenRISC project subversion (svn) repository. The sources can be checked out with the following command:
 
  <nowiki>svn co http://opencores.org/ocsvn/openrisc/openrisc/trunk/orpsocv2</nowiki>
 
 
 == Documentation ==
-
 The main set of documentation is now in texinfo format and included with the project source.
 
 To generate a PDF of the documentation, change into the doc/ path of the project and run the following:
 
- <nowiki>./configure</nowiki>
-
- <nowiki>make pdf </nowiki>
+ ./configure
+ make pdf
 
 The texinfo and TeX processing tools are required to generate the documentation in PDF.
 See the texinfo and TeX install sections below.
 
 
 == Supported Boards ==
-
 The following is a list of supported boards. See the documentation included with the project for further information on the features and usage of each.
 
 *ORSoC Actel FPGA development board (ordb1a3pe1500)
 *Xilinx ML501 (ml501)
 
+
 == Installing required tools ==
 There is a choice of three models to run the test software on. These are the architectural simulator, cycle-accurate and event-driven simulation models. Below are the instructions to install each of them. You need only install the tools for the model you wish to run. The GNU toolchain port is mandatory.
 
-'''OpenRISC GNU toolchain port installation'''
 
+'''OpenRISC GNU toolchain port installation'''
 Ensure the OpenRISC GNU toolchain port is installed on your system.
 
 Please install the latest release candidate of the version 1.0 toolchain. Follow the guide on the GNU toolchain page.
 
+
 '''Architectural Simulator (or1ksim)'''
-
 The tests included with ORPSoC's reference design can be run on the OpenRISC architectural simulator, or1ksim. See the or1ksim page for details on installation.
-Event-driven simulators
 
+
+== Event-driven simulators ==
 For the reference build of ORPSoC that is non-board targeted, Icarus Verilog is required. Board targets require Modelsim.
+
+=== Icarus Verilog ===
+[http://www.icarus.com/eda/verilog/ Icarus Verilog] is an open-source Verilog simulation tool. Their wiki has an extensive installation guide, but on most modern *nix distributions, such as Ubuntu or Debian, it can be easily installed by the system's package manager (apt, yum, emerge, etc.). The package is typically just called verilog. For instance, with apt under Ubuntu the installation command is:
+
+ <nowiki>sudo apt-get install verilog</nowiki>
+
+However, if it is not available via the package manager on on your platform please see the Icarus Verilog project's installation guide.
+
+
+=== Cycle-accurate simulator ===
+This simulator is a cycle accurate C++ model generated from the Verilog HDL by [http://www.veripool.org/ Verilator]. A System C wrapper is placed on the model so other System C modules can be used with it. The scripts require Verilator, its supporting tools, and the System C libaries, be installed to generate this model.
+Cycle-accurate model generation with Verilator
+
+The tool which generates the C++ model is Verilator. It is a free and open source tool, developed and maintained by Wilson Snyder et al. at Veripool.org. The generated C++ uses the SystemC simulation kernel and libraries. It is compiled with your system's C++ compiler to create a standalone simulation executable.
+
+
+'''Installation of Verilator and supporting libraries'''
+Following are the SystemC library installation instructions. Next is instructions on installing the two supporting Perl libraries used by Verilator; Verilog-Perl and System-Perl. Lastly, Verilator itself is installed. The following instructions are expanded upon those contained at Veripool's Verilator page.
+
+
+'''Installing the SystemC library'''
+The SystemC library can be obtained from the [http://www.systemc.org/ Open SystemC Initiative] (OSCI) website. The Standards Download page contains the link to download the core SystemC language and examples archive. Registration with the OSCI is required before downloading.
+Once the package is downloaded and extracted, follow the provided README for full compilation and installation instructions.
+A quick installation instruction list for most Linux platforms is provided below, starting in the systemc-x.x.x directory:
+
+ mkdir objdir; cd objdir
+ export CXX=g++
+ ../configure (note that this configures the current location as the permanent location of the systemc library)
+ make
+
+If using SystemC version 2.2.0, and make errors out with the following:
+
+ ../../../../src/sysc/utils/sc_utils_ids.cpp: In function int 'sc_core::initialize()':
+ ../../../../src/sysc/utils/sc_utils_ids.cpp:110: error: 'getenv' is not a member of std
+ ../../../../src/sysc/utils/sc_utils_ids.cpp:111: error: 'strcmp' was not declared in this scope
+
+Then change the includes in the file systemc-2.2.0/src/sysc/utils/sc_utils_ids.cpp to look like the following:
+
+ #include <cstdlib>
+ #include <string.h>
+ #include "sysc/utils/sc_report.h"
+ using namespace std; 
+
+and re-run make. Hopefully this will be addressed in the next release of SystemC:
+
+ # make
+
+When make has completed, continue with:
+
+ # make install
+ # make check (optional)
+
+Add export SYSTEMC=/path/to/systemc-x.x.x to ~/.bashrc
+
+
+'''Installing Verilog-Perl'''
+Download the latest release of Verilog-Perl by visiting its [http://search.cpan.org/search?module=Verilog::Language CPAN] site.
+
+Currently the latest release can be downloaded from [http://search.cpan.org/CPAN/authors/id/W/WS/WSNYDER/Verilog-Perl-3.210.tar.gz here].
+Extract it and follow the instructions in the include README file.
+
+A quick installation instruction list for most Linux platforms is provided:
