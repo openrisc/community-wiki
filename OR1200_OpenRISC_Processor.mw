@@ -18,8 +18,9 @@
 * Instruction and Data WISHBONE B3 compliant interfaces
 
 == Status ==
-RTL coding is finished and is being tested in different test applications. It has also been implemented in various commercial ASICs and FPGA.
-If you would like to help with the development, please post to the OpenRISC forum or send an email to openrisc_team@opencores.org. 
+The OR1200 is stable and has been implemented in various commercial ASICs and FPGA.
+The development is always ongoing with new features and improvements. 
+If you would like to help with the development, please post to the OpenRISC forum or send an email to openrisc_team@opencores.org.
 
 == Implementation information ==
 When implemented in a worst-case 0.18u 6LM process it should provide over 150 dhrystone 2.1 MIPS at 150MHz and 150 DSP MAC 32x32 operations.
