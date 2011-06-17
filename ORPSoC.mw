@@ -1,0 +1,52 @@
+== Introduction ==
+
+ORPSoC is the OpenRISC Reference Platform System-on-Chip. This project implements a platform for OpenRISC development. It provides a reference SoC, primarily for the testing and development of OpenRISC processors, and a set of pre-built SoCs for various FPGA boards.
+
+The project's structure makes it simple to develop (and contribute) an OpenRISC-based design for implementation on hardware.
+
+(This second version of ORPSoC was initially known as ORPSoCv2, however we intend on changing it back to be known simply as ORPSoC again)
+
+
+== Download ORPSoC ==
+
+The RTL source, test software and scripts can be downloaded from the OpenRISC project subversion (svn) repository. The sources can be checked out with the following command:
+
+ <nowiki>svn co http://opencores.org/ocsvn/openrisc/openrisc/trunk/orpsocv2</nowiki>
+
+
+== Documentation ==
+
+The main set of documentation is now in texinfo format and included with the project source.
+
+To generate a PDF of the documentation, change into the doc/ path of the project and run the following:
+
+ <nowiki>./configure</nowiki>
+
+ <nowiki>make pdf </nowiki>
+
+The texinfo and TeX processing tools are required to generate the documentation in PDF.
+See the texinfo and TeX install sections below.
+
+
+== Supported Boards ==
+
+The following is a list of supported boards. See the documentation included with the project for further information on the features and usage of each.
+
+*ORSoC Actel FPGA development board (ordb1a3pe1500)
+*Xilinx ML501 (ml501)
+
+== Installing required tools ==
+There is a choice of three models to run the test software on. These are the architectural simulator, cycle-accurate and event-driven simulation models. Below are the instructions to install each of them. You need only install the tools for the model you wish to run. The GNU toolchain port is mandatory.
+
+'''OpenRISC GNU toolchain port installation'''
+
+Ensure the OpenRISC GNU toolchain port is installed on your system.
+
+Please install the latest release candidate of the version 1.0 toolchain. Follow the guide on the GNU toolchain page.
+
+'''Architectural Simulator (or1ksim)'''
+
+The tests included with ORPSoC's reference design can be run on the OpenRISC architectural simulator, or1ksim. See the or1ksim page for details on installation.
+Event-driven simulators
+
+For the reference build of ORPSoC that is non-board targeted, Icarus Verilog is required. Board targets require Modelsim.
