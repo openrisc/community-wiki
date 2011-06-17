@@ -1,0 +1,12 @@
+== ORSoC OpenRISC development board ==
+
+* Board path actel/ordb1a3pe1500
+* Clock speed: 20MHz
+* Supported devices
+** Ethernet
+** GPIO
+** SD Card
+** SDRAM (32MB)
+** SPI
+** UART
+** USB 1.1
