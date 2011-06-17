@@ -4,5 +4,6 @@ This FAQ focus on the OpenRISC project. There is an over all FAQ for OpenCores a
 
 Question:
 Why isn't <feature X> in OpenRISC?
+
 Answer:
 This is an open source project, largely supported by volunteers. If something is missing, please add it yourself, and contribute back, so the project always continues to develop.
