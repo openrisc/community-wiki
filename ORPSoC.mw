@@ -64,10 +64,12 @@ The tool which generates the C++ model is Verilator. It is a free and open sourc
 
 
 '''Installation of Verilator and supporting libraries'''
+
 Following are the SystemC library installation instructions. Next is instructions on installing the two supporting Perl libraries used by Verilator; Verilog-Perl and System-Perl. Lastly, Verilator itself is installed. The following instructions are expanded upon those contained at Veripool's Verilator page.
 
 
 '''Installing the SystemC library'''
+
 The SystemC library can be obtained from the [http://www.systemc.org/ Open SystemC Initiative] (OSCI) website. The Standards Download page contains the link to download the core SystemC language and examples archive. Registration with the OSCI is required before downloading.
 Once the package is downloaded and extracted, follow the provided README for full compilation and installation instructions.
 A quick installation instruction list for most Linux platforms is provided below, starting in the systemc-x.x.x directory:
@@ -92,17 +94,18 @@ Then change the includes in the file systemc-2.2.0/src/sysc/utils/sc_utils_ids.c
 
 and re-run make. Hopefully this will be addressed in the next release of SystemC:
 
- # make
+ make
 
 When make has completed, continue with:
 
- # make install
- # make check (optional)
+ make install
+ make check (optional)
 
 Add export SYSTEMC=/path/to/systemc-x.x.x to ~/.bashrc
 
 
 '''Installing Verilog-Perl'''
+
 Download the latest release of Verilog-Perl by visiting its [http://search.cpan.org/search?module=Verilog::Language CPAN] site.
 
 Currently the latest release can be downloaded from [http://search.cpan.org/CPAN/authors/id/W/WS/WSNYDER/Verilog-Perl-3.210.tar.gz here].
@@ -116,6 +119,7 @@ A quick installation instruction list for most Linux platforms is provided:
  sudo make install
 
 '''Installing System-Perl'''
+
 Download the latest release of Verilog-Perl by visiting its [http://search.cpan.org/search?module=Verilog::Language CPAN] site.
 
 Currently the latest release can be downloaded from [http://search.cpan.org/search?module=SystemC::Netlist here].
@@ -141,3 +145,67 @@ Then continue with, again:
  sudo make install
 
 Add export SYSTEMPERL=/path/to/systemperl_kit to ~/.bashrc
+
+
+'''Installing Verilator'''
+
+Installing Verilator can be done a couple of ways - using either the latest sources from the repository, or from a packaged release. ORPSoC works with Verilator version 3.710 onwards (the very latest as of May '09).
+Please see Verilator's installation page for instructions. Further instructions can be found in the README file included with the Verilator sources. A quick installation instruction list for most Linux platforms is provided below. It uses the method of a repository checkout with git (please install git-core with your package manager if it's not on your system):
+
+ <nowiki>git clone http://git.veripool.org/git/verilator</nowiki>
+ cd verilator
+ autoconf
+ ./configure
+ make
+ make test (recommended)
+ sudo make install
+
+Add export VERILATOR_ROOT=/path/to/verilator_kit to ~/.bashrc
+
+The SystemC model toolchain should now be ready to compile ORPSoC.
+
+
+== Documentation ==
+
+The following tools are required to compile the documentation source in the project's doc/ path, generating a PDF.
+
+'''Texinfo'''
+
+The documentation is provided in texinfo source format. To compile it, the texinfo tools are required.
+
+Under Ubuntu, use the following command to install the required packages:
+
+ sudo apt-get install texinfo
+
+Under CentOS, Fedora and Red Hat use the following:
+
+ sudo yum install texinfo texinfo-tex
+
+
+'''TeX'''
+[http://www.tug.org/begin.html TeX] is a typesetting system. To generate a PDF from the texinfo documentation, some TeX processing software is required.
+
+Under Ubuntu, use the following command to install the required packages:
+
+ sudo apt-get install texlive
+
+Under CentOS, Fedora and Red Hat use the following:
+
+ sudo yum install texlive texlive-latex 
+
+
+'''Performing the tests'''
+
+See the documentation in the project for running simulations of the system.
+
+
+== To Do ==
+:*Add ability to run or1ksim's test suite against reference design
+:*Update tool install information - add it to project's texinfo docs
+:*Add or1ksim configuration file for each board port
+:*Add generic technology board port with some extra peripherals (ethernet, i2c, etc.) for demonstration purposes
+:*Add section to documentation outlining basics of adding a new board port
+:*Add example Altera board port
+:*More board ports
+:*Complete peripheral support for existing board ports
+:*Further OR1K software tests
