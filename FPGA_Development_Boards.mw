@@ -31,7 +31,7 @@
 ** Ethernet
 ** GPIO
 ** PS/2
-** SDRAM (128MB)
+** DDR2 SDRAM (128MB)
 ** SPI
 ** UART
 ** VGA
