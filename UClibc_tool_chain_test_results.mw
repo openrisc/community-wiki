@@ -23,18 +23,13 @@ Not yet available.
  <nowiki>
 		=== gcc Summary ===
 
-# of expected passes		53601
+# of expected passes		53602
 # of unexpected failures	0
 # of expected failures		85
-# of unresolved tests		1
+# of unresolved tests		0
 # of unsupported tests		715
 
-runtest completed at Mon Jun  6 19:37:02 2011</nowiki>
-
-==== UNRESOLVED tests ====
-
-;gcc.c-torture/execute/vla-dealloc-1.c execution,  -O0
-:This is a very long running and large test, which cannot complete in simulated hardware.
+runtest completed at Fri Jun 17 15:09:51 2011</nowiki>
 
 === C++ compiler ===
 
