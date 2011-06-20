@@ -1,0 +1,72 @@
+The PIC sub-project aims to add support for position independent code (PIC) for the uClibc/Linux version of the GNU tool chain. This will require extensions to the ABI (which currently has no specification for PIC) and a rewrite of much of the tool chain.
+
+A consequence is that shared objects and dynamic loading will be able to be supported.
+
+== Proposed ABI extension ==
+
+This will require a way of locating the Global Offset Table (GOT) and the associated procedure linkage table(s).
+
+=== GOT and PLT entries ===
+
+If we restrict the GOT to 64KB and shared objects to 128MB, we can reserve r10 to point to the GOT. Then Joern suggests the following code would work to load the GOT register:
+
+          l.mfspr r10,0,16 // NPC
+  0:      l.movhi r11,shi(_GLOBAL_OFFSET_TABLE@GOTPC+.-0b)
+          l.add   r10,r10,r11
+          l.addi  r10,r10,slo(_GLOBAL_OFFSET_TABLE@GOTPC+.-0b)
+
+If we require the PIC register to be set before using the PIC PLT, a PIC PLT entry can look like this:
+  .pltN:
+          l.lwz   r11,slo(nameN@GOT)(r10)
+          l.movhi r13,hi(reloc_offsetN)
+          l.jr    r11
+          l.ori   r13,r13,lo(reloc_offsetN)
+
+where again initialize the GOT entries to plt0 instead of having a separate bottom half.
+
+  .plt0:
+          l.lwz   r15,4(r10)
+          l.jr    r15
+          l.lwz   r11,8(r10)
+          nop
+
+Absolute PLT:
+pltN:
+          l.movhi r11,shi(nameN-in-GOT)
+          l.lwz   r11,slo(nameN-in-GOT)(r11)
+          l.movhi r13,hi(reloc_offsetN)
+          l.jr    r11
+          l.ori   r13,r13,lo(reloc_offsetN)
+
+The absolute PLT entry is longer than the PIC one because, having no GOT register loaded, we need to load the highpart of the address first.
+I haven't looked in the specifics of what the reloc_offset is for - could we do with the range of -32767 .. 65535 ?  These can be loaded with
+a single addi instruction so if we could always do with this range - at least in the absolute PLT - then we could reduce the size of PLT entries
+to four words.
+Or could we have different sized absolute and PIC PLTs?
+
+  plt0:
+          l.mfspr r11,0,16 // NPC
+  0:      l.movhi r15,shi(_GLOBAL_OFFSET_TABLE@GOTPC+4+.-0b)
+          l.add   r11,r11,r15
+          l.lwz   r15,slo(_GLOBAL_OFFSET_TABLE@GOTPC+4+.-0b)(r11)
+          l.addi  r11,r11,slo(_GLOBAL_OFFSET_TABLE@GOTPC+4+.-0b)
+          l.jr    r15
+          l.lwz   r11,4(r11)
+
+The code for plt0 is even longer in the absolute plt; so it should use the space of plt1 as well.
+
+ 
+If we want to make calls via the PLT independent of loading the GOT register even for the PIC PLT, a PLT entry can look like this:
+
+  pltN:
+          l.mfspr r11,0,16 // NPC
+  0:      l.movhi r13,shi(nameN@GOTPC+.-0b)
+          l.add   r11,r11,r13
+          l.lwz   r11,slo(nameN@GOTPC+.-0b)(r11)
+          l.movhi r13,hi(reloc_offsetN)
+          l.jr    r11
+          l.ori   r13,r13,lo(reloc_offsetN)
+
+And plt0 can look like for the absolute plt0 above, except that now it fits into a single plt entry, now that we are forced to increase the plt entry size to seven words.
+Still, if the codes has lots of static call sites for a lesser amount of distinct functions, in functions that don't use global data, this scheme can save code
+space overall, because we need fewer PIC register loads.
