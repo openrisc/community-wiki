@@ -197,6 +197,47 @@ The following compatibility issues have been noted.
 * Support for the legacy OpenRISC Remote JTAG Protocol has now been dropped.
 * Only version 0.3.0 or later of the architectural simulator, [[Or1ksim]] is supported.
 
+==== Building gdbserver ====
+
+gdbserver can be run on an OpenRISC linux system to act as a RSP client and allow remote debugging of ''applications'' on the Linux system.
+
+gdbserver must be built by hand. The following instructions assume you have used the <tt>bld-all.sh</tt> script to build the or32-linux tool chain.
+
+Change to the bd-linux-gdb/gdb directory
+
+ cd bd-linux-gdb/gdb
+
+Create a new directory, gdbserver, and change to it.
+
+ mkdir gdbserver
+ cd gdbserver
+
+Configure gdbserver to run on or32-linux as host
+
+ ../../../gdb-7.2/gdb/gdbserver/configure --host=or32-linux
+
+Build the system
+
+ make
+
+Copy the <tt>gdbserver</tt> executable to the target Linux system for use. There are two ways to do this:
+# FTP the file to the target OpenRISC Linux system. '''Note.''' You will need to make the file executable after it has been copied using ''chmod''.
+# Copy <tt>gdbserver</tt> into a suitable directory in the Linux initramfs (for example arch/openrisc/support/initramfs/bin) and rebuild Linux. The executable will then always be there.
+
+You can run gdbserver on the target Linux system as follows (using port 51000 as an example):
+
+ gdbserver :51000 ''my_program''
+
+This will allow ''my_program'' to be debugged remotely via port 51000. On the host workstation, you can then connect to this target (in this example at IP address 192.168.0.37) as follows:
+
+ $ or32-linux-gdb ''my_program''
+ ...
+ (gdb) target remote 192.168.0.37:51000
+ (gdb) break main
+ (gdb) run
+
+Which will run the program until it hits the breakpoint at the start of <tt>main ()</tt>. '''Note.''' You must have a copy of the program both on the target Linux machine (to execute) and on the workstation running gdb (for the symbol table).
+
 == Libraries ==
 
 === newlib ===
