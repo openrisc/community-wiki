@@ -1,3 +1,5 @@
+This section contains a list of boards, and certain details, that there are push-button synthesis builds for in ORPSoC.
+
 == ORSoC OpenRISC development board ==
 
 * Board path: actel/ordb1a3pe1500
