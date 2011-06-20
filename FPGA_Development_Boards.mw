@@ -1,7 +1,7 @@
 == ORSoC OpenRISC development board ==
 
 * Board path: actel/ordb1a3pe1500
-* Clock speed: 20MHz
+* CPU core frequency: 20MHz
 * Supported devices
 ** Ethernet
 ** GPIO
@@ -14,11 +14,12 @@
 == Xilinx ML501 ==
 
 * Board path: xilinx/ml501
-* Clock speed: 200MHz
+* CPU core frequency: 66MHz
 * Supported devices
 ** Ethernet
 ** GPIO
-** SDRAM (256MB)
+** DDR2 SDRAM (256MB)
+** SRAM
 ** SPI
 ** UART
 
