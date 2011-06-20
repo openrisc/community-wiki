@@ -25,11 +25,11 @@ See the texinfo and TeX install sections below.
 
 
 == Supported Boards ==
-The following is a list of supported boards. See the documentation included with the project for further information on the features and usage of each.
+There are board-specific builds of ORPSoC which should contain RTL and scripts enabling push-button synthesis and generation of programming files.
 
-*ORSoC Actel FPGA development board (ordb1a3pe1500)
-*Xilinx ML501 (ml501)
+See the [[FPGA Development Boards|FPGA development boards]] page for information on supported boards.
 
+If you succeed in porting ORPSoC to other hardware, we would greatly appreciate if the build were contributed for inclusion in ORPSoC.
 
 == Installing required tools ==
 There is a choice of three models to run the test software on. These are the architectural simulator, cycle-accurate and event-driven simulation models. Below are the instructions to install each of them. You need only install the tools for the model you wish to run. The GNU toolchain port is mandatory.
