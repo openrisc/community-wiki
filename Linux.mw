@@ -46,9 +46,10 @@ Note that you will need the latest OpenRISC GNU toolchain port and or1ksim insta
 [[File:linux30_menuconf_doc.jpg|thumb|300px|left|linux-3.0 menuconf Photo]]
 [[File:linux30_xterm.png|thumb|400px|center|linux-3.0 xterm Photo]]
 
+
 == Build and run on FPGA ==
 
-[[File:linux_30_work.png|thumb|linux-3.0 ML501 Photo]]
+
 
 The following commands, will build a kernel, and then run it on the OpenRISC architectural FPGA. An exemple of demenstration using Virtex5 ML501 is illustrat in the following photo
   or_debog_proxy$ ./or_debug_proxy -r 55555
@@ -56,3 +57,4 @@ The following commands, will build a kernel, and then run it on the OpenRISC arc
   linux-3.0$ Minicom 115200 8N1
   
   linux-3.0$ or32-linux-gdb vmlinux
+[[File:linux_30_work.png|thumb|400px|center|linux-3.0 ML501 Photo]]
