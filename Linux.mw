@@ -39,7 +39,7 @@ Note that you will need the latest OpenRISC GNU toolchain port and or1ksim insta
 
 == Build and run on FPGA ==
 
-[[File:linux_30_work.jpg|thumb|linux-3.0 ML501 Photo]]
+[[File:linux_30_work.png|thumb|linux-3.0 ML501 Photo]]
  •or_debog_proxy$ ./or_debug_proxy -r 55555
  •linux-3.0$ Minicom 115200 8N1
  •linux-3.0$ or32-linux-gdb vmlinux
