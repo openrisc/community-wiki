@@ -28,7 +28,7 @@ This section contains a list of boards, and certain details, that there are push
 == Digilent Atlys ==
 (Not yet pushed to main orpsoc repo. Git repo can be found at git://git.chokladfabriken.org/orpsocv2)
 * Board path: xilinx/atlys
-* Clock speed: 50MHz
+* CPU core frequency: 50MHz
 * Supported devices
 ** AC97
 ** Ethernet
