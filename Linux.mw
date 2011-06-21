@@ -14,6 +14,7 @@ Features are:
  •Interprocess communication and synchronization
  •TCP/IP networking and numerous other network protocols
  •File systems NFS, ext2, MS-DOS, FAT16/32 and others
+ •PS2 Keyboard
 
 == Status ==
  
