@@ -27,11 +27,19 @@ git clone git://git.openrisc.net/jonas/linux
 
 == Build and run on or1ksim ==
 [[File:linux30_menuconf_doc.jpg|thumb|linux-3.0 menuconf Photo]] 
+[[File:linux30_xterm.jpg|thumb|linux-3.0 xterm Photo]]
 The following commands, will build a kernel, and then run it on the OpenRISC architectural simulator. Note that there is a build of BusyBox pre-configured in the initial ramdisk filesystem.
  
 Note that you will need the latest OpenRISC GNU toolchain port and or1ksim installed.
  
- •linux-3.0$ make defconfig
+ •linux-3.0$ make ARCH=openrisc defconfig
  •linux-3.0$ make menuconfig
- •linux-3.0$ make
+ •linux-3.0$ make CROSS_COMPILER=or32-linux
  •linux-3.0$ or32-elf-sim -f arch/openrisc/or1ksim.cfg vmlinux
+
+== Build and run on FPGA ==
+
+[[File:linux_30_work.jpg|thumb|linux-3.0 ML501 Photo]]
+ •or_debog_proxy$ ./or_debug_proxy -r 55555
+ •linux-3.0$ Minicom 115200 8N1
+ •linux-3.0$ or32-linux-gdb vmlinux
