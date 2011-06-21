@@ -46,6 +46,7 @@ Note that you will need the latest OpenRISC GNU toolchain port and or1ksim insta
 [[File:linux30_menuconf_doc.jpg|thumb|left|linux-3.0 menuconf Photo]]
 [[File:linux30_xterm.png|thumb|center|linux-3.0 xterm Photo]]
 
+
 == Build and run on FPGA ==
 
 [[File:linux_30_work.png|thumb|linux-3.0 ML501 Photo]]
