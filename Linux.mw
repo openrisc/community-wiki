@@ -3,3 +3,36 @@
 This section of the project contains information on using the [http://www.kernel.org/ Linux kernel] port for the OpenRISC 1000 family.
 
 Information about Linux on OpenRISC as well as updated toolchains can be found at http://openrisc.net
+
+Features are: 
+•Free, open source code with no royalty
+ •UNIX class operating system
+ •Process protection through use of the Memory Management Unit
+ •Multitasking, preemptive scheduling
+ •Interprocess communication and synchronization
+ •TCP/IP networking and numerous other network protocols
+ •File systems NFS, ext2, MS-DOS, FAT16/32 and others
+ 
+== Status ==
+ 
+Kernel version is tracking mainline. It is capable of booting and running BusyBox userspace. The C library providing user space support is uClibc.
+ 
+== Download source ==
+ 
+At present the Linux port is maintained by Jonas Bonn of South Pole and kept in their git repositories.
+ 
+To obtain a copy of the kernel tree source with OpenRISC support, ensure git is installed and run
+ 
+git clone git://git.openrisc.net/jonas/linux 
+
+== Build and run on or1ksim ==
+ 
+The following commands, will build a kernel, and then run it on the OpenRISC architectural simulator. Note that there is a build of BusyBox pre-configured in the initial ramdisk filesystem.
+ 
+Note that you will need the latest OpenRISC GNU toolchain port and or1ksim installed.
+ 
+linux-3.0$ make defconfig
+linux-3.0$ make
+linux-3.0$ or32-elf-sim -f arch/openrisc/or1ksim.cfg vmlinux
+
+[[File:linux30_menuconf_doc.jpg|thumb|linux-3.0 menuconf Photo]]
