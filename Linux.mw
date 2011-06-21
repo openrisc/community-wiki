@@ -7,6 +7,8 @@ Information about Linux on OpenRISC as well as updated toolchains can be found a
 Features are: 
  •Free, open source code with no royalty
  •UNIX class operating system
+ •Upstream
+ •gdbserver for OpenRISC 
  •Process protection through use of the Memory Management Unit
  •Multitasking, preemptive scheduling
  •Interprocess communication and synchronization
