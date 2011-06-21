@@ -5,14 +5,14 @@ This section of the project contains information on using the [http://www.kernel
 Information about Linux on OpenRISC as well as updated toolchains can be found at http://openrisc.net
 
 Features are: 
-•Free, open source code with no royalty
+ •Free, open source code with no royalty
  •UNIX class operating system
  •Process protection through use of the Memory Management Unit
  •Multitasking, preemptive scheduling
  •Interprocess communication and synchronization
  •TCP/IP networking and numerous other network protocols
  •File systems NFS, ext2, MS-DOS, FAT16/32 and others
- 
+
 == Status ==
  
 Kernel version is tracking mainline. It is capable of booting and running BusyBox userspace. The C library providing user space support is uClibc.
