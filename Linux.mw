@@ -38,14 +38,13 @@ The following commands, will build a kernel, and then run it on the OpenRISC arc
 
 Note that you will need the latest OpenRISC GNU toolchain port and or1ksim installed.
 
-  linux-3.0$ make ARCH=openrisc defconfig
+ linux-3.0$ make ARCH=openrisc defconfig
   
-  linux-3.0$ make menuconfig
+ linux-3.0$ make menuconfig
   
   linux-3.0$ make CROSS_COMPILER=or32-linux
   
   linux-3.0$ or32-elf-sim -f arch/openrisc/or1ksim.cfg vmlinux
-
 
 == Build and run on FPGA ==
 
