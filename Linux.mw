@@ -19,11 +19,11 @@ Kernel version is tracking mainline. It is capable of booting and running BusyBo
  
 == Download source ==
  
-At present the Linux port is maintained by Jonas Bonn of South Pole and kept in their git repositories.
+At present the Linux port is maintained by Jonas Bonn of South Pole and kept in their git repositories http://git.openrisc.net/cgit.cgi/jonas/linux/.
  
 To obtain a copy of the kernel tree source with OpenRISC support, ensure git is installed and run
  
-git clone git://git.openrisc.net/jonas/linux 
+ •git clone git://git.openrisc.net/jonas/linux
 
 == Build and run on or1ksim ==
 [[File:linux30_menuconf_doc.jpg|thumb|linux-3.0 menuconf Photo]]
