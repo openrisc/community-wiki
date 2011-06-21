@@ -44,7 +44,7 @@ Note that you will need the latest OpenRISC GNU toolchain port and or1ksim insta
   
   linux-3.0$ or32-elf-sim -f arch/openrisc/or1ksim.cfg vmlinux
 [[File:linux30_menuconf_doc.jpg|thumb|left|linux-3.0 menuconf Photo]]
-[[File:linux30_xterm.png|thumb|center|linux-3.0 xterm Photo]]
+[[File:linux30_xterm.png|thumb|left|linux-3.0 xterm Photo]]
 [[File:linux30_xterm.png|thumb|right|linux-3.0 xterm Photo]]
 
 == Build and run on FPGA ==
