@@ -17,9 +17,15 @@ Features are:
 
 == Status ==
  
-Kernel version is tracking mainline. It is capable of booting and running BusyBox userspace. The C library providing user space support is uClibc.
+  Kernel version is tracking mainline. It is capable of booting and running BusyBox userspace. The C library providing user space support is uClibc.
 
-gdbserver is now available in SVN for use when debugging applications under Or1ksim Linux. gdbserver acts as a GDB remote serial protocol server for a Linux application, allowing the program to be debugged remotely using GDB.
+  A gdbserver is now available in SVN for use when debugging applications under Or1ksim Linux. gdbserver acts as a GDB remote serial protocol server for a Linux application, allowing the program to be debugged remotely using GDB.
+
+Supported Boards
+ 
+The following is a list of supported boards. See the documentation included with the project for further information on the features and usage of each.
+
+[[ORPSoC]] has been ported to a number of [[FPGA Development Boards|FPGA development boards]].
 
 == Download source ==
  
