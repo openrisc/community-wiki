@@ -27,7 +27,7 @@ At present the Linux port is maintained by Jonas Bonn of South Pole and kept in 
  
 To obtain a copy of the kernel tree source with OpenRISC support, ensure git is installed and run
  
- •git clone git://git.openrisc.net/jonas/linux
+  git clone git://git.openrisc.net/jonas/linux
 
 == Build and run on or1ksim ==
 [[File:linux30_menuconf_doc.jpg|thumb|linux-3.0 menuconf Photo]]
