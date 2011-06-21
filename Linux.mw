@@ -18,7 +18,9 @@ Features are:
 == Status ==
  
 Kernel version is tracking mainline. It is capable of booting and running BusyBox userspace. The C library providing user space support is uClibc.
- 
+
+gdbserver is now available in SVN for use when debugging applications under Or1ksim Linux. gdbserver acts as a GDB remote serial protocol server for a Linux application, allowing the program to be debugged remotely using GDB.
+
 == Download source ==
  
 At present the Linux port is maintained by Jonas Bonn of South Pole and kept in their git repositories http://git.openrisc.net/cgit.cgi/jonas/linux/.
