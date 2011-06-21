@@ -31,9 +31,11 @@ To obtain a copy of the kernel tree source with OpenRISC support, ensure git is 
 
 == Build and run on or1ksim ==
 [[File:linux30_menuconf_doc.jpg|thumb|linux-3.0 menuconf Photo]]
+
 The following commands, will build a kernel, and then run it on the OpenRISC architectural simulator. Note that there is a build of BusyBox pre-configured in the initial ramdisk filesystem.
 
 [[File:linux30_xterm.png|thumb|linux-3.0 xterm Photo]] 
+
 Note that you will need the latest OpenRISC GNU toolchain port and or1ksim installed.
 
   linux-3.0$ make ARCH=openrisc defconfig
