@@ -47,16 +47,17 @@ The README included with the source provides detailed installation and usage ins
 ===ORSoC USB debug cable driver installation===
 
 A driver for the USB debugger must be installed before it can be used. The required driver is FTDI Chip's D2XX driver. Download the appropriate Windows driver from [http://ftdichip.com/Drivers/D2XX.htm FTDI Chip's D2XX driver] download page. The latest version for Windows can be downloaded from FTDI Chip [http://ftdichip.com/Drivers/CDM/CDM%202.04.16%20WHQL%20Certified.zip here]. Follow the instructions on FTDI's website, but it should be as simple as extracting the driver, plugging in the ORSoC USB debug cable and directing Windows to the location of the driver.
-Compiling the OpenRISC debug proxy
+===Compiling the OpenRISC debug proxy===
 
 To compile the proxy application from source, simply go into the source directory and run a make all
 
  user@cygwin-host:~/or_debug_proxy$ make all
 
 See the debugging example further down for information on running the proxy.
-Linux
+===Linux===
 
 Under Linux it is possible to compile and link the proxy either statically or dynamically. To link against the required dynamic FTDI D2XX library, follow the instructions in the README included in the proxy source. The steps to build with the static D2XX drivers are now outlined.
+
 ===ORSoC USB debug cable driver installation===
 
 First, obtain the latest D2XX driver from FTDI Chip's driver page. Note that the following commands get version 1.0.4 for 32-bit Linux, and build the statically linked or_debug_proxy
