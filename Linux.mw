@@ -66,3 +66,7 @@ These guides go into detail regarding debugging specific targets. [[Debugging ph
   
   linux-3.0$ or32-linux-gdb vmlinux
 [[File:linux_30_work.png|thumb|400px|center|linux-3.0 ML501 Photo]]
+
+Remember that this is using GDB to debug the kernel itself. The GDB remote serial protocol server (or_debug_proxy) does not have visibility of the MMU, so you will be using physical addresses, which means symbolic names almost certainly will not work.
+
+If you wish to debug applications running under Linux, you should use [[OpenRISC GNU tool chain#Building_gdbserver|gdbserver]] instead.
