@@ -300,9 +300,7 @@ Problem: Connection via USB debug cable failed (err = 8)
 If the following is seen when attempting to connect to the target:
 
  user@host:~/or_debug_proxy$ ./or_debug_proxy -r 55555
-
  Connecting to OR1k via USB debug cable
-
  Connection via USB debug cable failed (err = 8).
  Please ensure the device is attached and correctly installed
 
