@@ -57,7 +57,9 @@ Note that you will need the latest OpenRISC GNU toolchain port and or1ksim insta
 
 
 
-The following commands, will build a kernel, and then run it on the OpenRISC architectural on FPGA board. An exemple of demenstration using Virtex5 ML501 is illustrat in the following photo
+The following commands, will build a kernel, and then run it on FPGA board. An example of demonstration using Virtex5 ML501 is illustrate in the following photo
+
+These guides go into detail regarding debugging specific targets. [[Debugging physical targets (FPGA/ASIC)]] 
   or_debog_proxy$ ./or_debug_proxy -r 55555
   
   linux-3.0$ Minicom (115200 8N1)
