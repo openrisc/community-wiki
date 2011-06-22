@@ -1,5 +1,7 @@
 This section contains a list of boards, and certain details, that there are push-button synthesis builds for in ORPSoC.
 
+Once you have your board up and running, you may find the guide to [[Debugging physical targets (FPGA/ASIC)|debugging physical targets]]  useful.
+
 == ORSoC OpenRISC development board ==
 
 * Board path: actel/ordb1a3pe1500
