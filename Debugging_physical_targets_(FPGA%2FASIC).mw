@@ -1,0 +1,324 @@
+==Introduction==
+
+Physical implementations of OpenRISC systems can be debugged using a set of tools made available here at OpenCores.org. Whether simply poking registers in IP cores or debugging complex software executing on the processor, these tools provide a useful debugging capability. This section will outline how to setup the required tools, and perform debugging on a physical OpenRISC target.
+==Overview==
+
+The components involved in debugging a physical target are outlined here.
+
+The following block diagram gives a simplistic representation of the components involved in debugging a physical target.
+
+debugging physical target block diagram
+
+===GDB for OpenRISC===
+
+The GNU debugger, GDB, is a popular tool that is capable of debugging many architectures from many platforms. The OpenRISC port of GDB, currently maintained by Jeremy Bennett of Embecosm is used as the primary debugging tool for all OpenRISC targets. It functions as, among other things, the actual user interface when debugging.
+The OpenRISC Debug Proxy
+
+The debug proxy controls the link between GDB and the physical target. It implements a GDB stub, and provides support for most GDB commands. Physical connection to the board is made with the use of a USB debug cable. At present the ORSoC USB Debug Cable is the only supported USB cable.
+
+The proxy first establishes a connection with the target and stalls the processor. Next it waits for a connection with GDB via network sockets, and then begins translating received GDB commands into JTAG transactions with the debug interface via the USB cable. Transactions such as reading and writing registers, or downloading executables to memory are done through this interface.
+===The JTAG TAP===
+
+These two modules located in the OpenRISC-based design implement the JTAG communications and debugging capability, respectively. JTAG actually refers to the name of the group which oversaw the definition of a 5-pin serial protocol for accessing and controlling digital circuitry. The Joint Test Action Group defined a testing architecture, called the JTAG boundary scan which is commonly used to test digital integrated circuits. It is also used for other purposes, such as configuring FPGAs, and in this case, to communicate with the debug module inside our design.
+
+The JTAG TAP, or test access point is a state machine controlling the boundary scan architecture. In our case, we use it solely to connect to the debug interface module.
+
+For further information, it is possible to obtain the actual JTAG standard as published by the IEEE, however it is not free. There also exists a wide selection of introductions to the JTAG boundary scan architecture. Texas Instruments have available a JTAG primer. Embecosm also have a good overview of the JTAG boundary scan architecture.
+===The SoC debug interface module===
+
+The SoC debug interface is the module implementing the ability to control the CPU, and access the system's Wishbone bus, from the JTAG port. When the TAP is in debug mode, the JTAG pins are connected directly to this module.For more information about the module, see the project's documentation (must be logged into OpenCores).
+==Getting Started==
+
+To debug a physical target, the tools in the chain must be installed and configured.
+===GDB===
+
+For information on installing the OpenRISC compatible GDB, see the OpenRISC project's GNU toolchain page here at OpenCores.
+==The OpenRISC Debug Proxy==
+
+The OpenRISC Debug Proxy (or_debug_proxy) can be downloaded from the OpenRISC project's subversion repository using the following command:
+
+ svn co http://opencores.org/ocsvn/openrisc/openrisc/trunk/or_debug_proxy
+
+The README included with the source provides detailed installation and usage instructions but a brief step-by-step guide for installation and compilation under Linux and Cygwin Windows is listed.
+Cygwin Windows
+===ORSoC USB debug cable driver installation===
+
+A driver for the USB debugger must be installed before it can be used. The required driver is FTDI Chip's D2XX driver. Download the appropriate Windows driver from FTDI Chip's D2XX driver download page. The latest version for Windows can be downloaded from FTDI Chip here. Follow the instructions on FTDI's website, but it should be as simple as extracting the driver, plugging in the ORSoC USB debug cable and directing Windows to the location of the driver.
+Compiling the OpenRISC debug proxy
+
+To compile the proxy application from source, simply go into the source directory and run a make all
+
+ user@cygwin-host:~/or_debug_proxy$ make all
+
+See the debugging example further down for information on running the proxy.
+Linux
+
+Under Linux it is possible to compile and link the proxy either statically or dynamically. To link against the required dynamic FTDI D2XX library, follow the instructions in the README included in the proxy source. The steps to build with the static D2XX drivers are now outlined.
+===ORSoC USB debug cable driver installation===
+
+First, obtain the latest D2XX driver from FTDI Chip's driver page. Note that the following commands get version 1.0.4 for 32-bit Linux, and build the statically linked or_debug_proxy
+
+ user@host:~/or_debug_proxy$ wget http://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx1.0.4.tar.gz
+ user@host:~/or_debug_proxy$ tar xzf libftd2xx1.0.4.tar.gz
+ user@host:~/or_debug_proxy$ cp libftd2xx1.0.4/build/i386/libftd2xx.a lib/
+ user@host:~/or_debug_proxy$ make static
+
+The README accompanying or_debug_proxy contains information about compiling for different GNU/Linux distributions and different operating systems.
+
+Please submit any bugs, issues, or annoyances to the OpenCores OpenRISC proejct forum. http://opencores.org/forum,OpenRISC
+===Compiling OpenRISC Debug Proxy===
+
+As mentioned earlier, there are two ways to compile the proxy - one linked to the dynamic library, and one linked to the static library. There is no difference in performance or functionality, it is a little easier to compile against the static library as there are more steps involved to install the dynamic library.
+
+To compile the proxy application against the static library, simply go into the source directory and run a "make static", note that this requires the static driver library is located in the lib/ directory in the proxy source code.
+
+ user@host:~/or_debug_proxy$ make static
+
+To compile the proxy application against the dynamic library, simply go into the source directory and run a "make all" - note that this requires the driver library be installed correctly in the system. See the README in the source directory for information on how to do this.
+
+ user@host:~/or_debug_proxy$ make all
+
+See the debugging example further down for information on running the proxy.
+===ORSoC USB debug cable device permissions===
+
+To avoid having to run the proxy with sudo or as root user, permissions on the USB should be set permitting regular users access to the device. Further details on this exist in the README included source. An example of setting the permissions on recent udev systems (almost all 2.6 kernel distributions use udev) is presented here.
+
+The ORSoC USB debug cable is identified from its USB vendor and product IDs (0x0403 and 0x6010, respectively) by the system when it is connected. We can insert a rule which allows user read and write permissions on this device when it is connected.
+
+This rule should be inserted in a file in the udev rules directory, /etc/udev/rules.d. It is easiest to create a new file, called 90-permissions.rules in the udev rules directory, which should contain the following:
+
+ user@host:~$ cat /etc/udev/rules.d/90-permissions.rules
+ # Permissions for ORSoC USB debugger FT2232 device
+ ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6010", MODE="0666", GROUP="tty"
+
+Test this rule by unplugging and reconnecting the USB debug cable, and looking at the permissions of the two /dev/ttyUSB devices. The permissions should look like the following when listed with ls -l:
+
+ user@host:~$ ls -l /dev/ttyUSB*
+ crw-rw-rw- 1 root tty 188, 0 2009-07-02 12:32 /dev/ttyUSB0
+ crw-rw-rw- 1 root tty 188, 1 2009-07-02 12:32 /dev/ttyUSB1
+
+If the permissions do not have rw- in the final three characters, then the user is not able to access it. It is possible the rules file was not setup properly. Check the README for solutions to setting permissions on the cable for other platforms.
+==Setup a UART Console==
+
+The UART console is an extremely useful part of the OpenRISC system. Setting up a console on the PC which communicates with the board via the UART is briefly outlined here.
+
+The default configuration of the UART in most of the software used on OpenCores is with a baud rate of 115200bps, no parity bits and one stop bit (115200/N/1). Setting up a console application, such as minicom in Linux or HyperTerminal in Windows, is relatively easy to do.
+===Windows===
+
+Open HyperTerminal (usually in Start->Programs->Accessories->Communications->HyperTerminal), and configure a new connection using the COMport for the debug cable (usually a random number, in the author's case it was COM10, typically it's greater than 4), and set Bits per second to 115200, Data bits to 8, Parity to none, Stop bits to 1, and Flow control to none.
+
+The magnificent Windows Vista did not ship with HyperTerminal, so an alternative called TeraTerm can be used instead. It can be obtained from the project's homepage.
+===Linux===
+
+There are several possible terminal applications that can be used under Linux. A few are minicom, gtkterm and kermit. It should be relatively straight forward to setup any of these according to the configuration cited above (115200bps, 8-data/noparity/1-stop bits).
+===minicom===
+
+Setting up minicom to use as a terminal with the OpenRISC system is now explained.
+
+It should be simple to install minicom using the package manager on your distribution. Under Ubuntu, it can be done with apt-get like so:
+
+ user@host:~/$ sudo apt-get install minicom
+
+Once installed, minicom must be run once as the root user with the -s option to create essential configuration files. Running sudo minicom -s brings up minicom's setup menu. Going to the Serial port setup submenu, change the Serial Device to /dev/ttyUSB0, the Bps/Par/Bits to 115200 8N1, and set both Hardware Flow Control and Software Flow Control to No. Go back to the main menu and choose Save setup as dfl. minicom is now ready to use, and can be launched with no command line parameters.
+===gtkterm===
+
+gtkterm is a more graphical terminal. Just like minicom, it should be easy enough to install on most Linux distributions, and can be done under Ubuntu like so:
+
+ user@host:~/$ sudo apt-get install gtkterm
+
+It can then be launched from a console with the following line:
+
+ gtkterm --speed=115200 -p /dev/ttyUSB0
+===A note on starting the proxy and terminal===
+
+When the proxy is launched, one of the two ttyUSB devices will disappear because it is claimed by the D2XX driver. It is recommended that the proxy is launched before the terminal - this should ensure the remaining ttyUSB device is the UART descriptor. However, due to inconsistencies with the FTDI D2XX driver under different Linux distributions, it can be the case that the UART is on device /dev/ttyUSB1. If this is the case, the terminal application must be reconfigured to point to this device.
+
+Another issue to be aware of is that closing and restarting the proxy while the terminal console is connected will cause the descriptor for the UART to change and the terminal getting disconnected from the UART device. If the proxy is restarted and the terminal is connected, the terminal must be restarted before it will work again.
+==Debugging The Target==
+
+The following explains how to setup the connection to the physical target.
+===Connecting to the target===
+
+Once the tools are setup, a connection to the system must be established. This connection occurs in two steps. The first step is to establish the connection between the proxy and the JTAG tap controller via the USB debug cable. Next, GDB connects to the proxy, and the debugging session can begin.
+===Connecting the proxy to the target===
+
+Connecting the proxy to the target is the first step to setting up the debugging chain. The proxy attempts to create the connection automatically when it is run. When the proxy is launched it automatically performs some actions, these are: reading of the JTAG TAP controller ID and check it's sensible, set the TAP to debug mode, stall the CPU, read back a few registers (PC, NPC, GPR1), and finally open a socket for the connection from GDB.
+
+The port for GDB to connect to is specified on the command line when launching the proxy with the -r option. In the following example port 55555 is used.
+
+A successful connection to the board should produce the following output to the console on either Cygwin Windows or Linux.
+
+ user@host:~/or_debug_proxy$ ./or_debug_proxy -r 55555
+
+===Connecting to OR1k via USB debug cable===
+
+ Initialising USB JTAG interface
+ JTAG ID = a188a928
+ Stalling or1k
+ Read npc = 00000594 ppc = 000005a4 r1 = 00008000
+ Waiting for gdb connection on localhost:55555
+ Press CTRL+c to exit.
+
+If this did not occur then see the troubleshooting section at the end of this page
+===Connecting GDB to the proxy===
+
+Once the proxy is running, the next step is connecting to the proxy from GDB. Since GDB 6.8, communication between the proxy and GDB uses the remote serial protocol. The older remote JTAG protocol used with previous versions of GDB for the OpenRISC is now deprecated. If using the version of GDB installed with the OpenRISC toolchain install script then it will be compatible with the proxy.
+
+The following commands show an example of starting GDB and connecting to the proxy. If the proxy is running on the same machine as GDB is being run on, then the following commands will work, otherwise substitute the IP of the machine running the proxy for localhost:
+
+ user@host:~$ or32-elf-gdb
+ ...
+ (gdb) target remote localhost:55555
+ Remote debugging using localhost:55555
+ 0x00000594 in ?? ()
+ (gdb)
+
+GDB normally attempts to display where the processor is located in the code whenever the system is halted, but as we have not provided GDB with any code it is not aware of the context, hence the ?? (), indicating this.
+
+At this stage, the proxy is connected to the board, and GDB is connected to the proxy. At this stage all connections enabling debugging are complete.
+==Run the UART terminal==
+
+At this stage, it is a good idea to start running the terminal that will interface with the target via its UART.
+===Example Debugging Session===
+
+The following is an example of a debugging session that uses a simple hello-world type application to demonstrate some common debugging tasks.
+===Compiling and downloading an application===
+
+This section outlines an example of compiling and downloading a program to the target. The program used is a simple hello-world type application which prints a line and then echos any received characters back to the terminal on the PC.
+
+The code for this example can be downloaded from here. Extract it, and compile it with make all. It requires the OpenRISC GNU toolchain to build it. The resulting executable will be echo.or32.
+
+Load this file into GDB with the file command, and then download it into the board with load:
+
+ (gdb) file demo_or32_sw/echo.or32
+ Reading symbols from /home/orsoc1/demo_or32_sw/echo.or32...done.
+ (gdb) load
+ Loading section .vectors, size 0x900 lma 0x1000100
+ Loading section .text, size 0xa98 lma 0x1003000
+ Loading section .rodata, size 0x2d lma 0x1003a98
+ Start address 0x1000100, load size 5061
+ Transfer rate: 17 KB/sec, 241 bytes/write.
+
+The entry point is set to a correct value in this executable, but often the NPC must be set with spr npc addr to the appropriate reset address.
+===Running and halting the application===
+Ensure the terminal program is open and connected, and continue execution on the target.
+
+ (gdb) c
+ Continuing.
+
+The terminal should print the following, and then echo anything typed in:
+
+ Hello World!
+ Echoing received chars...
+ testtest123
+
+Try interrupting execution now by pressing ^C (ctrl+C) in GDB:
+
+ (gdb) c
+ Continuing.
+ ^C
+ Program received signal 0, Signal 0.
+ 0x01003a2c in uart_getc () at uart.c:185
+ 185 WAIT_FOR_CHAR;
+ (gdb)
+
+We can see the address where it has been stopped, and the line number, 185, corresponds to the C-code macro where the UART receive register is polled.
+===Setting breakpoints and instruction stepping===
+
+To test breakpoints we can set a breakpoint for the next line which reads out the value of a received character. This will get tripped when we enter the next character into the console. To enable a breakpoint on the next line, do the following:
+
+ (gdb) break uart.c:187
+ Breakpoint 1 at 0x1003a4c: file uart.c, line 187.
+ (gdb) c
+ Continuing.
+
+Next, press a key in the terminal window. The processor will pause execution at the breakpoint, and return control to GDB which displays the following:
+
+ (gdb) c
+ Continuing.
+
+ Breakpoint 1, uart_getc () at uart.c:187
+ 187 c = REG8(UART_BASE + UART_RX);
+ (gdb)
+
+Entering c again will continue execution and the character will be echoed back to the terminal.
+
+Press another key in the terminal to trip the same breakpoint. This time, enter si to single instruction step the processor just once, and continue pressing enter (on an empty line at the GDB console to repeat the last command) to step execution through its echoing of the character back to the users terminal. It should take up to about 50 instruction steps to print the character to the terminal via the UART and get back to polling for a new character.
+
+ (gdb) c
+ Continuing.
+
+ Breakpoint 1, uart_getc () at uart.c:187
+ 187 c = REG8(UART_BASE + UART_RX);
+ (gdb) si
+ 0x01003a50 187 c = REG8(UART_BASE + UART_RX);
+ (gdb)
+ 0x01003a54 187 c = REG8(UART_BASE + UART_RX);
+ (gdb)
+ 0x01003a58 187 c = REG8(UART_BASE + UART_RX);
+ ...
+ (truncated)
+ ...
+ (gdb)
+ 0x01003a04 185 WAIT_FOR_CHAR;
+ (gdb)
+
+ Delete the breakpoint with del 1 and continue execution.
+
+ (gdb) del 1
+ (gdb) info br
+ No breakpoints or watchpoints.
+ (gdb) c
+ Continuing.
+
+The program will now execute and echo characters without breaking each time one is entered.
+===Resetting execution===
+
+It is possible to reset the application by writing the reset address to the next program counter (NPC). In this example the reset address is 0x01000100. We can set the NPC with spr npc value. After it is set, the processor will execute from the reset address, restarting the program.
+
+ (gdb) spr npc 0x01000100
+ SYS.NPC (SPR0_16) set to 16777472 (0x1000100), was: 16792080 (0x1003a10)
+ (gdb) c
+ Continuing.
+
+The terminal should show the hello-world message again to indicate the program has been restarted. 
+
+==Troubleshooting==
+
+This section will outline some ways to solve issues with setting up and debugging an OpenRISC based system.
+===Building the proxy===
+Connecting to the target
+Problem: Connection via USB debug cable failed (err = 8)
+
+If the following is seen when attempting to connect to the target:
+
+ user@host:~/or_debug_proxy$ ./or_debug_proxy -r 55555
+
+ Connecting to OR1k via USB debug cable
+
+ Connection via USB debug cable failed (err = 8).
+ Please ensure the device is attached and correctly installed
+
+then check the permissions on the cable are configured properly. An indication as to whether the permissions on the cable are setup, look at the permissions on the ttyUSB devices. Do this like so:
+
+ user@host:~/or_debug_proxy$ ls -l /dev/ttyUSB*
+
+If there are not read or write permissions for the user on these devices (the permissions look something like crw-rw----) then the permissions are not setup correctly. Ensure the udev .rules files are configured correctly. Try changing the numeric prefix of the udev .rules file containing the rule for the debug cable to a higher number, as the current one may be getting overwritten by a higher number rule. You can also confirm this is a permissions issue by running the proxy as root user with sudo however this is not recommended.
+Problem: JTAG TAP ID read error. Unable to detect TAP controller.
+
+If the following is seen when running the proxy:
+
+ user@host:~/or_debug_proxy$ ./or_debug_proxy -r 55555
+
+===Connecting to OR1k via USB debug cable===
+
+ Initialising USB JTAG interface
+ Initialising USB JTAG interface
+ Initialising USB JTAG interface
+ Initialising USB JTAG interface
+ Initialising USB JTAG interface
+ Initialising USB JTAG interface
+ JTAG TAP ID read error. Unable to detect TAP controller.
+ Please ensure debugger is connected to target correctly.
+
+then the connection between the USB debug cable and the board is the problem. Ensure all cable connectors are orientated the correct way on connection pins. If testing on a new design, ensure all I/O pin mappings are correct.
