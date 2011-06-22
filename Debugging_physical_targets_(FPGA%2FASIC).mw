@@ -8,7 +8,7 @@ The components involved in debugging a physical target are outlined here.
 The following block diagram gives a simplistic representation of the components involved in debugging a physical target.
 
 debugging physical target block diagram
-[[File:debugger-fpga-block.png|thumb|center|debugging physical target block diagram Photo]]
+[[File:debugger-fpga-block.png|center|debugging physical target block diagram Photo]]
 
 ===GDB for OpenRISC===
 
@@ -28,6 +28,7 @@ For further information, it is possible to obtain the actual JTAG standard as pu
 ===The SoC debug interface module===
 
 The SoC debug interface is the module implementing the ability to control the CPU, and access the system's Wishbone bus, from the JTAG port. When the TAP is in debug mode, the JTAG pins are connected directly to this module.For more information about the module, see the project's documentation (must be logged into OpenCores).
+
 ==Getting Started==
 
 To debug a physical target, the tools in the chain must be installed and configured.
