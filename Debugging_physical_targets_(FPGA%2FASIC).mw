@@ -192,7 +192,7 @@ The following is an example of a debugging session that uses a simple hello-worl
 
 This section outlines an example of compiling and downloading a program to the target. The program used is a simple hello-world type application which prints a line and then echos any received characters back to the terminal on the PC.
 
-The code for this example can be downloaded from here. Extract it, and compile it with make all. It requires the OpenRISC GNU toolchain to build it. The resulting executable will be echo.or32.
+The code for this example can be downloaded from [http://opencores.org/openrisc,file,ZGVtb19vcjMyX3N3LnppcA== here]. Extract it, and compile it with make all. It requires the OpenRISC GNU toolchain to build it. The resulting executable will be echo.or32.
 
 Load this file into GDB with the file command, and then download it into the board with load:
 
@@ -206,6 +206,7 @@ Load this file into GDB with the file command, and then download it into the boa
  Transfer rate: 17 KB/sec, 241 bytes/write.
 
 The entry point is set to a correct value in this executable, but often the NPC must be set with spr npc addr to the appropriate reset address.
+
 ===Running and halting the application===
 Ensure the terminal program is open and connected, and continue execution on the target.
 
