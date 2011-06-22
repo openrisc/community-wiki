@@ -8,7 +8,7 @@ The components involved in debugging a physical target are outlined here.
 The following block diagram gives a simplistic representation of the components involved in debugging a physical target.
 
 debugging physical target block diagram
-[[File:debugger-fpga-block.png|400px|center|debugging physical target block diagram Photo]]
+[[File:debugger-fpga-block.png|800px|center|debugging physical target block diagram Photo]]
 
 ===GDB for OpenRISC===
 
