@@ -28,7 +28,7 @@ The JTAG TAP, or test access point is a state machine controlling the boundary s
 For further information, it is possible to obtain the actual JTAG standard as published by the IEEE, however it is not free. There also exists a wide selection of introductions to the JTAG boundary scan architecture. Texas Instruments have available a JTAG primer. Embecosm also have a good overview of the JTAG boundary scan architecture.
 ===The SoC debug interface module===
 
-The SoC debug interface is the module implementing the ability to control the CPU, and access the system's Wishbone bus, from the JTAG port. When the TAP is in debug mode, the JTAG pins are connected directly to this module.For more information about the module, see the project's documentation (must be logged into OpenCores).
+The [http://opencores.org/project,dbg_interface SoC debug interface] is the module implementing the ability to control the CPU, and access the system's Wishbone bus, from the JTAG port. When the TAP is in debug mode, the JTAG pins are connected directly to this module.For more information about the module, see the project's documentation (must be logged into OpenCores).
 
 ==Getting Started==
 
