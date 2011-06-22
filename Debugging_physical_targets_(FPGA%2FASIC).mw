@@ -60,7 +60,7 @@ Under Linux it is possible to compile and link the proxy either statically or dy
 
 ===ORSoC USB debug cable driver installation===
 
-First, obtain the latest D2XX driver from FTDI Chip's driver page. Note that the following commands get version 1.0.4 for 32-bit Linux, and build the statically linked or_debug_proxy
+First, obtain the latest D2XX driver from [http://ftdichip.com/Drivers/D2XX.htm FTDI Chip's driver page]. Note that the following commands get version 1.0.4 for 32-bit Linux, and build the statically linked or_debug_proxy
 
  user@host:~/or_debug_proxy$ wget http://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx1.0.4.tar.gz
  user@host:~/or_debug_proxy$ tar xzf libftd2xx1.0.4.tar.gz
@@ -70,6 +70,7 @@ First, obtain the latest D2XX driver from FTDI Chip's driver page. Note that the
 The README accompanying or_debug_proxy contains information about compiling for different GNU/Linux distributions and different operating systems.
 
 Please submit any bugs, issues, or annoyances to the OpenCores OpenRISC proejct forum. http://opencores.org/forum,OpenRISC
+
 ===Compiling OpenRISC Debug Proxy===
 
 As mentioned earlier, there are two ways to compile the proxy - one linked to the dynamic library, and one linked to the static library. There is no difference in performance or functionality, it is a little easier to compile against the static library as there are more steps involved to install the dynamic library.
