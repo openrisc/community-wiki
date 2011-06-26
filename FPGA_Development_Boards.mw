@@ -26,6 +26,8 @@ Once you have your board up and running, you may find the guide to [[Debugging p
 ** SRAM
 ** SPI
 ** UART
+** Ac97 (tested)
+** PS/2 (tested)
 
 == Digilent Atlys ==
 (Not yet pushed to main orpsoc repo. Git repo can be found at git://git.chokladfabriken.org/orpsocv2)
