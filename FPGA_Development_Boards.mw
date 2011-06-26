@@ -26,7 +26,7 @@ Once you have your board up and running, you may find the guide to [[Debugging p
 ** SRAM
 ** SPI
 ** UART
-** Ac97 (tested)
+** AC97 (tested)
 ** PS/2 (tested)
 
 == Digilent Atlys ==
