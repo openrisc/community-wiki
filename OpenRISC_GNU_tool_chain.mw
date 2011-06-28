@@ -374,7 +374,15 @@ Individual tools above have their own plans laid out for future work. At a tool 
 
 === Wishlist ===
 
-There are some things we would really like to have in place:
+=== Future tool chain development ===
+
+At a technical level, future development of the GNU tool chain is planned to include
+* support for [[OpenRISC PIC|position independent code (PIC)]] and shared object libraries.
+* improved optimization through inclusion of accurate process scheduling models.
+* support for profiling.
+* more efficient thread handling.
+
+There are some structural things we would also really like to have in place:
 * A nice tutorial, showing off the installation and use of the new toolchain.
 * Maintainers for various platforms (Cygwin, Mac OS X)
 * Maintainers for packaging toolchain for Debian (apt) and Fedora (yum) package managers.
