@@ -15,6 +15,8 @@ Once you have your board up and running, you may find the guide to [[Debugging p
 ** UART
 ** USB 1.1
 
+[http://orsoc.se/fpga-development-board/ More about this board on manufacturer's website]
+
 == Xilinx ML501 ==
 
 * Board path: xilinx/ml501
@@ -29,6 +31,8 @@ Once you have your board up and running, you may find the guide to [[Debugging p
 ** AC97 (tested)
 ** PS/2 (tested)
 
+[http://www.xilinx.com/products/boards-and-kits/HW-V5-ML501-UNI-G.htm More about this board on manufacturer's website]
+
 == Digilent Atlys ==
 (Not yet pushed to main orpsoc repo. Git repo can be found at git://git.chokladfabriken.org/orpsocv2)
 * Board path: xilinx/atlys
@@ -42,6 +46,8 @@ Once you have your board up and running, you may find the guide to [[Debugging p
 ** SPI
 ** UART
 ** VGA
+
+[http://www.digilentinc.com/atlys/ More about this board on manufacturer's website]
 
 == Xilinx XtremeDSP Starter Platform - Spartan-3A DSP 1800 Edition==
 
