@@ -42,3 +42,15 @@ Once you have your board up and running, you may find the guide to [[Debugging p
 ** SPI
 ** UART
 ** VGA
+
+== Xilinx XtremeDSP Starter Platform - Spartan-3A DSP 1800 Edition==
+
+* Board path: xilinx/s3adsp1800
+* CPU core frequency: 25MHz
+* Supported devices
+** Ethernet
+** GPIO
+** DDR2 SDRAM (128MB)
+** SPI
+** UART
+[http://www.xilinx.com/products/boards-and-kits/HW-SD1800A-DSP-SB-UNI-G.htm More about this board on manufacturer's website]
