@@ -1,0 +1,37 @@
+= About =
+
+Das U-boot, the universal bootloader, is a popular bootloader for embedded systems. For information about the project itself see its [http://www.denx.de/wiki/U-Boot webpage].
+
+This page contains information about the OpenRISC 1000 architecture port and board additions.
+
+= Downloading =
+
+The u-boot code with basic OpenRISC 1000 support is found on the openrisc.net git tree.
+
+ <nowiki>git clone git://openrisc.net/julius/u-boot</nowiki>
+
+= Status =
+
+The port is quite new, and appears to work out of RAM ok. No flash loading functionality is working yet (as no flash controllers are available for most of the boards in ORPSoC.)
+
+== Supported boards ==
+
+The supported boards so far are board ports from [[ORPSoC]].
+
+=== ordb1a3pe1500 ===
+This board is the [[FPGA_Development_Boards#ORSoC_OpenRISC_development_board | ORSoC Actel development board ]] with an A3PE1500 Actel part on it.
+
+The board config is far from complete, see the file include/configs/ordb1a3pe1500.h for more information on the config.
+
+To build for this board run:
+ <nowiki>make ordb1a3pe1500_config
+make</nowiki>
+
+=== ml501 ===
+This board is a [[FPGA_Development_Boards#Xilinx_ML501 | Xilinx Virtex 5 development board]].
+
+This board config in u-boot is broken at the moment.
+
+If it worked you could build it with:
+ <nowiki>make ml501_config
+make</nowiki>
