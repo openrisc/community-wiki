@@ -1,3 +1,5 @@
+'''Update 18 Jul 2011'''. We have a temporary problem with the COMMUNITY PORTAL link on the left. For the time being use this [[OR1K:Community_Portal|community portal]] link instead.
+
 The aim of the OpenRISC project is to create free and open source computing platforms available under the GNU (L)GPL license. The platforms aim to provide:
 * a free, open source RISC architecture with DSP features
 * a set of free, open source implementations of the architecture
@@ -23,3 +25,4 @@ This project is now fully maintained through a Wiki (the [[OR1K:Community_Portal
 
 
 Active devlopers are welcome as maintainer of this project. The list will be updated regularly. If you think your name should be in the list, please send an email to [mailto:ocadmin@opencores.org ocadmin@opencores.org].
+'''Bold text'''
