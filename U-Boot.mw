@@ -30,8 +30,5 @@ make</nowiki>
 === ml501 ===
 This board is a [[FPGA_Development_Boards#Xilinx_ML501 | Xilinx Virtex 5 development board]].
 
-This board config in u-boot is broken at the moment.
-
-If it worked you could build it with:
  <nowiki>make ml501_config
 make</nowiki>
