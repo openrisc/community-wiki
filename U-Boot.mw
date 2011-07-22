@@ -32,3 +32,9 @@ This board is a [[FPGA_Development_Boards#Xilinx_ML501 | Xilinx Virtex 5 develop
 
  <nowiki>make ml501_config
 make</nowiki>
+
+=== atlys ===
+This board is a [[FPGA_Development_Boards#Digilent_Atlys | Xilinx Spartan 6 development board from Digilent]].
+
+ <nowiki>make atlys_config
+make</nowiki>
