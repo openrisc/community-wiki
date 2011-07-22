@@ -10,6 +10,12 @@ The u-boot code with basic OpenRISC 1000 support is found on the openrisc.net gi
 
  <nowiki>git clone git://openrisc.net/stefan/u-boot</nowiki>
 
+= Creating a Linux kernel boot image =
+
+To create a u-boot Linux kernel boot image, a tool called mkimage is used.
+It is available in u-boot's tools/ directory and the following command can be used to create a not compressed kernel image called 'uImage' with load address at 0 and entry point at 0x100
+ <nowiki>tools/mkimage -n 'Linux for OpenRISC' -A or1k -O linux -T kernel -C none -a 0 -e 0x100 -d /path/to/vmlinux.bin uImage</nowiki>
+
 = Status =
 
 The port is quite new, and appears to work out of RAM ok. No flash loading functionality is working yet (as no flash controllers are available for most of the boards in ORPSoC.)
