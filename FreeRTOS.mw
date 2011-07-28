@@ -1,4 +1,16 @@
-Several attempts of porting FreeRTOS have been made. Here are a few starting points
+This page provides information about ports of FreeRTOS to OpenRISC
 
-http://mattzz.dyndns.org/wiki/bin/view/Projects/PortingFreeRTOStoOpenRISC
-http://opencores.org/forum,OpenRISC,0,4153
+== Current FreeRTOS port ==
+
+[[user:filepang|filepang]] has started a port of FreeRTOS 6.1.1 to OpenRISC. The code may be found in SVN here:
+
+ http://opencores.org/ocsvn/openrisc/openrisc/trunk/rtos/freertos-6.1.1
+
+Please report any bugs via [http://bugzilla.opencores.org bugzilla].
+
+== Past FreeRTOS ports ==
+
+Several past attempts of porting FreeRTOS have been made. Here are a few starting points
+
+* http://mattzz.dyndns.org/wiki/bin/view/Projects/PortingFreeRTOStoOpenRISC
+* http://opencores.org/forum,OpenRISC,0,4153
