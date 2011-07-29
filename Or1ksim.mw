@@ -52,7 +52,7 @@ The following are not yet supported in Or1ksim
 
 === Tested host platforms ===
 
-The current stable version has been tested under Fedora 11 Linux and Ubuntu 10.4 Linux.
+The current stable version has been tested under Fedora 11 Linux and Ubuntu 10.04 Linux.
 
 == Development release ==
 
@@ -175,7 +175,7 @@ We are constantly looking for developers to help in the development of the simul
 A few items to get you started.
 
 * Extend the documentation. Or1ksim now has a User Guide. However this would benefit from some good tutorial material. This is an excellent task for anyone new to or1ksim. This would involve the following.
-** Documenting, in the form of well narated passages (not point form!), how to get started using Or1ksim, the general pitfalls that someone new to Or1ksim may take and how to avoid them.
+** Documenting, in the form of well narrated passages (not point form!), how to get started using Or1ksim, the general pitfalls that someone new to Or1ksim may take and how to avoid them.
 ** Some neat examples of how to use some of the more "cool" peripherals of the sim (esp. how to make use of the Ethernet peripheral).
 ** Documenting the interface that is used to implement the peripherals.
 ** Documenting the more arcane features of the simulator, including the various execution models, branch prediction, super scaler emulation and in general what they are useful for.
