@@ -1,12 +1,12 @@
-At present OpenRISC is supported by a 32-bit GNU tool chain offering C and C++ support with static libraries only. The tool chain is available in two forms
+At present OpenRISC is supported by a 32-bit GNU toolchain offering C and C++ support with static libraries only. The toolchain is available in two forms
 * for bare metal use, based on the newlib library
 * for Linux application use, based on the uClibc library. 
 
-The tool chains are available as pre-compiled binaries, and stable source code snapshots and in development versions under SVN.
+The toolchains are available as pre-compiled binaries, and stable source code snapshots and in development versions under SVN.
 
 == Installation ==
 
-The stable versions of the tools are based on binutils 2.20.1, GCC 4.5.1 and GDB 7.2. For the bare metal tool chain, they use newlib 0.18.0 and for the Linux application tool chain uClibc 0.9.32. Both tool chains are tested using or1ksim-0.5.1. 
+The stable versions of the tools are based on binutils 2.20.1, GCC 4.5.1 and GDB 7.2. For the bare metal toolchain, they use newlib 0.18.0 and for the Linux application toolchain uClibc 0.9.32. Both toolchains are tested using or1ksim-0.5.1. 
 
 === Precompiled binaries ===
 
@@ -46,7 +46,7 @@ Fedora/Red Hat/Centos-based Linux systems use yum:
 
 Please update this Wiki if any tools are missing, or to provide a one-liner to install the required prerequisites on another distribution.
 
-The [[Or1ksim]] library is needed by GDB (as its simulator), so this should be installed first. See the [[Or1ksim]] page for details. Note that you will not be able to run the Or1ksim tests ('''make check''') until the tool chain has been installed.
+The [[Or1ksim]] library is needed by GDB (as its simulator), so this should be installed first. See the [[Or1ksim]] page for details. Note that you will not be able to run the Or1ksim tests ('''make check''') until the toolchain has been installed.
 
 ==== Downloading the source ====
 
@@ -58,7 +58,7 @@ Note. There is a known problem with SVN timing out, so that not all files may be
 
  svn update gnu-src
 
-The source for uClibc and Linux (needed for the header files for the tool chain) is currently held in a [http://git-scm.com/ git] repository run by [http://southpole.se/ South Pole]. It is best to save the source for these into the gnu-src path just created when checking out from the OpenCores SVN repository.
+The source for uClibc and Linux (needed for the header files for the toolchain) is currently held in a [http://git-scm.com/ git] repository run by [http://southpole.se/ South Pole]. It is best to save the source for these into the gnu-src path just created when checking out from the OpenCores SVN repository.
 
  cd gnu-src
  git clone git://git.openrisc.net/jonas/uClibc
@@ -76,15 +76,15 @@ The script used to build the toolchains is bld-all.sh and it is found in the gnu
 
 The following instructions assume the tools are installed in /opt/openrisc, which is a common choice (/opt/or32 is also popular). Substitute your chosen installation directory in the following instructions. It is assumed that [[Or1ksim]] has been installed in /opt/or1ksim.
 
-To build and install both tool chains from scratch:
+To build and install both toolchains from scratch:
 
  ./bld-all.sh --force --prefix /opt/openrisc --or1ksim-dir /opt/or1ksim --uclibc-dir uClibc --linux-dir linux 
 
-To build and install just hte newlib tool chain:
+To build and install just hte newlib toolchain:
 
  ./bld-all.sh --force --prefix /opt/openrisc --or1ksim-dir /opt/or1ksim --no-uclibc --no-or32-linux 
 
-To build and install just the uClibc tool chain:
+To build and install just the uClibc toolchain:
 
  ./bld-all.sh --force --prefix /opt/openrisc --or1ksim-dir /opt/or1ksim --uclibc-dir uClibc --linux-dir linux --no-newlib --no-or32-elf 
 
@@ -98,7 +98,7 @@ Under csh or tcsh
 
 These commands will typically be added to your .profile or .login file.
 
-'''Note.''' Some users have reported problems when rebuilding the uClibc tool chain a second time, due to the existing headers on the search path. The solution is to remove the existing implementation from the PATH variable.
+'''Note.''' Some users have reported problems when rebuilding the uClibc toolchain a second time, due to the existing headers on the search path. The solution is to remove the existing implementation from the PATH variable.
 
 === Support for non-Linux systems ===
 
@@ -201,7 +201,7 @@ The following compatibility issues have been noted.
 
 gdbserver can be run on an OpenRISC linux system to act as a RSP client and allow remote debugging of ''applications'' on the Linux system.
 
-gdbserver must be built by hand. The following instructions assume you have used the <tt>bld-all.sh</tt> script to build the or32-linux tool chain.
+gdbserver must be built by hand. The following instructions assume you have used the <tt>bld-all.sh</tt> script to build the or32-linux toolchain.
 
 Change to the bd-linux-gdb/gdb directory
 
@@ -281,17 +281,17 @@ For more information about uClibc see the [http://www.uclibc.org/about.html proj
 
 == Testing ==
 
-Each tool is tested using the GNU tool regression test suites. The newlib tool chain is tested using the GDB simulator (which is [[Or1ksim]]) standalone. The uClibc tool chain is tested using OpenRISC linux running on Or1ksim, using FTP and telnet through a TUN/TAP Ethernet interface.
+Each tool is tested using the GNU tool regression test suites. The newlib toolchain is tested using the GDB simulator (which is [[Or1ksim]]) standalone. The uClibc toolchain is tested using OpenRISC linux running on Or1ksim, using FTP and telnet through a TUN/TAP Ethernet interface.
 
-The results are large, so there is a separate page for the [[newlib tool chain test results]] and the [[uClibc tool chain test results]].
+The results are large, so there is a separate page for the [[newlib tool chain test results|newlib toolchain test results]] and the [[uClibc tool chain test results|uClibc toolchain test results]].
 
 == Release program ==
 
-We plan to move towards a scheduled development and release plan for the OpenRISC tool chain. The goal is to provide stable releases of the entire tool chain, libraries and architectural simulator every six months, containing the most stable ports of the latest tools and libraries available.
+We plan to move towards a scheduled development and release plan for the OpenRISC toolchain. The goal is to provide stable releases of the entire toolchain, libraries and architectural simulator every six months, containing the most stable ports of the latest tools and libraries available.
 
-We intend to release two tool chains, one based on the newlib C library and aimed at bare-metal use, and one based on the uClibc C library aimed at Linux userspace applications. The development and release schedule of these tool chains might not coincide.
+We intend to release two toolchains, one based on the newlib C library and aimed at bare-metal use, and one based on the uClibc C library aimed at Linux userspace applications. The development and release schedule of these toolchains might not coincide.
 
-'''Note.''' As of the beginning of April 2011, this toolchain release plan has been changed to split the releases into newlib and uClibc tool chains.
+'''Note.''' As of the beginning of April 2011, this toolchain release plan has been changed to split the releases into newlib and uClibc toolchains.
 
 === Project team ===
 
@@ -304,7 +304,7 @@ We intend to release two tool chains, one based on the newlib C library and aime
 * Or1ksim: [[User:Jeremybennett|Jeremy Bennett]]
 * Installation script: [[User:Julius|Julius Baxter]]
 
-=== newlib tool chain release schedule ===
+=== newlib toolchain release schedule ===
 
 Candidate components for next release:
 
@@ -332,7 +332,7 @@ Schedule for next release:
 |24 April 2011||Public release of precompiled binaries
 |}
 
-=== uClibc tool chain release schedule ===
+=== uClibc toolchain release schedule ===
 
 
 Candidate components for next release:
@@ -369,14 +369,14 @@ This is an open source project, so the community provides support (although ther
 
 == Future plans ==
 
-Individual tools above have their own plans laid out for future work. At a tool chain level, there is one issue that needs resolving:
+Individual tools above have their own plans laid out for future work. At a toolchain level, there is one issue that needs resolving:
 * Reconsider toolchain prefix (should it be or1k rather than or32)
 
 === Wishlist ===
 
-=== Future tool chain development ===
+=== Future toolchain development ===
 
-At a technical level, future development of the GNU tool chain is planned to include
+At a technical level, future development of the GNU toolchain is planned to include
 * support for [[OpenRISC PIC|position independent code (PIC)]] and shared object libraries.Currently being worked on by [[User:Jeremybennett|Jeremy Bennett]] and [[User:Amylaar|J&ouml;rn Rennecke]].
 * improved optimization through inclusion of accurate process scheduling models.
 * support for profiling.
@@ -389,7 +389,7 @@ There are some structural things we would also really like to have in place:
 
 Feel free to post any suggestions or offers to assist the project to the [[OR1K:Community_Portal#Mailing lists|mailing lists]] or talk to us on [[OR1K:Community_Portal#IRC|IRC]].
 
-=== The tool chain development team ===
+=== The toolchain development team ===
 
 * [[User:Jeremybennett|Jeremy Bennett]] (binutils, GCC, GDB, Newlib, Or1ksim)
 * [[User:Marcus_ericsson|Marcus Erlandsson]]
