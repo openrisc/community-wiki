@@ -52,7 +52,7 @@ This file contains settings for architecture specific definitions. This section 
   #define portTickType    unsigned portLONG
   #define portMAX_DELAY   (portTickType)0xffffffff
 
-'portBASE_TYPE' shuold be most efficient type for architecture. In case of OpenRISC, it is 'long'. 'portTickType'is type for hold the number of tick timer interrupt expired.
+'portBASE_TYPE' shuold be most efficient type for architecture. In case of OpenRISC, it is 'long'. 'portTickType' is type for hold the number of tick timer interrupt expired.
 
 ==== Architecure specific definitions ====
 
@@ -116,8 +116,8 @@ OpenRISC port be restored context by following steps.
   1. restore R1(stack pointer of next running task)
   2. restore R9, R2, R6 ~ R31(except R9)
   3. restore ESR, EPCR, R3 ~ R5 are corrupted in this step
-  5. restore R3 ~ R5
-  6. resume next task by l.rfi
+  4. restore R3 ~ R5
+  5. resume next task by l.rfi
 
 == Download source code ==
 
