@@ -164,6 +164,62 @@ More details on Linux for OpenRISC 1000 may be found on the operating systems pa
 
 [http://www.embecosm.com/download/ean2.html Embecosm Application Note EAN2] described in the Installation section above includes examples using Or1ksim. The User Guide for the OpenRISC 1000 port of GDB 6.8 includes details of running Or1ksim with GDB.
 
+To aid in debugging, the immediate field of a NOP can be used to control some simulation parameters. The following table defines the meaning of each NOP field. These are defined in or1ksim/cpu/or1k/spr-defs.h
+
+{|
+! align="left"|Name
+! Value
+! Description
+|-
+|NOP_NOP
+|0x0000
+|Normal nop instruction 
+|-
+|NOP_EXIT
+|0x0001
+|End of simulation
+|-
+|NOP_REPORT
+|0x0002
+|Simple report
+|-
+|<strike>NOP_PRINTF</strike>
+|<strike>0x0003</strike>
+|<strike>Simprintf instruction</strike> (obsolete)
+|-
+|NOP_PUTC
+|0x0004
+|Simputc instruction
+|-
+|NOP_CNT_RESET
+|0x0005
+|Reset statistics counters
+|-
+|NOP_GET_TICKS
+|0x0006
+|Get # ticks running
+|-
+|NOP_GET_PS
+|0x0007
+|picosecs/cycle
+|-
+|NOP_TRACE_ON
+|0x0008
+|Turn on tracing
+|-
+|NOP_TRACE_OFF
+|0x0009
+|Turn off tracing
+|-
+|NOP_RANDOM
+|0x000a
+|Return 4 random bytes
+|-
+|NOP_OR1KSIM
+|0x000b
+|Return non-zero if this is Or1ksim
+|}
+
 == Discussion Forum ==
 
 Or1ksim is discussed within the OpenRISC Forum and on IRC at freenode.net, channel #opencores. All users are encouraged to contribute suggestions and advice.
