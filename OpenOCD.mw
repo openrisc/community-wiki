@@ -1,0 +1,70 @@
+= About =
+
+OpenOCD is a program that we can use to talk to our debug interface on our hardware via JTAG, over a variety of cables, in a realtively flexible manner. We can script up things in TCL to control the system, or we can run a GDB RSP server and do things from GDB.
+
+This page contains information about the OpenRISC 1000 architecture port.
+
+ '''This port is still under development!'''
+
+= Downloading =
+
+The OpenOCD code with basic OpenRISC 1000 support is found on the openrisc.net git tree.
+
+ git clone git://openrisc.net/julius/openocd
+
+= Prerequisites =
+
+So far development has been using the ORSoC USB debug cable against an ORPSoC system.
+
+= Building =
+
+Make a build directory parallel to the source and configure using the free and open source libftdi driver.
+ 
+ mkdir bld-openocd && cd bld-openocd
+ ../openocd/configure --enable-ft2232_libftdi
+ make
+
+= Running =
+
+== Setup ==
+
+OpenOCD uses TCL for everything. The following TCL source was used during development to bring the system up. Place it in a file in the build directory (bld-openocd - presumably where you are running the following commands from.) Assume it's called or1k-dev.tcl for now:
+
+ source [find ../openocd/tcl/target/or1k.cfg]
+ 
+ proc or1k_test_init {} {
+     
+     
+ }
+ 
+ gdb_port 50001
+ 
+ init
+ #echo "Halting processor"
+ halt
+ 
+ foreach name [target names] {
+     set y [$name cget -endian]
+     set z [$name cget -type]
+     puts [format "Chip is %s, Endian: %s, type: %s" \
+                   $name $y $z]
+ }
+
+This tells OpenOCD to use the OpenRISC 1000 target configuration information which should be included with the project's source.
+
+== Connecting to the board ==
+
+Using something like the following to a) tell OpenOCD which cable to use to connect, and b) which TCL command file to then run some commands from. From the build directory run:
+
+ sudo ./src/openocd -f ../openocd/tcl/interface/orsoc-jtag.cfg -f or1k-dev.tcl 
+
+OpenOCD should establish communication with the target and stall it and wait for GDB to connect.
+
+Add the switch ''--debug 3'' to the command line to see lots of debug output.
+
+Note - I had to run with ''sudo'' but that's because my permissions weren't set correctly on the USB debug cable. This is not a good thing to do, and it's advisable that correct permissions on the USB debug cable are set to allow users to access it.
+
+
+= Issues = 
+
+Writing the NPC does not appear to work. If written, it will read back the previous value from the hardware. This is still being investigated
