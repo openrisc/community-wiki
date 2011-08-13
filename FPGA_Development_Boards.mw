@@ -34,7 +34,7 @@ Once you have your board up and running, you may find the guide to [[Debugging p
 [http://www.xilinx.com/products/boards-and-kits/HW-V5-ML501-UNI-G.htm More about this board on manufacturer's website]
 
 == Digilent Atlys ==
-(Not yet pushed to main orpsoc repo. Git repo can be found at git://git.chokladfabriken.org/orpsocv2)
+(Not yet pushed to main orpsoc repo. Git repo can be found at git://openrisc.net/stefan/orpsoc)
 * Board path: xilinx/atlys
 * CPU core frequency: 50MHz
 * Supported devices
@@ -59,4 +59,16 @@ Once you have your board up and running, you may find the guide to [[Debugging p
 ** DDR2 SDRAM (128MB)
 ** SPI
 ** UART
+
 [http://www.xilinx.com/products/boards-and-kits/HW-SD1800A-DSP-SB-UNI-G.htm More about this board on manufacturer's website]
+
+== Terasic DE0 Nano ==
+(Not yet pushed to main orpsoc repo. Git repo can be found at git://openrisc.net/stefan/orpsoc)
+* Board path: altera/de0_nano
+* CPU core frequency: 50MHz
+* Supported devices
+** GPIO
+** SDRAM (32MB)
+** UART
+
+[http://de0-nano.terasic.com/ More about this board on manufacturer's website]
