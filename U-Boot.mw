@@ -16,15 +16,11 @@ To create a u-boot Linux kernel boot image, a tool called mkimage is used.
 It is available in u-boot's tools/ directory and the following command can be used to create a not compressed kernel image called 'uImage' with load address at 0 and entry point at 0x100
  <nowiki>tools/mkimage -n 'Linux for OpenRISC' -A or1k -O linux -T kernel -C none -a 0 -e 0x100 -d /path/to/vmlinux.bin uImage</nowiki>
 
-= Status =
-
-The port is quite new, and appears to work out of RAM ok. No flash loading functionality is working yet (as no flash controllers are available for most of the boards in ORPSoC.)
-
-== Supported boards ==
+= Supported boards =
 
 The supported boards so far are board ports from [[ORPSoC]].
 
-=== ordb1a3pe1500 ===
+== ordb1a3pe1500 ==
 This board is the [[FPGA_Development_Boards#ORSoC_OpenRISC_development_board | ORSoC Actel development board ]] with an A3PE1500 Actel part on it.
 
 The board config is far from complete, see the file include/configs/ordb1a3pe1500.h for more information on the config.
@@ -33,19 +29,19 @@ To build for this board run:
  <nowiki>make ordb1a3pe1500_config
 make</nowiki>
 
-=== ml501 ===
+== ml501 ==
 This board is a [[FPGA_Development_Boards#Xilinx_ML501 | Xilinx Virtex 5 development board]].
 
  <nowiki>make ml501_config
 make</nowiki>
 
-=== atlys ===
+== atlys ==
 This board is a [[FPGA_Development_Boards#Digilent_Atlys | Xilinx Spartan 6 development board from Digilent]].
 
  <nowiki>make atlys_config
 make</nowiki>
 
-=== de0_nano ===
+== de0_nano ==
 This board is a [[FPGA_Development_Boards#Terasic_DE0_Nano | Altera Cyclone IV development board from Terasic]].
 
  <nowiki>make de0_nano_config
