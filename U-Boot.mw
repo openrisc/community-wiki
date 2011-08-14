@@ -16,6 +16,16 @@ To create a u-boot Linux kernel boot image, a tool called mkimage is used.
 It is available in u-boot's tools/ directory and the following command can be used to create a not compressed kernel image called 'uImage' with load address at 0 and entry point at 0x100
  <nowiki>tools/mkimage -n 'Linux for OpenRISC' -A or1k -O linux -T kernel -C none -a 0 -e 0x100 -d /path/to/vmlinux.bin uImage</nowiki>
 
+= Booting from tftp =
+
+First, the net settings have to be setup. There are two ways of doing this.
+One way is to edit the configuration file for the active board port, which is located at '''include/configs/boardname.h'''
+The other way is to edit them by using the ''setenv'' command. To see the current settings, use the ''printenv'' command.
+When the u-boots net is properly setup, and a tftp server is running, the following command is used to load the file uImage into RAM.
+ <nowiki>tftp uImage</nowiki>
+When the image has finished loading, it can be booted by using the bootm command.
+ <nowiki>bootm</nowiki>
+
 = Supported boards =
 
 The supported boards so far are board ports from [[ORPSoC]].
