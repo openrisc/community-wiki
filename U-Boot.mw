@@ -1,6 +1,6 @@
 = About =
 
-Das U-boot, the universal bootloader, is a popular bootloader for embedded systems. For information about the project itself see its [http://www.denx.de/wiki/U-Boot webpage].
+Das U-Boot, the universal bootloader, is a popular bootloader for embedded systems. For information about the project itself see its [http://www.denx.de/wiki/U-Boot webpage].
 
 This page contains information about the OpenRISC 1000 architecture port and board additions.
 
