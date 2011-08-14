@@ -63,9 +63,8 @@ This file contains settings for architecture specific definitions. This section 
   #define portINSTRUCTION_SIZE            ( ( portSTACK_TYPE ) 4 )
   #define portNO_CRITICAL_SECTION_NESTING ( ( portSTACK_TYPE ) 0 )
   #define portYIELD_FROM_ISR()            vTaskSwitchContext()
-  #define portYIELD()        {    \
-      __asm__ __volatile__ ( "l.addi r1, r1, -4" ); \
-      __asm__ __volatile__ ( "l.sw 0x0(r1), r11" ); \
+  #define portYIELD()		{	\
+      __asm__ __volatile__ ( "l.sw  -4(r1), r11" ); \
       __asm__ __volatile__ ( "l.addi r11, r0, 0x0FCC" ); \
       __asm__ __volatile__ ( "l.sys 0x0FCC" ); \
       __asm__ __volatile__ ( "l.nop       " ); \
@@ -78,22 +77,16 @@ This file contains settings for architecture specific definitions. This section 
 'port YIELD' will be requested to scheduler for switch to other task  after end of this time slice. It is implemented by system call 0x0FCC.
 
   #define portENTER_CRITICAL()	{	\
-      __asm__ __volatile__ ( "l.addi r1, r1, -4" ); \
-      __asm__ __volatile__ ( "l.sw 0x0(r1), r11" ); \
+      __asm__ __volatile__ ( "l.sw  -4(r1), r11" ); \
       __asm__ __volatile__ ( "l.addi r11, r0, 0x0FCE" ); \
       __asm__ __volatile__ ( "l.sys 0x0FCE" ); \
       __asm__ __volatile__ ( "l.nop       " ); \
-      __asm__ __volatile__ ( "l.lwz r11, 0x0(r1)" ); \
-      __asm__ __volatile__ ( "l.addi r1, r1, 4" ); \
   } 
   #define portEXIT_CRITICAL()		{	\
-      __asm__ __volatile__ ( "l.addi r1, r1, -4" ); \
-      __asm__ __volatile__ ( "l.sw 0x0(r1), r11" ); \
+      __asm__ __volatile__ ( "l.sw  -4(r1), r11" ); \
       __asm__ __volatile__ ( "l.addi r11, r0, 0x0FCF" ); \
       __asm__ __volatile__ ( "l.sys 0x0FCF" ); \
       __asm__ __volatile__ ( "l.nop       " ); \
-      __asm__ __volatile__ ( "l.lwz r11, 0x0(r1)" ); \
-      __asm__ __volatile__ ( "l.addi r1, r1, 4" ); \
   } 
 
 These macros are used for manage critical section. These are implemented by system call.
