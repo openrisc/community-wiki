@@ -44,3 +44,9 @@ This board is a [[FPGA_Development_Boards#Digilent_Atlys | Xilinx Spartan 6 deve
 
  <nowiki>make atlys_config
 make</nowiki>
+
+=== de0_nano ===
+This board is a [[FPGA_Development_Boards#Terasic_DE0_Nano | Altera Cyclone IV development board from Terasic]].
+
+ <nowiki>make de0_nano_config
+make</nowiki>
