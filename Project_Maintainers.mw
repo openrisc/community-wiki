@@ -1,2 +1,50 @@
 = About =
-This page should contain information on the people responsible for various parts of the OpenRISC project.
+
+This page should contain information about, and the role of, the people responsible for various parts of the OpenRISC project.
+
+= Current maintainers =
+
+ I have missed out a lot here, please fill in the obvious stuff. [[User:Julius|Julius]]
+
+* '''Implementations'''
+** [[or1ksim]] - [[User:Jeremybennett|Jeremy Bennett]]
+* '''Toolchain'''
+** [[OpenRISC_GNU_tool_chain#GDB|GDB]] - [[User:Jeremybennett|Jeremy Bennett]]
+* '''Software and libraries'''
+** [[Linux|Linux kernel port]] - [[User:Jonibo|Jonas Bonn]]
+
+= Vacant roles =
+* '''Implementations'''
+** OR1200
+* '''Toolchain'''
+** binutils
+** GCC
+* '''Software and libraries'''
+** uClibc
+** newlib
+
+= Proposed Roles =
+
+As the OpenRISC project grows and matures there is a need for maintainers to appointed to to manage various components of the project.
+
+At present there are some well-defined maintainer roles being fulfilled by contributors for the upkeep of, for example, [[or1ksim]]([[User:Jeremybennett|Jeremy Bennett]]) and the [[Linux|Linux kernel port]] ([[User:Jonibo|Jonas Bonn]]).
+
+There is a need to define roles for maintainership of other parts of the project and assign them to people.
+
+Roles that could be defined and assigned immediately are:
+* OR1200 specification and RTL maintainer
+* OR1K architecture specification (document?) maintainer
+* Nightly build maintainer
+* add another role here!
+
+== Responsibilities ==
+
+ I've only just added this - not sure how much of this is appropriate or necessary! [[User:Julius|Julius]]
+
+Some responsibilities of a maintainer would be:
+* Active in, and responsive to, the community's work with their component of the project.
+* Outline a preferred method of development and release for that component
+** Decide how patches will be submitted, reviewed and applied
+** Outline an approximate release/development cycle
+* Have the ultimate say in any contentious development issues
+* Help the project progress and develop
