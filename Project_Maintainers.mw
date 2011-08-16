@@ -1,29 +1,43 @@
-== About ==
+The '''project maintainer''' is the guardian of quality for a particular component of the OpenRISC project. In particular, nothing should be committed to a repository until it has been reviewed and approved by the relevant maintainer.
 
-This page should contain information about, and the role of, the people responsible for various parts of the OpenRISC project.
+== List of maintainers ==
 
-== Current maintainers ==
+=== Current maintainers ===
 
- I have missed out a lot here, please fill in the obvious stuff. [[User:Julius|Julius]]
+ Please fill in anything that's missing. [[User:Julius|Julius]], [[User:Jeremybennett|Jeremy]]
 
-* '''Implementations'''
+* '''Specifications'''
+* '''Hardware implementations'''
+** [[minsoc]]
+* '''Tools'''
 ** [[or1ksim]] - [[User:Jeremybennett|Jeremy Bennett]]
-* '''Toolchain'''
-** [[OpenRISC_GNU_tool_chain#GDB|GDB]] - [[User:Jeremybennett|Jeremy Bennett]]
-* '''Software and libraries'''
+* '''Tool chains'''
+** [[OpenRISC GNU tool chain#GDB|GDB]] - [[User:Jeremybennett|Jeremy Bennett]]
+* '''Libraries'''
+* '''Operating systems'''
 ** [[Linux|Linux kernel port]] - [[User:Jonibo|Jonas Bonn]]
+** [[FreeRTOS]] - [[User:filepang|Kim Sung Su]]
 
-== Vacant roles ==
-* '''Implementations'''
+=== Vacant maintainer roles ===
+
+* '''Specifications'''
 ** OR1200
-* '''Toolchain'''
-** binutils
-** GCC
-* '''Software and libraries'''
-** uClibc
-** newlib
+* '''Hardware implementations'''
+** OR1200
+** ORPSOC
+* '''Tools'''
+* '''Tool chains'''
+** [[OpenRISC GNU tool chain#binutils|binutils]]
+** [[OpenRISC GNU tool chain#GCC|GCC]]
+* '''Libraries'''
+** [[OpenRISC GNU tool chain#newlib|newlib]]
+** [[OpenRISC GNU tool chain#uClibc|uClibc]]
+* '''Operating systems'''
+** [[eCos]]
+** [[RTEMS]]
+** [[uCOS-II]]
 
-== Proposed Roles ==
+=== Proposed maintainer roles ===
 
 As the OpenRISC project grows and matures there is a need for maintainers to appointed to to manage various components of the project.
 
@@ -37,7 +51,7 @@ Roles that could be defined and assigned immediately are:
 * Nightly build maintainer
 * add another role here!
 
-== Responsibilities ==
+== Responsibilities of a maintainer ==
 
  I've only just added this - not sure how much of this is appropriate or necessary! [[User:Julius|Julius]]
 
