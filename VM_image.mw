@@ -1,0 +1,14 @@
+A virtual image can be useful for developers that can't or don't want to install all the necessary tools on their machines. An old image exists, but it is getting outdated. Here's a proposal for useful tools on the image
+
+* SVN
+* GIT
+* GCC with necessary libs for compiling the tool chain
+* Icarus Verilog
+* Verilator
+
+Documented tasks should include:
+* Building newlib and uClibc
+* Running tests in ORPSoC
+* Building for FPGA
+
+Bonus points if someone creates helper scripts for downloading and setting up Xilinx/Actel/Altera tool chains
