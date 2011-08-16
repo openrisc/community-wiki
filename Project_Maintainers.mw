@@ -56,11 +56,16 @@ Roles that could be defined and assigned immediately are:
 == Responsibilities of a maintainer ==
 
  I've only just added this - not sure how much of this is appropriate or necessary! [[User:Julius|Julius]]
+ More ideas added by [[User:jeremybennett|Jeremy]]
 
-Some responsibilities of a maintainer would be:
-* Active in, and responsive to, the community's work with their component of the project.
+The main responsibilities of a maintainer would be:
+* Be active in, and responsive to, the community's work with their component of the project.
+** maintain the Wiki pages relevant to their component
+** answer mailing list and forum questions relevant to their component
 * Outline a preferred method of development and release for that component
-** Decide how patches will be submitted, reviewed and applied
-** Outline an approximate release/development cycle
+** decide how patches will be submitted, reviewed and applied (consistent with the overall project approach)
+** outline an approximate release/development cycle (consistent with the overall project cycle)
+* Review and approve any changes to their component before committing to trunk
+** as the project grows, the maintainer for a component may recruit additional reviewers to add him/her.
 * Have the ultimate say in any contentious development issues
 * Help the project progress and develop
