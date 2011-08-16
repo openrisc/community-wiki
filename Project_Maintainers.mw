@@ -20,6 +20,8 @@ The '''project maintainer''' is the guardian of quality for a particular compone
 
 === Vacant maintainer roles ===
 
+A number of these components have temporary maintainers, to allow orderly handling of changes in the repositories. However permanent maintainers, who are able to commit to driving the development of the component are urgently needed.
+
 * '''Specifications'''
 ** OR1200 (''pro tem'' [[User:Julius|Julius Baxter]])
 * '''Hardware implementations'''
