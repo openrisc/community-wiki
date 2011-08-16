@@ -21,17 +21,17 @@ The '''project maintainer''' is the guardian of quality for a particular compone
 === Vacant maintainer roles ===
 
 * '''Specifications'''
-** OR1200
+** OR1200 (''pro tem'' [[User:Julius|Julius Baxter]])
 * '''Hardware implementations'''
-** OR1200
-** ORPSOC
+** OR1200 (''pro tem'' [[User:Julius|Julius Baxter]])
+** ORPSOC (''pro tem'' [[User:Julius|Julius Baxter]])
 * '''Tools'''
 * '''Tool chains'''
-** [[OpenRISC GNU tool chain#binutils|binutils]]
-** [[OpenRISC GNU tool chain#GCC|GCC]]
+** [[OpenRISC GNU tool chain#binutils|binutils]] (''pro tem'' [[User:Jeremybennett|Jeremy Bennett]])
+** [[OpenRISC GNU tool chain#GCC|GCC]] (''pro tem'' [[User:Jeremybennett|Jeremy Bennett]])
 * '''Libraries'''
-** [[OpenRISC GNU tool chain#newlib|newlib]]
-** [[OpenRISC GNU tool chain#uClibc|uClibc]]
+** [[OpenRISC GNU tool chain#newlib|newlib]] (''pro tem'' [[User:Julius|Julius Baxter]] and [[User:Jeremybennett|Jeremy Bennett]])
+** [[OpenRISC GNU tool chain#uClibc|uClibc]] (''pro tem'' [[User:Jonibo|Jonas Bonn]])
 * '''Operating systems'''
 ** [[eCos]]
 ** [[RTEMS]]
