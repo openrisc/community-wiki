@@ -1,4 +1,4 @@
-The '''project maintainer''' is the guardian of quality for a particular component of the OpenRISC project. In particular, nothing should be committed to a repository until it has been reviewed and approved by the relevant maintainer.
+The '''project maintainer''' is the "champion" for a particular component of the OpenRISC project. A key role is to act as a guardian of quality in a particular component of the project. In particular, nothing should be committed to a repository until it has been reviewed and approved by the relevant maintainer.
 
 == List of maintainers ==
 
