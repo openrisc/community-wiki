@@ -4,6 +4,10 @@ ORPSoC is the reference platform for OpenRISC development. It has many users and
 
 Here's a proposal for improving things in ORPSoC land
 
+== Create a separate project ==
+
+ORPSoC pulls together lots of different OpenCores projects. It should be a separate project in its own right, like [[OR1K:MinSoC]], not part of OpenRISC (which should just be about the processor). [[User:Jeremybennett|Jeremybennett]] 19:13, 18 August 2011 (CEST)
+
 == Modules ==
 * Use the <code>modules</code> directory for external cores. These could be managed with svn externals, git submodules, or symlinks if it's not desirable to just dump the cores there.
 * Add a top level Makefile that contains the following rules
