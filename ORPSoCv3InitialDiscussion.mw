@@ -1,0 +1,17 @@
+Why ORPSoCv3? Because Julius would hate the name ;)
+
+ORPSoC should be the reference platform for OpenRISC development. It has many users and can be extended to lots of FPGA boards. There are however many users that prefer minSOC as it is considered to be easier to get started with.
+
+Here's a proposal for improving things in ORPSoC land
+
+== Modules ==
+* Use the <code>modules</code> directory for external cores. These could be managed with svn externals, git submodules, or symlinks if it's not desirable to just dump the cores there.
+* Add a top level Makefile that contains the following rules
+** list-rtl-files : Returns a list of the modules' and it's submodules' rtl-files. Used in top level Makefile to create project files for synthesis and simulation
+** list-include-dirs : Returns a list of the modules' and it's submodules' directories containing include files. Used in top level Makefile to create project files for synthesis and simulation
+
+== Configuration ==
+Kbuild has been proposed here. Pros/cons?
+
+== Software integration ==
+People might want to build software running on their ORPSoC. Is this feasible?
