@@ -19,5 +19,6 @@ Kbuild has been proposed here. Pros/cons?
 
 I would like to have a standardized set of makefiles for every ORPSoC build, and include a Makefile.inc that contains all user parameters. I've been discussing with Saar Drimer at [https://www.boldport.com/docs/fpgaproj boldport] about integrating his work with our efforts [[User:Olof|Olof]] 09:48, 19 August 2011 (CEST)
 
+For hardware configuration we should aim to replace defines and defparams with parameters [[User:Olof|Olof]] 21:00, 19 August 2011 (CEST)
 == Software integration ==
 People might want to build software running on their ORPSoC. Is this feasible?
