@@ -205,6 +205,8 @@ gdbserver can be run on an OpenRISC linux system to act as a RSP client and allo
 
 gdbserver must be built by hand. The following instructions assume you have used the <tt>bld-all.sh</tt> script to build the or32-linux toolchain.
 
+'''Note.''' You must build your tool chain with uClibc compiled with UCLIBC_HAS_THREADS=y and PTHREADS_DEBUG_SUPPORT=y.
+
 Change to the bd-linux-gdb/gdb directory
 
  cd bd-linux-gdb/gdb
