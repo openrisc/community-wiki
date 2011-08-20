@@ -21,6 +21,14 @@ This library also provides support for particular boards in ORPSoC.
 
 == Support library functions ==
 
+These functions are implemented in the or1k-support.c and or1k-support-asm.S files in the <code>newlib/libc/machine/or32</code> path in the newlib port directory. The header, <code>or1k-newlib-support.h</code> is found in the <code>newlib/libc/machine/or32/include</code> path. Note that this header and the OR1K <code>spr-defs.h</code> header are installed also in the <code>/install_path/or32-elf/include</code> path.
+
+They are accessible via the inclusion of the following header.
+
+ <code>#include <or1k-newlib-support.h></code>
+
+The following functions are provided
+
 {| border="1" align="center" style="text-align:center;"
 |'''Function Name'''
 |'''Arguments'''
@@ -137,6 +145,14 @@ This library also provides support for particular boards in ORPSoC.
 |Reset tick counter value	
 |none
 |}
+
+Contributions are welcome to help fix and improve this support library.
+
+Feel free to post any suggestions or offers to assist the project to the OpenRISC forum or openrisc_team@opencores.org
+
+=== TODO ===
+
+Functions still missing: interrupt acknowledge/clear function to clear bit in PICSR, cache region flush, MMU map function.
 
 == Board support details ==
 
