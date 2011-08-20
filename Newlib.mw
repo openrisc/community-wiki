@@ -156,4 +156,10 @@ Functions still missing: interrupt acknowledge/clear function to clear bit in PI
 
 == Board support details ==
 
-TODO - details here.
+Libgloss now provides an easy way of adding additional boards by way of linking in a small library containing just a few values used at run-time to configure the system. Each board has its own path and libboard.a in the /install_path/or32-elf/lib/boards directory. The boardname above should correspond to a directory under this path.
+
+Libgloss also implements system calls, and at present only basic I/O via UART is implemented for the read and write system calls.
+
+In toolchain version 1.0rc1 a handful of boards and the or1ksim architectural simulator are supported.
+
+TODO - further details
