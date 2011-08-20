@@ -17,6 +17,10 @@ Once you have your board up and running, you may find the guide to [[Debugging p
 
 [http://orsoc.se/fpga-development-board/ More about this board on manufacturer's website]
 
+=== Pre-built image ===
+[ftp://ocuser:ocuser@openrisc.opencores.org/orpsoc/images/orpsoc-ordb1a3pe1500-20MHz.pdb orpsoc-ordb1a3pe1500-20MHz.pdb]
+Please use the Actel FlashPro tool to program the FPGA with this image.
+
 == Xilinx ML501 ==
 
 * Board path: xilinx/ml501
