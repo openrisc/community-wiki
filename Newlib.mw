@@ -21,7 +21,122 @@ This library also provides support for particular boards in ORPSoC.
 
 == Support library functions ==
 
-TODO - tables here.
+{| border="1" align="center" style="text-align:center;"
+|'''Function Name'''
+|'''Arguments'''
+|'''Description'''
+|'''Return value'''
+|-
+|<code>or1k_interrupt_handler_add</code>
+|<code>int irq, void(*function_name)(void*)</code>
+|Install function_name as handler for interrupt at IRQ <code>irq</code>
+|none
+|-
+|<code>or1k_interrupt_enable</code>	
+|<code>int irq</code>	
+|Enable generation interrupt at IRQ irq in PICMR	
+|none
+|-
+|<code>or1k_interrupt_disable</code>	
+|<code>int irq</code>	
+|Disable generation of interrupt at IRQ irq in PICMR	
+|none
+|-
+|<code>or1k_exception_handler_add</code>	
+|<code>int vector, void(*function_name)(void*)</code>	
+|Install function_name as handler for vector at address (vector*0x100)	
+|none
+|-
+|<code>or1k_mtspr</code>	
+|<code>unsigned long int spr, unsigned long int value</code>	
+|Write SPR[spr] = value	
+|none
+|-
+|<code>or1k_mfspr</code>	
+|<code>unsigned long int spr</code>	
+|Read SPR[spr]	
+|SPR[spr]
+|-
+|<code>or1k_report</code>	
+|<code>unsigned long int value</code>	
+|Simulator report function with l.nop 0x2	
+|none
+|-
+|<code>or1k_icache_enable</code>	
+|<code>void</code>	
+|Enable instruction cache in SR	
+|none
+|-
+|<code>or1k_icache_disable</code>	
+|<code>void</code>	
+|Disable instruction cache in SR	
+|none
+|-
+|<code>or1k_icache_flush</code>	
+|<code>unsigned long addr</code>	
+|Flush addr from instruction cache	
+|none
+|-
+|<code>or1k_dcache_enable</code>	
+|<code>void</code>	
+|Enable data cache in SR	
+|none
+|-
+|<code>or1k_dcache_disable</code>	
+|<code>void</code>	
+|Disable data cache in SR	
+|none
+|-
+|<code>or1k_dcache_flush</code>	
+|<code>unsigned long addr</code>	
+|Flush addr from data cache	
+|none
+|-
+|<code>or1k_immu_enable</code>	
+|<code>void</code>	
+|Enable instruction MMU in SR	
+|none
+|-
+|<code>or1k_immu_disable</code>	
+|<code>void</code>	
+|Disable instruction MMU in SR	
+|none
+|-
+|<code>or1k_dmmu_enable</code>	
+|<code>void</code>	
+|Enable data MMU in SR	
+|none
+|-
+|<code>or1k_dmmu_disable</code>	
+|<code>void</code>	
+|Disable data MMU in SR	
+|none
+|-
+|<code>or1k_timer_init</code>	
+|<code>unsigned int hz</code>	
+|Initialise timer to count at hz hertz, reset tick counter, install handler	
+|none
+|-
+|<code>or1k_timer_enable</code>	
+|<code>void</code>	
+|Start timer, enable timer interrupt in SR	
+|none
+|-
+|<code>or1k_timer_disable</code>	
+|<code>void</code>	
+|Stop timer interrupts	
+|none
+|-
+|<code>or1k_timer_get_ticks</code>	
+|<code>void</code>	
+|Read tick counter value	
+|tick counter
+|-
+|<code>or1k_timer_reset_ticks</code>	
+|<code>void</code>	
+|Reset tick counter value	
+|none
+|}
 
 == Board support details ==
 
