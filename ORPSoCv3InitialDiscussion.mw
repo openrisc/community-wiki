@@ -10,6 +10,10 @@ ORPSoC pulls together lots of different OpenCores projects. It should be a separ
 
 == Modules ==
 * Use the <code>modules</code> directory for external cores. These could be managed with svn externals, git submodules, or symlinks if it's not desirable to just dump the cores there. [[User:Olof|Olof]] 19:19, 18 August 2011 (CEST)
+** This is a good approach, resulting in not having multiple copies of a core sitting around in various repositories which can be confusing and difficult to manage. [[User:Julius|Julius]] 14:45, 20 August 2011 (CEST)
+*** The problem of managing the source of an IP which requires modification to work with a board build in ORPSoC should be solved external to the ORPSoC project. It should be acceptable that modules can be pulled in (via a scripted system) from arbitrary repositories, not necessarily along side where ORPSoC is hosted. [[User:Julius|Julius]] 14:45, 20 August 2011 (CEST)
+**** Examples of modifications that a core might require are the addition of a Makefile supporting the rules outlined below, renaming of top-level modules and their ports to comply with the standard naming styles used in ORPSoC, addition of technology-specific support to assist synthesis, replacement of `defines with parameters to enable multiple instances which differ. [[User:Julius|Julius]] 14:45, 20 August 2011 (CEST)
+*** This also allows different versions of a core to be used as required in different board builds. [[User:Julius|Julius]] 14:45, 20 August 2011 (CEST)
 * Add a top level Makefile that contains the following rules [[User:Olof|Olof]] 19:19, 18 August 2011 (CEST)
 ** list-rtl-files : Returns a list of the modules' and it's submodules' rtl-files. Used in top level Makefile to create project files for synthesis and simulation
 ** list-include-dirs : Returns a list of the modules' and it's submodules' directories containing include files. Used in top level Makefile to create project files for synthesis and simulation
