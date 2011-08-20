@@ -66,6 +66,10 @@ See the ML501 documentation in ORPSoC for instructions on programming this image
 
 [http://www.xilinx.com/products/boards-and-kits/HW-SD1800A-DSP-SB-UNI-G.htm More about this board on manufacturer's website]
 
+=== Pre-built image ===
+[ftp://ocuser:ocuser@openrisc.opencores.org/orpsoc/images/orpsoc-s3adsp1800-25MHz.bit orpsoc-s3adsp1800-25MHz.bit]
+See the ORPSoC documentation for information on how to program and use the FPGA with this image.
+
 == Terasic DE0 Nano ==
 (Not yet pushed to main orpsoc repo. Git repo can be found at git://openrisc.net/stefan/orpsoc)
 * Board path: altera/de0_nano
