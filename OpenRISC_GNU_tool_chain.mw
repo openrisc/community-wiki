@@ -250,26 +250,9 @@ There is a fully tested port of the GNU toolchan using the version 1.18.0 of new
 
 This is a smaller and simpler C library than uClibc, and is better suited to development of bare-metal applications. It is also used to test the entire GNU toolchain.
 
-The library is automatically linked when using the newlib version of the GCC compiler (or32-elf-gcc). The target board is specified by -m''boardname''. If not board is specified, the default (-mor1ksim) is suitable for use with [[Or1ksim]]. At present the boards supported are:
-* [[newlib ml501]]
-* [[newlib or1ksim]] (the default, output to the console running the program)
-* [[newlib or1ksim-uart]] (output to a 16550 UART mapped at 0x92000000)
-* [[newlib ordb1a3pe1500]]
-* [[newlib orpsocrefdesign]].
+The library is automatically linked when using the newlib version of the GCC compiler (or32-elf-gcc). The target board is specified by -m''boardname''. If not board is specified, the default (-mor1ksim) is suitable for use with [[Or1ksim]]. 
 
-Further information is availble in [http://www.embecosm.com/download/ean9.html Embecosm Application Note 9] ''Howto: Porting Newlib: A Simple Guide'', which explains in full detail how the port for the OpenRISC 1000 architecture was done.
-
-==== Future plans for newlib ====
-
-* Add more boards
-
-==== newlib port acknowledgements ====
-
-This [http://www.doc.ic.ac.uk/~jab00/or32-newlib/ original port] was for newlib 1.13.0 by Jacob Bower, then of Imperial College, London.
-
-The port was completely rewritten and tested for newlib 1.18.0 by [[User:Jeremybennett|Jeremy Bennett]] of [http://www.embecosm.com Embecosm].
-
-The port was subsequently extended by [[User:Julius|Julius Baxter]] to make support of multiple boards much more flexible.
+Further details are available on the [[Newlib | newlib port page]].
 
 === uClibc ===
 
