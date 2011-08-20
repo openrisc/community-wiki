@@ -25,7 +25,7 @@ These functions are implemented in the or1k-support.c and or1k-support-asm.S fil
 
 They are accessible via the inclusion of the following header.
 
- <code>#include <or1k-newlib-support.h></code>
+ <code>#include <or1k-support.h></code>
 
 The following functions are provided
 
