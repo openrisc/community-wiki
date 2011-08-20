@@ -11,6 +11,8 @@ The RTL source, test software and scripts can be downloaded from the OpenRISC pr
 
  <nowiki>svn co http://opencores.org/ocsvn/openrisc/openrisc/trunk/orpsocv2</nowiki>
 
+=== Pre-built FPGA Images ===
+[ftp://ocuser:ocuser@openrisc.opencores.org/orpsoc/images/orpsoc-ml501-66MHz.mcs ML501 image for SPI flash]
 
 == Documentation ==
 The main set of documentation is now in texinfo format and included with the project source.
