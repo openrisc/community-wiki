@@ -1,0 +1,28 @@
+= Introduction = 
+
+The OpenRISC 1000 port of the newlib library aims to provide a library to provide support for running on bare-metal hardware without an operating system. It is also used when running the GNU toolchain regression suite.
+
+The library is automatically linked when using the newlib version of the GCC compiler (or32-elf-gcc). The target board is specified by -m''boardname''. If not board is specified, the default (-mor1ksim) is suitable for use with [[Or1ksim]].
+
+= Port acknowledgements =
+
+This [http://www.doc.ic.ac.uk/~jab00/or32-newlib/ original port] was for newlib 1.13.0 by Jacob Bower, then of Imperial College, London.
+
+The port was completely rewritten and tested for newlib 1.18.0 by [[User:Jeremybennett|Jeremy Bennett]] of [http://www.embecosm.com Embecosm].
+Further information is availble in [http://www.embecosm.com/download/ean9.html Embecosm Application Note 9] ''Howto: Porting Newlib: A Simple Guide'', which explains in full detail how the port for the OpenRISC 1000 architecture was done.
+
+The port was subsequently extended by [[User:Julius|Julius Baxter]] to make support of multiple boards much more flexible.
+
+= OpenRISC support library =
+
+To assist with using features of the OpenRISC processor such as exceptions, interrupts and timers, a support library has been implemented.
+
+This library also provides support for particular boards in ORPSoC.
+
+== Support library functions ==
+
+TODO - tables here.
+
+== Board support details ==
+
+TODO - details here.
