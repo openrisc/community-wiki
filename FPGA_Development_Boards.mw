@@ -33,6 +33,9 @@ Once you have your board up and running, you may find the guide to [[Debugging p
 
 [http://www.xilinx.com/products/boards-and-kits/HW-V5-ML501-UNI-G.htm More about this board on manufacturer's website]
 
+* Pre-built image for SPI flash:[ftp://ocuser:ocuser@openrisc.opencores.org/orpsoc/images/orpsoc-ml501-66MHz.mcs orpsoc-ml501-66MHz.mcs]
+See the ML501 documentation in ORPSoC for instructions on programming this image into the board's SPI flash.
+
 == Digilent Atlys ==
 (Not yet pushed to main orpsoc repo. Git repo can be found at git://openrisc.net/stefan/orpsoc)
 * Board path: xilinx/atlys
