@@ -62,7 +62,7 @@ GDB will use the ''remote serial protocol'' (RSP) to communicate with the proxy.
 
 TODO - further information here.
 
-== GDB commands table ==
+=== GDB commands table ===
 
 {| border="1" align="center" style="text-align:center;"
 |'''Command'''
