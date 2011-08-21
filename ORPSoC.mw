@@ -165,6 +165,11 @@ Add export VERILATOR_ROOT=/path/to/verilator_kit to ~/.bashrc
 
 The SystemC model toolchain should now be ready to compile ORPSoC.
 
+== Usage Guides ==
+
+The following are links to guides for performing various tasks with ORPSoC. Please feel free to add your own and extend what is already available.
+
+[[ORPSoC_Board_Debugging | ORPSoC debugging on the board]]
 
 == Documentation Utilities ==
 
