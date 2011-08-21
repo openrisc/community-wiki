@@ -1,0 +1,16 @@
+== Overview ==
+This page aims to provide practical information on debugging software running on an ORPSoC implementation on hardware.
+
+== Introduction ==
+
+There are a number of steps for getting a build of ORPSoC running software. There are typically
+* Check and test physical connection of the debugger to the board
+* Attach GDB to the debug proxy program
+* Load and execute small programs to test the functionality of
+** UART
+** Memory
+* Load and execute something more substantial and cool
+** Benchmark program
+** O/S kernel
+
+Once the system is known to be working, the next step might be to load a bootloader into non-volatile memory to avoid having to connect the debugger to load software, but that is outside if the scope of this page. We will deal with the steps just outlined.
