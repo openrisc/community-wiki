@@ -15,3 +15,43 @@ There are a number of steps for getting a build of ORPSoC running software. Ther
 ** O/S kernel
 
 Once the system is known to be working, the next step might be to load a bootloader into non-volatile memory to avoid having to connect the debugger to load software, but that is outside if the scope of this page. We will deal with the steps just outlined.
+
+== Debug system overview ==
+
+Each ORPSoC board build will provide a way of controlling the system from a PC. The debug interface in the system will be controlled via JTAG, and a USB-JTAG connector cable is typically used to implement the JTAG control from the PC.
+
+This requires that the JTAG pins connected to the debug interface (usually made available via pins on the board) must be connected to the USB-JTAG connected cable, hereafter called the ''debug cable''.
+
+Once a physical connection is made, software on the PC is run to connect to the system and make it available for GDB to attach to. This software is known as a ''debug proxy''. The ''debug proxy'' needs to understand the debug interface and how it is controlled, so typically it interacts with low-level drivers to generate the JTAG transactions to the system over the ''debug cable''. The software also needs to understand how transactions are performed through the debug interface to the processor and the rest of the system. Finally it will provide the ability for GDB to attach to it and perform more elaborate debugging operations.
+
+== Debugger physical connection ==
+
+Each board build will typically expose the debug interface's JTAG pins allowing a debug cable to be attached. Typically this is just 4 pins for communication and 2 for power/ground.
+
+It is not uncommon for debug cables to also allow a UART to be attached and relayed back to the PC, which is usually just 2 more pins for communication and another 2 to power drivers, resulting in up to 10 pins for a complete debug interface.
+
+To test that these things are all attached correctly the debug proxy is run which should attempt to make contact with the system. If the initialisation process of the proxy software fails it usually indicates an issue with the physical connection or the configuration of the design on the FPGA.
+
+== Debug proxy connection ==
+
+The proxy software typically is debug interface-specific and provides support for only a limited range of debug cables.
+
+At present in ORPSoC builds, the [http://opencores.org/project,dbg_interface SoC Debug Interface] (also known as the ''Mohor Debug Interface'' after the author to avoid confusion with other debug interfaces) is used.
+
+The proxy software used at present is [[or_debug_proxy]] which is capable of interacting with the Mohor debug interface via an [http://opencores.org/shop,item,3 ORSoC USB-JTAG debug cable]. (Work is underway to add support for the Mohor debug interface and the OpenRISC architecture in [http://openocd.berlios.de/web/ OpenOCD] which should allow the use of any debug cable - see details on the [[OpenOCD]] page on this wiki.)
+
+The proxy software will first attempt to check what it is connected to by reading out the ID of the JTAG TAP in the design. If this fails this could be due to one or many reasons. Starting from the PC to the board:
+* The debug cable is not plugged into the PC
+* The debug cable device does not have the correct drivers or permissions in the operating system
+* The connections to the board from the debug cable are incorrect (signals and/or power)
+** Check integrity of flyleads
+** Voltage on power pins is not correct
+* The board is not powered
+* The design is not loaded on the FPGA
+* The design might need a reset after being loaded onto the FPGA
+* Incorrect design is on the FPGA
+* Incorrect pin assignments for the JTAG pins into the FPGA design
+* Entire design or just JTAG TAP and/or debug interface are being held in reset
+* Debug module was not included in the design
+
+Attempting to make first contact with the FPGA design for the first time is usually a time-consuming process. There is a lot to check in the path from the PC to the design. However, once the debug proxy connects and can communicate with the processor it will for GDB to connect and issue further debugging commands..
