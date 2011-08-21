@@ -156,10 +156,62 @@ Functions still missing: interrupt acknowledge/clear function to clear bit in PI
 
 == Board support details ==
 
-Libgloss now provides an easy way of adding additional boards by way of linking in a small library containing just a few values used at run-time to configure the system. Each board has its own path and libboard.a in the /install_path/or32-elf/lib/boards directory. The boardname above should correspond to a directory under this path.
+The OpenRISC portion of libgloss provides a simple way of adding support for boards by way of linking in a small library containing some values used at run-time to configure the system. Each board has its own path and <code>libboard.a</code> in the <code>/install_path/or32-elf/lib/boards/''boardname''</code> directory. The ''boardname'' above should correspond to a directory under this path.
 
-Libgloss also implements system calls, and at present only basic I/O via UART is implemented for the read and write system calls.
+Libgloss also implements system calls, and at present only read and write system calls are supported via the UART.
 
-In toolchain version 1.0rc1 a handful of boards and the or1ksim architectural simulator are supported.
+In the version currently in the repository, a handful of boards and the or1ksim architectural simulator are supported.
 
-TODO - further details
+{| border="1" align="center" style="text-align:center;"
+|'''Board'''
+|'''Description'''
+|-
+|or1ksim	
+|or1ksim simulator, no peripherals
+|-
+|or1ksim-uart	
+|or1ksim simulator with a UART
+|-
+|ordb1a3pe1500	
+|ORSoC dedvelopment board 1, A3PE1500 part, as in ORPSoC
+|-
+|ml501	
+|Xilinx ML501 board, as in ORPSoC
+|-
+|orpsocrefdesign	
+|ORPSoC reference design
+|}
+
+For example, to compile with support for the ''ordb1a3pe1500'' board, one would pass the following options at compile-time.
+
+ <code>or32-elf-gcc -mboard=ordb1a3pe1500</code>
+
+Each <code>libboard.a</code> defines the following symbols:
+
+{| border="1" align="center" style="text-align:center;"
+|'''Symbol'''
+|'''Description'''
+|-
+|_board_mem_base	
+|Base of main memory
+|-
+|_board_mem_size	
+|Size of main memory
+|-
+|_board_clk_freq	
+|Frequency in hertz of CPU clock, also presumed as UART clock
+|-
+|_board_uart_base	
+|Base address of a UART 16550 peripheral
+|-
+|_board_uart_baud	
+|Desired buad rate for UART
+|-
+|_board_uart_IRQ	
+|IRQ number of UART
+|}
+
+
+Adding additional boards (without recompiling and installing the toolchain) is as simple as creating a creating a <code>libboard.a</code> with the appropriate symbols set to the right values and placing it in the <code>/install_path/or32-elf/lib/boards/''boardname''</code> directory. The ''boardname'' should be the same as the one used when passing the <code>-mboard=''boardname''</code> to the compiler.
+
+To create this <code>libboard.a</code> see examples of the existing <code>''boardname''.S</code> files in the <code>newlib-1.x.0/libgloss/or32</code> path in the newlib port source.
