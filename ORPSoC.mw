@@ -169,7 +169,7 @@ The SystemC model toolchain should now be ready to compile ORPSoC.
 
 The following are links to guides for performing various tasks with ORPSoC. Please feel free to add your own and extend what is already available.
 
-[[ORPSoC_Board_Debugging | ORPSoC debugging on the board]]
+[[ORPSoC_Board_Software_Debugging | ORPSoC software debugging on the board]]
 
 == Documentation Utilities ==
 
