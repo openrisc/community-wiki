@@ -156,4 +156,3 @@ spr gpr1 0x8400</code>
 |<code>del 5</code>	
 |Delete breakpoint N.
 |}
-|-
