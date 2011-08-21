@@ -23,8 +23,7 @@ To generate a PDF of the documentation, change into the doc/ path of the project
  make pdf
 
 The texinfo and TeX processing tools are required to generate the documentation in PDF.
-See the texinfo and TeX install sections below.
-
+See the [[#Documentation_Utilities |section below]] for installation information.
 
 == Supported Boards ==
 There are board-specific builds of ORPSoC which should contain RTL and scripts enabling push-button synthesis and generation of programming files.
