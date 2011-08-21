@@ -55,3 +55,105 @@ The proxy software will first attempt to check what it is connected to by readin
 * Debug module was not included in the design
 
 Attempting to make first contact with the FPGA design for the first time is usually a time-consuming process. There is a lot to check in the path from the PC to the design. However, once the debug proxy connects and can communicate with the processor it will for GDB to connect and issue further debugging commands..
+
+== GDB ==
+
+GDB will use the ''remote serial protocol'' (RSP) to communicate with the proxy.
+
+TODO - further information here.
+
+== GDB commands table ==
+
+{| border="1" align="center" style="text-align:center;"
+|'''Command'''
+|'''Example'''
+|'''Description'''
+|-
+|<code>x ''address''</code>	
+|<code>x 0x200</code>	
+|Examine memory. Here we read the memory at address <code>0x200</code>. This can also be used to generate accesses on the Wishbone bus by accessing known memory mapped registers	
+|-
+|<code>info spr ''spr-reg-name''</code>	
+|<code></code>	
+|Inspect the processor's special purpose registers (SPRs)
+|-
+|<code>info spr sys</code>	
+|<code>Read all of the CPU's special purpose registers (SPRs)
+info spr npc</code>	
+|Read the value of the next program counter (NPC)
+|-
+|<code>info spr ppc</code>	
+|<code>Read the value of the previous/present program counter (last executed instruction, PPC)
+info spr gpr1</code>	
+|Read the value of general purpose register number 1 (GPR1)
+|-
+|<code>set *((''type''*) ''addr'') = ''val''</code>	
+|<code>set *((int*) 0x100) = 0x00112233</code>	
+|Write a value to memory. Specify the type (size of variable), address and value.
+|-
+|<code>spr spr-reg-name value</code>	
+|<code></code>	
+|Write to a special purpose register (SPRs)
+|-
+|<code>spr npc 0x100</code>	
+|<code>Set the NPC to 0x100
+spr gpr1 0x8400</code>	
+|Set general purpose register 1 (GPR1) to 0x8400
+|-
+|<code>file ''FILE''</code>	
+|<code>file vmlinux</code>	
+|Use this file as the program to be debugged. Can specify a path to file if not in CWD.
+|-
+|<code>load</code>	
+|<code></code>	
+|Dynamically load FILE into the running program, and record its symbols for access from GDB. A load OFFSET may also be given.
+|-
+|<code>compare-sections [section-name]</code>	
+|<code>compare-sections .text</code>	
+|Verify that the contents of the target's memory in the area encompassed by section-name match the file GDB has. This is used to make sure there are no issues with the downloaded code.
+|-
+|<code>dump ''format'' memory ''filename'' ''start_addr'' ''end_addr''</code>	
+|<code>dump binary memory mydump.bin 0x2000 0x4000</code>	
+|Dump contents of memory from start_addr to end_addr into file in format.
+|-
+|<code>c(ontinue)</code>	
+|<code></code>	
+|Start the processor running/executing again.
+|-
+|<code>^C ''(CTRL+C)''</code>	
+|<code></code>	
+|Interrupt execution,stall the processor, return control to GDB.
+|-
+|<code>si</code>	
+|<code></code>	
+|Step one instruction exactly.
+|-
+|<code>si ''N''</code>	
+|<code>si 8</code>	
+|Step N instructions.
+|-
+|<code>step</code>	
+|<code></code>	
+|Step program until it reaches a different source line.
+|-
+|<code>step N</code>	
+|<code>step 2</code>	
+|Step N times, or until program stops for another reason.
+|-
+|<code>br(eak) location</code>	
+|<code></code>	
+|Set a breakpoint at a location, either an address in memory or source code file and line number. With no location, uses current execution address of selected stack frame.
+|-
+|<code>br *''address''</code>
+|<code>br *0x98c0</code>
+|Set a breakpoint at that exact address.
+|-
+|<code>info br</code>	
+|<code></code>	
+|Status of breakpoints.
+|-
+|<code>del N</code>	
+|<code>del 5</code>	
+|Delete breakpoint N.
+|}
+|-
