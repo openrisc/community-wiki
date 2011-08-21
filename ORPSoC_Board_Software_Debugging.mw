@@ -64,6 +64,8 @@ TODO - further information here.
 
 === GDB commands table ===
 
+  Maybe this wants to go on its own page somewhere because it's not specific to ORPSoC [[User:Julius|Julius]] 16:45, 21 August 2011 (CEST)
+
 {| border="1" align="center" style="text-align:center;"
 |'''Command'''
 |'''Example'''
