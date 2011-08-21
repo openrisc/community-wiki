@@ -167,7 +167,7 @@ Add export VERILATOR_ROOT=/path/to/verilator_kit to ~/.bashrc
 The SystemC model toolchain should now be ready to compile ORPSoC.
 
 
-== Documentation ==
+== Documentation Utilities ==
 
 The following tools are required to compile the documentation source in the project's doc/ path, generating a PDF.
 
@@ -199,7 +199,6 @@ Under CentOS, Fedora and Red Hat use the following:
 '''Performing the tests'''
 
 See the documentation in the project for running simulations of the system.
-
 
 == To Do ==
 :*Add ability to run or1ksim's test suite against reference design
