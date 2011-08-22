@@ -94,3 +94,5 @@ into oprsocv3 and rerun the build_hw script then they will appear in the .h file
 
 I would be happy to create and maintain all of the ip-xact files needed to build orpsocv3 and set up
 the design so that you could build the rtl using the socgen toolset.
+
+John Eaton
