@@ -93,14 +93,9 @@ info spr gpr1</code>
 |<code>set *((int*) 0x100) = 0x00112233</code>	
 |Write a value to memory. Specify the type (size of variable), address and value.
 |-
-|<code>spr spr-reg-name value</code>	
-|<code></code>	
-|Write to a special purpose register (SPRs)
-|-
+|<code>spr ''spr-reg-name'' ''value''</code>	
 |<code>spr npc 0x100</code>	
-|<code>Set the NPC to 0x100
-spr gpr1 0x8400</code>	
-|Set general purpose register 1 (GPR1) to 0x8400
+|Write to a special purpose register (SPRs)
 |-
 |<code>file ''FILE''</code>	
 |<code>file vmlinux</code>	
