@@ -20,9 +20,9 @@ Once the system is known to be working, the next step might be to load a bootloa
 
 Each ORPSoC board build will provide a way of controlling the system from a PC. The debug interface in the system will be controlled via JTAG, and a USB-JTAG connector cable is typically used to implement the JTAG control from the PC.
 
-This requires that the JTAG pins connected to the debug interface (usually made available via pins on the board) must be connected to the USB-JTAG connected cable, hereafter called the ''debug cable''.
+This requires that the JTAG pins connected to the debug interface (usually made available via pins on the board) are connected to the USB-JTAG cable, hereafter called the ''debug cable''.
 
-Once a physical connection is made, software on the PC is run to connect to the system and make it available for GDB to attach to. This software is known as a ''debug proxy''. The ''debug proxy'' needs to understand the debug interface and how it is controlled, so typically it interacts with low-level drivers to generate the JTAG transactions to the system over the ''debug cable''. The software also needs to understand how transactions are performed through the debug interface to the processor and the rest of the system. Finally it will provide the ability for GDB to attach to it and perform more elaborate debugging operations.
+Once a physical connection is made, software on the PC is run to connect to the ORPSoC system and make it available for GDB to attach to. This software is known as a ''debug proxy''. The ''debug proxy'' needs to understand the debug interface module in ORPSoC and how it is controlled, so typically it interacts with low-level drivers to generate the JTAG transactions to the system over the ''debug cable''. The software also needs to understand how transactions are performed through the debug interface module to the processor and the rest of the system. Finally it will provide the ability for GDB to connect to it and perform more elaborate debugging operations.
 
 == Debugger physical connection ==
 
