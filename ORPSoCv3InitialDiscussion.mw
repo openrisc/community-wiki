@@ -33,3 +33,64 @@ Actually, ORPSoCv3 makes sense, but I'd prefer to see it called just ORPSoC and 
 == Hardware ==
 All critical features requests and bugs in ORPSoCv2 should be addressed before adding features (and more bugs) in ORPSoCv3.
 * Fair enough. [http://bugzilla.opencores.org/show_bug.cgi?id=59 These] [http://bugzilla.opencores.org/show_bug.cgi?id=56 two] was what I could find in Bugzilla. We might need to scrape the old and new bug system to see if there are more [[User:Olof|Olof]] 23:24, 22 August 2011 (CEST)
+
+
+== Use an IP-Xact enabled tool flow ==
+
+Orpsocv3 would be a great opportunity for opencores to stop playing catch up
+and start showing a leadership roll in ip packaging and reuse by building a
+complete soc design using an Ip-Xact enabled tool flow.
+
+Ip-xact (IEEE 1685) was released in 2009 and has the potential to solve many of
+our design for reuse problems but its adoption by the industry has been slow.
+A big part of the problem is that a standard should simply document what everyone
+is already doing but in the case of design for reuse there really aren't a lot
+of examples of good working design for reuse methods. Accellera is currently working
+on a update to the standard that would add in some of the vendor extensions that
+tool providers have needed to make the standard workable. This is a time when we could
+use orpsocv3 as a demo project for ip-xact and feedback any problems or issues back to
+the ip-xact working group. I follow that groups monthly teleconferences.
+
+
+Ip-xact defines an electronic data sheet in the form of an xml file that describes a
+piece of ip. Every file contains an identifier known as a VLNV. That consists of the
+vendor name (in our case it opencores.org) , library name. component name and version.
+  
+The file also lists all parameters with default values, All ports with sizes and directions
+and all design "views". A view is a improvement over the traditional way that we have done
+designs. We currently do "superset" designs where we create one delivierable that is sent
+to all tool flows. Anything that any tool needs is added to the design and if this causes
+problems for other tools (IE: Non synthesizable code) then we use translate off pragmas
+or `ifndef SYNTHESIS to hide it from the other tools.
+
+With ip-xact you create a view for each of your tool flows and each view builds its own 
+deliverable with exactly what it needs and nothing more. The ip-xact file will define
+a views for sim and syn and each will have their own output file.
+
+
+To get started we need to understand the difference between a library and a component. 
+A component is building block that we will configure and add into our design. Every component
+must have an ip-xact file, Rtl code , Documentation and a test suite.
+
+A library is a box that holds components. Usually there is a common theme that all the components
+share. Or1200, minsoc and orpsocv2 are all components. openrisc is a library because it contains
+several components.
+
+opencores.org is currently using a flat database full of components mixed in with libraries.
+We should add some more libraries to help us better manage all the ip. For example we should
+create a library named wishbone that would either contain wishbone components or svn remote
+mount them. That will give us the library name for the ip-xact files.
+
+Also you should never create a wishbone component. If you want an i2c_controller on a wishbone
+bus then you first create and i2c_controller in a logic library and then create a wishbone 
+component that uses ip-xact to instantiate that i2c_controller. That way any bus de jour could
+easily reuse the same i2c logic.
+
+Currently I am building an ip-xact toolset in the socgen project that could be used to build 
+all of the rtl code for a soc such as opsocv3. I recently added the ability to support busDefinitions
+(really powerfull stuff) and soon will begin to add support for memory maps. With memory maps each 
+ip-xact file contains a register map with all the bitfields. If you add two wishbone i2c_controllers
+into oprsocv3 and rerun the build_hw script then they will appear in the .h file.
+
+I would be happy to create and maintain all of the ip-xact files needed to build orpsocv3 and set up
+the design so that you could build the rtl using the socgen toolset.
