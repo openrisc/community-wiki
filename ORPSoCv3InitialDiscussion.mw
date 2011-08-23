@@ -8,6 +8,8 @@ Here's a proposal for improving things in ORPSoC land
 
 ORPSoC pulls together lots of different OpenCores projects. It should be a separate project in its own right, like [[OR1K:MinSoC]], not part of OpenRISC (which should just be about the processor). [[User:Jeremybennett|Jeremybennett]] 19:13, 18 August 2011 (CEST)
 
+There is a case for pulling the tool chains and operating systems out into separate projects to make the whole thing more manageable. [[User:Jeremybennett|Jeremybennett]] 11:02, 23 August 2011 (CEST)
+
 == Modules ==
 * Use the <code>modules</code> directory for external cores. These could be managed with svn externals, git submodules, or symlinks if it's not desirable to just dump the cores there. [[User:Olof|Olof]] 19:19, 18 August 2011 (CEST)
 ** This is a good approach, resulting in not having multiple copies of a core sitting around in various repositories which can be confusing and difficult to manage. [[User:Julius|Julius]] 14:45, 20 August 2011 (CEST)
