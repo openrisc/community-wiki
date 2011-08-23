@@ -33,7 +33,7 @@ Actually, ORPSoCv3 makes sense, but I'd prefer to see it called just ORPSoC and 
 == Hardware ==
 All critical features requests and bugs in ORPSoCv2 should be addressed before adding features (and more bugs) in ORPSoCv3.
 * Fair enough. [http://bugzilla.opencores.org/show_bug.cgi?id=59 These] [http://bugzilla.opencores.org/show_bug.cgi?id=56 two] was what I could find in Bugzilla. We might need to scrape the old and new bug system to see if there are more [[User:Olof|Olof]] 23:24, 22 August 2011 (CEST)
-
+:: I scraped the old bug tracker and put anything even vaguely still alive in Bugzilla. [[User:Jeremybennett|Jeremybennett]] 10:55, 23 August 2011 (CEST)
 
 == Use an IP-Xact enabled tool flow ==
 
