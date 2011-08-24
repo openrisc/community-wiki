@@ -26,7 +26,12 @@ Kbuild has been proposed here. Pros/cons?
 
 I would like to have a standardized set of makefiles for every ORPSoC build, and include a Makefile.inc that contains all user parameters. I've been discussing with Saar Drimer at [https://www.boldport.com/docs/fpgaproj boldport] about integrating his work with our efforts [[User:Olof|Olof]] 09:48, 19 August 2011 (CEST)
 
+I took a quick look at boldport. It isn't rocketscience they are doing; anyone working with multiple tools uses the same approach. What I don't like about it, is that it is not generic enough. It is too FPGA centric.--[[User:Rherveille|Rherveille]] 18:29, 24 August 2011 (CEST)
+
 For hardware configuration we should aim to replace defines and defparams with parameters [[User:Olof|Olof]] 21:00, 19 August 2011 (CEST)
+
+Yes definitely; parameters only. Defines can be used for special cases, but none should be used in the actual RTL files.--[[User:Rherveille|Rherveille]] 18:29, 24 August 2011 (CEST)
+
 == Software integration ==
 People might want to build software running on their ORPSoC. Is this feasible?
 
