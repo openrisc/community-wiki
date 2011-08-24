@@ -37,6 +37,7 @@ Yes definitely; parameters only. Defines can be used for special cases, but none
 
 == Software integration ==
 People might want to build software running on their ORPSoC. Is this feasible?
+* Definitely - we might want to integrate more with newlib - it was my ambition move all of the software to be based on newlib, rather than the little bare metal libraries I've put together in ORPSoC. I think this should be pursued for the next iteration of this project. [[User:Julius|Julius]] 00:13, 25 August 2011 (CEST)
 
 == Name and version ==
 Actually, ORPSoCv3 makes sense, but I'd prefer to see it called just ORPSoC and have version numbers (my flavor of the month) for the project when we tag it beginning at 3.0.0. We could then refer to the previous versions as 1 (the original, long gone) and 2 (the one being worked on at the moment, expect to see this in use until 3.0 gets up.)  [[User:Julius|Julius]] 14:17, 20 August 2011 (CEST)
