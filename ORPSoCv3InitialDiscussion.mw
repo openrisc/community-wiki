@@ -7,7 +7,7 @@ Here's a proposal for improving things in ORPSoC land
 == Create a separate project ==
 
 ORPSoC pulls together lots of different OpenCores projects. It should be a separate project in its own right, like [[OR1K:MinSoC]], not part of OpenRISC (which should just be about the processor). [[User:Jeremybennett|Jeremybennett]] 19:13, 18 August 2011 (CEST)
- Agreed. I was initially tasked with developing ORPSoC(v2.0) mainly as a testbench for the OR1200, however the board build thing grew out of it, and now I think it's got enough momentum and interest for it to be deemed worthy for its own project. [[User:Julius|Julius]] 00:09, 25 August 2011 (CEST)
+*Agreed. I was initially tasked with developing ORPSoC(v2.0) mainly as a testbench for the OR1200, however the board build thing grew out of it, and now I think it's got enough momentum and interest for it to be deemed worthy for its own project. [[User:Julius|Julius]] 00:09, 25 August 2011 (CEST)
 
 There is a case for pulling the tool chains and operating systems out into separate projects to make the whole thing more manageable. [[User:Jeremybennett|Jeremybennett]] 11:02, 23 August 2011 (CEST)
 
