@@ -242,6 +242,44 @@ This will allow ''my_program'' to be debugged remotely via port 51000. On the ho
 
 Which will run the program until it hits the breakpoint at the start of <tt>main ()</tt>. '''Note.''' You must have a copy of the program both on the target Linux machine (to execute) and on the workstation running gdb (for the symbol table).
 
+==== Using GDB with Or1ksim ====
+
+Users often wish to use GDB with [[Or1ksim]], the architectural simulator. Here  are some simple guidelines to get started.
+
+Take a simple program which you have compiled something like this:
+
+ or32-elf-gcc -g HelloWorld.c -o HelloWorld
+
+'''Note.''' Remember to use -g so debug information is included. It doesn't affect program performance, but makes for a much richer debug experience.
+
+Simplest way to debug is to use the built in Or1ksim within GDB. By default that gives you a simple config with 8M of memory.
+
+ or32-elf-gdb HelloWorld
+ ...
+ (gdb) target sim
+ (gdb) load
+ <set up any breakpoints etc>
+ (gdb) run
+ ...
+
+If you want to use Or1ksim standalone (perhaps with a more complex configuration), then start it up, specifying a port for debug connection. You can either do this within the config file (it is the ''rsp_port'' parameter), or specify it on the command line:
+
+ or32-elf-sim --srv=51000 ...
+
+This sets up GDB to use port 51000 to communicate on. You can specify any value up to 65535, although you should definitely avoid values below 1024. If you don't specify a value, Or1ksim will select a port at random and tell you.
+
+In a separate window on the same machine start up GDB
+
+ or32-elf-gdb HelloWorld
+ ...
+ (gdb) target remote :51000
+ (gdb) load
+ <set up any breakpoints etc>
+ (gdb) continue
+ ...
+
+Note that the usage is slightly different, you are connecting to a model that is already "started", so you just continue execution. Don't worry, connecting stalls the model, while loading the image sets the PC to its entry point, so you will continue at the right place.
+
 == Libraries ==
 
 === newlib ===
