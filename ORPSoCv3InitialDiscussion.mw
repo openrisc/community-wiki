@@ -10,6 +10,7 @@ ORPSoC pulls together lots of different OpenCores projects. It should be a separ
 *Agreed. I was initially tasked with developing ORPSoC(v2.0) mainly as a testbench for the OR1200, however the board build thing grew out of it, and now I think it's got enough momentum and interest for it to be deemed worthy for its own project. [[User:Julius|Julius]] 00:09, 25 August 2011 (CEST)
 
 There is a case for pulling the tool chains and operating systems out into separate projects to make the whole thing more manageable. [[User:Jeremybennett|Jeremybennett]] 11:02, 23 August 2011 (CEST)
+* This isn't really an issue for ORPSoC, but I think this makes sense. [[User:Julius|Julius]] 00:10, 25 August 2011 (CEST)
 
 == Modules ==
 * Use the <code>modules</code> directory for external cores. These could be managed with svn externals, git submodules, or symlinks if it's not desirable to just dump the cores there. [[User:Olof|Olof]] 19:19, 18 August 2011 (CEST)
