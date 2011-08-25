@@ -42,7 +42,6 @@ Please use the Actel FlashPro tool to program the FPGA with this image.
 See the ML501 documentation in ORPSoC for instructions on programming this image into the board's SPI flash.
 
 == Digilent Atlys ==
-(Not yet pushed to main orpsoc repo. Git repo can be found at git://openrisc.net/stefan/orpsoc)
 * Board path: xilinx/atlys
 * CPU core frequency: 50MHz
 * Supported devices
