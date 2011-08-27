@@ -115,3 +115,14 @@ John Eaton
 : Finally. I'm not sure what the legal position would be around using IP-XACT in an open source context. The SPIRIT consortium (which owns IP-XACT) is a membership body, with some fairly demanding requirements on members. [[User:Jeremybennett|Jeremybennett]] 11:01, 23 August 2011 (CEST)
 
 : IP-XACT sounds like a great initiative, but if what Jeremy says is true, then it seems we would have some trouble implementing support. I think we should concentrate on structuring all our modules instead, so that when or if we are ready to join IP-XACT, there will at least be less ad-hoc structures. This includes bundling up things in libraries and general code cleanup. We might even be interested in inserting parts of the XML description in some cores [[User:Olof|Olof]] 23:25, 24 August 2011 (CEST)
+
+: The spirit consortium no longer exists. They have merged with accellera and that  body now supports the standard. It is a IEEE standard (1685-2009) and the accellera website links to a free downloadable copy. They are trying to jump start its usage within the industry.
+
+There certainly is a dearth of open source IP-XACT software. That is one of my goals for the socgen project is to create a set of scripts that can use the IP-XACT descriptors to build the rtl code and other deliverables. I would like to use oprsocv3 for a pilot run to test these scripts in a complex design environment . This would mean adding a IP-XACT file to every ip component and running a build script to generate the final rtl. For a project like this one we could also have all the generated rtl checked into the repository so that anybody who didn't  want to run the build_hw script could use the preexisting copy but you could also regenerate the same files from the ip-xact files as well.
+
+My philosophy is that design for reuse follows the 80/20 rule. You can do 20% of a design for reuse effort and that will give you 80% of the benefit. If your a commercial IP house then you still have to put forth the remaining 80% before you can sell the product but this group doesn't have to go that far. 
+
+Opencores does have guidelines for having a build hardware process that runs all the code through a verilog preprocessor. That is included in my
+socgen tool set. I could add that as a process step for any opencores project. 
+
+John Eaton
