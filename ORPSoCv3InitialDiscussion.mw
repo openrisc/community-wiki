@@ -50,6 +50,61 @@ All critical features requests and bugs in ORPSoCv2 should be addressed before a
 * Fair enough. [http://bugzilla.opencores.org/show_bug.cgi?id=59 These] [http://bugzilla.opencores.org/show_bug.cgi?id=56 two] was what I could find in Bugzilla. We might need to scrape the old and new bug system to see if there are more [[User:Olof|Olof]] 23:24, 22 August 2011 (CEST)
 :: I scraped the old bug tracker and put anything even vaguely still alive in Bugzilla. [[User:Jeremybennett|Jeremybennett]] 10:55, 23 August 2011 (CEST)
 
+== Project structure ==
+The current ORPSoC structure follows the recommended OpenCores structures, but has grown out of it because of the board ports and multiple modules. 
+For ORPSoCv3, it would be preferred to side-step the OpenCores structure where it makes sense for ORPSoC itself, while benefiting from the fact that most cores have a similar structure.
+: The following issues has been identified with the ORPSoCv2 structure and should be rectified in ORPSoCv3
+* Too many levels of hierarchy
+* Temporary build files spread out through the project tree
+* Common workflow requires changing directories often
+
+The proposed structure addresses this by assigning a common build-directory, moving Makefiles to the top-level and flattens out some of the directory trees [[User:Olof|Olof]] 19:49, 30 August 2011 (CEST)
+
+* '''orpsoc'''
+**bench
+***sysc
+***verilog
+**boards
+***actel-ordb1a3pe1500
+***altera-de0_nano
+***xilinx-atlys
+***xilinx-ml501
+****data
+*****constraints.ucf
+*****coregen
+****rtl
+*****verilog
+******clk_gen
+******mem_ctrl
+****orpsoc_top.v
+**build
+***ise
+***modelsim
+***ncsim
+***synplify
+***xst
+**cores
+***ac97
+***ethmac
+***or1200
+***spi
+***usb
+**doc
+****rtl
+*****verilog
+******arbiter
+******bootrom
+**scripts
+**sim
+***isim
+***modelsim
+***ncsim
+**sw
+***apps
+***tests
+***utils
+**Makefile
+
 == Use an IP-Xact enabled tool flow ==
 
 Orpsocv3 would be a great opportunity for opencores to stop playing catch up
