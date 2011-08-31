@@ -60,6 +60,10 @@ For ORPSoCv3, it would be preferred to side-step the OpenCores structure where i
 
 The proposed structure addresses this by assigning a common build-directory, moving Makefiles to the top-level and flattens out some of the directory trees [[User:Olof|Olof]] 19:49, 30 August 2011 (CEST)
 
+
+Either your formatting is munged or the rtl code is under the doc directory.  I would like to see where all the different variants will store their results. For example if you have 3 different software apps then you will need three different simulations and bitfiles. If you can configure the 
+or1200 for I-cache,dcache and debugger then you could be dealing with up to 24 combinations. The full test suite has to be able to run all supported configurations and save the results [[User:jt_eaton]] 30 August 2011
+
 * '''orpsoc'''
 **bench
 ***sysc
