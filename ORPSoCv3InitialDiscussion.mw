@@ -65,6 +65,8 @@ Either your formatting is munged or the rtl code is under the doc directory.  I 
 or1200 for I-cache,dcache and debugger then you could be dealing with up to 24 combinations. The full test suite has to be able to run all supported configurations and save the results [[User:jt_eaton]] 30 August 2011
 * Formatting is corrected. Haven't thought of the issue with several results. One idea might be to send a parameter to the Makefile that assigns a namespace or subdirectory for the different simulation results/bitfiles. Any other ideas? [[User:Olof|Olof]] 22:25, 1 September 2011 (CEST)
 
+Simulation suites can be very easy to parallelize and farm out to multiple cores as long as you don't do anything that prevents 2 sims from running at the same time. If all your sims run in the same directory and you have any filename that is shared then you will have problems. I create a separate subdirectory for each sim to completely isolate them from each other. This directory contains the test sequence initial statement that directs all the reads/writes and testing. There is also a dumpfile fragment and a gtkwave .sav file. That way each sim can control its dump file and how it is displayed. I have other system files that control the testbench creation and configuration for each sim [[User:jt_eaton|jt_eaton]] 1:19 2 September 2011 (CEST) 
+
 * '''orpsoc'''
 **bench
 ***sysc
