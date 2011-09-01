@@ -63,6 +63,7 @@ The proposed structure addresses this by assigning a common build-directory, mov
 
 Either your formatting is munged or the rtl code is under the doc directory.  I would like to see where all the different variants will store their results. For example if you have 3 different software apps then you will need three different simulations and bitfiles. If you can configure the 
 or1200 for I-cache,dcache and debugger then you could be dealing with up to 24 combinations. The full test suite has to be able to run all supported configurations and save the results [[User:jt_eaton]] 30 August 2011
+* Formatting is corrected. Haven't thought of the issue with several results. One idea might be to send a parameter to the Makefile that assigns a namespace or subdirectory for the different simulation results/bitfiles. Any other ideas? [[User:Olof|Olof]] 22:25, 1 September 2011 (CEST)
 
 * '''orpsoc'''
 **bench
@@ -94,10 +95,10 @@ or1200 for I-cache,dcache and debugger then you could be dealing with up to 24 c
 ***spi
 ***usb
 **doc
-****rtl
-*****verilog
-******arbiter
-******bootrom
+**rtl
+***verilog
+****arbiter
+****bootrom
 **scripts
 **sim
 ***isim
