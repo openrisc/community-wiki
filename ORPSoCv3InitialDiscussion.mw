@@ -110,6 +110,61 @@ or1200 for I-cache,dcache and debugger then you could be dealing with up to 24 c
 ***utils
 **Makefile
 
+=== Alternate set up ===
+[[User:Julius|Julius]] 23:06, 1 September 2011 (CEST)
+
+I think we should make all modules drop into each board build and not be available "globally" across ORPSoC.
+
+This is probably a discussion for elsewhere, but I think the testbench and maybe model files for each core should be housed with each module in each build. I would prefer to see the core that we're pulling in provide the testbench modules and models to test against.
+
+As much as possible, scripts should be kept globally.
+
+A set of common models (eg. memory) and utility cores/functions (eg. UART decoders) for testbenches and the like should be provided. If any design module becomes so common that every build is using it, it could live in the common/rtl path.
+
+==== Software - still unsure ====
+I would be happy to have a sw/ path at the base of the project if there was an easy way to allow each build to customise the libraries to its needs (which drivers to build and link essentially), like we do now in ORPSoC.
+Ideally I would prefer to see a move to a model where the core/module we pull in provides bare-metal drivers that the processor can use. Perhaps common test functions for a "service" (spi,uart,i2c,ethernet,memory) live in the root sw/ and contain calls to the drivers and functions provided by the core.
+
+==== Testing and development facilities ====
+Sorry to dump all of my ideas in this space, but I think what would be ''really'' cool is to have two types of testing capabilities. One where the processor simply triggers a bit of behavioural verilog in the testbench which then tests a core in the usual "standalone" testbench fashion, and one where the processor is largely doing the testing of the core from the CPU side. A mixture of both could also be achieved. But basically, the first type, where the core triggers some behavioural block to do its thing would be very handy to have, and to be able to manage the source of. Basically I would like to get to a position where the ''proper'' development of a block can occur in a build in ORPSoC and then allow you to transition into the control of the block by the CPU. That core, however, would still be testable by taking the testbench and triggering the 'go' condition of the test by some other means.
+
+==== Structure ====
+
+So, something like:
+
+'''orpsoc'''
+* builds
+** generic-or1200-reference
+** generic-or1200-fancyfeaturedemo
+** generic-otheror1k-reference
+** xilinx-ml501
+** xilinx-atlys
+** actel-ordb1a3pe1500
+** '''technology'''-'''buildnamename'''
+*** '''Makefile''' ''- a main build makefile for pulling in modules and setting up anything else required''
+*** modules
+*** simulation
+**** run
+**** scripts
+***** ''just some simple scripts, mainly pulling in other fragments''
+*** synthesis
+**** run
+**** scripts
+* common
+** models
+*** verilog
+*** vhdl
+*** systemc
+** bench
+*** verilog
+*** vhdl
+*** systemc
+** rtl ''(possibly)''
+* scripts
+** make
+** bash
+** perl
+
 == Use an IP-Xact enabled tool flow ==
 
 Orpsocv3 would be a great opportunity for opencores to stop playing catch up
