@@ -132,9 +132,12 @@ If any design module is usable for any other projects then it should not be insi
 I would be happy to have a sw/ path at the base of the project if there was an easy way to allow each build to customise the libraries to its needs (which drivers to build and link essentially), like we do now in ORPSoC.
 Ideally I would prefer to see a move to a model where the core/module we pull in provides bare-metal drivers that the processor can use. Perhaps common test functions for a "service" (spi,uart,i2c,ethernet,memory) live in the root sw/ and contain calls to the drivers and functions provided by the core.
 
+Agreed. A transactor and a bare-metal driver would be great to have for each core. It could be worth a try to have these as patches to begin with. Basic infrastructure for patching of pulled-in cores is already implemented [[User:Olof|Olof]] 14:13, 2 September 2011 (CEST)
+
 ==== Testing and development facilities ====
 Sorry to dump all of my ideas in this space, but I think what would be ''really'' cool is to have two types of testing capabilities. One where the processor simply triggers a bit of behavioural verilog in the testbench which then tests a core in the usual "standalone" testbench fashion, and one where the processor is largely doing the testing of the core from the CPU side. A mixture of both could also be achieved. But basically, the first type, where the core triggers some behavioural block to do its thing would be very handy to have, and to be able to manage the source of. Basically I would like to get to a position where the ''proper'' development of a block can occur in a build in ORPSoC and then allow you to transition into the control of the block by the CPU. That core, however, would still be testable by taking the testbench and triggering the 'go' condition of the test by some other means.
 
+Absolutely. ORPSoC should assist in the development process of a new core. Having behavioural models of the surrounding blocks is how things should be done. Now we just have to find someone to write them. Just having a proper wishbone transactor would get us far. [[User:Olof|Olof]] 14:13, 2 September 2011 (CEST)
 ==== Structure ====
 
 So, something like:
@@ -171,6 +174,10 @@ So, something like:
 ** make
 ** bash
 ** perl
+
+Comments on [[User:Julius|Julius]]' alternative structure [[User:Olof|Olof]] 14:13, 2 September 2011 (CEST)
+* builds/vendor-cpu-some-other-string : I believe that most of the time, you would build ORPSoC for only one board, and definitely with or1200 as the target CPU. Therefore, I feel it only makes things more complex and adds another hierarchy level to have a naming scheme for the builds. I would prefer that we just have syn, par and sim (and probably a few more) directories in the build path. If a user wants to put the files somewhere else, this can be overridden with a Makefile variable, e.g, <tt>make netlist BUILD_DIR=generic-or1200-fancyfeature-demo</tt>
+* The case for making cores available globally is that many cores such as spi, ethmac, or1200 (I see or1200 as just another core, although it has some special attributes) and uart are used by both the generic ORPSoC environment and most of the board builds. Having separate copies in the tree doesn't make sense
 
 == Use an IP-Xact enabled tool flow ==
 
