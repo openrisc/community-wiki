@@ -124,6 +124,10 @@ As much as possible, scripts should be kept globally.
 
 A set of common models (eg. memory) and utility cores/functions (eg. UART decoders) for testbenches and the like should be provided. If any design module becomes so common that every build is using it, it could live in the common/rtl path.
 
+
+If any design module is usable for any other projects then it should not be inside of orpsoc, it should be in its own library project. We know that every wishbone peripheral will need a wishbone master BFM. So create a opencores project for testbench modules and put it there. Putting a copy of or1200 inside of orpsoc was a bad idea because nobody knew which one is the true source. The same is true for all modules. You need a module that everyone else needs? Put it in the versatile_library project and let everyone use that as a source. Don't make copies. [[User:jt_eaton|jt_eaton]] 05:23, 2 September 2011 (CEST)
+
+
 ==== Software - still unsure ====
 I would be happy to have a sw/ path at the base of the project if there was an easy way to allow each build to customise the libraries to its needs (which drivers to build and link essentially), like we do now in ORPSoC.
 Ideally I would prefer to see a move to a model where the core/module we pull in provides bare-metal drivers that the processor can use. Perhaps common test functions for a "service" (spi,uart,i2c,ethernet,memory) live in the root sw/ and contain calls to the drivers and functions provided by the core.
