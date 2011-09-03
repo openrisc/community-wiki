@@ -1,3 +1,17 @@
 This page is for ideas and suggestions for the OpenRISC presentation and workshop that will be on at FSCONS 2011.
 
 http://fscons.org/
+
+= Workshop =
+
+== Style ==
+* Monolithic
+* Tracks
+** Software, Linux
+** RTL
+** Software, bare metal, RTOS
+
+== Hardware ==
+
+* Have participants buy it
+* Get a sponsor for it
