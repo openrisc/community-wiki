@@ -12,6 +12,19 @@ ORPSoC pulls together lots of different OpenCores projects. It should be a separ
 There is a case for pulling the tool chains and operating systems out into separate projects to make the whole thing more manageable. [[User:Jeremybennett|Jeremybennett]] 11:02, 23 August 2011 (CEST)
 * This isn't really an issue for ORPSoC, but I think this makes sense. [[User:Julius|Julius]] 00:10, 25 August 2011 (CEST)
 
+
+We do want to split this into as many different projects as possible. Do not embed the or1200 (or any other) component into this project. We download that from the repository along with all the rest. We are trying to do three separate things here and everybody is getting them mixed up.
+We are creating a component called orpsocv3 and putting it in a project that is also called orpsocv3. On top of that it also serves as the design
+environment where all the scripts are run. The project that we are calling orpsocv3 is not a component. It is a library that contains the orpsocv3 component. It also contains application software which we must treat like is a different type of component. We should call the library project or1k_socs so then we can put in orpsocv2 as well. We could even put the minsoc component in as well and build it in this design environment. The design environment that we are building could be reused by any opencores project. That should go into its own separate project. If you want to build something do this:
+
+* check out the design environment project. Run a script that installs any system tools and configures your system
+
+* run a download script for or1k_socs:oprsocv3. It will download this component as well as all other modules needed to build it
+
+* run make all. this will build the code and run all the tools
+
+Don't put anything in here that is usable by other projects. Put them in a separate project [[User:jt_eaton|jt_eaton]] 18:25, 3 September 2011 (CEST)
+
 == Modules ==
 * Use the <code>modules</code> directory for external cores. These could be managed with svn externals, git submodules, or symlinks if it's not desirable to just dump the cores there. [[User:Olof|Olof]] 19:19, 18 August 2011 (CEST)
 ** This is a good approach, resulting in not having multiple copies of a core sitting around in various repositories which can be confusing and difficult to manage. [[User:Julius|Julius]] 14:45, 20 August 2011 (CEST)
