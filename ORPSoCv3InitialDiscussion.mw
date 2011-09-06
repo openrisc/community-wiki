@@ -273,3 +273,126 @@ John Eaton
 : The spirit consortium no longer exists. They have merged with accellera and that  body now supports the standard. It is a IEEE standard (1685-2009) and the accellera website links to a free downloadable copy. They are trying to jump start its usage within the industry. There certainly is a dearth of open source IP-XACT software. That is one of my goals for the socgen project is to create a set of scripts that can use the IP-XACT descriptors to build the rtl code and other deliverables. I would like to use oprsocv3 for a pilot run to test these scripts in a complex design environment . This would mean adding a IP-XACT file to every ip component and running a build script to generate the final rtl. For a project like this one we could also have all the generated rtl checked into the repository so that anybody who didn't  want to run the build_hw script could use the preexisting copy but you could also regenerate the same files from the ip-xact files as well. My philosophy is that design for reuse follows the 80/20 rule. You can do 20% of a design for reuse effort and that will give you 80% of the benefit. If you are a commercial IP house then you still have to put forth the remaining 80% before you can sell the product but this group doesn't have to go that far. Opencores does have guidelines for having a build hardware process that runs all the code through a verilog preprocessor. That is included in mysocgen tool set. I could add that as a process step for any opencores project.   John Eaton
 
 : Jeremy, Beach sold all their assets to Duolog over in Dublin. Their products are still around. John Eaton
+
+
+
+== Socgen Design Environment  ==
+
+I would like for this group to consider adopting the socgen project structure for the 
+oprsocv3 project. I started the socgen project so I could develop a FOSS toolset that
+any asic/fpga designer could use to build complex designs and synthesize them for multiple
+targets. I started off using the opencores recommended project structure but have since
+refined it to fix some structural flaws. It was designed to solve the problems the very problems
+that any  system_on_chip design faces.
+
+Socgen defines three separate structures: Component,Library and Design Environment that
+all work together.
+ 
+
+Component Structure
+
+
+* '''component'''
+**doc
+***src
+***png
+***eps
+***gif
+***drawing  (socgen currently uses gEDA for schematics)
+**rtl
+***xml
+****'''component.xml'''
+****'''component_version.xml'''
+****. . .
+***verilog
+***vhdl
+***sysc
+***fsm
+***gen
+****sim
+*****'''component.v'''
+*****'''component_version.v'''
+*****. . .
+****syn
+*****'''component.v'''
+*****'''component_version.v'''
+*****. . .
+**bin
+**sim
+***xml
+****'''component_tb.xml'''
+****'''component_version_tb.xml'''
+****. . .
+***lint  (socgen currently uses verilator for linting)
+****'''component'''
+****'''component_version'''
+****. . .
+***cov   (socgen currently uses covered for coverage)
+****'''component'''
+****'''component_version'''
+****. . .
+***run    (socgen currently uses icarus for simulation)
+****config_test1
+****version_config2_test1
+*****test_define
+*****dmp_define
+*****gwave.sav
+*****. . .
+**syn
+***'''component'''_config
+****family    (xilinx,altera,actel etc, socgen currently uses ise for synthesys)
+***'''component_version'''_config
+***. . .
+
+
+
+Library Structure
+
+*'''library'''
+**doc
+**ip
+***component1
+***component2
+***. . .
+**sw
+***prog1
+***prog2
+***. . .
+**bin
+
+
+
+
+
+
+
+Design Environment Structure
+
+*'''design'''
+**tools
+***install
+***sys
+***bin
+**projects
+***library1
+***library2
+***. . .
+**work
+
+
+The biggest problem with the opencores structure is that it does not support different versions of a component. If you want to do a multicore or1200 where each core has
+a different cache configuration then you will have problems. The socgen structure allows for unlimited versioning. It also supports unlimited configurations. Any soc design
+in a fpga can easy see a host of different configurations where the only change is the name of the embedded romcode. You can also expect to take any design onto every fpga
+board that is available. Each one needs its own simulation suite and synthesys area. 
+
+Socgen supports ip-xact. The rtl and testbenches are all built from ip-xact scripts. You do not see any place for simulation models because a model is simply a component that is
+in its own library and ip-xact takes care of finding it in the design environment and building the testbench. You do not see any place for boards because boards are simply components that live in their own library and ip-xact takes care of finding them and adding them into the design. You want some common modules? Put them in a library and anyone can use them.
+
+
+Socgen supports views. Most designs currently do a superset design where you create one deliverable for all tools. So if tool X needs something in the rtl then it must go into the design and you then have to figure out how to exclude it for the other tools that can't have it in the design. With views I can create a different deliverable for simulation, synthesys or any tool that contains exactly what the tool needs and nothing else.
+
+Socgen is a long way from completion but its current state is quite capable of supporting the needs of orpsocv3. If you do follow my guidelines then you can use my current scripts and you will be able to benefit as I continue to add functionality. I need the feedback from a project as complex as oprsocv3 to find the bugs and figure out what I am missing.
+
+I am willing to do the database work but I do need your help to make this happen.
+
+[[User:jt_eaton|jt_eaton]] 05:46, 06 September 2011 (CEST)
