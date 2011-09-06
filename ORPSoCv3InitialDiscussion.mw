@@ -369,6 +369,7 @@ Library Structure
 Design Environment Structure
 
 *'''design'''
+**Makefile
 **tools
 ***install
 ***sys
