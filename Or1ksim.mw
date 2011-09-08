@@ -103,7 +103,7 @@ Or1ksim can be used as a library as well as a standalone program. However, becau
 
 Stefan Wallentowitz has implemented a prototype version of Ork1sim, based on the stable Or1ksim 0.3.0 release, which fixes this problem.
 
-A full description and the source code as a patch for Or1ksim 0.3.0 is currently available from www.wallentowitz.de/or1ksim.html.
+A full description and the source code as a patch for Or1ksim 0.3.0 is currently available from [http://www.wallentowitz.de/or1ksim.html www.wallentowitz.de/or1ksim.html].
 
 == Installation ==
 
