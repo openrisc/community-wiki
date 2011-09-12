@@ -128,9 +128,11 @@ If DejaGNU and the OpenRISC GNU tool chain are installed, the build can be teste
 
 All tests should past. Any failures should be reported, with as much detail as possible using the [http://bugzilla.opencores.org/ OpenRISC bug tracker].
 
-'''Note.''' If you want to compile with optimization disabled which make gdb debugging easier, please configure with following command
+'''Note.''' If you want to compile with optimization disabled which make gdb debugging easier, please configure with following command.
 
-../or1ksim-0.4.0/configure --target=or32-elf --prefix=/opt/or1ksim -O0 -DINLINE=static -DNO_SOFTFLOAT_UNUSED" 
+<nowiki>
+ ../or1ksim-0.4.0/configure --target=or32-elf --prefix=/opt/or1ksim '''-O0 -DINLINE=static -DNO_SOFTFLOAT_UNUSED"''' 
+</nowiki>
 
 Or1ksim can also be installed using the OpenRISC toolchain installation script (a more automated installation), which is available from the GNU Toolchain page.
 
