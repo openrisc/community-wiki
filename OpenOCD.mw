@@ -6,6 +6,17 @@ This page contains information about the OpenRISC 1000 architecture port.
 
  '''This port is still under development!!'''
 
+== Features ==
+
+The following for designs using the[http://opencores.org/project,dbg_interface SoC Debug (Mohor) Interface]:
+* Memory access for program download, data inspection
+* CPU register read and write
+* CPU stall control
+* CPU single stepping
+* All of the above via GDB
+
+Support for other debug interface hardware can be added relatively easily.
+
 = Downloading =
 
 The OpenOCD code with basic OpenRISC 1000 support is found on the openrisc.net git tree.
