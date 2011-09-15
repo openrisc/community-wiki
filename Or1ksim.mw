@@ -144,7 +144,7 @@ More detailed information on installing Or1ksim (and the rest of the OpenRISC 10
 
 The current stable build, Or1ksim 0.4.0, incorporates patches from Mark Jarvin, so that it should build on Mac OS X (Snow Leopard).
 
-Robert Guenzel has provided an [chschroeder.gamiro.de/rg/or1ksim_macOS10.4.pdf application note] on building the previous stable release, Or1ksim 0.3.0, for Mac OS 10.4: . This may be of interest to Mac users.
+Robert Guenzel has provided an [http://chschroeder.gamiro.de/rg/or1ksim_macOS10.4.pdf application note] on building the previous stable release, Or1ksim 0.3.0, for Mac OS 10.4: . This may be of interest to Mac users.
 
 == Documentation ==
 
