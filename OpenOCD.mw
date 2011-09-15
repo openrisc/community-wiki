@@ -4,8 +4,6 @@ OpenOCD is a program that we can use to talk to our debug interface on our hardw
 
 This page contains information about the OpenRISC 1000 architecture port.
 
- '''This port is still under development!!'''
-
 == Features ==
 
 The following for designs using the[http://opencores.org/project,dbg_interface SoC Debug (Mohor) Interface]:
