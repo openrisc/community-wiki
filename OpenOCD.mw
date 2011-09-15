@@ -23,7 +23,11 @@ The OpenOCD code with basic OpenRISC 1000 support is found on the openrisc.net g
 
 = Prerequisites =
 
-So far development has been using the ORSoC USB debug cable against an ORPSoC system.
+For the basic requirements of compiling and running OpenOCD see its [http://openocd.berlios.de/doc/html/index.html User Guide].
+
+The required hardware is an [http://openocd.berlios.de/doc/html/Debug-Adapter-Hardware.html OpenOCD-supported debug cable] and an OpenRISC-based design with the supported debug interface.
+
+So far development has been done using the [http://opencores.org/shop,item,3 ORSoC USB debug cable] against an [[ORPSoC]] system using the [http://opencores.org/project,dbg_interface SoC Debug (Mohor) Interface], but there's no reason why any other [http://openocd.berlios.de/doc/html/Debug-Adapter-Hardware.html OpenOCD-supported cable] wouldn't work.
 
 = Building =
 
