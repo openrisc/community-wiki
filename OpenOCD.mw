@@ -67,4 +67,4 @@ Note - I had to run with ''sudo'' but that's because my permissions weren't set 
 
 = Issues = 
 
-Writing the NPC does not appear to work. If written, it will read back the previous value from the hardware. This is still being investigated
+Breakpoint support is currently not implemented. This is being worked on.
