@@ -11,6 +11,7 @@ The following for designs using the[http://opencores.org/project,dbg_interface S
 * CPU register read and write
 * CPU stall control
 * CPU single stepping
+* CPU software breakpoints
 * All of the above via GDB
 
 Support for other debug interface hardware can be added relatively easily.
