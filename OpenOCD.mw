@@ -80,4 +80,10 @@ Note - I had to run with ''sudo'' but that's because my permissions weren't set 
 
 = Issues = 
 
-Breakpoint support is currently not implemented. This is being worked on.
+* Not thoroughly tested - the basics have been checked on one implementation, but further use on other hardware, and feedback about it would be good.
+
+* Lack of usage documentation. OpenOCD is quite powerful and at the moment we're using it solely as a GDB proxy.
+
+* Resetting the target is not done properly yet in the port.
+
+* The port, in its current state, will not be accepted in OpenOCD upstream due to the implementation of support for the read and write SPR commands done via the RSP <tt>qRcmd</tt> mechanism. Perhaps the OR1K GDB port could be changed to instead use the <tt>p</tt>/<tt>P</tt> command to access registers.
