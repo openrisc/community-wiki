@@ -11,9 +11,9 @@ The stable versions of the tools are based on binutils 2.20.1, GCC 4.5.1 and GDB
 === Precompiled binaries ===
 
 Pre-compiled binaries are only available for the 1.0rc1 version of the Newlib toolchain. All commands have the prefix or32-elf- (for example or32-elf-gcc). Or1ksim 0.5.1 and newlib 0.18.0 are included.
-* [ftp://ocuser:oc@opencores.org/toolchain/or32-elf-1.0rc1-x86.tar.bz2 for Ubuntu x86/i686 (32-bit)]
-* [ftp://ocuser:oc@opencores.org/toolchain/or32-elf-1.0rc1-CentOS-x86_64.tar.bz2 for CentOS-5.5 x86_64 (64-bit)]
-* [ftp://ocuser:oc@opencores.org/toolchain/or32-elf-1.0rc1-OS_X-10.6.3.tar.bz2 for OS X 10.6 (Snow Leopard)] ('''Note.''' no C++ libraries)
+* [ftp://ocuser:ocuser@openrisc.opencores.org/toolchain/or32-elf-1.0rc1-x86.tar.bz2 for Ubuntu x86/i686 (32-bit)]
+* [ftp://ocuser:ocuser@openrisc.opencores.org/toolchain/or32-elf-1.0rc1-CentOS-x86_64.tar.bz2 for CentOS-5.5 x86_64 (64-bit)]
+* [ftp://ocuser:ocuser@openrisc.opencores.org/toolchain/or32-elf-1.0rc1-OS_X-10.6.3.tar.bz2 for OS X 10.6 (Snow Leopard)] ('''Note.''' no C++ libraries)
 
 The following commands indicate how to install the toolchain from the download archive. The tools are installed to the /opt path and symbolic links are created to more general path names (which helps with switching to more updated versions of the toolchain later.) The shell's PATH environment variable must be updated. You may choose to install in any other directory to which you have write access.
 
