@@ -52,7 +52,7 @@ This file contains settings for architecture specific definitions. This section 
   #define portTickType    unsigned portLONG
   #define portMAX_DELAY   (portTickType)0xffffffff
 
-'portBASE_TYPE' shuold be most efficient type for architecture. In case of OpenRISC, it is 'long'. 'portTickType' is type for hold the number of tick timer interrupt expired.
+'portBASE_TYPE' should be most efficient type for architecture. In case of OpenRISC, it is 'long'. 'portTickType' is type for hold the number of tick timer interrupt expired.
 
 ==== Architecure specific definitions ====
 
