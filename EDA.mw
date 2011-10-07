@@ -42,6 +42,12 @@ Using apt-get:
 
 This tool is a great open source waveform viewer. It's home page is [http://gtkwave.sourceforge.net/ http://gtkwave.sourceforge.net/].
 
+== Installing under Ubuntu ==
+
+The pre-packaged GTKWave can be installed under Ubuntu using apt-get with the following.
+
+ sudo apt-get install gtkwave
+
 == Building from source under Ubuntu 11.04 32-bit ==
 
 Go grab the latest source bundle. [http://sourceforge.net/projects/gtkwave/files/ http://sourceforge.net/projects/gtkwave/files/]
