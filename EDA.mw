@@ -1,0 +1,78 @@
+= Introduction =
+
+This page is to document EDA tool installation, setup and use.
+
+= FPGA Vendor Tool Suites =
+
+== Xilinx ISE ==
+
+ Fill me in!
+
+== Altera Quartus ==
+
+ Fill me in!
+
+== Actel Libero ==
+
+ Fill me in!
+
+= Simulators / Compilers =
+
+== Icarus Verilog ==
+
+This is an open source event-driven Verilog simulator. It's home page is [http://iverilog.icarus.com/ http://iverilog.icarus.com/]
+
+=== Installation under Ubuntu ===
+
+Using apt-get:
+
+ sudo apt-get install verilog
+
+== Silos ==
+
+ Fill me in!
+
+== Verilator ==
+
+ Fill me in!
+
+= Waveform Viewers =
+
+= GTKWave =
+
+This tool is a great open source waveform viewer. It's home page is [http://gtkwave.sourceforge.net/ http://gtkwave.sourceforge.net/].
+
+== Building from source under Ubuntu 11.04 32-bit ==
+
+Go grab the latest source bundle. [http://sourceforge.net/projects/gtkwave/files/ http://sourceforge.net/projects/gtkwave/files/]
+
+Extract it.
+
+ tar xzf gtkwave-3.3.26.tar.gz
+
+Go in and configure it.
+
+ cd gtkwave-3.3.26/
+ ./configure --enable-fatlines  --disable-tcl
+
+At this stage it complained I didn't have gperf installed
+
+ sudo apt-get install gperf
+
+At this stage it said xz couldn't be found for LZMA or VZT format support.
+Ubuntu informs me I already have the xz-utils and lzma packages so I don't know what to install so just disable it.
+
+ ./configure --enable-fatlines  --disable-tcl --disable-xz
+
+At this point it complains I don't have gtk+-2.0 installed.
+
+ sudo apt-get install libgtk2.0
+
+Finally configure again.
+
+ ./configure --enable-fatlines  --disable-tcl --disable-xz
+
+Make and install it
+
+ make
+ sudo make install
