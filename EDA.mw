@@ -34,7 +34,7 @@ This is a relatively low-cost Verilog simulator. Its web page is [http://www.sil
 
 == Verilator ==
 
- Fill me in!
+This is an open source tool that can be used to generate cycle-accurate C models from synthesizeable Verilog. It also has a quite thorough linting feature. Its web page is [http://www.veripool.org/wiki/verilator http://www.veripool.org/wiki/verilator].
 
 = Waveform Viewers =
 
