@@ -144,10 +144,27 @@ If the <code>wbm_i_or1200_err_i</code> line is ever high, it usually means an in
 
 Depending on the configuration of the system, the processor's instruction bus requests will end up going through an arbiter and then onto a memory controller.
 
+==== Bus arbiter problems ====
 If it looks like the processor's instruction requests are sane, and problems are encountered, then the next place to check is the system's bus arbiter or the memory controller.
 
-The bus arbiter can be ruled out simply by looking at the input bus to the memory controller is the same as what is being generated on the processor's instruction bus. If the input to the appropriate memory controller and what's coming from the processor are not the same then check the configuration of the bus wires, the bus arbiter, or its internal function.
+The bus arbiter can be ruled out simply by looking at the input bus to the memory controller is the same as what is being generated on the processor's instruction bus. If the input to the appropriate memory controller is not the same as what's coming from the processor (ie. the address is not the same) then check the configuration of the bus wires, the bus arbiter, or its internal function.
 
-Otherwise problems can be isolated to be in the memory controller.
+==== Memory controller, model, preload problems ====
+
+If the bus' function looks OK then problems can be isolated to the memory controller, memory model or preloading mechanism.
 
 Of course, it's possible the bootrom is not correctly configured for the system and it is attempting to access a non-existant non-volatile memory controller, or for some reason the [[#Preload memories | PRELOAD_RAM=1]] option is not getting into the bootrom and it is attempting an unexpected boot sequence.
+
+=== Debugging strategies ===
+
+Although it can be tedious, it helps to present all of the relevant signals in the instruction fetch path and ensure each is being completed correctly.
+
+This means dumping the bus signals from the processor, the bus signals into the memory controller, the memory bus signals to the memory model and potentially internals of the memory controller.
+
+An understanding of the mapping of the instructions to the memory's external bus helps to quickly identify problems with the content of the image has been preloaded into the memory model.
+
+If the problem occurs well into boot, most memory models provide a verbose debug output option which will report exactly what is being fetched from what address to help follow the program's execution.
+
+The OR1200 will also generate an execution log in <code>/path/to/sim/out/test-name-executed.log</code>. This file will contain the state of the processor for each instruction executed.
+
+The OR1200 will also generate an instruction execution time log in <code>/path/to/sim/out/test-name-lookup.log</code>. This file will contain the time of each of the instructions executed which can be used in conjunction with the execution log to lookup what time, and thus where in the waveform, a particular instruction was fetched (either from cache or on the bus) and executed.
