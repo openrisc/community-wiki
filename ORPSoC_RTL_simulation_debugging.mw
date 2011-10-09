@@ -1,0 +1,65 @@
+= Introduction =
+
+This page contains tips on how to debug the operation of an ORPSoC system under RTL simulation.
+
+= Development environment setup =
+
+The  following assumes the user already has a copy of the ORPSoC source and be attempting to run either the ORPSoC reference build (in the root of the project) from <code>PROJECT_ROOT/sim/run</code> or be attempting to simulate a particular board, in which case they will be in <code>$PROJECT_ROOT/boards/FPGA_VENDOR/BOARD_NAME/sim/run</code>.
+
+The [[OpenRISC_GNU_tool_chain || OpenRISC GNU toolchain]] must be installed and ready to go, too.
+
+The following details will rely on the user having the [[EDA#GTKWave | GTKWave]] waveform viewer installed, or have a suitable alternative setup.
+
+== Check setup ==
+
+A good test of the setup is to attempt to run tests in the reference design in <code>$PROJECT_ROOT/sim/run</code> with something like:
+
+ /path/to/orpsocv2/sim/run$ make rtl-test
+
+Confirm the test compiles and runs and exits OK. A successful run of the simulation will finish with the following lines:
+
+ report (0x8000000d);
+ exit(00000000)
+
+== If in doubt, clean it out ==
+
+If things are not behaving correctly, it's advised to try a clean out of everything, which will remove all intermediate and resulting files from previous simulation builds.
+
+From any <code>sim/run</code> directory run
+
+ /path/to/any/sim/run$ make distclean
+
+
+= Starting simulation =
+
+The very first simulation to run would be the <code>or1200-simple</code> test.
+
+This test just goes through the processor initialisation, into the main loop of the C code and exits, reporting success. This test checks that part of the fundamentals of the system are in place - that is the processor can start, fetch code, access data and exit the simulation gracefully.
+
+This simulation is typically the default one when no other test is specified for the <code>make rtl-test</code> command.
+
+= Running a simulation and dumping a waveform (VCD) =
+
+A convenient way of debugging the system is by looking a waveform of what is occurring on the bus.
+
+This can be done by adding the <code>VCD=1</code> option to the command line when running the simulation.
+
+ /path/to/sim/run$ make rtl-test VCD=1
+
+The VCD will be created in <code>/path/to/sim/out/test-name.vcd</code>.
+
+When the VCD option is enabled, it will be indicated to the user, like the following:
+
+ * VCD in ../out/or1200-simple.vcd
+
+ VCD info: dumpfile ../out/or1200-simple.vcd opened for output.
+
+Running a simulation and generating a VCD will generally slow its execution time down as it must write out the system state at each step to the VCD file.
+
+Once a simulation has run and finished, the VCD file can be opened with [[EDA#GTKWave | GTKWave]] like so:
+
+ /path/to/sim/run$ gtkwave ../out/test-name/vcd
+
+= Debugging system startup =
+
+The system typically starts by executing some code out of the <code>bootrom</code> module. This module is typically on the processor's instruction bus at address <code>0xf0000100</code> and will contain 40-50 instructions - enough to do some basic bootstrapping.
