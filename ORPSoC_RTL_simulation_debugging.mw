@@ -61,4 +61,77 @@ Once a simulation has run and finished, the VCD file can be opened with [[EDA#GT
 
 = Debugging system startup =
 
+Outlined here are some basic steps to help double check the system starts OK under RTL simulation.
+
+== Run a simulation, dump a VCD ==
+
+The first step to looking at the internal function of the system is to run a simulation and dump out a waveform. Do this by running the simulation with the <code>VCD=1</code> option on the end of the make command as [[#Running a simulation and dumping a waveform (VCD) | mentioned above]].
+
+Open the VCD in the waveform viewer like [[EDA#GTKWave | GTKWave]].
+
+== Preload memories ==
+
+A common method used to speed up notoriously slow RTL simulations is to preload the system's main memory with the software image to execute.
+
+This feature is provided when simulating all board ports in ORPSoC as a way to allow quick testing of system functions without repeating the lengthy boot-from-non-volatile memory sequences.
+
+The usual way of enabling this is to add <code>PRELOAD_RAM=1</code> to the command line when launching a simulation.
+
+ /path/to/sim/run$ make rtl-test PRELOAD_RAM=1
+
+Note that this will usually also change the [[#bootrom | bootrom]] code to simply start execution from the reset vector in main memory.
+
+== Check clocks and rests ==
+
+If you are implementing a new ORPSoC board port, or have significantly altered an existing one, double check the system's clock and resets. If none of the clocking or reset configuration has been altered, then skip this step.
+
+An ORPSoC build should have all of its clock and reset-generation infrastructure inside a build-specific module named <code>clkgen</code>. This is typically instantiated inside the ORPSoC top-level as <code>clkgen0</code>.
+
+Double check all is well with this module - that is the clock supplied by the testbench is there, and is the right frequency. A mistake when working on new board ports is to have an incorrect timescale set in the top-level testbench (<code>/path/to/bench/verilog/orpsoc_testbench.v</code> which results in the clock being supplied to a PLL model being much too fast (or too slow) and odd behaviour, like a PLL not locking, can be seen.
+
+Resets that are incorrect polarity, or even X'd, will also cause problems.
+
+Double check everything going in and coming out to the internal system is OK. 
+
+Note that this is just an RTL simulation and although things might look OK here, it's not neccessarily the case that what is done in clkgen is synthesizable or correct for use on FPGA or in silicon. If problems with clocks or resets are suspected on the board, then check this module at gatelevel. This is not covered here.
+
+== Check processor boot ==
+
+Double checking the processor is starting up OK requires ensuring most of the basics of the system are OK.
+
+In ORPSoC, a commonly used boot mechanism is implemented in the <code>bootrom</code> module. This provides some instructions that perform some basic bootstrapping of the processor. The routine used can be configured by a <code>#define</code> in the <code>/path/to/sw/board/include/board.h</code> software header file.
+
+The bootrom usually causes the processor to access main memory and/or a non-volatile memory to load or start executing a program.
+
+For this to function correctly, the processor must be configured appropriately, the system bus must be implemented correctly, and the various memory controllers and simulation models need to be instantiated and configured correctly.
+
+The following steps help to check this is the case.
+
+=== bootrom ===
+
 The system typically starts by executing some code out of the <code>bootrom</code> module. This module is typically on the processor's instruction bus at address <code>0xf0000100</code> and will contain 40-50 instructions - enough to do some basic bootstrapping.
+
+The details of the bootrom are not covered here, but probably should be at some point [[ORPSoC_bootrom | here]].
+
+=== Processor instruction bus ===
+
+When the processor is taken out of reset, it begins to fetch instructions from its reset address.
+
+For the OR1200, this can be either <code>0xf000100</code> or <code>0x100</code>. If the [[#bootrom | bootrom]] is being used then it is usually <code>0xf0000100</code>.
+
+In the waveform, descend into the <code>orpsoc_top</code> module - usually represented as <code>dut</code> in waveform viewers as this is its instantiated name.
+
+Add the following signals to the waveform to view the processor's instruction Wishbone bus port.
+
+ wbm_i_or1200_ack_i
+ wbm_i_or1200_dat_i
+ wbm_i_or1200_err_i
+ wbm_i_or1200_adr_o
+ wbm_i_or1200_stb_o
+
+It may also help to see the processor's clock and reset signals:
+
+ or1200_clk
+ or1200_rst
+
+Once the reset is deasserted the processor can be seen to fetch instructions by asserting the <code>wbm_i_or1200_stb_o</code> line and presenting the address it wants on the <code>wbm_i_or1200_adr_o</code> line.
