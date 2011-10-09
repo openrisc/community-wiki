@@ -6,7 +6,7 @@ This page contains tips on how to debug the operation of an ORPSoC system under 
 
 The  following assumes the user already has a copy of the ORPSoC source and be attempting to run either the ORPSoC reference build (in the root of the project) from <code>PROJECT_ROOT/sim/run</code> or be attempting to simulate a particular board, in which case they will be in <code>$PROJECT_ROOT/boards/FPGA_VENDOR/BOARD_NAME/sim/run</code>.
 
-The [[OpenRISC_GNU_tool_chain || OpenRISC GNU toolchain]] must be installed and ready to go, too.
+The [[OpenRISC_GNU_tool_chain | OpenRISC GNU toolchain]] must be installed and ready to go, too.
 
 The following details will rely on the user having the [[EDA#GTKWave | GTKWave]] waveform viewer installed, or have a suitable alternative setup.
 
@@ -28,7 +28,6 @@ If things are not behaving correctly, it's advised to try a clean out of everyth
 From any <code>sim/run</code> directory run
 
  /path/to/any/sim/run$ make distclean
-
 
 = Starting simulation =
 
