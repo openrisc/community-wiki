@@ -135,3 +135,7 @@ It may also help to see the processor's clock and reset signals:
  or1200_rst
 
 Once the reset is deasserted the processor can be seen to fetch instructions by asserting the <code>wbm_i_or1200_stb_o</code> line and presenting the address it wants on the <code>wbm_i_or1200_adr_o</code> line.
+
+The instruction bus only reads, so every access is a read request from a memory. Each time the <code>wbm_i_or1200_ack_i</code> signal is high for a cycle indicates that the data on <code>wbm_i_or1200_dat_i</code> is valid.
+
+If the <code>wbm_i_or1200_err_i</code> line is ever high, it usually means an invalid read request was put out by the processor, usually to anon-existing address on the bus. This will cause the bus to go to its bus exception vector code at <code>0x200</code>.
