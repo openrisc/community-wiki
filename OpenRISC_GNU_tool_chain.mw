@@ -82,7 +82,7 @@ To build and install both toolchains from scratch:
 
  ./bld-all.sh --force --prefix /opt/openrisc --or1ksim-dir /opt/or1ksim --uclibc-dir uClibc --linux-dir linux 
 
-To build and install just hte newlib toolchain:
+To build and install just the newlib toolchain:
 
  ./bld-all.sh --force --prefix /opt/openrisc --or1ksim-dir /opt/or1ksim --no-uclibc --no-or32-linux 
 
