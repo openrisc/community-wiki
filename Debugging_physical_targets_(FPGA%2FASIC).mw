@@ -35,7 +35,8 @@ The [http://opencores.org/project,dbg_interface SoC debug interface] is the modu
 To debug a physical target, the tools in the chain must be installed and configured.
 ===GDB===
 
-For information on installing the OpenRISC compatible GDB, see the OpenRISC project's GNU toolchain page here at OpenCores.
+For information on installing the OpenRISC compatible GDB, see the OpenRISC project's [[OpenRISC GNU tool chain|GNU toolchain]] page here at OpenCores.
+
 ==The OpenRISC Debug Proxy==
 
 The OpenRISC Debug Proxy (or_debug_proxy) can be downloaded from the OpenRISC project's subversion repository using the following command:
