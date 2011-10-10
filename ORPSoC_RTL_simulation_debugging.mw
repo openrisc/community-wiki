@@ -81,7 +81,7 @@ The usual way of enabling this is to add <code>PRELOAD_RAM=1</code> to the comma
 
 Note that this will usually also change the [[#bootrom | bootrom]] code to simply start execution from the reset vector in main memory.
 
-== Check clocks and rests ==
+== Check clocks and resets ==
 
 If you are implementing a new ORPSoC board port, or have significantly altered an existing one, double check the system's clock and resets. If none of the clocking or reset configuration has been altered, then skip this step.
 
