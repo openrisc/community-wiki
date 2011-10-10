@@ -39,12 +39,11 @@ There is a choice of three models to run the test software on. These are the arc
 '''OpenRISC GNU toolchain port installation'''
 Ensure the OpenRISC GNU toolchain port is installed on your system.
 
-Please install the latest release candidate of the version 1.0 toolchain. Follow the guide on the GNU toolchain page.
+Please install the latest release candidate of the version 1.0 toolchain. Follow the guide on the [[OpenRISC GNU tool chain|GNU toolchain page]].
 
 
 '''Architectural Simulator (or1ksim)'''
-The tests included with ORPSoC's reference design can be run on the OpenRISC architectural simulator, or1ksim. See the or1ksim page for details on installation.
-
+The tests included with ORPSoC's reference design can be run on the OpenRISC architectural simulator, or1ksim. See the [[or1ksim]] page for details on installation.
 
 == Event-driven simulators ==
 For the reference build of ORPSoC that is non-board targeted, Icarus Verilog is required. Board targets require Modelsim.
