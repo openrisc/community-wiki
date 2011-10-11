@@ -56,7 +56,7 @@ The source for the GNU tools and newlib is available under SVN:
 
  svn co http://opencores.org/ocsvn/openrisc/openrisc/trunk/gnu-src 
 
-Note. There is a known problem with SVN timing out, so that not all files may be downloaded. Repeatedly run the following command until no more files are downloaded.
+Note. There is a known problem with SVN timing out. The checkout will seem OK, but not all files are downloaded and no error message is shown. The solution is to repeatedly run the following command until no more files are downloaded.
 
  svn update gnu-src
 
@@ -64,7 +64,7 @@ The source for uClibc and Linux (needed for the header files for the toolchain) 
 
  cd gnu-src
  git clone git://git.openrisc.net/jonas/uClibc
- git clone git://git.openrisc.net/jonas/linux 
+ git clone git://git.openrisc.net/jonas/linux
 
 ==== Building ====
 
