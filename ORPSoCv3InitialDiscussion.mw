@@ -25,7 +25,7 @@ environment where all the scripts are run. The project that we are calling orpso
 
 Don't put anything in here that is usable by other projects. Put them in a separate project [[User:jt_eaton|jt_eaton]] 18:25, 3 September 2011 (CEST)
 
-MinSoC would be happy to provide the installation solution it has been using in its trunk version. Check this for details [[http://www.minsoc.com/installation]]. [[User:rfajardo|rfajardo]] 11 October 2011
+MinSoC would be happy to provide the installation solution it has been using in its trunk version. Check this for details [http://www.minsoc.com/installation]. [[User:rfajardo|rfajardo]] 11 October 2011
 
 == Modules ==
 * Use the <code>modules</code> directory for external cores. These could be managed with svn externals, git submodules, or symlinks if it's not desirable to just dump the cores there. [[User:Olof|Olof]] 19:19, 18 August 2011 (CEST)
