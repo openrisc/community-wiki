@@ -281,12 +281,12 @@ John Eaton
 : Jeremy, Beach sold all their assets to Duolog over in Dublin. Their products are still around. John Eaton
 
 : I have a parser and API to correctly access registers based on an IP-XACT memory map description. I will consider releasing that as open source in the beginning of the year. I am also very interested on your current work on that John. I also verified the current IP-XACT tools on the market specifically for the memory map and register access. The tools would work but are not open source. [[User:rfajardo|rfajardo]]
-  * IdesignSpec
-  * Duolog: Bitwise
-  * Magillem: Register View
-  * PDTi: SpectaReg
-  * Semifore: CSRCompiler
-  * GenSys: Registers
+* IdesignSpec
+* Duolog: Bitwise
+* Magillem: Register View
+* PDTi: SpectaReg
+* Semifore: CSRCompiler
+* GenSys: Registers
 
 == Socgen Design Environment  ==
 
