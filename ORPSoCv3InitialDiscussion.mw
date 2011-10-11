@@ -59,6 +59,8 @@ For hardware configuration we should aim to replace defines and defparams with p
 
 Yes definitely; parameters only. Defines can be used for special cases, but none should be used in the actual RTL files.--[[User:Rherveille|Rherveille]] 18:29, 24 August 2011 (CEST)
 
+I totally agree on standardizing the Makefiles. I have a hard time following the current global Makefile. MinSoC has been using Makefiles only for Synthesis. We created two different "standard" Makefiles, one for Altera and one for Xilinx. Both have mostly the same targets but run the specific commands for their respective tool. The Makefiles are found in a subdirectory of syn. A configuration script patches them to add the FPGA family name and to include a constraint file. After that, the patched file is copied to syn, where the user can type make to synthesize the design for a specific board. I think if we can agree on standard targets (Makefile targets), this is a feasible approach.
+
 == Software integration ==
 People might want to build software running on their ORPSoC. Is this feasible?
 * Definitely - we might want to integrate more with newlib - it was my ambition move all of the software to be based on newlib, rather than the little bare metal libraries I've put together in ORPSoC. I think this should be pursued for the next iteration of this project. [[User:Julius|Julius]] 00:13, 25 August 2011 (CEST)
