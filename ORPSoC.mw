@@ -1,10 +1,12 @@
 == Introduction ==
+
 ORPSoC is the OpenRISC Reference Platform System-on-Chip. This project implements a platform for OpenRISC development. It provides a reference SoC, primarily for the testing and development of OpenRISC processors, and a set of pre-built SoCs for various FPGA boards.
 
 The project's structure makes it simple to develop (and contribute) an OpenRISC-based design for implementation on hardware.
 
 (This second version of ORPSoC was initially known as ORPSoCv2, however we intend on changing it back to be known simply as ORPSoC again)
 
+Planning is in progress for [[ORPSoCv3]].
 
 == Download ORPSoC ==
 The RTL source, test software and scripts can be downloaded from the OpenRISC project subversion (svn) repository. The sources can be checked out with the following command:
