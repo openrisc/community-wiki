@@ -51,15 +51,12 @@ of pain and effort. or1200 has some structural problems that if we cannot change
 == Configuration ==
 Kbuild has been proposed here. Pros/cons?
 
-I would like to have a standardized set of makefiles for every ORPSoC build, and include a Makefile.inc that contains all user parameters. I've been discussing with Saar Drimer at [https://www.boldport.com/docs/fpgaproj boldport] about integrating his work with our efforts [[User:Olof|Olof]] 09:48, 19 August 2011 (CEST)
-
-I took a quick look at boldport. It isn't rocketscience they are doing; anyone working with multiple tools uses the same approach. What I don't like about it, is that it is not generic enough. It is too FPGA centric.--[[User:Rherveille|Rherveille]] 18:29, 24 August 2011 (CEST)
+For ORPSoC v3 there willl be standardized [[Makefile rules]]
 
 For hardware configuration we should aim to replace defines and defparams with parameters [[User:Olof|Olof]] 21:00, 19 August 2011 (CEST)
 
 Yes definitely; parameters only. Defines can be used for special cases, but none should be used in the actual RTL files.--[[User:Rherveille|Rherveille]] 18:29, 24 August 2011 (CEST)
 
-I totally agree on standardizing the Makefiles. I have a hard time following the current global Makefile of OrpSoCv2. MinSoC has been using Makefiles only for Synthesis. We created two different "standard" Makefiles, one for Altera and one for Xilinx. Both have mostly the same targets but run the specific commands for their respective tool. The Makefiles are found in a subdirectory of syn. A configuration script patches them to add the FPGA family name and to include a constraint file. After that, the patched file is copied to syn, where the user can type make to synthesize the design for a specific board. I think if we can agree on standard targets (Makefile targets), this is a feasible approach.
 
 == Software integration ==
 People might want to build software running on their ORPSoC. Is this feasible?
