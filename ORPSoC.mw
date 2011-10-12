@@ -51,12 +51,11 @@ The tests included with ORPSoC's reference design can be run on the OpenRISC arc
 For the reference build of ORPSoC that is non-board targeted, Icarus Verilog is required. Board targets require Modelsim.
 
 === Icarus Verilog ===
-[http://www.icarus.com/eda/verilog/ Icarus Verilog] is an open-source Verilog simulation tool. Their wiki has an extensive installation guide, but on most modern *nix distributions, such as Ubuntu or Debian, it can be easily installed by the system's package manager (apt, yum, emerge, etc.). The package is typically just called verilog. For instance, with apt under Ubuntu the installation command is:
+[http://iverilog.icarus.com/ Icarus Verilog] is an open-source Verilog simulation tool. Their wiki has an extensive installation guide, but on most modern *nix distributions, such as Ubuntu or Debian, it can be easily installed by the system's package manager (apt, yum, emerge, etc.). The package is typically just called verilog. For instance, with apt under Ubuntu the installation command is:
 
  <nowiki>sudo apt-get install verilog</nowiki>
 
 However, if it is not available via the package manager on on your platform please see the Icarus Verilog project's installation guide.
-
 
 === Cycle-accurate simulator ===
 This simulator is a cycle accurate C++ model generated from the Verilog HDL by [http://www.veripool.org/ Verilator]. A System C wrapper is placed on the model so other System C modules can be used with it. The scripts require Verilator, its supporting tools, and the System C libaries, be installed to generate this model.
