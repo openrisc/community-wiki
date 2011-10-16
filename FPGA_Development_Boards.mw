@@ -40,6 +40,12 @@ Please use the Actel FlashPro tool to program the FPGA with this image.
 === Pre-built image for SPI flash ===
 [ftp://ocuser:ocuser@openrisc.opencores.org/orpsoc/images/orpsoc-ml501-66MHz.mcs orpsoc-ml501-66MHz.mcs]
 See the ML501 documentation in ORPSoC for instructions on programming this image into the board's SPI flash.
+=== Flash boot image with U-boot programmer ===
+Image for SPI flash: [ftp://ocuser:ocuser@openrisc.opencores.org/orpsoc/images/orpsoc-ml501-66MHz-flashboot.mcs orpsoc-ml501-66MHz-flashboot.mcs]
+
+Software to embed U-boot into flash reset vector: [ftp://ocuser:ocuser@openrisc.opencores.org/orpsoc/images/ml501-flash-uboot-programmer.elf ml501-flash-uboot-programmer.elf ]
+
+Load the SPI flash as per the instructions, and execute the software to program U-boot into the board's flash. The board will then power up with the U-boot prompt.
 
 == Digilent Atlys ==
 * Board path: xilinx/atlys
