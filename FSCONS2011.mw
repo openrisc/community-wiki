@@ -14,27 +14,27 @@ We may want to split it up after intro + or1ksim.
 
 === Monolithic ===
 
-** Introduction
-** OR1ksim
-*** Examples
-** Toolchain
-*** Example
-** ORPSoC
-*** Example simulation
-*** Example synthesis
-*** Example use on board
-** Software
-*** Bare metal
-**** Example compile and run on board
-**** Example debugging on board
-*** RTOSes
-**** Example compile and run on board
-*** u-boot
-**** Example and run on board
-*** Linux
-**** Example and run on board
-**** Example compile, download and ru userspace software
-**** Example debugging userspace software
+* Introduction
+* OR1ksim
+** Examples
+* Toolchain
+** Example
+* ORPSoC
+** Example simulation
+** Example synthesis
+** Example use on board
+* Software
+** Bare metal
+*** Example compile and run on board
+*** Example debugging on board
+** RTOSes
+*** Example compile and run on board
+** u-boot
+*** Example and run on board
+** Linux
+*** Example and run on board
+*** Example compile, download and ru userspace software
+*** Example debugging userspace software
 
 === Strands ===
 
