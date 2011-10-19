@@ -49,7 +49,7 @@ Potential topics with examples:
 * newlib & bare metal
 * u-boot
 * Linux kernel
-* Linux userspace
+* BusyBox and Linux userspace
 
 ==== Hardware Strand ====
 
