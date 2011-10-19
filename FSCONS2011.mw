@@ -10,7 +10,8 @@ The following is an example flow of the workshop. It may be far more than we can
 
 We may want to split it up after intro + or1ksim.
 
-* Monolithic
+=== Monolithic ===
+
 ** Introduction
 ** OR1ksim
 *** Examples
@@ -32,6 +33,30 @@ We may want to split it up after intro + or1ksim.
 **** Example and run on board
 **** Example compile, download and ru userspace software
 **** Example debugging userspace software
+
+=== Strands ===
+
+Different strands of the workshop, oriented towards giving more in-depth demonstrations of each topic. Perhaps breaking into strands after a single introduction.
+
+==== Software Strand ====
+
+Examples to be done using or1ksim and/or pre-built hardware if available.
+
+Potential topics with examples:
+* Toolchain
+* newlib & bare metal
+* u-boot
+* Linux kernel
+* Linux userspace
+
+==== Hardware Strand ====
+
+Demonstrations to occur in RTL simulators and with pre-built hardware if available.
+
+Potential topics with examples:
+* OR1200 CPU
+* ORPSoC - simulation
+* ORPSoC - on-board use debugging
 
 == Hardware ==
 
