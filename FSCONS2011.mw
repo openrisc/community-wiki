@@ -5,11 +5,33 @@ http://fscons.org/
 = Workshop =
 
 == Style ==
+
+The following is an example flow of the workshop. It may be far more than we can do usefully in 4 hours.
+
+We may want to split it up after intro + or1ksim.
+
 * Monolithic
-* Tracks
-** Software, Linux
-** RTL
-** Software, bare metal, RTOS
+** Introduction
+** OR1ksim
+*** Examples
+** Toolchain
+*** Example
+** ORPSoC
+*** Example simulation
+*** Example synthesis
+*** Example use on board
+** Software
+*** Bare metal
+**** Example compile and run on board
+**** Example debugging on board
+*** RTOSes
+**** Example compile and run on board
+*** u-boot
+**** Example and run on board
+*** Linux
+**** Example and run on board
+**** Example compile, download and ru userspace software
+**** Example debugging userspace software
 
 == Hardware ==
 
