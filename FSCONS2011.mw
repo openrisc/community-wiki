@@ -60,7 +60,11 @@ Potential topics with examples:
 
 == Hardware ==
 
-* Will we need it.
-* If so, suggestion by Jeremy Bennett of asking 4 sponsors for a board or two each up to $70-$80 USD, limiting HW portion of workshop to  20 people around boards in groups of 3 or 4, and all boards to be raffled off at the end.
+* Would be nice to have.
+* Are participants willing to pay up to 200 EUR for a development kit along the lines of:
+** [http://shop.trenz-electronic.de/catalog/product_info.php?products_id=961&SID Nexys 3]
+** [http://shop.trenz-electronic.de/catalog/product_info.php?cPath=1_114_119&products_id=504 Spartan 3E Starter Kit]
+** New ORSoC board
+* Otherwise, we might ask 4 sponsors for a board or two each up to $70-$80 USD, limiting HW portion of workshop to  20 people around boards in groups of 3 or 4, and all boards to be raffled off at the end.
 ** Candidate board is [http://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&No=593 Terasic DE0-nano]
 ** Candidate board is [http://www.alterawiki.com/wiki/BeMicro_SDK BeMicro]
