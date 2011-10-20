@@ -14,7 +14,111 @@ This page is to document EDA tool installation, setup and use.
 
 == Actel Libero ==
 
- Fill me in!
+=== Linux ===
+
+1. Register at [http://www.actel.com www.actel.com] to download software. Also register for a (free) license which should arrive by email after some time (30-60 minutes).
+
+2. Download basic software package (currently version 9.1), [http://www.actel.com/products/software/libero/licensing.aspx#daemons license server daemons] and service pack (currently SP3).
+
+3. To install basic software run:
+  > chmod +rw LiberoLU91_Lin.bin.gz
+  > gunzip LiberoLU91_Lin.bin.gz
+  > chmod +x LiberoLU91_Lin.bin
+  > sudo ./LiberoLU91_Lin.bin
+
+4. To install server daemons run:
+  > mkdir <path to actel>/license
+  > cd <path to actel>/license
+  > cp <download path>/Linux_licensing_Daemons.zip .
+  > unzip Linux_licensing_Daemons.zip
+
+5. Put the requested License.dat file from the email or Actel's site in <path to actel>/license. Open the file for editing and make sure the first lines read (with your specifics):
+  SERVER <hostname> <ethernet mac adress> <port e.g. 1702>
+  DAEMON actlmgrd <path to actel>/Libero/Libero/bin/actlmgrd
+  VENDOR snpslmd  <path to actel>/Libero_v9.0/Synplify/linux/snpslmd
+
+6. To install service pack 3 run:
+  > cp libero91SP3_lin.tar $ALSDIR/Libero
+  (Copy file to same level as /adm, /bin, /data, etc.)
+  > tar xvf libero91SP3_lin.tar
+  > sudo ./wsupdate.sh
+
+7. Add the following to ~/.bashrc, updated with your specifics, to more easily start the license server. You can now start the license server with the alias "actel_lic", but make sure to read the notes below to get it working.
+<pre>export ACTEL_LIC_FILE=<path to license file>
+export ACTEL_LMGRD_LOG_FILE=<path to log file>
+export LM_LICENSE_FILE=<port>@<hostname>
+export SYNPLCTYD_LICENSE_FILE=<port>@<hostname>
+export SNPSLMD_LICENSE_FILE=<port>@<hostname>
+
+# Paths for alias commands
+export ALSDIR=<path to actel/Libero>
+export ACTELSYNPLFYDIR=<path to actel/Libero/Synplify>
+export PATH=$PATH:$ACTELSYNPLFYDIR/bin:$ACTELSYNPLFYDIR/linux:$ALSDIR/Libero/bin:$ALSDIR/Libero/lib/
+
+# Actel license server launch alias
+alias actel_lic='sudo $ALSDIR/Libero/bin/lmgrd -c $ACTEL_LIC_FILE -l $ACTEL_LMGRD_LOG_FILE; echo; \
+echo "$ALSDIR/Libero/bin/lmgrd -c $ACTEL_LIC_FILE -l $ACTEL_LMGRD_LOG_FILE";echo; \
+echo "do a \"tail -f /opt/actel/license/lmgrd.log\" to watch server launch"; echo'
+</pre>
+=== Notes for 64-bit Lubuntu 11.04 ===
+May also be relevant for 32-bit systems, but some steps may not be needed.
+
+* Install lsb (Linux Standard Base 4.0 support package) in Synaptic or through apt-get.
+* acttclsh (Actel Tcl shell) requires Korn shell; install ksh
+* If you get messages on not finding Libero X libraries, add the following to LD_LIBRARY_PATH in ~/.bashrc:
+  export LD_LIBRARY_PATH=$ALSLIB/Libero/lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib:/usr/lib/X11:$LD_LIBRARY_PATH
+
+* You need to install libmotif3, not libmotif4 available from the repositories, and it has to be a 32-bit version. Copy the following [http://www-01.ibm.com/support/docview.wss?uid=swg21462179 script from IBM] and run to install 32-bit Motif 3 libraries:
+<pre>#!/bin/sh
+
+if [ "`uname -m`" != "x86_64" ] ; then
+        echo "This is only needed for 64 bits systems."
+        exit -1
+fi
+
+echo Installing 32 bits libraries...
+
+# compatibility libraries
+sudo apt-get install ia32-libs
+TMP_DIR=/tmp/install_libmotif3_32_bits.$$
+MOTIF3LIB=libmotif3_2.2.3-2_i386.deb
+REPO=http://mirrors.kernel.org/ubuntu
+
+# compatibility libraries
+sudo apt-get install ia32-libs
+mkdir ${TMP_DIR}
+
+# Install the 32 bits version - because there is no 32 bits
+# compatibility package, we need to use the library from the native
+# 32 bits package.
+# Note: The 32 bits lib will not be updated/upgraded automatically.
+cd ${TMP_DIR} && wget ${REPO}/pool/multiverse/o/openmotif/${MOTIF3LIB}
+if [ $? -ne 0 ] ; then
+        echo "Error downloading ${MOTIF3LIB}"
+        exit -2
+fi
+
+dpkg-deb -x ${MOTIF3LIB} ${TMP_DIR}
+if [ $? -ne 0 ] ; then
+        echo "Error extracting libraries from package"
+        exit -3
+fi
+
+ls ${TMP_DIR}/usr/lib/lib*.so*
+
+sudo mv -i ${TMP_DIR}/usr/lib/lib*.so* /usr/lib32
+
+if [ $? -eq 0 ] ; then
+        echo "32 bits motif installed"
+        sudo ldconfig
+else
+        echo "Error moving libraries"
+fi
+
+echo "Removing temporary directory"
+rm ${TMP_DIR} -fr
+</pre>
+* Make sure you have portmap installed, as it is needed by Wind/U.
 
 = Simulators / Compilers =
 
