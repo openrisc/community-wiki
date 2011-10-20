@@ -285,6 +285,11 @@ John Eaton
 * Semifore: CSRCompiler
 * GenSys: Registers
 
+=== Open source IP-XACT tools ===
+
+Kactus2: http://funbase.cs.tut.fi
+
+
 == Socgen Design Environment  ==
 
 I would like for this group to consider adopting the socgen project structure for the 
