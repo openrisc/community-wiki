@@ -60,7 +60,7 @@ alias actel_lic='sudo $ALSDIR/Libero/bin/lmgrd -c $ACTEL_LIC_FILE -l $ACTEL_LMGR
 echo "$ALSDIR/Libero/bin/lmgrd -c $ACTEL_LIC_FILE -l $ACTEL_LMGRD_LOG_FILE";echo; \
 echo "do a \"tail -f /opt/actel/license/lmgrd.log\" to watch server launch"; echo'
 </pre>
-=== Notes for 64-bit Lubuntu 11.04 ===
+==== Notes for 64-bit Lubuntu 11.04 ====
 May also be relevant for 32-bit systems, but some steps may not be needed.
 
 * Install lsb (Linux Standard Base 4.0 support package) in Synaptic or through apt-get.
