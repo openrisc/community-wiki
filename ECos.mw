@@ -1,0 +1,74 @@
+== Introduction ==
+
+This page contains information on eCos port for the OpenRISC 1000 family.
+
+== Status ==
+
+This is an initial release. 
+Currently, only ROM startup option is supported and tested. 
+Other startup options are being tested and will be available soon.
+The port has been tested using or1ksim-0.5.1rc1.
+
+Example or1ksim and eCos configuration files are provided with this port.
+
+== Download ==
+
+ svn co http://opencores.org/ocsvn/openrisc/openrisc/trunk/rtos/ecos-3.0
+
+== Building and running ==
+
+It is assumed, that or32-elf toolchain directory is already in the PATH variable.
+
+=== Building eCos ===
+
+First, set eCos envirnomental variable. 
+This is required to build eCos.
+It is not necessary for application development, later on.
+
+ ECOS_REPOSITORY=/path-to-checkout-directory/ecos-3.0/packages
+ export ECOS_REPOSITORY
+
+Create a directory for eCos build
+
+ mkdir ecos_openrisc
+
+Now use example configuration
+
+ cp ecos-3.0/packages/hal/openrisc/arch/v3_0/doc/ecos.ecc ecos_openrisc/
+
+Everything is ready to build eCos
+
+ cd ecos_openrisc/
+ ecosconfig tree
+ make
+
+=== Building application ===
+
+Create a directory for an application
+
+ mkdir ecos_app
+ cd ecos_app
+
+Write your application.
+You can use an example for now http://ecos.sourceware.org/docs-1.3.1/tutorials/sh3/ecos-tutorial.13.html
+
+Finally, build the application
+
+ or32-elf-gcc \
+    -g \
+    -I../ecos_openrisc/install/include \
+    -L../ecos_openrisc/install/lib \
+    -nostdlib \
+    -T../ecos_openrisc/install/lib/target.ld \
+    -O2 \
+    main.c
+
+=== Running in simulator ===
+
+First copy the provided simulator configuration
+
+ cp ecos-3.0/packages/hal/openrisc/arch/v3_0/doc/or1ksim.cfg ./
+
+Simulate your application
+
+ or32-elf-sim -f or1ksim.cfg a.out
