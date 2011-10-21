@@ -28,6 +28,9 @@ It is not necessary for application development, later on.
  ECOS_REPOSITORY=/path-to-checkout-directory/ecos-3.0/packages
  export ECOS_REPOSITORY
 
+ PATH=$PATH:/path-to-checkout-directory/ecos-3.0/tools/bin
+ export PATH
+
 Create a directory for eCos build
 
  mkdir ecos_openrisc
