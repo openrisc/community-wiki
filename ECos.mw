@@ -71,7 +71,7 @@ Finally, build the application
 
 First copy the provided simulator configuration
 
- cp ecos-3.0/packages/hal/openrisc/arch/v3_0/doc/or1ksim.cfg ./
+ cp ../ecos-3.0/packages/hal/openrisc/arch/v3_0/doc/or1ksim.cfg ./
 
 Simulate your application
 
