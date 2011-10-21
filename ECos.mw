@@ -41,6 +41,7 @@ Everything is ready to build eCos
  cd ecos_openrisc/
  ecosconfig tree
  make
+ cd ../
 
 === Building application ===
 
