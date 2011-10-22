@@ -16,7 +16,7 @@ To create a u-boot Linux kernel boot image, a tool called mkimage is used.
 It is available in u-boot's tools/ directory and the following command can be used to create a not compressed kernel image called 'uImage' with load address at 0 and entry point at 0x100
  <nowiki>tools/mkimage -n 'Linux for OpenRISC' -A or1k -O linux -T kernel -C none -a 0 -e 0x100 -d /path/to/vmlinux.bin uImage</nowiki>
 
-= Creating a baremetal boot image =
+= Creating a bare metal boot image =
 To create a u-boot image from a baremetal program, the u-boot tool call mkimage is used.
 It is available in u-boot's tools/ directory and the following command can be used to create a not compressed bare metal image called 'helloWorld' with load address 0 and entry point at 0x100
  <nowiki>mkimage -A or1k -T standalone -C none -a 0 -e 0x100 -n helloWorld -d hello.bin uImage</nowiki>
@@ -59,7 +59,6 @@ We copied 80176 bytes (13930 hex) to the 1MB mark in flash (address 0xf0100000) 
 This image can now be booted with:
 
  <nowiki>==> bootm f0100000</nowiki>
-
 
 = Booting from tftp =
 
