@@ -29,6 +29,7 @@ Please use the Actel FlashPro tool to program the FPGA with this image.
 ** Ethernet
 ** GPIO
 ** DDR2 SDRAM (256MB)
+** CFI flash (32MB)
 ** SRAM
 ** SPI
 ** UART
@@ -43,7 +44,7 @@ See the ML501 documentation in ORPSoC for instructions on programming this image
 === Flash boot image with U-boot programmer ===
 [ftp://ocuser:ocuser@openrisc.opencores.org/orpsoc/images/orpsoc-ml501-66MHz-flashboot.mcs orpsoc-ml501-66MHz-flashboot.mcs] FPGA image for SPI flash
 
-[ftp://ocuser:ocuser@openrisc.opencores.org/orpsoc/images/ml501-flash-uboot-programmer.elf ml501-flash-uboot-programmer.elf ] Software to embed U-boot into flash reset vector.
+[ftp://ocuser:ocuser@openrisc.opencores.org/orpsoc/images/ml501-flash-uboot-programmer.elf ml501-flash-uboot-programmer.elf ] Bare-metal programmer app to embed U-boot into CFI flash for boot.
 
 Load the SPI flash as per the instructions, and execute the software to program U-boot into the board's flash. The board will then power up with the U-boot prompt.
 
