@@ -16,6 +16,51 @@ To create a u-boot Linux kernel boot image, a tool called mkimage is used.
 It is available in u-boot's tools/ directory and the following command can be used to create a not compressed kernel image called 'uImage' with load address at 0 and entry point at 0x100
  <nowiki>tools/mkimage -n 'Linux for OpenRISC' -A or1k -O linux -T kernel -C none -a 0 -e 0x100 -d /path/to/vmlinux.bin uImage</nowiki>
 
+= Creating a baremetal boot image =
+To create a u-boot image from a baremetal program, the u-boot tool call mkimage is used.
+It is available in u-boot's tools/ directory and the following command can be used to create a not compressed bare metal image called 'helloWorld' with load address 0 and entry point at 0x100
+ <nowiki>mkimage -A or1k -T standalone -C none -a 0 -e 0x100 -n helloWorld -d hello.bin uImage</nowiki>
+== Downloading the image to the board ==
+The following will use NFS to download this image to the board. Ensure you have NFS set up and accessible somewhere on your machine. Copy the resulting file from the previous step, uImage, there.
+So long as the board has network access, set the following in u-boot:
+ <nowiki>set serverip 192.168.1.65
+set bootfile "/path/to/your/nfs/share/uImage"
+set loadaddr 100000</nowiki>
+The above assumes your host machine (running the NFS server) is at 192.168.1.65 - change this to the appropriate IP in your case. The program will be saved into RAM at the 1MB mark (0x100000). Now run the NFS download program:
+ <nowiki>==> nfs
+ethoc
+Using ETHOC-0 device
+File transfer via NFS from server 192.168.1.65; our IP address is 192.168.1.72
+Filename '/home/user/path/to/uImage'.
+Load address: 0x100000
+Loading: ################
+done
+Bytes transferred = 80176 (13930 hex)</nowiki>
+
+Your exact details may vary.
+
+== Running the image from RAM ==
+
+This image can then be booted from that address with
+
+ <nowiki>==> bootm 100000</nowiki>
+
+== Saving the image to flash and booting it ==
+
+Or we can copy it to the 1MB mark in flash memory with the following:
+
+ <nowiki>protect off all
+erase f0900000 +20000
+cp 100000 f0100000 13930
+protect on all</nowiki>
+
+We copied 80176 bytes (13930 hex) to the 1MB mark in flash (address 0xf0100000) from RAM address at 1MB.
+
+This image can now be booted with:
+
+ <nowiki>==> bootm f0100000</nowiki>
+
+
 = Booting from tftp =
 
 First, the net settings have to be setup. There are two ways of doing this.
