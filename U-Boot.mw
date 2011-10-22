@@ -43,7 +43,7 @@ Your exact details may vary.
 
 This image can then be booted from that address with
 
- <nowiki>==> bootm 100000</nowiki>
+ <nowiki>bootm 100000</nowiki>
 
 == Saving the image to flash and booting it ==
 
@@ -58,7 +58,7 @@ We copied 80176 bytes (13930 hex) to the 1MB mark in flash (address 0xf0100000) 
 
 This image can now be booted with:
 
- <nowiki>==> bootm f0100000</nowiki>
+ <nowiki>bootm f0100000</nowiki>
 
 = Booting from tftp =
 
