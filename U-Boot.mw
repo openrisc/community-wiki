@@ -50,7 +50,7 @@ This image can then be booted from that address with
 Or we can copy it to the 1MB mark in flash memory with the following:
 
  <nowiki>protect off all
-erase f0900000 +20000
+erase f0100000 +20000
 cp 100000 f0100000 13930
 protect on all</nowiki>
 
