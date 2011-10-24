@@ -11,7 +11,7 @@ To register please go [http://my.fscons.org/schedule/session/24/  here].
 The workshop will aim to take participants through the OpenRISC project and how to use its implementations during the 4 hour session.
 
 Participants will:
-* receive and introduction to the project and and architecture and implementations
+* receive an introduction to the project and the OpenRISC 1000 architecture and its open source implementations
 * compile programs, run and debug them in the architectural simulator, [[Or1ksim]]
 * learn how the hardware implementations work, and how to simulate and extend them
 * compile, load and execute bare-metal code on OpenRISC CPUs
