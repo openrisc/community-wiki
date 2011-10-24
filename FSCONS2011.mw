@@ -12,23 +12,25 @@ We would like feedback from participants about which style they would most prefe
 
 At this stage we are just discussing the options. We would appreciate feedback. Eventually some way for registered participants to indicate their preference will be organised, but for now we wouldn't mind if you could leave feedback on the [[Talk:FSCONS2011|wiki's discussion page]] or come to #opencores on irc.freenode.net and have a chat.
 
-== Style ==
+== Programme ==
 
-The following is an example flow of the workshop. It may be far more than we can do usefully in 4 hours.
+The following is likely to be the flow of the workshop. It may be far more than we can do usefully in 4 hours.
 
-We may want to split it up after intro + or1ksim.
-
-=== Monolithic ===
-
-* Introduction
-* OR1ksim
-** Examples
+*Introduction to the architecture
 * Toolchain
+** Overview of GNU tools ports
+** Overview of library ports
 ** Example
-* ORPSoC
-** Example simulation
-** Example synthesis
-** Example use on board
+* OR1ksim
+** Introduction
+** Running programs
+* Hardware
+** OR1200
+*** Introduce, explain
+** ORPSoC
+*** Example RTL simulation
+*** Example synthesis
+*** Example use on board
 * Software
 ** Bare metal
 *** Example compile and run on board
@@ -41,30 +43,6 @@ We may want to split it up after intro + or1ksim.
 *** Example and run on board
 *** Example compile, download and ru userspace software
 *** Example debugging userspace software
-
-=== Strands ===
-
-Different strands of the workshop, oriented towards giving more in-depth demonstrations of each topic. Perhaps breaking into strands after a single introduction.
-
-==== Software Strand ====
-
-Examples to be done using or1ksim and/or pre-built hardware if available.
-
-Potential topics with examples:
-* Toolchain
-* newlib & bare metal
-* u-boot
-* Linux kernel
-* BusyBox and Linux userspace
-
-==== Hardware Strand ====
-
-Demonstrations to occur in RTL simulators and with pre-built hardware if available.
-
-Potential topics with examples:
-* OR1200 CPU
-* ORPSoC - simulation
-* ORPSoC - on-board use debugging
 
 == Hardware ==
 
