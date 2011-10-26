@@ -46,7 +46,7 @@ of pain and effort. or1200 has some structural problems that if we cannot change
 ** list-include-dirs : Returns a list of the modules' and it's submodules' directories containing include files. Used in top level Makefile to create project files for synthesis and simulation
 ** get-modules : Download the required submodules to the modules dir. Not sure how this should be done. Requires knowledge of each submodules' repo or download location, but this could maybe be solved with a simple ebuild-like systems. I guess the three main cases are SVN, GIT and tar balls [[User:Olof|Olof]] 23:07, 24 August 2011 (CEST)
 
-* Create a project based on a custom (our standard) list of files and directories. The Makefile system should able to create project files for synthesis and simulation out of it. This has been created for MinSoC, you can find it under minsoc/prj [http://www.minsoc.com/trunk:project_definition]. We could port it to OrpSoC3 if we can agree on a way to do it. [[User:rfajardo|rfajardo]] 11 October 2011
+* Create a project based on a custom (our standard) list of files and directories. The Makefile system should able to create project files for synthesis and simulation out of it. This has been created for MinSoC, you can find it under minsoc/prj, details are described on this [[http://www.minsoc.com/trunk:project_definition|link]]. We could port it to OrpSoC3 if we can agree on a way to do it. [[User:rfajardo|rfajardo]] 11 October 2011
 
 == Configuration ==
 Kbuild has been proposed here. Pros/cons?
