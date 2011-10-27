@@ -5,11 +5,12 @@ This page contains information on the eCos port for the OpenRISC 1000 family.
 == Status ==
 
 This is an initial release. 
-Currently, only ROM startup is supported and tested. 
-Other startup options are being tested and will be available soon.
+Both ROM and RAM startup modes are working now.
+
 The port has been tested using or1ksim-0.5.1rc1.
 
 Example or1ksim and eCos configuration files are provided with this port.
+eCos is configured to boot from RAM (4MB), no cache, no mmu.
 
 == Download ==
 
