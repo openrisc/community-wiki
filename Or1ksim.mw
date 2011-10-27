@@ -116,7 +116,7 @@ First download the sources either from the download page or from SVN and unpack 
  <nowiki>
 mkdir builddir_or1ksim
 cd builddir_or1ksim
-../or1ksim-0.4.0/configure --target=or32-elf --prefix=/opt/or1ksim
+../configure --target=or32-elf --prefix=/opt/or1ksim
 make all
 make install
 export PATH=/opt/or1ksim/bin:$PATH
