@@ -100,3 +100,10 @@ This board is a [[FPGA_Development_Boards#Terasic_DE0_Nano | Altera Cyclone IV d
 
  <nowiki>make de0_nano_config
 make</nowiki>
+
+= How to create your own board port =
+To add your own board port follow these steps. We will use the atlys board as a starting point, and we will call our new board 'myboard':
+ <nowiki>1) copy u-boot/include/configs/atlys.h to u-boot/include/configs/myboard.h
+2) copy the folder u-boot/board/atlys to u-boot/board/myboard
+3) add 'myboard' to u-boot/boards.cfg in a similar way as the 'atlys' board appears
+4) run make myboard_config</nowiki>
