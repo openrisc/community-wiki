@@ -106,4 +106,5 @@ To add your own board port follow these steps. We will use the atlys board as a 
  <nowiki>1) copy u-boot/include/configs/atlys.h to u-boot/include/configs/myboard.h
 2) copy the folder u-boot/board/atlys to u-boot/board/myboard
 3) add 'myboard' to u-boot/boards.cfg in a similar way as the 'atlys' board appears
-4) run make myboard_config</nowiki>
+4) edit u-boot/include/configs/myboard.h to suite your needs
+5) run make myboard_config</nowiki>
