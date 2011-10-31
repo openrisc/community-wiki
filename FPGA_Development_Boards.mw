@@ -3,8 +3,13 @@ This section contains a list of boards, and certain details, that there are push
 Once you have your board up and running, you may find the guide to [[Debugging physical targets (FPGA/ASIC)|debugging physical targets]]  useful.
 
 == ORSoC OpenRISC development board ==
+[http://orsoc.se/fpga-development-board/ More about this board on manufacturer's website]
 
+See the difference between the FPGAs at the [http://www.actel.com/products/pa3/default.aspx Actel product overview page].
+
+=== ProASIC3E 1500 ===
 * Board path: actel/ordb1a3pe1500
+* FPGA: A3PE1500
 * CPU core frequency: 20MHz
 * Supported devices
 ** Ethernet
@@ -15,10 +20,28 @@ Once you have your board up and running, you may find the guide to [[Debugging p
 ** UART
 ** USB 1.1
 
-[http://orsoc.se/fpga-development-board/ More about this board on manufacturer's website]
-
-=== Pre-built image ===
+==== Pre-built image ====
 [ftp://ocuser:ocuser@openrisc.opencores.org/orpsoc/images/orpsoc-ordb1a3pe1500-20MHz.pdb orpsoc-ordb1a3pe1500-20MHz.pdb]
+Please use the Actel FlashPro tool to program the FPGA with this image.
+
+=== ProASIC3 1000 ===
+* Board path: actel/ordb1a3pe1500
+* FPGA: A3P1000
+* CPU core frequency: 20MHz
+* OR1200 cache sizes: instruction cache 4 kB, data cache 1 kB
+* Boot mode: Loop at zero
+* Supported devices
+** JTAG_DEBUG
+** SDRAM (32MB)
+** SPI flash
+** UART
+
+Note: The same board path and makefiles are used as the ProASIC3E 1500 FPGA. Call the makefile with parameters like this:
+
+  make all FPGA_FAMILY=ProASIC3 FPGA_PART=A3P1000
+
+==== Pre-built image ====
+[ftp://ocuser:ocuser@openrisc.opencores.org/orpsoc/images/orpsoc-ordb1a3p1000-20MHz.pdb orpsoc-ordb1a3p1000-20MHz.pdb]
 Please use the Actel FlashPro tool to program the FPGA with this image.
 
 == Xilinx ML501 ==
