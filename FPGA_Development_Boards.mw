@@ -40,9 +40,12 @@ Note: The same board path and makefiles are used as the ProASIC3E 1500 FPGA. Cal
 
   make all FPGA_FAMILY=ProASIC3 FPGA_PART=A3P1000
 
-==== Pre-built image ====
-[ftp://ocuser:ocuser@openrisc.opencores.org/orpsoc/images/orpsoc-ordb1a3p1000-20MHz.pdb orpsoc-ordb1a3p1000-20MHz.pdb]
-Please use the Actel FlashPro tool to program the FPGA with this image.
+==== Pre-built images ====
+Please use the Actel FlashPro tool to program the FPGA with these images.
+
+[ftp://ocuser:ocuser@openrisc.opencores.org/orpsoc/images/orpsoc-ordb1a3p1000-20MHz.pdb orpsoc-ordb1a3p1000-20MHz.pdb] (boot with endless loop at memory address 0)
+
+[ftp://ocuser:ocuser@openrisc.opencores.org/orpsoc/images/orpsoc-ordb1a3p1000-20MHz-flashboot.pdb orpsoc-ordb1a3p1000-20MHz-flashboot.pdb] (boot from programmed SPI flash)
 
 == Xilinx ML501 ==
 
