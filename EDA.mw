@@ -126,6 +126,8 @@ rm ${TMP_DIR} -fr
 
 This is an open source event-driven Verilog simulator. It's home page is [http://iverilog.icarus.com/ http://iverilog.icarus.com/]
 
+They have very good manual installation instructions here:[http://iverilog.wikia.com/wiki/Installation_Guide http://iverilog.wikia.com/wiki/Installation_Guide]
+
 === Installation under Ubuntu ===
 
 Using apt-get:
