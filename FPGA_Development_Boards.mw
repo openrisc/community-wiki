@@ -5,7 +5,24 @@ Once you have your board up and running, you may find the guide to [[Debugging p
 == ORSoC OpenRISC development board ==
 [http://orsoc.se/fpga-development-board/ More about this board on manufacturer's website]
 
-See the difference between the FPGAs at the [http://www.actel.com/products/pa3/default.aspx Actel product overview page].
+=== The NEW OpenRISC FPGA development board (ordb2a-ep4ce22) ===
+* Board path: altera/ordb2a-ep4ce22  (will be released soon)
+* FPGA: Altera Cyclone IV (P/N: ep4ce22)
+* CPU core frequency: 70MHz
+* Supported devices
+** Ethernet
+** GPIO
+** PCI
+** SD Card
+** SDRAM (32MByte)
+** SPI Flash (up to 8MByte)
+** 2xUART
+** 2xJTAG
+** USB Host/Slave
+** Another optional USB
+
+More information about the board can be found [[ordb2a-ep4ce22|here]]
+
 
 === ProASIC3E 1500 ===
 * Board path: actel/ordb1a3pe1500
@@ -46,6 +63,9 @@ Please use the Actel FlashPro tool to program the FPGA with these images.
 [ftp://ocuser:ocuser@openrisc.opencores.org/orpsoc/images/orpsoc-ordb1a3p1000-20MHz.pdb orpsoc-ordb1a3p1000-20MHz.pdb] (boot with endless loop at memory address 0)
 
 [ftp://ocuser:ocuser@openrisc.opencores.org/orpsoc/images/orpsoc-ordb1a3p1000-20MHz-flashboot.pdb orpsoc-ordb1a3p1000-20MHz-flashboot.pdb] (boot from programmed SPI flash)
+
+See the difference between the Actel FPGAs at the [http://www.actel.com/products/pa3/default.aspx Actel product overview page].
+
 
 == Xilinx ML501 ==
 
