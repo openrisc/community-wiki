@@ -3,10 +3,15 @@ The aim of the OpenRISC project is to create free and open source computing plat
 * a set of free, open source implementations of the architecture
 * a complete set of free, open source software development tools, libraries, operating systems and applications
 
-Some useful hot-links:
+
+'''Some useful hot-links:'''
+
 * Information about the [[OR1200 OpenRISC Processor]] and other [[OR1K:Community_Portal#Further_information|sources of information]]
-* The [http://opencores.org/forum,OpenRISC OpenRISC forum] and [[OR1K:Community_Portal#Mailing_lists_on_openrisc.net|OpenRISC]] and [[OR1K:Community_Portal#Mailing_lists_on_opencores.org|OpenCores]] mailing lists.
+
+* The [http://opencores.org/forum,OpenRISC OpenRISC web-forum] and [[OR1K:Community_Portal#Mailing_lists|OpenRISC mailing lists.]]
+
 * [[OR1K:Community_Portal#Get_source_code|Download]] source code or [http://opencores.org/websvn,listing,openrisc browse in SVN]
+
 * OpenRISC [http://bugzilla.opencores.org/ bugzilla] and its [[OR1K:Community_Portal#Bug_reporting|documentation]]
 
 This project is now fully maintained through a Wiki (the [[OR1K:Community_Portal|Community Portal]]). The [http://opencores.org/openrisc,overview old web pages] are still available, but no longer maintained.
@@ -22,4 +27,4 @@ This project is now fully maintained through a Wiki (the [[OR1K:Community_Portal
 
 
 
-Active devlopers are welcome as maintainer of this project. The list will be updated regularly. If you think your name should be in the list, please send an email to [mailto:ocadmin@opencores.org ocadmin@opencores.org].
+Active developers are welcome as maintainer of this project. The list will be updated regularly. If you think your name should be in the list, please send an email to [mailto:ocadmin@opencores.org ocadmin@opencores.org].
