@@ -6,7 +6,7 @@ This page contains information about the OpenRISC 1000 architecture port and boa
 
 = Downloading =
 
-The u-boot code with basic OpenRISC 1000 support is found on the openrisc.net git tree.
+U-Boot source with OpenRISC 1000 support is found on the openrisc.net git tree.
 
  <nowiki>git clone git://openrisc.net/stefan/u-boot</nowiki>
 
