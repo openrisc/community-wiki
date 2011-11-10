@@ -10,6 +10,38 @@ The u-boot code with basic OpenRISC 1000 support is found on the openrisc.net gi
 
  <nowiki>git clone git://openrisc.net/stefan/u-boot</nowiki>
 
+= Configuration =
+There are two different ways to do configuration in U-Boot, one is the pre-compile configuration in the '''include/configs/boardname.h'''
+and the other is the runtime configuration called the 'environment'
+
+== Network ==
+The following configuration knobs are necessary to enable networking:
+ <nowiki>
+#define CONFIG_ETHOC
+#define CONFIG_SYS_ETHOC_BASE 		0x92000000
+ </nowiki>
+
+The preferred way of setting up MAC address and IP settings is through the environment:
+ <nowiki>
+setenv ethaddr 00:12:34:56:78:9a
+setenv gatewayip 192.168.255.254
+setenv ipaddr 192.168.255.27
+setenv netmask 255.255.0.0
+setenv serverip 192.168.255.100
+saveenv
+ </nowiki>
+NOTE: you need to restart your board after you have set 'ethaddr'.
+
+If for some reason there is no possibility to save the environment to a non-volatile storage,
+the settings can also be hardcoded into to the pre-compile configuration
+ <nowiki>
+#define CONFIG_ETHADDR			00:12:34:56:78:9a
+#define CONFIG_GATEWAYIP		192.168.255.254
+#define CONFIG_IPADDR   		192.168.255.103
+#define CONFIG_NETMASK  		255.255.0.0
+#define CONFIG_SERVERIP			192.168.255.100
+ </nowiki> 
+
 = Creating a Linux kernel boot image =
 
 To create a u-boot Linux kernel boot image, a tool called mkimage is used.
@@ -62,9 +94,6 @@ This image can now be booted with:
 
 = Booting from tftp =
 
-First, the net settings have to be setup. There are two ways of doing this.
-One way is to edit the configuration file for the active board port, which is located at '''include/configs/boardname.h'''
-The other way is to edit them by using the ''setenv'' command. To see the current settings, use the ''printenv'' command.
 When u-boot's net configuration is properly setup, and a tftp server is running, the following command is used to load the file uImage into RAM.
  <nowiki>tftpboot uImage</nowiki>
 When the image has finished loading, it can be booted by using the ''bootm'' command.
