@@ -12,7 +12,9 @@ Has come and gone.
 
 The workshop introduced participants to the OpenRISC project and how to use its implementations during the 4 hour session.
 
-Slides and code will be downloadable soon.
+Slides and workshop archive available via OpenCores FTP (123MB): [ftp://ocuser:ocuser@openrisc.opencores.org/fscons2011/or1k-fscons2011.tar.bz2]
+
+Extract the archive to /opt and presentation slides under /opt/or1k-fscons2011/doc
 
 == Programme ==
 
