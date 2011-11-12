@@ -6,61 +6,28 @@ Details [http://my.fscons.org/schedule/session/47/ here]
 
 = Workshop =
 
-To register please go [http://my.fscons.org/schedule/session/24/  here].
+FSCONS page [http://my.fscons.org/schedule/session/24/ here].
 
-The workshop will aim to take participants through the OpenRISC project and how to use its implementations during the 4 hour session.
+Has come and gone.
 
-Participants will:
-* receive an introduction to the project and the OpenRISC 1000 architecture and its open source implementations
-* compile programs, run and debug them in the architectural simulator, [[Or1ksim]]
-* learn how the hardware implementations work, and how to simulate and extend them
-* compile, load and execute bare-metal code on OpenRISC CPUs
-* compile the Linux kernel for OpenRISC, download and boot it via U-boot
-* compile, load, run and debug userspace code running on the Linux kernel on OpenRISC
+The workshop introduced participants to the OpenRISC project and how to use its implementations during the 4 hour session.
 
-At this stage we are not certain that there will be development boards available for everyone. The options are (1) participants pre-purchase boards to be collected and used at the event, or (2) we may engage sponsors to provide a few boards to be used in groups at the event, and are raffled off at the end.  We would like feedback on whether participants would prefer to pre-purchase an agreed board, or if they don't mind running all of the programs under simulation with the potential for sponsors to provide a few boards if we can arrange that. 
-
-If you could leave feedback on the [[Talk:FSCONS2011|wiki's discussion page]] or come to #opencores on irc.freenode.net and have a chat, it would be appreciated.
+Slides and code will be downloadable soon.
 
 == Programme ==
 
-The following is likely to be the flow of the workshop. It may be far more than we can do usefully in 4 hours.
+The following was the programme for the workshop
 
-*Introduction to the architecture
-* Toolchain
-** Overview of GNU tools ports
-** Overview of library ports
-** Example
-* OR1ksim
-** Introduction
-** Running programs
-* Hardware
-** OR1200
-*** Introduce, explain
-** ORPSoC
-*** Example RTL simulation
-*** Example synthesis
-*** Example use on board
-* Software
-** Bare metal
-*** Example compile and run on board
-*** Example debugging on board
-** RTOSes
-*** Example compile and run on board
-** u-boot
-*** Example and run on board
-** Linux
-*** Example and run on board
-*** Example compile, download and ru userspace software
-*** Example debugging userspace software
+* Introduction to the architecture, implementations, toolchain and software
+* Detailed presentation of
+** RTL development (simulation)
+** ORPSoC simulation, debugging
+* Worked example of
+** Instantiating SHA256 core in ORPSoC
+** Writing driver software for it in ORPSoC
+** Running software tests in RTL simulation on ORPSoC
+** Running ORPSoC to evaluate performance improvement between software and hardware SHA256 hashing
 
 == Hardware ==
 
-* Would be nice to have.
-* Are participants willing to pay up to 200 EUR for a development kit along the lines of:
-** [http://shop.trenz-electronic.de/catalog/product_info.php?products_id=961&SID Nexys 3]
-** [http://shop.trenz-electronic.de/catalog/product_info.php?cPath=1_114_119&products_id=504 Spartan 3E Starter Kit]
-** New ORSoC board
-* Otherwise, we might ask 4 sponsors for a board or two each up to $70-$80 USD, limiting HW portion of workshop to  20 people around boards in groups of 3 or 4, and all boards to be raffled off at the end.
-** Candidate board is [http://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&No=593 Terasic DE0-nano]
-** Candidate board is [http://www.alterawiki.com/wiki/BeMicro_SDK BeMicro SDK]
+* ORSoC ORDB2A demonstrated running Linux
