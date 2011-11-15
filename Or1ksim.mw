@@ -170,7 +170,7 @@ More details on Linux for OpenRISC 1000 may be found on the operating systems pa
 
 [http://www.embecosm.com/download/ean2.html Embecosm Application Note EAN2] described in the Installation section above includes examples using Or1ksim. The User Guide for the OpenRISC 1000 port of GDB 6.8 includes details of running Or1ksim with GDB.
 
-To aid in debugging, the immediate field of a NOP can be used to control some simulation parameters. The following table defines the meaning of each NOP field. These are defined in or1ksim/cpu/or1k/spr-defs.h
+To aid in debugging, the immediate field of a NOP can be used to control some simulation parameters. The following table defines the meaning of each NOP field. These are defined in or1ksim/cpu/or1k/spr-defs.h. They are documented in the latest user guide with the distribution.
 
 {|
 ! align="left"|Name
