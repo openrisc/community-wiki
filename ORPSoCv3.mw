@@ -1,1 +1,41 @@
-#REDIRECT [[ORPSoCv3InitialDiscussion]]
+=Summary=
+ORPSoC is the reference platform for OpenRISC development. It has many users and can be extended to lots of FPGA boards. It's main purposes are simulation, building board ports and providing a software environment. Next version of ORPSoC aims to clean up the current infrastructure, rely less on custom software and make it easier to customize and add new board builds.
+
+=Rationale=
+The following problems with current ORPSoC have been identified. The next version will try to rectify these issues
+
+* Current version of ORPSoC require local copies of all cores which duplicates a lot of code and creates undocumented deviations from the upstream versions.
+
+* Each board port contain files that could be centralized for easier maintenance.
+
+* ORPSoC contain some basic C library functions that are also available in newlib. This also creates additional problems with incompatibility between software built with liborpsoc and newlib.
+
+* The reference build, which is really a non-technology-specific board build, is treated as a special board build which complicates the hierarchy
+
+* It's easy to get lost in the tree and there is no way to go from setup to simulation to implementation without moving around in the ORPSoC tree
+
+* It's hard to know what is expected to provide when a new board port is added
+
+* ORPSoC is hidden in the or1200 tree, which makes it harder to find.
+
+=Implementation=
+
+==Project Structure==
+
+==Software managment==
+
+==Handling of external cores==
+
+==Workflow==
+
+==Other==
+
+* ORPSoC will be living in a separate repository. This will increase visibility and also make it easier to use other CPU implementations.
+
+=Status=
+==Work items==
+=Open issues=
+
+=Discussion=
+
+The original discussion can be found here [[ORPSoCv3InitialDiscussion]]
