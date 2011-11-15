@@ -22,6 +22,23 @@ The following problems with current ORPSoC have been identified. The next versio
 
 ==Project Structure==
 
+*<root>/
+**bench/ Main ORPSoC testbench
+**boards/ Contain all board-specific directories
+***digilent-atlys/
+***ordb2a/
+***generic/
+***...
+***de0-nano
+**config/ ORPSoC configuration files
+**cores/
+***or1200
+***simple_spi
+***...
+***uart16550
+**scripts/ Makefile snippets and other ORPSoC scripts
+**sw/ ORPSoC-specific software
+
 ==Software managment==
 
 ==Handling of external cores==
