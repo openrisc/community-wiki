@@ -25,6 +25,20 @@ The following problems with current ORPSoC have been identified. The next versio
 ==Software managment==
 
 ==Handling of external cores==
+External cores from opencores or other locations will be pulled in when needed, and patched to work in ORPSoC. Each core will live in a separate directory with the following structure:
+* <core_name>
+**driver/ .c/.h/.S files for bare-metal driver
+**core/ Upstream core
+**patches/ ORPSoC-specific patches for core
+**Makefile
+
+Makefile should contain the following rules:
+* fetch Get the core from it's upstream repository
+* patch Apply core-specific patches
+* list-rtl-files Return a list of RTL files in core
+* list-include-dirs Return a list of include directories in core
+* list-tb-files Return a list of files needed for simulation
+* driver Build an object of the bare-metal driver
 
 ==Workflow==
 
