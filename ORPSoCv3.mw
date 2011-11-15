@@ -62,6 +62,30 @@ This makefile can be included as a patch if it is not in the upstream core
 
 ==Workflow==
 
+===Quick start. Build a ready-made FPGA image===
+From the project root
+<code><br>make config BOARD=<board_name>
+<br>make loadmodule</code>
+The above code will select the configuration file for the selected board and save it in config/board.conf. It will then use the default synthesis and PAR tools to build a FPGA image
+
+===Quick start. Simulation===
+From the project root
+<code><br>make config BOARD=<board_name>
+<br>make rtl-tests</code>
+The above code will select the configuration file for the selected board and save it in config/board.conf. It will then use the default simulation tool to run through all the RTL tests
+
+===Adding a new core to a board build===
+TBD
+
+===Building a bare-metal program with ORPSoC drivers===
+TBD
+===Overriding a central core with a local version===
+TBD
+===Adding support for a new core in ORPSoC===
+TBD
+===Creating and updating patches===
+TBD
+
 ==Other==
 
 * ORPSoC will be living in a separate repository. This will increase visibility and also make it easier to use other CPU implementations.
