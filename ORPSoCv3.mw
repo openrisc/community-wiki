@@ -64,7 +64,7 @@ This makefile can be included as a patch if it is not in the upstream core
 
 ===Quick start. Build a ready-made FPGA image===
 From the project root
-<code><br>make config BOARD=<board_name>
+<code><br>make config_<board_name>
 <br>make loadmodule</code>
 The above code will select the configuration file for the selected board and save it in config/board.conf. It will then use the default synthesis and PAR tools to build a FPGA image
 
