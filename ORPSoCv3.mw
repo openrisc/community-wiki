@@ -52,10 +52,13 @@ External cores from opencores or other locations will be pulled in when needed, 
 Makefile should contain the following rules:
 * fetch Get the core from it's upstream repository
 * patch Apply core-specific patches
+* driver Build an object of the bare-metal driver
+
+Each core will need a Makefile in it's upstream root directory that need the following rules
 * list-rtl-files Return a list of RTL files in core
 * list-include-dirs Return a list of include directories in core
 * list-tb-files Return a list of files needed for simulation
-* driver Build an object of the bare-metal driver
+This makefile can be included as a patch if it is not in the upstream core
 
 ==Workflow==
 
