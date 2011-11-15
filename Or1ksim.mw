@@ -66,7 +66,7 @@ You may checkout the latest version of Or1ksim from SVN using:
 
 The latest version, which in time will become release 0.5.2 adds the following features:
 * Support for GDB 7.2
-* IEEE 745 (2008) compliant single precision floating point.
+* IEEE 754 (2008) compliant single precision floating point.
 * A direct GDB Remote Serial Protocol interface to the library version of Or1ksim.
 * Extended library interface, so Or1ksim can be used as a built-in simulator with GDB.
 * An improved parser for configuration files, although it currently cannot handle ATA disc specifications.
