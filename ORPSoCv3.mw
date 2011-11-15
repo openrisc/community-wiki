@@ -40,6 +40,11 @@ The following problems with current ORPSoC have been identified. The next versio
 **sw/ ORPSoC-specific software
 
 ==Software managment==
+Structure
+* sw/
+** apps/ Example apps to run on board or in simulation
+** tests/ Source code for test cases
+** utils/ Utility programs for ORPSoC
 
 ==Handling of external cores==
 External cores from opencores or other locations will be pulled in when needed, and patched to work in ORPSoC. Each core will live in a separate directory with the following structure:
