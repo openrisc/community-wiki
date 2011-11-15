@@ -70,7 +70,7 @@ The above code will select the configuration file for the selected board and sav
 
 ===Quick start. Simulation===
 From the project root
-<code><br>make config BOARD=<board_name>
+<code><br>make config_<board_name>
 <br>make rtl-tests</code>
 The above code will select the configuration file for the selected board and save it in config/board.conf. It will then use the default simulation tool to run through all the RTL tests
 
