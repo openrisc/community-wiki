@@ -107,6 +107,7 @@ TBD
 =Open issues=
 * Investigate if quilt or git be used for managing patches
 * Rename loadmodule target to something more sensible. (programmingfile, fpgaimage..?)
+* What can be done to ease additions or removals of cores in the top-level
 
 =Discussion=
 
