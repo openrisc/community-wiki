@@ -206,6 +206,10 @@ Under CentOS, Fedora and Red Hat use the following:
 
 See the documentation in the project for running simulations of the system.
 
+== Contributing ==
+
+We ask contributors to get in touch with the developers via the [[OR1K:Community_Portal#Mailing_lists|mailing lists]], [[OR1K:Community_Portal#IRC|IRC]], or the [http://opencores.org/forum,OpenRISC forums] in that order.
+
 == To Do ==
 :*Add ability to run or1ksim's test suite against reference design
 :*Update tool install information - add it to project's texinfo docs
