@@ -1,0 +1,16 @@
+= Introduction =
+This page contains the general practices for contributing to the OpenRISC project. A list to each part of the project, and their particular contribution guidelines will follow.
+
+= Contributing to the OpenRISC Project =
+
+Something should go here about contributing to the OpenRISC project being a relatively easy thing to contribute to, so long as the particular preferences of the part of the project you wish to contribute to are met. In general, we prefer contributors to make themselves known in the community either via the forums, mailing lists or IRC. Otherwise, we're happy to discuss patches on the mailing lists.
+
+= Project Guidelines =
+
+Following is a list of the projects and their particular contributor guidelines.
+
+[[Or1ksim#Contributing|or1ksim]]
+
+[[ORPSoC#Contributing|ORPSoC]]
+
+More to come...
