@@ -22,8 +22,11 @@ So what do you need to be up and running quickly and smoothly?
 * Get access to a ordb2a-ep4cd22 FPGA development board via OpenCores webshop
 * Optionally you want to install the free Altera Quartus tool, if you want to modify the OpenRISC SoC design.
 
+
 It's as simply as that..........
 
+
 Download the VirtualBox-image from OpenCores FTP (1.1GB compressed): [ftp://openrisc@openrisc.opencores.org/virtualbox-image/OpenRISC_Ubuntu_2011-11-18.vdi.bz2 here]
+
 
 Enjoy!
