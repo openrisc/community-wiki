@@ -1,11 +1,42 @@
-=== Hardware ===
-* FPGA family: Cyclone IV E
-* Package: FBGA
-* Pin count: 256
-* Speed grade: 6
-* Device name: EP4CE22F17C6
+=== The NEW OpenRISC System-on-Chip FPGA development board ===
+
+This Altera FPGA board has been designed to fit OpenRISC processor SoC designs perfectly, meaning that we have focused on making sure that it supports the most common/wanted interfaces, and that it's still expandable through two GPIO connectors located on the bottom side. 
+
+Another focus has been to make this board a low-cost product, since the goal with this board is to spread the OpenRISC processor platform and to enable more hardware and software engineers to easily get started using the OpenRISC processor.
 
 
-More information will be presented here shortly....
+[[File:Ordb2s-ep4ce22_pic1.png]]
 
-[[Ubuntu VirtualBox image updates]]
+
+To make it easy for the end user, only one USB cable is needed to get started (the top-left USB connector). This USB connector has got a multifunction, it provides the following functions:
+* Provides power
+* Provides two JTAG interfaces (used for programming the FPGA, external SPI-flash and OpenRISC debugging via GDB)
+* Provides two UART interfaces
+
+
+A VirtualBox Ubuntu image has also been created to ensure that it's VERY easy to get started using this development board, it is delivered with a complete OpenRISC processor SoC reference design that boots Linux 3.1.
+
+[[Ubuntu VirtualBox-image updates and information]]
+
+
+=== Hardware information ===
+* ALTERA Cyclone IV E, 22K LUT (P/N: EP4CE22F17C6)
+* SDRAM 32 Mbyte
+* SPI FLASH, 1 Mbyte
+* SDIO micro connector
+* Fast Ethernet
+* USB "on-the-go" HOST/SLAVE
+* USB power, configuration, UARTs
+* Expansion connectors (optional)
+* Supply via USB
+* Board size is 80 x 40 mm
+
+
+This board is a '''all in one solution''' that combines both hardware, FPGA reference design, software and a pre-installed VirtualBox-image with all the tools and how-to-guides needed to get started easily. All this combined into a low-cost FPGA development board will hopefully enable/attract more engineers to start developing OpenRISC processor systems.
+
+=== Purchasing and Pricing information ===
+This board is available to purchase from OpenCores webshop, [http://http://opencores.org/shop,items click here]
+
+
+
+Developed by ORSoC.se
