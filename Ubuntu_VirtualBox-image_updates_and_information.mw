@@ -2,16 +2,17 @@
 The purpose with the VirtualBox Ubuntu image is to make it SUPER easy to get started with the OpenRISC processor system, both with hardware and software. And also to eliminate all installations problems that many interested OpenRISC users are facing.
 
 
-The current VirtualBox-image version (OpenRISC_Ubuntu_2011-11-18) contains the following tools/items:
+The current VirtualBox-image version (OpenRISC_Ubuntu_2011-11-28) contains the following tools/items:
 * Ubuntu 11.10 Linux distribution
 * OpenRISC toolchain install for both baremetal and Linux applications - GCC,GDB etc
 * OR1KSIM - OpenRISC architectural simulator
 * OR_DEBUG_PROXY - enabling hardware debugging, FPGA programming and SPI-flash programming
 * ICARUS Verilog simulator
-* ORPSoCv2 - OpenRISC Reference Platform SoC with support for the NEW OpenRISC development board (ordb2a-ep4cd22)
-* Hardware tutorial for the ordb2a-ep4cd22 board
-* OpenRISC Linux3.1 port with support for the ordb2a-ep4cd22 board
+* ORPSoCv2 - OpenRISC Reference Platform SoC with support for the NEW OpenRISC development board (ordb2a-ep4ce22)
+* Hardware tutorial for the ordb2a-ep4ce22 board
+* OpenRISC Linux3.1 port with support for the ordb2a-ep4ce22 board
 * Get-started tutorial (hw & sw simulations, FPGA programming, SPI programming etc)
+* SPI flash programming tool for ordb2a-ep4ce22 board (updated)
 
 
 Here's a VirtualBox-image installation video to get you started [http://www.youtube.com/watch?v=F0xlEjcJ0ws watch it here]
@@ -19,7 +20,7 @@ Here's a VirtualBox-image installation video to get you started [http://www.yout
 
 So what do you need to be up and running quickly and smoothly?
 * Download the OpenRISC_Ubuntu_VirtualBox-image and install it
-* Get access to a ordb2a-ep4cd22 FPGA development board via OpenCores webshop
+* Get access to a ordb2a-ep4ce22 FPGA development board via OpenCores webshop
 * Optionally you want to install the free Altera Quartus tool, if you want to modify the OpenRISC SoC design.
 
 
