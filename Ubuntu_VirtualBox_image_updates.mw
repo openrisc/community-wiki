@@ -3,7 +3,7 @@
 
 '''Current status:'''
 
-The first version is now released (OpenRISC_Ubuntu_2011-11-16.vdi). No current updates are available
+The second version is now released (OpenRISC_Ubuntu_2011-11-28.vdi). Some scripts, tools and documentation for programming the configuration memory on ORDB2A were updated (some paths were fixed and the tool now detects file size; note that its arguments have changed).
 
 
 '''Bug reports:'''
