@@ -6,6 +6,8 @@ The aim of the OpenRISC project is to create free and open source computing plat
 
 '''Some useful hot-links:'''
 
+* [[OR1K:Community_Portal|OpenRISC Community Portal Wiki]]
+
 * Information about the [[OR1200 OpenRISC Processor]] and other [[OR1K:Community_Portal#Further_information|sources of information]]
 
 * The [http://opencores.org/forum,OpenRISC OpenRISC web-forum] and [[OR1K:Community_Portal#Mailing_lists|OpenRISC mailing lists.]]
@@ -14,7 +16,12 @@ The aim of the OpenRISC project is to create free and open source computing plat
 
 * OpenRISC [http://bugzilla.opencores.org/ bugzilla] and its [[OR1K:Community_Portal#Bug_reporting|documentation]]
 
-This project is now fully maintained through a Wiki (the [[OR1K:Community_Portal|Community Portal]]). The [http://opencores.org/openrisc,overview old web pages] are still available, but no longer maintained.
+* [[Ubuntu_VirtualBox-image_updates_and_information|Ubuntu VirtualBox OpenRISC image ]] - Get started easy, tools are pre-installed
+
+* [[Ordb2a-ep4ce22|The NEW OpenRISC FPGA development board information]]
+
+
+This project is now fully maintained through a Wiki (the [[OR1K:Community_Portal|Community Portal]]). The [http://opencores.org/openrisc,overview old web pages] are still available, but no longer maintained (should NOT be used).
 
 {{Special:Overview}}
 [[OR1K:Community_Portal|Click here]] for the OpenRISC project details.
