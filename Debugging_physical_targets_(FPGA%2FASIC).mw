@@ -70,7 +70,7 @@ First, obtain the latest D2XX driver from [http://ftdichip.com/Drivers/D2XX.htm 
 
 The README accompanying or_debug_proxy contains information about compiling for different GNU/Linux distributions and different operating systems.
 
-Please submit any bugs, issues, or annoyances to the OpenCores OpenRISC proejct forum. http://opencores.org/forum,OpenRISC
+Please submit any bugs, issues, or annoyances to the OpenCores OpenRISC project forum. http://opencores.org/forum,OpenRISC
 
 ===Compiling OpenRISC Debug Proxy===
 
