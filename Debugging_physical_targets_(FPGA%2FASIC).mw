@@ -65,7 +65,7 @@ First, obtain the latest D2XX driver from [http://ftdichip.com/Drivers/D2XX.htm 
 
  user@host:~/or_debug_proxy$ wget http://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx1.0.4.tar.gz
  user@host:~/or_debug_proxy$ tar xzf libftd2xx1.0.4.tar.gz
- user@host:~/or_debug_proxy$ cp libftd2xx1.0.4/build/i386/libftd2xx.a lib/
+ user@host:~/or_debug_proxy$ cp libftd2xx1.0.4/build/i386/libftd2xx.a lib/libftd2xx.a.0.4.16
  user@host:~/or_debug_proxy$ make static
 
 The README accompanying or_debug_proxy contains information about compiling for different GNU/Linux distributions and different operating systems.
