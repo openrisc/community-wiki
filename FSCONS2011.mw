@@ -18,6 +18,12 @@ Slides and workshop archive available via OpenCores FTP (123MB): [ftp://ocuser:o
 
 Extract the archive to /opt and presentation slides under /opt/or1k-fscons2011/doc
 
+Slides: 
+* [ftp://ocuser:ocuser@openrisc.opencores.org/fscons2011/or1k-fscons2011-introduction.pdf Introduction]
+* [ftp://ocuser:ocuser@openrisc.opencores.org/fscons2011/or1k-fscons2011-baremetal.pdf Development on bare metal]
+* [ftp://ocuser:ocuser@openrisc.opencores.org/fscons2011/or1k-fscons2011-rtlsoc.pdf RTL SoC development basics]
+* [ftp://ocuser:ocuser@openrisc.opencores.org/fscons2011/or1k-fscons2011-orpsoc.pdf ORPSoC development example]
+
 == Programme ==
 
 The following was the programme for the workshop
