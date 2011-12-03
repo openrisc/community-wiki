@@ -16,7 +16,7 @@ The following problems with current ORPSoC have been identified. The next versio
 
 * It's hard to know what is expected to provide when a new board port is added
 
-* ORPSoC is hidden in the or1200 tree, which makes it harder to find.
+* ORPSoC is hidden in the or1k tree, which makes it harder to find.
 
 =Implementation=
 
