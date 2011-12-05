@@ -30,6 +30,12 @@ It's as simply as that..........
 Download the VirtualBox-image from OpenCores FTP (1.1GB compressed): [ftp://ocuser:ocuser@openrisc.opencores.org/virtualbox-image/OpenRISC_Ubuntu_2011-11-28.vdi.bz2 here]
 
 
+'''Important installation information'''
+
+After installing the VirtualBox application on your native Linux computer, you must add you user to the "vboxusers" group, in order to allow VirtualBox access to the USB. This can be done with the following command (on Ubuntu):
+ <nowiki>sudo usermod -G vboxusers -a `whoami`</nowiki>
+
+
 Read more about the NEW OpenRISC development board: [[Ordb2a-ep4ce22]]
 
 
