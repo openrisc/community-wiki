@@ -351,7 +351,7 @@ Candidate components for next release:
 |-
 |newlib||1.18.0
 |-
-|Or1ksim||0.5.1
+|Or1ksim||0.6.0 (tentative)
 |}
 
 Schedule for next release:
@@ -359,9 +359,9 @@ Schedule for next release:
 {|
 !align="left"|Date!!align="left"|Status
 |-
-|10 April 2011||RC 1 versions tagged in SVN, precompiled binaries available
+|15 January 2012||RC 2 versions tagged in SVN, precompiled binaries available
 |-
-|24 April 2011||Public release of precompiled binaries
+|6 February 2012||Public release of precompiled binaries
 |}
 
 === uClibc toolchain release schedule ===
