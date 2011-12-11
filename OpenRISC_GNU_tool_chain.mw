@@ -413,6 +413,7 @@ At a technical level, future development of the GNU toolchain is planned to incl
 * improved optimization through inclusion of accurate process scheduling models.
 * support for profiling.
 * more efficient thread handling.
+* add support for <code>--gc-sections</code> option to remove unused functions to make binaries as small as possible
 
 There are some structural things we would also really like to have in place:
 * A nice tutorial, showing off the installation and use of the new toolchain.
