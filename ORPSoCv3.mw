@@ -108,8 +108,8 @@ TBD
 =Open issues=
 * Investigate if quilt or git be used for managing patches
 * Rename loadmodule target to something more sensible. (programmingfile, fpgaimage..?)
-* What can be done to ease additions or removals of cores in the top-level
-* boards is not a good name, as there can be several configurations for a physical board, or a design may be purely for verification purposes only and thus not intended to end up on a board
+* What can be done to ease additions or removals of cores in the top-level? IP-Xact is under consideration for generation of arbiters and top-level file
+* boards is not a good name, as there can be several configurations for a physical board, or a design may be purely for verification purposes only and thus not intended to end up on a board. systems, designs or configurations have been proposed
 
 =Discussion=
 
