@@ -65,6 +65,20 @@ Each core will need a Makefile in it's upstream root directory that need the fol
 * list-tb-files Return a list of files needed for simulation
 This makefile can be included as a patch if it is not in the upstream core
 
+==Board-specific configuration==
+Each board is required to have a Makefile with the following rules
+* config Initialize all cores
+* rtl-test Launch a simulation with a defined test case
+* netlist Generate a post-synthesis netlist
+* loadmodule Generate an image that can be downloaded to an FPGA
+Apart from that, there are no restrictions, but the following structure is recommended:
+* <board root>
+**data/ General input files such as simulation configurations, constraint files, coregen descriptions
+**rtl/ ORPSoC top-level, clock generation and other board-specific files that are not found in the cores
+**tb/ Board-specific test-bench top-level and other testbench related files
+**board.conf All board-specific parameters
+**Makefile Implements the required as well as optional board-specific makefile targets
+
 ==Workflow==
 
 ===Quick start. Build a ready-made FPGA image===
