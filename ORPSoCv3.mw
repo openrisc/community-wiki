@@ -79,32 +79,32 @@ Apart from that, there are no restrictions, but the following structure is recom
 **board.conf All board-specific parameters
 **Makefile Implements the required as well as optional board-specific makefile targets
 
-==Workflow==
+=Workflow=
 
-===Quick start. Build a ready-made FPGA image===
+==Quick start. Build a ready-made FPGA image==
 From the project root
 <code><br>make config_<board_name>
 <br>make loadmodule</code>
 The above code will select the configuration file for the selected board and save it in config/board.conf. It will then use the default synthesis and PAR tools to build a FPGA image
 
-===Quick start. Simulation===
+==Quick start. Simulation==
 From the project root
 <code><br>make config_<board_name>
 <br>make rtl-tests</code>
 The above code will select the configuration file for the selected board and save it in config/board.conf. It will then use the default simulation tool to run through all the RTL tests
 
-===Adding a new core to a board build===
+==Adding a new core to a board build==
 TBD
 
-===Building a bare-metal program with ORPSoC drivers===
+==Building a bare-metal program with ORPSoC drivers==
 TBD
-===Overriding a central core with a local version===
+==Overriding a central core with a local version==
 TBD
-===Adding support for a new core in ORPSoC===
+==Adding support for a new core in ORPSoC==
 TBD
-===Creating and updating patches===
+==Creating and updating patches==
 TBD
-===Porting an ORPSoCv2 board port to ORPSoCv3===
+==Porting an ORPSoCv2 board port to ORPSoCv3==
 TBD
 
 ==Other==
