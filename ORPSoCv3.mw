@@ -103,7 +103,24 @@ TBD
 ==Adding support for a new core in ORPSoC==
 TBD
 ==Creating and updating patches==
-TBD
+Quilt is needed for patching of the cores. This describes how to add an ORPSoC-specific patch to a core
+Go to <code><core root></code>
+If there are any previous patches, make sure they are all applied before you start
+<code><br>quilt push -a<br></code>
+Decide a name for the patch and a number that follows the naming scheme. In ORPSoC this is <nnnn>-<name-of-patch>.diff, where nnnn is a four-digit number that follows the latest available patch. Create the patch with:
+<code><br>quilt new <nnnn>-<name-of-patch>.diff (e.g. quilt new 0003-remove-defines.diff)<br></code>
+
+The state of all files that are to be changed must be recorded by quilt before-hand so that the original state is known.
+There are two ways to make changes to files
+
+1. Use quilt edit <filename> This will make quilt automatically record the original state, and add the changes to the patch
+
+2. Use quilt add <filename> before the file is added. This will make quilt record the original state, and any editor can now be used
+
+When the editing is done, the patch can be reviewed with <code>quilt diff</code>
+
+To actually create the patch, <code>quilt refresh</code>. A new patch can now be created with <code>quilt new <nnnn+1>-<name-of-next-patch>.diff
+
 ==Porting an ORPSoCv2 board port to ORPSoCv3==
 TBD
 
