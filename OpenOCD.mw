@@ -42,7 +42,7 @@ It may prompt you to install a few tools such as libtool and autoconf. Install t
 Make a build directory parallel to the source and configure using the free and open source libftdi driver.
  
  mkdir bld-openocd && cd bld-openocd
- ../openocd/configure --enable-ft2232_libftdi
+ ../openocd/configure --enable-ft2232_libftdi --enable-maintainer-mode
  make
 
 = Running =
