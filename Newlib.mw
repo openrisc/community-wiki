@@ -211,7 +211,34 @@ Each <code>libboard.a</code> defines the following symbols:
 |IRQ number of UART
 |}
 
+=== Adding support for a new board ===
 
 Adding additional boards (without recompiling and installing the toolchain) is as simple as creating a creating a <code>libboard.a</code> with the appropriate symbols set to the right values and placing it in the <code>/install_path/or32-elf/lib/boards/''boardname''</code> directory. The ''boardname'' should be the same as the one used when passing the <code>-mboard=''boardname''</code> to the compiler.
 
 To create this <code>libboard.a</code> see examples of the existing <code>''boardname''.S</code> files in the <code>newlib-1.x.0/libgloss/or32</code> path in the newlib port source.
+
+For example, the ml501 board's code is in the <code>newlib-1.x.0/libgloss/or32/ml501.S</code> file and is as follows:
+
+ /*
+  * Define symbols to be used during startup - file is linked at compile time
+  *
+  */
+ .global _board_mem_base
+ .global _board_mem_size
+ .global _board_clk_freq 
+ 
+ _board_mem_base:	.long	0x0
+ _board_mem_size:	.long	0x800000
+ 
+ _board_clk_freq:	.long	66666666 
+ 
+ /* Peripheral information - Set base to 0 if not present*/
+ .global _board_uart_base
+ .global _board_uart_baud
+ .global _board_uart_IRQ
+ 	
+ _board_uart_base:	.long	0x90000000
+ _board_uart_baud:	.long	115200
+ _board_uart_IRQ:	.long	2
+
+This file should be assembled and archived, and then placed into the correct install path as mentioned above.
