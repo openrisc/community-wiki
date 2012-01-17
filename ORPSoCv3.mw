@@ -129,6 +129,62 @@ TBD
 * ORPSoC will be living in a separate repository. This will increase visibility and also make it easier to use other CPU implementations.
 
 =Status=
+==Currently supported==
+
+===Simulation===
+{| border="1" cellspacing="0" cellpadding="2"
+! Tool
+! Supported
+|-
+|Icarus    || In progress
+|-
+|Isim      || In progress
+|-
+|Modelsim  || No
+|-
+|Verilator || No
+|}
+
+===Synthesis===
+{| border="1" cellspacing="0" cellpadding="2"
+! Tool
+! Supported
+|-
+|CoreGen  || Yes
+|-
+|Quartus  || No
+|-
+|Synplify || No
+|-
+|XST      || Yes
+|}
+
+===Place and route===
+{| border="1" cellspacing="0" cellpadding="2"
+! Tool
+! Supported
+|-
+|ISE            || Yes
+|-
+|Quartus        || No
+|-
+|Actel Designer || No
+|}
+
+===Boards===
+{| border="1" cellspacing="0" cellpadding="2"
+! Board
+! Simulation
+! Synthesis
+! Place and route
+|-
+|Digilent Atlys    || In progress || XST || ISE
+|-
+|generic  || Icarus      || No  || No
+|-
+|ORSoC ordb2a   || No          || No  || No
+|}
+
 ==Work items==
 * Set up software structure
 * Move drivers to core roots
