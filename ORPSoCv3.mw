@@ -186,11 +186,16 @@ TBD
 |}
 
 ==Work items==
+===Software support===
 * Set up software structure
 * Move drivers to core roots
-* Adapt Altera and Actel build scripts from ORPSoCv2
 * Adapt simulation scripts from ORPSoCv2
 * Merge board and sim tests and add #ifdefs where needed
+===Test bench===
+* Clean up define files
+===Infrastructure===
+* Add isim scripts to simulate Xilinx builds
+* Adapt Altera and Actel build scripts from ORPSoCv2
 
 =Open issues=
 * Investigate if quilt or git be used for managing patches
