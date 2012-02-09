@@ -156,7 +156,7 @@ After or32-elf-gdb invoke successfully, connect Or1ksim by following gdb command
 Please report any bugs via [http://bugzilla.opencores.org bugzilla].
 
 == Future work ==
-* Porting standard demo task
+* Porting standard demo task   [done]
 * Testing under FPGA board
 
 == Past FreeRTOS ports ==
