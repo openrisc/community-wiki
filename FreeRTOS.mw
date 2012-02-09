@@ -126,7 +126,7 @@ Checkout source code via SVN client like below.
 '''Note that you will need the latest OpenRISC GNU toolchain port and or1ksim on your linux box.'''
 
 === Compile ===
-Currently, a demo project was prepared on Or1ksim only. it will be placed in FreeRTOSV6.1.1/Demo/OpenRISC_SIM_GCC. Move to this directory, setup your or32-elf-gcc path in Makefile. Edit CCPATH variable like below.
+Currently, a demo project was prepared on Or1ksim only. it will be placed in FreeRTOSVx.y.z/Demo/OpenRISC_SIM_GCC. Move to this directory, setup your or32-elf-gcc path in Makefile. Edit CCPATH variable like below.
 
  CCPATH = /opt/or32-new
 
