@@ -24,7 +24,7 @@ So what do you need to be up and running quickly and smoothly?
 * Optionally you want to install the free Altera Quartus tool, if you want to modify the OpenRISC SoC design.
 
 
-It's as simply as that..........
+It's as simple as that..........
 
 
 Download the VirtualBox-image from OpenCores FTP (1.1GB compressed): [ftp://ocuser:ocuser@openrisc.opencores.org/virtualbox-image/OpenRISC_Ubuntu_2011-12-15.vdi.bz2 here]
