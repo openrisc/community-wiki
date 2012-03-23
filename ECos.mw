@@ -94,6 +94,8 @@ If you are using MinSoC, or ORPSoC with different configuation, you need to alte
 
   configtool ecos.ecc
 
+[[File:configtool.png|700px]]
+
 After all modifications are done, save the changes to the ecc file.
 It is always a good idea to check for possible conflicts.
 
