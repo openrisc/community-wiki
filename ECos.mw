@@ -160,3 +160,6 @@ Finally, upload the program via gdb:
     c
 
 It is also possible to execute ecos tests.
+The following screen presents reslts of the timelice test.
+
+[[File:ecos_timeslice.png]]
