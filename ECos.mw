@@ -1,79 +1,160 @@
 == Introduction ==
 
-This page contains information on the eCos port for the OpenRISC 1000 family.
+eCos is a popular, open source, real-time operating system. 
+It has been used in a wide variety of applications[http://www.ecoscentric.com/ecos/examples.shtml].
 
-== Status ==
+eCos is a highly configurable system. 
+Using provided tools, it is possible to perform a detailed configuration of all packages 
+and therefore fulfill different requirements. 
+Using eCos HAL, it is also possible to build RedBoot, the popular bootstrap environment.
 
-This is an initial release. 
-Both ROM and RAM startup modes are working now.
+== Status of the port ==
 
-The port has been tested using or1ksim-0.5.1rc1.
+The port introduces a target called ORPSoC. 
+This target refers to the [http://opencores.org/or1k/ORPSoC ORPSoC project]. 
+It is also suitable for MinSoC, but some configuration options may need to be changed.
 
-Example or1ksim and eCos configuration files are provided with this port.
-eCos is configured to boot from RAM (4MB), no cache, no mmu.
+The current version of the port is tracking the mainline eCos repository.
+All changes have been rewritten against the code already checked in the official eCos repository.
 
-== Download ==
+The port is under constant development.
+It has been tested under or1ksim, version 0.5.1rc1, and under ordb2 hardware.
+The provided default configuration passes all eCos test cases. 
 
- svn co http://opencores.org/ocsvn/openrisc/openrisc/trunk/rtos/ecos-3.0
+== Known issues ==
 
-== Building and running ==
+Following options still causes eCos to fail certain test cases.
+* CYGDBG_HAL_COMMON_INTERRUPTS_SAVE_MINIMUM_CONTEXT
+* CYGDBG_HAL_COMMON_CONTEXT_SAVE_MINIMUM
+* CYGSEM_HAL_ENABLE_DCACHE_ON_STARTUP
+* CYGSEM_HAL_ENABLE_ICACHE_ON_STARTUP
+They have been disabled in the code for now 
+(it is not possible to enable them using eCos configuration tool).
 
-It is assumed that the or32-elf toolchain and simulator directory is already in the PATH variable.
+Enabling compiler optimizations (-O2) causes some tests to fail.
 
-=== Building eCos ===
+== Requirements ==
 
-First, set the eCos repository environmental variable. 
-This is required to build eCos.
-It is not necessary for application development later on.
+The [http://opencores.org/or1k/OpenRISC_GNU_tool_chain OpenRISC GNU toolchain], built with newlib is required.
 
- ECOS_REPOSITORY=/path-to-checkout-directory/ecos-3.0/packages
- export ECOS_REPOSITORY
+== Getting eCos ==
 
- PATH=$PATH:/path-to-checkout-directory/ecos-3.0/tools/bin
- export PATH
+Currently, eCos is hosted on OpenCores SVN:
 
-Create a directory for the eCos build:
+  svn co http://opencores.org/ocsvn/openrisc/openrisc/trunk/rtos/ecos-3.0
 
- mkdir ecos_openrisc
+== Installing eCos ==
 
-Now use the example configuration:
+eCos uses two tools to build and configure the system: configtool and ecosconfig.
+ecosconfig is a handy command line program that allows to select the desired eCos target and packages.
+configtool is a windowed application that provides a clear and intuitive environment 
+to adjust all of the possible configuration options.
 
- cp ecos-3.0/packages/hal/openrisc/arch/v3_0/doc/ecos.ecc ecos_openrisc/
+There is a pre-built binary of configtool available:
 
-Everything is ready to build eCos:
+  wget http://www.ecoscentric.com/snapshots/configtool-100305.bz2
+  bunzip2 configtool-100305.bz2
+  chmod u+x configtool-100305
+  ln -s configtool-100305 /usr/local/bin/configtool
 
- cd ecos_openrisc/
- ecosconfig tree
- make
- cd ../
+ecosconfig needs to be built from scratch. 
+In order to build ecosconfig, go to the ecos-3.0 directory downloaded from SVN.
 
-=== Building application ===
+  ./host/configure
 
-Create a directory for an application:
+By default, ecosconfig installs itself in the /usr/local/ directory. 
+If you like, you can change that directory to something else:
 
- mkdir ecos_app
- cd ecos_app
+  ./host/configure --prefix=/desired_path
 
-Write your application.
-You can use one of the examples from http://ecos.sourceware.org/docs-1.3.1/tutorials/sh3/ecos-tutorial.13.html
+Finally build the tool
 
-Finally, build the application:
+  make
+  make install
 
- or32-elf-gcc \
-    -g \
-    -I../ecos_openrisc/install/include \
-    -L../ecos_openrisc/install/lib \
-    -nostdlib \
-    -T../ecos_openrisc/install/lib/target.ld \
-    -O2 \
-    main.c
+Both ecosconfig and configtool require environmental variable ECOS_REPOSITORY.
+The variable must point to the packages directory, inside ecos-3.0 tree.
+To set the variable, go to the downloaded ecos-3.0 tree.
 
-=== Running in the simulator ===
+  ECOS_REPOSITORY=`pwd`/packages
+  export ECOS_REPOSITORY
 
-First, copy the provided simulator configuration:
+== Configuring eCos for OpenRISC ==
 
- cp ../ecos-3.0/packages/hal/openrisc/arch/v3_0/doc/or1ksim.cfg ./
+Create a directory to build the eCos library.
+First start with the default template:
 
-Simulate your application:
+  ecosconfig new orpsoc
 
- or32-elf-sim -f or1ksim.cfg a.out
+The default configuration fits ORPSoC port for [http://opencores.org/or1k/Ordb2a-ep4ce22 ordb2 reference platform].
+It assumes that hardware multiplication and division are implemented.
+Floating point variables are handled by software.
+System clock runs at 50 MHz.
+If you are using MinSoC, or ORPSoC with different configuation, you need to alter the settings:
+
+  configtool ecos.ecc
+
+After all modifications are done, save the changes to the ecc file.
+It is always a good idea to check for possible conflicts.
+
+  ecosconfig check
+
+== Building eCos with tests ==
+
+  ecosconfig tree
+  make
+  make tests  
+
+== Writing program with eCos ==
+
+It is now possible to write programs linked with eCos.
+The most simple hello world program would look like this:
+
+  #include <stdio.h>
+  int main(void) {
+    printf("Hello World\n");
+    return 0;
+  }
+
+Refer to the [http://www.ecoscentric.com/ecospro/doc/html/ref/index.html eCos Reference Manual] 
+for additional information about kernel mechanisms and drivers.
+
+To compile the program, use gcc with the following flags:
+
+  or32-elf-gcc                         \
+    -g                                 \
+    -nostdlib                          \
+    -Iecos_build/install/include       \
+    -Lecos_build/install/lib           \
+    -Tecos_build/install/lib/target.ld \
+    *.c
+
+== Running eCos programs in or1ksim ==
+
+Running programs in or1ksim is very easy.
+
+  or32-elf-sim -f sim.cfg program_elf
+
+sim.cfg is a simulator configuration. 
+You can find the configuration that fits ordb2 board in the ORPSoC project tree.
+
+== Running eCos programs on ordb2 hardware ==
+
+The most convenient way is to run the program using GDB debugger.
+First, start or_debug_proxy:
+
+  or_debug_proxy -r 50001
+
+Then, open the UART link:
+
+  picocom -b 115200 /dev/ttyUSB1
+
+Finally, upload the program via gdb:
+
+  or32-elf-gdb program_elf
+    target remote :50001
+    load
+    spr npc 0x100
+    c
+
+It is also possible to execute ecos tests.
