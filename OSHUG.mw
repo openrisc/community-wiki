@@ -25,7 +25,7 @@ It will hopefully be quite a practical session. However, to achieve this it is r
 
 == Recommended pre-installation ==
 
-* A checkout of the OpenCores SVN repository
+* A checkout of the OpenCores OpenRISC subversion (SVN) repository
  cd ~/somwhere/appropriate/
  svn checkout http://opencores.org/ocsvn/openrisc/openrisc/trunk openrisc
 
