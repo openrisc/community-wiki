@@ -1,0 +1,41 @@
+= OSHUG 17 =
+
+This page is for those attending the [http://oshug.org/event/17 OSHUG Event 17 in London March 29, 2012].
+
+== Event Information ==
+
+The event, titled '''Practical System-on-Chip (Program your own open source FPGA SoC)''' will cover the OpenRISC project and its system-on-chip platform, ORPSoC. It will be presented by Dr Jeremy Bennett, Chief Executive of [http://www.embecosm.com Embecosm], and Julius Baxter.
+
+More information can be found at the OSHUG website [http://oshug.org/event/17 here].
+
+You must [http://oshugfpgasoc.eventbrite.com/ register to attend].
+
+The event will begin at 18:00.
+
+== Programme ==
+
+The evening will consist of:
+
+* Introductions to SoC and processor technology
+* Overview of OpenCores and the OpenRISC Project
+* Presentation and demonstration of ORPSoC and the OpenRISC platform
+* Details on how to build your own SoC (port ORPSoC to your own board)
+
+It will hopefully be quite a practical session. However, to achieve this it is recommended that the set up drudgery be done ''prior'' to the event.
+
+== Recommended pre-installation ==
+
+* A checkout of the OpenCores SVN repository
+ cd ~/somwhere/appropriate/
+ svn checkout http://opencores.org/ocsvn/openrisc/openrisc/trunk openrisc
+
+* Build and install or1ksim as per [[Or1ksim#Installation|this page]]
+* Build and install the GNU tool chain as per [[OpenRISC_GNU_tool_chain#Building|this page]]
+* Install [http://gtkwave.sourceforge.net/ gtkwave] - hopefully it's available via your distro's package manager
+* Install the [http://iverilog.icarus.com/ Icarus Verilog] simulator - hopefully it's available under your  distro's package manager (it's iverilog on Ubuntu)
+
+It's unlikely we'll get onto actually running FPGA synthesis and instead we'll focus on demonstrating the tool chain and simulating the SoC  with open source EDA tools.
+
+== Slides/Downloads ==
+
+Check back later for the slides from the event.
