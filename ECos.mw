@@ -121,6 +121,7 @@ To compile the program, use gcc with the following flags:
 
   or32-elf-gcc                         \
     -g                                 \
+    -O2                                \
     -nostdlib                          \
     -Iecos_build/install/include       \
     -Lecos_build/install/lib           \
