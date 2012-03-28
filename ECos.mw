@@ -24,14 +24,10 @@ The provided default configuration passes all eCos test cases.
 == Known issues ==
 
 Following options still causes eCos to fail certain test cases.
-* CYGDBG_HAL_COMMON_INTERRUPTS_SAVE_MINIMUM_CONTEXT
-* CYGDBG_HAL_COMMON_CONTEXT_SAVE_MINIMUM
 * CYGSEM_HAL_ENABLE_DCACHE_ON_STARTUP
 * CYGSEM_HAL_ENABLE_ICACHE_ON_STARTUP
 They have been disabled in the code for now 
 (it is not possible to enable them using eCos configuration tool).
-
-Enabling compiler optimizations (-O2) causes some tests to fail.
 
 == Requirements ==
 
