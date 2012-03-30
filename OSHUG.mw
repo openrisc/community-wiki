@@ -38,4 +38,10 @@ It's unlikely we'll get onto actually running FPGA synthesis and instead we'll f
 
 == Slides/Downloads ==
 
-Check back later for the slides from the event.
+Slides: 
+*[ftp://ocuser:ocuser@openrisc.opencores.org/docs/slides/openrisc-oshug17-final.pdf openrisc-oshug17-final.pdf] - Slides presented at event (PDF)
+*[ftp://ocuser:ocuser@openrisc.opencores.org/docs/slides/openrisc-oshug17-final.odp openrisc-oshug17-final.odp] - Slides presented at event (Open Document Presentation)
+*[ftp://ocuser:ocuser@openrisc.opencores.org/fscons2011/or1k-fscons2011-orpsoc.pdf or1k-fscons2011-orpsoc.pdf] - Slides presented containing example of ORPSoC with SHA256 core
+
+Archive:
+* [ftp://ocuser:ocuser@openrisc.opencores.org/oshug17/or1k-oshug.tar.bz2 or1k-oshug.tar.bz2] - contains tool chain and or1ksim (built on 32-bit Ubuntu) and ORPSoC.
