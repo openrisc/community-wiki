@@ -44,4 +44,4 @@ Slides:
 *[ftp://ocuser:ocuser@openrisc.opencores.org/fscons2011/or1k-fscons2011-orpsoc.pdf or1k-fscons2011-orpsoc.pdf] - Slides presented containing example of ORPSoC with SHA256 core
 
 Archive:
-* [ftp://ocuser:ocuser@openrisc.opencores.org/oshug17/or1k-oshug.tar.bz2 or1k-oshug.tar.bz2] - contains tool chain and or1ksim (built on 32-bit Ubuntu) and ORPSoC.
+* [ftp://ocuser:ocuser@openrisc.opencores.org/oshug17/or1k-oshug.tar.bz2 or1k-oshug.tar.bz2] - contains tool chain (newlib bare metal) and or1ksim (built on 32-bit Ubuntu) and ORPSoC source code
