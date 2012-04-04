@@ -21,14 +21,6 @@ The port is under constant development.
 It has been tested under or1ksim, version 0.5.1rc1, and under ordb2 hardware.
 The provided default configuration passes all eCos test cases.
 
-== Known issues ==
-
-Following options still causes eCos to fail certain test cases.
-* CYGSEM_HAL_ENABLE_DCACHE_ON_STARTUP
-* CYGSEM_HAL_ENABLE_ICACHE_ON_STARTUP
-They have been disabled in the code for now 
-(it is not possible to enable them using eCos configuration tool).
-
 == Requirements ==
 
 The [http://opencores.org/or1k/OpenRISC_GNU_tool_chain OpenRISC GNU toolchain], built with newlib is required.
