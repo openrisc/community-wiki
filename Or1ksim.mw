@@ -280,7 +280,7 @@ If you wish to make major changes, you should obtain write-after-approval permis
 
 When the time comes to merge your work into SVN HEAD or a release branch, follow the process for [[#SVN HEAD and release branches|SVN HEAD and release branches]].
 
-==== Obvious patches =====
+==== Obvious patches ====
 
 Obvious patches (for example trivial typos) may be fixed by anyone with write-after-approval permission. Such changes should be posted after the even to both mailing lists.
 
