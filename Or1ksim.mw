@@ -226,6 +226,8 @@ To aid in debugging, the immediate field of a NOP can be used to control some si
 |Return non-zero if this is Or1ksim
 |}
 
+'''Note.''' This list is not definitive. See the User Guide for an up to date list.
+
 == Discussion Forum ==
 
 Or1ksim is discussed within the OpenRISC Forum and on IRC at freenode.net, channel #opencores. All users are encouraged to contribute suggestions and advice.
