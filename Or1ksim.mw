@@ -234,6 +234,8 @@ Or1ksim is discussed within the OpenRISC Forum and on IRC at freenode.net, chann
 
 We are constantly looking for developers to help in the development of the simulator, though you don't need to be a highly skilled developer to do so. Many (very useful) projects may be performed without any C programming knowledge or without an intricate knowledge of the openrisc architecture.
 
+=== What is needed ===
+
 A few items to get you started.
 
 * Extend the documentation. Or1ksim now has a User Guide. However this would benefit from some good tutorial material. This is an excellent task for anyone new to or1ksim. This would involve the following.
@@ -253,9 +255,34 @@ A few items to get you started.
 ** IrDA communication core.
 ** USB 2.0 function core.
 ** Most things that connect to the WishBone bus. A good list may be found here.
-* Add a new feature. The section on the [[#Development release]] above lists several new features. Coders wishing to help are very welcome.
+* Add a new feature. The section on the [[#Development release|development release]] above lists several new features. Coders wishing to help are very welcome.
 
-If you have a suggestion that you'd like to see developed, feel free to add it to the [http://bugzilla.opencores.org/ OpenRISC bug tracker] or start a discussion on the OpenRISC forum.
+If you have a suggestion that you'd like to see developed, feel free to add it to [http://bugzilla.opencores.org/ Buzilla] or start a discussion on the  [[OR1K:Community_Portal#Mailing_lists_on_opencores.org|OpenRISC forum or the developer mailing lists]].
+
+=== How to submit a contribution ===
+
+The up to date details may be found in the MAINTAINERS file at the top level of the Or1ksim source tree.
+
+The submission process uses the OpenRISC mailing lists, in preference to the OpenRISC forum. Cross post to both the opencores.org and openrisc.net lists, since they have disjoint sets of readers.
+
+==== SVN HEAD and release branches ====
+
+For changes to SVN HEAD or release branches, this is the process in summary.
+* submit your patch as a diff against the current SVN HEAD (put the patch inline, not as an attachment, to make it easy for users to read in mail clients).
+* wait for reviews, modify and repost as necessary.
+* if approved by a maintainer, the patch will be applied by one of the Or1ksim maintainers (see the MAINTAINERS file).
+
+If you are making regular contributions, please ask to be given SVN write access, by posting to the mailing lists. This will give you the ability to commit changes, and you will be listed in the MAINTAINERS file. You should still follow the same process of submitting to the mailing list, and waiting for reviews and approval.
+
+==== Private branches ====
+
+If you wish to make major changes, you should obtain write-after-approval permission as above and create your own branch. List the branch in the MAINTAINERS file, with yourself as owner. You may make any changes you like to this branch, without reference to the mailing lists (although the community would love to hear about your progress).
+
+When the time comes to merge your work into SVN HEAD or a release branch, follow the process for [[#SVN HEAD and release branches|SVN HEAD and release branches]].
+
+==== Obvious patches =====
+
+Obvious patches (for example trivial typos) may be fixed by anyone with write-after-approval permission. Such changes should be posted after the even to both mailing lists.
 
 == Developers ==
 
