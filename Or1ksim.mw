@@ -289,6 +289,7 @@ Obvious patches (for example trivial typos) may be fixed by anyone with write-af
 The team currently working on or1ksim:
 * [[User:Julius|Julius Baxter]]
 * [[User:Jeremybennett|Jeremy Bennett]]
+* Ruben Diez
 
 An important input to the current stable release has been Waqas Ahmed's Master's dissertation at the Royal Institute of Technology, Sweden, Implementation and Verification of a CPU Subsystem for Multimode RF Transceivers. His work identified a large number of bugs in Or1ksim, which have been fixed (and tested) in this release. Waqas has kindly made his dissertation available on the [http://opencores.org/openrisc,downloads download] page.
 
