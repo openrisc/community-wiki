@@ -287,10 +287,8 @@ Obvious patches (for example trivial typos) may be fixed by anyone with write-af
 == Developers ==
 
 The team currently working on or1ksim:
+* [[User:Julius|Julius Baxter]]
 * [[User:Jeremybennett|Jeremy Bennett]]
-* [[User:Jungsook|JungSook Yang]]
-* [[User:Stefan|Stefan Wallentowitz]]
-* [[User:Markjarvin|Mark Jarvin]]
 
 An important input to the current stable release has been Waqas Ahmed's Master's dissertation at the Royal Institute of Technology, Sweden, Implementation and Verification of a CPU Subsystem for Multimode RF Transceivers. His work identified a large number of bugs in Or1ksim, which have been fixed (and tested) in this release. Waqas has kindly made his dissertation available on the [http://opencores.org/openrisc,downloads download] page.
 
@@ -298,12 +296,15 @@ An important input to the current stable release has been Waqas Ahmed's Master's
 
 These are the people who are currently not working on the or1ksim, but have contributed in significant ways in the past:
 * Waqas Ahmed
-* Erez Volk
-* Johan Rydberg
-* Jimmy Chen-Min Chen
-* Chris Ziomkowskig
-* Marko Mlinar
-* Simon Srot
 * Matjaz Breskvar
+* Jimmy Chen-Min Chen
+* [[User:Markjarvin|Mark Jarvin]]
 * Gyorgy Jeney
 * Damjan Lampret
+* Marko Mlinar
+* Johan Rydberg
+* Simon Srot
+* Erez Volk
+* [[User:Stefan|Stefan Wallentowitz]]
+* [[User:Jungsook|JungSook Yang]]
+* Chris Ziomkowskig
