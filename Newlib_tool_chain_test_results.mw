@@ -119,7 +119,7 @@ These are the results of the or1k-elf-gcc (newly renamed) that is still under de
 
 runtest completed at Wed Apr  4 16:25:22 2012</nowiki>
 
-=== FAIL tests ===
+==== FAIL tests ====
 ;gcc.c-torture/execute/builtins/memcpy-chk.c compilation,  -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects
 :/tmp/ccavij90.ltrans1.ltrans.o: In function `memset':
 :ccavij90.ltrans1.o:(.text+0x834): multiple definition of `memset'
@@ -443,7 +443,7 @@ The following fail with similar errors (missing gcov functions)
 ;gcc.misc-tests/bprob-1.c execution: file bprob-1.gcda does not exist,  -fprofile-arcs
 ;gcc.misc-tests/bprob-2.c execution: file bprob-2.gcda does not exist,  -fprofile-arcs
 
-=== XPASS tests ===
+==== XPASS tests ====
 
 ;gcc.dg/tree-ssa/20040204-1.c scan-tree-dump-times optimized "link_error" 0
 
@@ -460,7 +460,7 @@ The following fail with similar errors (missing gcov functions)
 
 runtest completed at Sun Apr  8 21:45:26 2012</nowiki>
 
-=== FAIL tests ===
+==== FAIL tests ====
 
 The following appear to be due to the fact that the debugging output was not generated during execution because we ran it in a simulator. Should probably be waived.
 ;g++.dg/bprob/g++-bprob-1.C execution<nowiki>:</nowiki> file g++-bprob-1.gcda does not exist,  -g  -fprofile-arcs
@@ -581,7 +581,7 @@ The following gave no output errors and appear to be due to warnings which weren
 
 runtest completed at Mon Apr  9 01:42:59 2012</nowiki>
 
-=== FAIL tests ===
+==== FAIL tests ====
 
 
 ;21_strings/basic_string/append/wchar_t/3.cc execution test
