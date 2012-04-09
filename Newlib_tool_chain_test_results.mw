@@ -581,6 +581,98 @@ The following gave no output errors and appear to be due to warnings which weren
 
 runtest completed at Mon Apr  9 01:42:59 2012</nowiki>
 
+=== FAIL tests ===
+
+
+;21_strings/basic_string/append/wchar_t/3.cc execution test
+:terminate called after throwing an instance of 'std::bad_alloc'
+:  what():  std::bad_alloc
+:exit(1)
+
+;21_strings/basic_string/capacity/char/18654.cc execution test
+
+The following also had the same error:
+;21_strings/basic_string/capacity/wchar_t/18654.cc execution test
+;21_strings/basic_string/cons/wchar_t/6.cc execution test
+;21_strings/basic_string/inserters_extractors/wchar_t/10.cc execution test
+;21_strings/basic_string/inserters_extractors/wchar_t/11.cc execution test
+;22_locale/collate/transform/char/28277.cc execution test
+;22_locale/collate/transform/wchar_t/28277.cc execution test
+;23_containers/vector/profile/vector.cc execution test
+;26_numerics/valarray/28277.cc execution test
+;27_io/basic_istream/extractors_character/wchar_t/4.cc execution test
+;27_io/basic_istream/getline/wchar_t/5.cc execution test
+;27_io/basic_istream/ignore/wchar_t/2.cc execution test
+;27_io/basic_stringbuf/overflow/wchar_t/1.cc execution test
+;27_io/basic_stringbuf/setbuf/wchar_t/4.cc execution test
+
+;21_strings/basic_string/inserters_extractors/wchar_t/5.cc execution test
+:assertion "ofs.good()" failed: file "/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/libstdc++-v3/testsuite/21_strings/basic_string/inserters_extractors/wchar_t/5.cc", line 45, function: void test05(std::size_t)
+:exit(1)
+
+;25_algorithms/copy/streambuf_iterators/wchar_t/4.cc execution test
+:assertion "fbuf_ref.good()" failed: file "/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/libstdc++-v3/testsuite/25_algorithms/copy/streambuf_iterators/wchar_t/4.cc", line 45, function: void test01()
+:exit(1)
+
+;25_algorithms/find/istreambuf_iterators/wchar_t/2.cc execution test
+:assertion "found == 1500" failed: file "/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/libstdc++-v3/testsuite/25_algorithms/find/istreambuf_iterators/wchar_t/2.cc", line 52, function: void test01()
+:exit(1)
+
+;27_io/basic_istream/extractors_other/wchar_t/2.cc execution test
+:assertion "fbin.is_open()" failed: file "/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/libstdc++-v3/testsuite/27_io/basic_istream/extractors_other/wchar_t/2.cc", line 36, function: void test02()
+:exit(1)
+
+;27_io/basic_istream/get/wchar_t/2.cc execution test
+:assertion "!(!infile)" failed: file "/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/libstdc++-v3/testsuite/27_io/basic_istream/get/wchar_t/2.cc", line 37, function: void test07()
+:exit(1)
+
+;27_io/basic_istream/ignore/wchar_t/3.cc execution test
+:assertion "state1 == ios_base::goodbit" failed: file "/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/libstdc++-v3/testsuite/27_io/basic_istream/ignore/wchar_t/3.cc", line 41, function: void test01()
+:exit(1)
+
+;27_io/basic_istream/seekg/wchar_t/sstream.cc execution test
+:assertion "if01.good()" failed: file "/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/libstdc++-v3/testsuite/27_io/basic_istream/seekg/wchar_t/sstream.cc", line 42, function: void test05()
+:exit(1)
+
+;27_io/basic_istream/tellg/wchar_t/sstream.cc execution test
+:assertion "if01.good()" failed: file "/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/libstdc++-v3/testsuite/27_io/basic_istream/tellg/wchar_t/sstream.cc", line 40, function: void test05()
+:exit(1)
+
+;27_io/basic_ostream/inserters_arithmetic/wchar_t/4402.cc execution test
+:assertion "os2 && os2.str() == largebuf" failed: file "/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/libstdc++-v3/testsuite/27_io/basic_ostream/inserters_arithmetic/wchar_t/4402.cc", line 64, function: void test02()
+:exit(1)
+
+;27_io/basic_ostream/inserters_character/wchar_t/28277-1.cc execution test
+:assertion "oss_01.good()" failed: file "/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/libstdc++-v3/testsuite/27_io/basic_ostream/inserters_character/wchar_t/28277-1.cc", line 37, function: void test01()
+:exit(1)
+
+;27_io/basic_ostream/inserters_character/wchar_t/28277-2.cc execution test
+:assertion "oss_01.good()" failed: file "/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/libstdc++-v3/testsuite/27_io/basic_ostream/inserters_character/wchar_t/28277-2.cc", line 40, function: void test01()
+:exit(1)
+
+;27_io/basic_ostream/inserters_other/wchar_t/1.cc execution test
+:assertion "state01 != state02" failed: file "/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/libstdc++-v3/testsuite/27_io/basic_ostream/inserters_other/wchar_t/1.cc", line 48, function: void test02()
+:exit(1)
+
+;27_io/ios_base/sync_with_stdio/1.cc execution test
+:exit(1)
+
+;27_io/objects/wchar_t/12048-1.cc execution test
+:assertion "std::freopen("cin_unget-1.txt", "r", (_impure_ptr->_stdin))" failed: file "/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/libstdc++-v3/testsuite/27_io/objects/wchar_t/12048-1.cc", line 29, function: void test01()
+:exit(1)
+
+;27_io/objects/wchar_t/12048-2.cc execution test
+:assertion "std::freopen("cin_unget-1.txt", "r", (_impure_ptr->_stdin))" failed: file "/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/libstdc++-v3/testsuite/27_io/objects/wchar_t/12048-2.cc", line 26, function: void test01()
+:exit(1)
+
+;27_io/objects/wchar_t/12048-3.cc execution test
+:assertion "std::freopen("cin_unget-1.txt", "r", (_impure_ptr->_stdin))" failed: file "/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/libstdc++-v3/testsuite/27_io/objects/wchar_t/12048-3.cc", line 30, function: void test01()
+:exit(1)
+
+;27_io/objects/wchar_t/12048-4.cc execution test
+:assertion "std::freopen("cin_unget-1.txt", "r", (_impure_ptr->_stdin))" failed: file "/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/libstdc++-v3/testsuite/27_io/objects/wchar_t/12048-4.cc", line 26, function: void test01()
+:exit(1)
+
 == GDB 7.2 ==
 
  <nowiki>
