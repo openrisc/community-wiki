@@ -100,6 +100,51 @@ A number of tests require file I/O support or <tt>gettimeofday</tt> support, whi
 
 Two of the standard tests will not work with newlib generically, due to a bug in the handling of wide char stream I/O and <tt>is_scan</tt> support for wide characters. These tests have been marked as expecting to fail when run with newlib.
 
+== GCC 4.8.0 ==
+
+These are the results of the or1k-elf-gcc (newly renamed) that is still under development.
+
+=== C compiler ===
+
+ <nowiki>
+
+                === gcc Summary ===
+
+# of expected passes            69955
+# of unexpected failures        152
+# of unexpected successes       1
+# of expected failures          97
+# of unresolved testcases       141
+# of unsupported tests          1302
+
+runtest completed at Wed Apr  4 16:25:22 2012</nowiki>
+
+=== C++ compiler ===
+
+ <nowiki>
+                === g++ Summary ===
+
+# of expected passes            44181
+# of unexpected failures        54
+# of expected failures          278
+# of unresolved testcases       116
+# of unsupported tests          728
+
+runtest completed at Sun Apr  8 21:45:26 2012</nowiki>
+
+=== C++ library ===
+
+ <nowiki>
+
+                === libstdc++ Summary ===
+
+# of expected passes            6726
+# of unexpected failures        32
+# of expected failures          42
+# of unsupported tests          597
+
+runtest completed at Mon Apr  9 01:42:59 2012</nowiki>
+
 == GDB 7.2 ==
 
  <nowiki>
