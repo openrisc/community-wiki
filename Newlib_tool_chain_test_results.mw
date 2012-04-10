@@ -108,16 +108,14 @@ These are the results of the or1k-elf-gcc (newly renamed) that is still under de
 
  <nowiki>
 
-                === gcc Summary ===
+		=== gcc Summary ===
 
-# of expected passes            69955
-# of unexpected failures        152
-# of unexpected successes       1
-# of expected failures          97
-# of unresolved testcases       141
-# of unsupported tests          1302
-
-runtest completed at Wed Apr  4 16:25:22 2012</nowiki>
+# of expected passes		70017
+# of unexpected failures	78
+# of unexpected successes	1
+# of expected failures		97
+# of unresolved testcases	126
+# of unsupported tests		1301</nowiki>
 
 ==== FAIL tests ====
 ;gcc.c-torture/execute/builtins/memcpy-chk.c compilation,  -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects
@@ -144,128 +142,16 @@ The following fail with a similar issue (memset defined in two places - the test
 ;gcc.c-torture/execute/builtins/vsnprintf-chk.c compilation,  -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects 
 ;gcc.c-torture/execute/builtins/vsprintf-chk.c compilation,  -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects
 
-;gcc.dg/20020312-2.c (test for excess errors)
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/20020312-2.c:96:3: error: #error "Modify the test for your target."
-
-;gcc.dg/20021014-1.c (test for excess errors)
-/tmp/ccfsyLm7.s:19: Error: unrecognized form of instruction `l.load32u r0,LP0'
-/tmp/ccfsyLm7.s:20: Error: unrecognized instruction `call mcount'
-/tmp/ccfsyLm7.s:46: Error: unrecognized form of instruction `l.load32u r0,LP2'
-/tmp/ccfsyLm7.s:47: Error: unrecognized instruction `call mcount'
-
-It looks like this test, and all others failing with this assembly is due to invalid assembly in our port defined for FUNCTION_PROFILER(). Removing this code should fix all issues with this.
-
-;gcc.dg/20030625-1.c (internal compiler error)
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/20030625-1.c:7:15: error: field 'moo' has incomplete type
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/20030625-1.c:8:1: internal compiler error: tree check: expected class 'type', have 'exceptional' (error_mark) in or1k_struct_alignment, at config/or1k/or1k.c:2599
-
-This ICE and all others relating to failing in or1k.c:2599 are easily fixed by checking for an invalid field type (ie. invalid object has been detected and flagged already) before continuing to determine how it might be packed. A fix has been implemented and is being tested.
-
-;gcc.dg/20030625-1.c (test for excess errors)
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/20030625-1.c:8:1: internal compiler error: tree check: expected class 'type', have 'exceptional' (error_mark) in or1k_struct_alignment, at config/or1k/or1k.c:2599
-
-;gcc.dg/20040322-1.c (internal compiler error)
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/20040322-1.c:3:24: error: ISO C90 does not support flexible array members [-pedantic]
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/20040322-1.c:3:24: error: flexible array member not at end of struct
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/20040322-1.c:3:8: internal compiler error: tree check: expected class 'type', have 'exceptional' (error_mark) in or1k_struct_alignment, at config/or1k/or1k.c:2599
-
-;gcc.dg/20040322-1.c parse error before (test for errors, line 4)
-:parse error before (test for errors, line 4)
-
-;gcc.dg/20040322-1.c (test for excess errors)
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/20040322-1.c:3:8: internal compiler error: tree check: expected class 'type', have 'exceptional' (error_mark) in or1k_struct_alignment, at config/or1k/or1k.c:2599
-
-;gcc.dg/20050620-1.c (internal compiler error)
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/20050620-1.c: In function 'foo':
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/20050620-1.c:8:16: error: flexible array member in otherwise empty struct
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/20050620-1.c:8:10: internal compiler error: tree check: expected class 'type', have 'exc
-
-;gcc.dg/20050620-1.c  (test for errors, line 14)
-:(test for errors, line 14)
-
-;gcc.dg/20050620-1.c (test for excess errors)
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/20050620-1.c:8:10: internal compiler error: tree check: expected class 'type', have 'exceptional' (error_mark) in or1k_struct_alignment, at config/or1k/or1k.c:2599
-
-The following have failures similar to the other internal compiler errors seen above:
-;gcc.dg/940510-1.c (internal compiler error)
-;gcc.dg/940510-1.c (test for excess errors)
-
-;gcc.dg/array-9.c (internal compiler error)
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/array-9.c:7:8: error: declaration of 'x' as array of voids
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/array-9.c:8:1: internal compiler error: tree check: expected class 'type', have 'exceptional' (error_mark) in or1k_struct_alignment, at config/or1k/or1k.c:2599
-
-;gcc.dg/array-9.c (test for excess errors)
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/array-9.c:8:1: internal compiler error: tree check: expected class 'type', have 'exceptional' (error_mark) in or1k_struct_alignment, at config/or1k/or1k.c:2599
-
-;gcc.dg/attr-error-1.c (internal compiler error)
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/attr-error-1.c:3:16: error: 'N' undeclared here (not in a function)
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/attr-error-1.c:5:6: error: declaration of 'c' as array of voids
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/attr-error-1.c:7:6: error: declaration of 'b' as array of voids
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/attr-error-1.c:11:8: error: declaration of 'd' as array of voids
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/attr-error-1.c:12:1: internal compiler error: tree check: expected class 'type', have 'exceptional' (error_mark) in or1k_struct_alignment, at config/or1k/or1k.c:2599
-
-;gcc.dg/attr-error-1.c (test for excess errors)
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/attr-error-1.c:12:1: internal compiler error: tree check: expected class 'type', have 'exceptional' (error_mark) in or1k_struct_alignment, at config/or1k/or1k.c:2599
-
 ;gcc.dg/builtin-apply2.c execution test
 :exit(1)
 
 ;gcc.dg/builtin-object-size-10.c scan-tree-dump objsz "maximum object size 21"
 ;gcc.dg/builtin-stringop-chk-1.c stpcpy (test for warnings, line 108)
 
-;gcc.dg/c99-flex-array-1.c (internal compiler error)
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/c99-flex-array-1.c:5:17: error: flexible array member in otherwise empty struct
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/c99-flex-array-1.c:5:8: internal compiler error: tree check: expected class 'type', have 'exceptional' (error_mark) in or1k_struct_alignment, at config/or1k/or1k.c:2599
-
-;gcc.dg/c99-flex-array-1.c empty (test for errors, line 6)
-;gcc.dg/c99-flex-array-1.c not at end (test for errors, line 7)
-;gcc.dg/c99-flex-array-1.c (test for excess errors)
-
-
-;gcc.dg/c99-flex-array-5.c (internal compiler error)
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/c99-flex-array-5.c:6:23: error: flexible array member in union
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/c99-flex-array-5.c:6:7: internal compiler error: tree check: expected class 'type', have 'exceptional' (error_mark) in or1k_struct_alignment, at config/or1k/or1k.c:2599
-
-;gcc.dg/c99-flex-array-5.c (test for excess errors)
-
-;gcc.dg/nest.c (test for excess errors)
-:/tmp/ccZiT6Me.s: Assembler messages:
-:/tmp/ccZiT6Me.s:19: Error: unrecognized form of instruction `l.load32u r0,LP0'
-:/tmp/ccZiT6Me.s:20: Error: unrecognized instruction `call mcount'
-:/tmp/ccZiT6Me.s:57: Error: unrecognized form of instruction `l.load32u r0,LP2'
-:/tmp/ccZiT6Me.s:58: Error: unrecognized instruction `call mcount'
-Note: this looks like we're missing some architecture-specific assembly (and the wrong stuff is being pulled in here)
-
 ;gcc.dg/nested-func-4.c (test for excess errors)
-:/tmp/ccESsDgp.s: Assembler messages:
-:/tmp/ccESsDgp.s:20: Error: unrecognized form of instruction `l.addi r1,-4'
-:/tmp/ccESsDgp.s:22: Error: unrecognized form of instruction `l.load32u r0,LP1'
-:/tmp/ccESsDgp.s:23: Error: unrecognized instruction `call mcount'
-:/tmp/ccESsDgp.s:25: Error: unrecognized form of instruction `l.addi r1,4'
-:/tmp/ccESsDgp.s:59: Error: unrecognized form of instruction `l.load32u r0,LP0'
-:/tmp/ccESsDgp.s:60: Error: unrecognized instruction `call mcount'
-:/tmp/ccESsDgp.s:93: Error: unrecognized form of instruction `l.load32u r0,LP2'
-:/tmp/ccESsDgp.s:94: Error: unrecognized instruction `call mcount'
-
-;gcc.dg/pr14475.c (internal compiler error)
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/pr14475.c:6:8: error: ISO C forbids forward references to 'enum' types [-pedantic]
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/pr14475.c:6:8: error: type of bit-field 'code' is a GCC extension [-pedantic]
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/pr14475.c:6:8: warning: 'code' is narrower than values of its type [enabled by default]
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/pr14475.c:6:18: error: field 'code' has incomplete type
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/pr14475.c:10:1: internal compiler error: tree check: expected class 'type', have 'exceptional' (error_mark) in or1k_struct_alignment, at config/or1k/or1k.c:2599
-
-;gcc.dg/pr14475.c (test for excess errors)
-:/tmp/ccMVtAlO.s: Assembler messages:
-:/tmp/ccMVtAlO.s:21: Error: unrecognized form of instruction `l.load32u r0,LP0'
-:/tmp/ccMVtAlO.s:22: Error: unrecognized instruction `call mcount'
-:/tmp/ccMVtAlO.s:45: Error: unrecognized form of instruction `l.load32u r0,LP1'
-:/tmp/ccMVtAlO.s:46: Error: unrecognized instruction `call mcount'
-:/tmp/ccMVtAlO.s:82: Error: unrecognized form of instruction `l.load32u r0,LP2'
-:/tmp/ccMVtAlO.s:83: Error: unrecognized instruction `call mcount'
-
-;gcc.dg/pr32450.c (test for excess errors)
-Same problem as above (invalid assembly for OR1K)
-;gcc.dg/pr43643.c (test for excess errors)
+:/tmp/ccOtyk7k.s: Assembler messages:
+:/tmp/ccOtyk7k.s:20: Error: unrecognized form of instruction `l.addi r1,-4'
+:/tmp/ccOtyk7k.s:23: Error: unrecognized form of instruction `l.addi r1,4'
 
 ;gcc.dg/pr45259.c (test for excess errors)
 :/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/pr45259.c: In function 'foo':
@@ -294,33 +180,8 @@ Same problem as above (invalid assembly for OR1K)
 ;gcc.dg/stack-usage-2.c  (test for warnings, line 16)
 ;gcc.dg/stack-usage-2.c  (test for warnings, line 26)
 ;gcc.dg/stack-usage-2.c  (test for warnings, line 33)
-;gcc.dg/struct-parse-1.c (internal compiler error)
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/struct-parse-1.c:9:35: error: field 'c' has incomplete type
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/struct-parse-1.c:9:33: internal compiler error: tree check: expected class 'type', have 'exceptional' (error_mark) in or1k_struct_alignment, at config/or1k/or1k.c:2599
-
-The following have a similar error
-
-;gcc.dg/struct-parse-1.c (test for excess errors)
-;gcc.dg/struct-parse-2.c (internal compiler error)
-;gcc.dg/struct-parse-2.c (test for excess errors)
-;gcc.dg/union-3.c (internal compiler error)
-;gcc.dg/union-3.c (test for excess errors)
-;gcc.dg/union-cast-4.c (internal compiler error)
-;gcc.dg/union-cast-4.c  (test for errors, line 7)
-;gcc.dg/union-cast-4.c (test for excess errors)
 
 ;gcc.dg/visibility-14.c scan-hidden hidden[ \t_]*foo
-
-;gcc.dg/lto/20091216-1 c_lto_20091216-1_0.o assemble, -O0 -flto -flto-partition=none -fuse-linker-plugin
-:/tmp/ccimqEa0.s: Assembler messages:
-:/tmp/ccimqEa0.s:71: Error: unrecognized instruction `nop'
-
-The following fail due to a similar error (invalid assembly for OR1K)
-;gcc.dg/lto/20091216-1 c_lto_20091216-1_0.o-c_lto_20091216-1_0.o link, -O2 -flto -flto-partition=none -fuse-linker-plugin -fno-fat-lto-objects 
-;gcc.dg/lto/20091216-1 c_lto_20091216-1_0.o assemble, -O0 -flto -flto-partition=1to1 -fno-use-linker-plugin 
-;gcc.dg/lto/20091216-1 c_lto_20091216-1_0.o assemble, -O2 -flto -flto-partition=1to1 -fno-use-linker-plugin 
-;gcc.dg/lto/20091216-1 c_lto_20091216-1_0.o-c_lto_20091216-1_0.o link, -O0 -flto -fuse-linker-plugin -fno-fat-lto-objects 
-;gcc.dg/lto/20091216-1 c_lto_20091216-1_0.o assemble, -O2 -flto -fuse-linker-plugin
 
 ;gcc.dg/matrix/transpose-1.c compilation,  -fprofile-generate -O3 -fno-tree-fre
 :/tmp/ccLq5PqJ.o<nowiki>:</nowiki> In function `mem_init'<nowiki>:</nowiki>
@@ -335,50 +196,6 @@ The following fail with the same error:
 ;gcc.dg/matrix/transpose-4.c compilation,  -fprofile-generate -O3 -fno-tree-fre
 ;gcc.dg/matrix/transpose-5.c compilation,  -fprofile-generate -O3 -fno-tree-fre
 ;gcc.dg/matrix/transpose-6.c compilation,  -fprofile-generate -O3 -fno-tree-fre
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/noncompile/incomplete-1.c:3:12: error: field 't' has incomplete type
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/noncompile/incomplete-1.c:4:1: internal compiler error: tree check: expected class 'type', have 'exceptional' (error_mark) in or1k_struct_alignment, at config/or1k/or1k.c:2599
-
-The following fail with the same error:
-;gcc.dg/noncompile/incomplete-1.c  -O0  (internal compiler error)
-;gcc.dg/noncompile/incomplete-1.c  -O0  (test for excess errors)
-;gcc.dg/noncompile/incomplete-1.c  -O1  (internal compiler error)
-;gcc.dg/noncompile/incomplete-1.c  -O1  (test for excess errors)
-;gcc.dg/noncompile/incomplete-1.c  -O2  (internal compiler error)
-;gcc.dg/noncompile/incomplete-1.c  -O2  (test for excess errors)
-;gcc.dg/noncompile/incomplete-1.c  -O3 -fomit-frame-pointer  (internal compiler error)
-;gcc.dg/noncompile/incomplete-1.c  -O3 -fomit-frame-pointer  (test for excess errors)
-;gcc.dg/noncompile/incomplete-1.c  -O3 -g  (internal compiler error)
-;gcc.dg/noncompile/incomplete-1.c  -O3 -g  (test for excess errors)
-;gcc.dg/noncompile/incomplete-1.c  -Os  (internal compiler error)
-;gcc.dg/noncompile/incomplete-1.c  -Os  (test for excess errors)
-;gcc.dg/noncompile/incomplete-1.c  -O2 -flto -fno-use-linker-plugin -flto-partition=none  (internal compiler error)
-;gcc.dg/noncompile/incomplete-1.c  -O2 -flto -fno-use-linker-plugin -flto-partition=none  (test for excess errors)
-;gcc.dg/noncompile/incomplete-1.c  -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  (internal compiler error)
-;gcc.dg/noncompile/incomplete-1.c  -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  (test for excess errors)
-
-
-;gcc.dg/noncompile/incomplete-5.c  -O0  (internal compiler error)
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/noncompile/incomplete-5.c:6:8: warning: '<anonymous>' is narrower than values of its type [enabled by default]
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/noncompile/incomplete-5.c:6:8: error: unnamed field has incomplete type
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/noncompile/incomplete-5.c:8:1: internal compiler error: tree check: expected class 'type', have 'exceptional' (error_mark) in or1k_struct_alignment, at config/or1k/or1k.c:2599
-
-The following fail with the same error:
-;gcc.dg/noncompile/incomplete-5.c  -O0  (test for excess errors)
-;gcc.dg/noncompile/incomplete-5.c  -O1  (internal compiler error)
-;gcc.dg/noncompile/incomplete-5.c  -O1  (test for excess errors)
-;gcc.dg/noncompile/incomplete-5.c  -O2  (internal compiler error)
-;gcc.dg/noncompile/incomplete-5.c  -O2  (test for excess errors)
-;gcc.dg/noncompile/incomplete-5.c  -O3 -fomit-frame-pointer  (internal compiler error)
-;gcc.dg/noncompile/incomplete-5.c  -O3 -fomit-frame-pointer  (test for excess errors)
-;gcc.dg/noncompile/incomplete-5.c  -O3 -g  (internal compiler error)
-;gcc.dg/noncompile/incomplete-5.c  -O3 -g  (test for excess errors)
-;gcc.dg/noncompile/incomplete-5.c  -Os  (internal compiler error)
-;gcc.dg/noncompile/incomplete-5.c  -Os  (test for excess errors)
-;gcc.dg/noncompile/incomplete-5.c  -O2 -flto -fno-use-linker-plugin -flto-partition=none  (internal compiler error)
-;gcc.dg/noncompile/incomplete-5.c  -O2 -flto -fno-use-linker-plugin -flto-partition=none  (test for excess errors)
-;gcc.dg/noncompile/incomplete-5.c  -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  (internal compiler error)
-;gcc.dg/noncompile/incomplete-5.c  -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  (test for excess errors)
-
 
 ;gcc.dg/torture/pr37868.c  -O0  execution test
 :exit(9228)
