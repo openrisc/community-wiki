@@ -145,7 +145,6 @@ The following fail with a similar issue (memset defined in two places - the test
 ;gcc.dg/builtin-apply2.c execution test
 :exit(1)
 
-;gcc.dg/builtin-object-size-10.c scan-tree-dump objsz "maximum object size 21"
 ;gcc.dg/builtin-stringop-chk-1.c stpcpy (test for warnings, line 108)
 
 ;gcc.dg/nested-func-4.c (test for excess errors)
