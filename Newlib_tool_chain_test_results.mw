@@ -283,45 +283,14 @@ runtest completed at Sun Apr  8 21:45:26 2012</nowiki>
 
 ==== FAIL tests ====
 
-The following appear to be due to the fact that the debugging output was not generated during execution because we ran it in a simulator. Should probably be waived.
-;g++.dg/bprob/g++-bprob-1.C execution<nowiki>:</nowiki> file g++-bprob-1.gcda does not exist,  -g  -fprofile-arcs
-;g++.dg/bprob/g++-bprob-1.C execution<nowiki>:</nowiki> file g++-bprob-1.gcda does not exist,  -O0  -fprofile-arcs
-;g++.dg/bprob/g++-bprob-1.C execution<nowiki>:</nowiki> file g++-bprob-1.gcda does not exist,  -O1  -fprofile-arcs
-;g++.dg/bprob/g++-bprob-1.C execution<nowiki>:</nowiki> file g++-bprob-1.gcda does not exist,  -O2  -fprofile-arcs
-;g++.dg/bprob/g++-bprob-1.C execution<nowiki>:</nowiki> file g++-bprob-1.gcda does not exist,  -O3  -fprofile-arcs
-;g++.dg/bprob/g++-bprob-1.C execution<nowiki>:</nowiki> file g++-bprob-1.gcda does not exist,  -O3 -g  -fprofile-arcs
-;g++.dg/bprob/g++-bprob-1.C execution<nowiki>:</nowiki> file g++-bprob-1.gcda does not exist,  -Os  -fprofile-arcs
-;g++.dg/bprob/g++-bprob-2.C execution<nowiki>:</nowiki> file g++-bprob-2.gcda does not exist,  -g  -fprofile-arcs
-;g++.dg/bprob/g++-bprob-2.C execution<nowiki>:</nowiki> file g++-bprob-2.gcda does not exist,  -O0  -fprofile-arcs
-;g++.dg/bprob/g++-bprob-2.C execution<nowiki>:</nowiki> file g++-bprob-2.gcda does not exist,  -O1  -fprofile-arcs
-;g++.dg/bprob/g++-bprob-2.C execution<nowiki>:</nowiki> file g++-bprob-2.gcda does not exist,  -O2  -fprofile-arcs
-;g++.dg/bprob/g++-bprob-2.C execution<nowiki>:</nowiki> file g++-bprob-2.gcda does not exist,  -O3  -fprofile-arcs
-;g++.dg/bprob/g++-bprob-2.C execution<nowiki>:</nowiki> file g++-bprob-2.gcda does not exist,  -O3 -g  -fprofile-arcs
-;g++.dg/bprob/g++-bprob-2.C execution<nowiki>:</nowiki> file g++-bprob-2.gcda does not exist,  -Os  -fprofile-arcs
-
-;g++.dg/cpp0x/lambda/lambda-in-class-neg.C (internal compiler error)
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/g++.dg/cpp0x/lambda/lambda-in-class-neg.C: In lambda function:
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/g++.dg/cpp0x/lambda/lambda-in-class-neg.C:11:12: error: 'this' was not captured for this lambda function
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/g++.dg/cpp0x/lambda/lambda-in-class-neg.C: In function 'int main()':
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/g++.dg/cpp0x/lambda/lambda-in-class-neg.C:31:4: error: invalid use of 'this' in non-member function
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/g++.dg/cpp0x/lambda/lambda-in-class-neg.C:31:8: internal compiler error: tree check: expected class 'type', have 'exceptional' (error_mark) in or1k_struct_alignment, at config/or1k/or1k.c:2599
-
-;g++.dg/cpp0x/lambda/lambda-in-class-neg.C (test for excess errors)
-;g++.dg/cpp0x/lambda/lambda-nested2.C (internal compiler error)
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/g++.dg/cpp0x/lambda/lambda-nested2.C: In lambda function:
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/g++.dg/cpp0x/lambda/lambda-nested2.C:20:24: error: 'j' is not captured
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/g++.dg/cpp0x/lambda/lambda-nested2.C: In lambda function:
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/g++.dg/cpp0x/lambda/lambda-nested2.C:21:19: error: 'n' is not captured
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/g++.dg/cpp0x/lambda/lambda-nested2.C:24:16: error: 'i' is not captured
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/g++.dg/cpp0x/lambda/lambda-nested2.C: In lambda function:
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/g++.dg/cpp0x/lambda/lambda-nested2.C:20:25: internal compiler error: tree check: expected class 'type', have 'exceptional' (error_mark) in or1k_struct_alignment, at config/or1k/or1k.c:2599
-
-;g++.dg/cpp0x/lambda/lambda-nested2.C (test for excess errors)
-
-The following had no output error information:
-;g++.dg/ext/strncpy-chk1.C -std=gnu++98  (test for warnings, line 11)
-;g++.dg/ext/strncpy-chk1.C -std=gnu++11  (test for warnings, line 11)
 ;g++.dg/lookup/builtin5.C scan-assembler _ZSt5atanhd
+
+It looks like this one is failing because the generated assembly code looks like this:
+:        .section        .text.atanh,"axG",@progbits,atanh,comdat
+
+whereas the correct output should be (generated with the -std=c++98 flag):
+:        .section        .text._ZSt5atanhd,"axG",@progbits,_ZSt5atanhd,comdat
+
 
 ;g++.dg/lto/20090303 cp_lto_20090303_0.o assemble, -flto -flto-partition=1to1 -fPIC
 :/tmp/ccxdrUjL.s: Assembler messages:
@@ -332,49 +301,6 @@ The following had no output error information:
 :/tmp/ccxdrUjL.s:257: Error: syntax error (expected char `(', found `@') `l.lwz r4,.L4@GOTOFF(r10)'
 :/tmp/ccxdrUjL.s:263: Error: syntax error (expected char `(', found `@') `l.lwz r3,j@GOTOFF(r10)'
 :/tmp/ccxdrUjL.s:266: Error: syntax error (expected char `(', found `@') `l.lwz r5,test_ints@GOTOFF(r10)'
-
-;g++.dg/tree-prof/indir-call-prof-2.C compilation,  -g  -fprofile-generate
-:/tmp/cc1Iejal.o: In function `test12(int (*)(), int)':
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/g++.dg/tree-prof/indir-call-prof-2.C:18: undefined reference to `__gcov_indirect_call_profiler'
-:/tmp/cc1Iejal.o: In function `test11(int (*)(), int)':
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/g++.dg/tree-prof/indir-call-prof-2.C:17: undefined reference to `__gcov_indirect_call_profiler'
-:/tmp/cc1Iejal.o: In function `test10(int (*)())':
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/g++.dg/tree-prof/indir-call-prof-2.C:16: undefined reference to `__gcov_indirect_call_profiler'
-:/tmp/cc1Iejal.o: In function `test9(int (*)())':
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/g++.dg/tree-prof/indir-call-prof-2.C:15: undefined reference to `__gcov_indirect_call_profiler'
-:/tmp/cc1Iejal.o: In function `test8(void (*)())':
-:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/g++.dg/tree-prof/indir-call-prof-2.C:14: undefined reference to `__gcov_indirect_call_profiler'
-:/tmp/cc1Iejal.o:/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/g++.dg/tree-prof/indir-call-prof 2.C:13: more undefined references to `__gcov_indirect_call_profiler' follow
-:collect2: error: ld returned 1 exit status
-
-The following all also failed due to undefined references to __gcov_* functions
-;g++.dg/tree-prof/indir-call-prof-2.C compilation,  -O0  -fprofile-generate
-;g++.dg/tree-prof/indir-call-prof-2.C compilation,  -O1  -fprofile-generate
-;g++.dg/tree-prof/indir-call-prof-2.C compilation,  -O2  -fprofile-generate
-;g++.dg/tree-prof/indir-call-prof-2.C compilation,  -O3  -fprofile-generate
-;g++.dg/tree-prof/indir-call-prof-2.C compilation,  -O3 -g  -fprofile-generate
-;g++.dg/tree-prof/indir-call-prof-2.C compilation,  -Os  -fprofile-generate
-;g++.dg/tree-prof/indir-call-prof.C compilation,  -g  -fprofile-generate
-;g++.dg/tree-prof/indir-call-prof.C compilation,  -O0  -fprofile-generate
-;g++.dg/tree-prof/indir-call-prof.C compilation,  -O1  -fprofile-generate
-;g++.dg/tree-prof/indir-call-prof.C compilation,  -O2  -fprofile-generate
-;g++.dg/tree-prof/indir-call-prof.C compilation,  -O3  -fprofile-generate
-;g++.dg/tree-prof/indir-call-prof.C compilation,  -O3 -g  -fprofile-generate
-;g++.dg/tree-prof/indir-call-prof.C compilation,  -Os  -fprofile-generate
-;g++.dg/tree-prof/inline_mismatch_args.C compilation,  -g  -fprofile-generate
-;g++.dg/tree-prof/inline_mismatch_args.C compilation,  -O0  -fprofile-generate
-;g++.dg/tree-prof/inline_mismatch_args.C compilation,  -O1  -fprofile-generate
-;g++.dg/tree-prof/inline_mismatch_args.C compilation,  -O2  -fprofile-generate
-;g++.dg/tree-prof/inline_mismatch_args.C compilation,  -O3  -fprofile-generate
-;g++.dg/tree-prof/inline_mismatch_args.C compilation,  -O3 -g  -fprofile-generate
-;g++.dg/tree-prof/inline_mismatch_args.C compilation,  -Os  -fprofile-generate
-;g++.dg/tree-prof/pr51719.C compilation,  -g  -fprofile-generate
-;g++.dg/tree-prof/pr51719.C compilation,  -O0  -fprofile-generate
-;g++.dg/tree-prof/pr51719.C compilation,  -O1  -fprofile-generate
-;g++.dg/tree-prof/pr51719.C compilation,  -O2  -fprofile-generate
-;g++.dg/tree-prof/pr51719.C compilation,  -O3  -fprofile-generate
-;g++.dg/tree-prof/pr51719.C compilation,  -O3 -g  -fprofile-generate
-;g++.dg/tree-prof/pr51719.C compilation,  -Os  -fprofile-generate
 
 The following gave no output errors and appear to be due to warnings which weren't generated by the compiler:
 ;g++.old-deja/g++.jason/rfg22.C -std=c++98  (test for errors, line 2)
