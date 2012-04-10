@@ -273,13 +273,13 @@ The following fail with similar errors (missing gcov functions)
  <nowiki>
                 === g++ Summary ===
 
-# of expected passes            44181
-# of unexpected failures        54
+# of expected passes            44118
+# of unexpected failures        4
 # of expected failures          278
-# of unresolved testcases       116
-# of unsupported tests          728
+# of unresolved testcases       2
+# of unsupported tests          774
 
-runtest completed at Sun Apr  8 21:45:26 2012</nowiki>
+runtest completed at Tue Apr 10 06:19:43 2012</nowiki>
 
 ==== FAIL tests ====
 
