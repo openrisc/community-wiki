@@ -152,6 +152,7 @@ The following fail with a similar issue (memset defined in two places - the test
 :/tmp/ccOtyk7k.s: Assembler messages:
 :/tmp/ccOtyk7k.s:20: Error: unrecognized form of instruction `l.addi r1,-4'
 :/tmp/ccOtyk7k.s:23: Error: unrecognized form of instruction `l.addi r1,4'
+The cause of this has been located (incorrect assembly in define in config/or1k/or1k.h file), should be fixed on next run.
 
 ;gcc.dg/pr45259.c (test for excess errors)
 :/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/pr45259.c: In function 'foo':
