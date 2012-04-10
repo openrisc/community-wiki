@@ -153,9 +153,13 @@ The following fail with a similar issue (memset defined in two places - the test
 /tmp/ccfsyLm7.s:46: Error: unrecognized form of instruction `l.load32u r0,LP2'
 /tmp/ccfsyLm7.s:47: Error: unrecognized instruction `call mcount'
 
+It looks like this test, and all others failing with this assembly is due to invalid assembly in our port defined for FUNCTION_PROFILER(). Removing this code should fix all issues with this.
+
 ;gcc.dg/20030625-1.c (internal compiler error)
 :/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/20030625-1.c:7:15: error: field 'moo' has incomplete type
 :/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/20030625-1.c:8:1: internal compiler error: tree check: expected class 'type', have 'exceptional' (error_mark) in or1k_struct_alignment, at config/or1k/or1k.c:2599
+
+This ICE and all others relating to failing in or1k.c:2599 are easily fixed by checking for an invalid field type (ie. invalid object has been detected and flagged already) before continuing to determine how it might be packed. A fix has been implemented and is being tested.
 
 ;gcc.dg/20030625-1.c (test for excess errors)
 :/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/20030625-1.c:8:1: internal compiler error: tree check: expected class 'type', have 'exceptional' (error_mark) in or1k_struct_alignment, at config/or1k/or1k.c:2599
