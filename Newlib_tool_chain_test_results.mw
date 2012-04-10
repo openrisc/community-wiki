@@ -110,12 +110,12 @@ These are the results of the or1k-elf-gcc (newly renamed) that is still under de
 
 		=== gcc Summary ===
 
-# of expected passes		70017
-# of unexpected failures	78
+# of expected passes		69977
+# of unexpected failures	28
 # of unexpected successes	1
 # of expected failures		97
-# of unresolved testcases	126
-# of unsupported tests		1301</nowiki>
+# of unresolved testcases	17
+# of unsupported tests		1334</nowiki>
 
 ==== FAIL tests ====
 ;gcc.c-torture/execute/builtins/memcpy-chk.c compilation,  -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects
@@ -142,16 +142,11 @@ The following fail with a similar issue (memset defined in two places - the test
 ;gcc.c-torture/execute/builtins/vsnprintf-chk.c compilation,  -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects 
 ;gcc.c-torture/execute/builtins/vsprintf-chk.c compilation,  -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects
 
-;gcc.dg/builtin-apply2.c execution test
-:exit(1)
+;gcc.dg/builtin-object-size-10.c scan-tree-dump objsz "maximum object size 21"
 
-;gcc.dg/builtin-stringop-chk-1.c stpcpy (test for warnings, line 108)
-
-;gcc.dg/nested-func-4.c (test for excess errors)
-:/tmp/ccOtyk7k.s: Assembler messages:
-:/tmp/ccOtyk7k.s:20: Error: unrecognized form of instruction `l.addi r1,-4'
-:/tmp/ccOtyk7k.s:23: Error: unrecognized form of instruction `l.addi r1,4'
-The cause of this has been located (incorrect assembly in define in config/or1k/or1k.h file), should be fixed on next run.
+It looks like in the generated dump file (not sure how it's created) we have the following line:
+:dpkt_1: maximum object size 24
+and so must be failing the check for max object size of 21.
 
 ;gcc.dg/pr45259.c (test for excess errors)
 :/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/pr45259.c: In function 'foo':
@@ -159,17 +154,11 @@ The cause of this has been located (incorrect assembly in define in config/or1k/
 :/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/pr45259.c:14:3: error: taking the address of a label is non-standard [-pedantic]
 :/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/pr45259.c:21:2: error: ISO C forbids 'goto *expr;' [-pedantic]
 
-;gcc.dg/pr47793.c (test for excess errors)
-:pr47793.c:(.text+0x38): undefined reference to `__gcov_indirect_call_profiler'
-
 ;gcc.dg/pr49994-3.c (test for excess errors)
 :/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/pr49994-3.c:15:7: warning: unsupported argument to '__builtin_return_address' [enabled by default]
 :/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/pr49994-3.c:17:7: warning: unsupported argument to '__builtin_return_address' [enabled by default]
 :/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/pr49994-3.c:19:7: warning: unsupported argument to '__builtin_return_address' [enabled by default]
 :/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/pr49994-3.c:21:7: warning: unsupported argument to '__builtin_return_address' [enabled by default]
-
-;gcc.dg/profile-generate-3.c (test for excess errors)
-:profile-generate-3.c:(.text+0x3c): undefined reference to `__gcov_indirect_call_profiler'
 
 ;gcc.dg/stack-usage-1.c (test for excess errors)
 :/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/stack-usage-1.c:70:1: warning: stack usage computation not supported for this target [enabled by default]
@@ -183,90 +172,19 @@ The cause of this has been located (incorrect assembly in define in config/or1k/
 
 ;gcc.dg/visibility-14.c scan-hidden hidden[ \t_]*foo
 
-;gcc.dg/matrix/transpose-1.c compilation,  -fprofile-generate -O3 -fno-tree-fre
-:/tmp/ccLq5PqJ.o<nowiki>:</nowiki> In function `mem_init'<nowiki>:</nowiki>
-:transpose-1.c<nowiki>:</nowiki>(.text+0x5c)<nowiki>:</nowiki> undefined reference to `__gcov_indirect_call_profiler'
-:/tmp/ccLq5PqJ.o<nowiki>:</nowiki> In function `main'<nowiki>:</nowiki>
-:transpose-1.c<nowiki>:</nowiki>(.text.startup+0x54)<nowiki>:</nowiki> undefined reference to `__gcov_indirect_call_profiler'
-:collect2<nowiki>:</nowiki> error<nowiki>:</nowiki> ld returned 1 exit status
-
-The following fail with the same error:
-;gcc.dg/matrix/transpose-2.c compilation,  -fprofile-generate -O3 -fno-tree-fre
-;gcc.dg/matrix/transpose-3.c compilation,  -fprofile-generate -O3 -fno-tree-fre
-;gcc.dg/matrix/transpose-4.c compilation,  -fprofile-generate -O3 -fno-tree-fre
-;gcc.dg/matrix/transpose-5.c compilation,  -fprofile-generate -O3 -fno-tree-fre
-;gcc.dg/matrix/transpose-6.c compilation,  -fprofile-generate -O3 -fno-tree-fre
-
-;gcc.dg/torture/pr37868.c  -O0  execution test
-:exit(9228)
-
-;gcc.dg/torture/pr37868.c  -O1  execution test
-:exit(9228)
-
-;gcc.dg/torture/pr37868.c  -O2  execution test
-:exit(8304)
-
-;gcc.dg/torture/pr37868.c  -O3 -fomit-frame-pointer  execution test
-:exit(8296)
-
-;gcc.dg/torture/pr37868.c  -O3 -g  execution test
-:exit(8304)
-
-;gcc.dg/torture/pr37868.c  -Os  execution test
-:exit(8308)
-
-;gcc.dg/torture/pr37868.c  -O2 -flto -fno-use-linker-plugin -flto-partition=none  execution test
-:exit(8304)
-
-;gcc.dg/torture/pr37868.c  -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  execution test
-:exit(8304)
+It's not obvious what is wrong with this one. The source file has a comment:
+:Test that called external functions are marked.
+and the generated disassembly has a call to the foo() function with just a l.jal:
+:        l.jal           foo
+:        l.nop                   # nop delay slot
+and is the only reference to the function there.
 
 ;gcc.dg/torture/stackalign/builtin-apply-2.c  -O0  execution test
 :exit(1)
-
-;gcc.dg/tree-prof/bb-reorg.c compilation,  -fprofile-generate -D_PROFILE_GENERATE
-:/tmp/ccBOBdGQ.o: In function `foo':
-:bb-reorg.c:(.text+0x38): undefined reference to `__gcov_indirect_call_profiler'
-:/tmp/ccBOBdGQ.o: In function `main':
-:bb-reorg.c:(.text.startup+0x38): undefined reference to `__gcov_indirect_call_profiler'
-:collect2: error: ld returned 1 exit status
-
-The following fail with similar errors (missing gcov functions)
-;gcc.dg/tree-prof/ic-misattribution-1.c compilation,  -fprofile-generate -D_PROFILE_GENERATE
-;gcc.dg/tree-prof/ic-misattribution-1a.c compilation,  -fprofile-generate -D_PROFILE_GENERATE
-;gcc.dg/tree-prof/indir-call-prof.c compilation,  -fprofile-generate -D_PROFILE_GENERATE
-;gcc.dg/tree-prof/inliner-1.c compilation,  -fprofile-generate -D_PROFILE_GENERATE
-;gcc.dg/tree-prof/pr34999.c compilation,  -fprofile-generate -D_PROFILE_GENERATE
-;gcc.dg/tree-prof/pr44777.c compilation,  -fprofile-generate -D_PROFILE_GENERATE
-;gcc.dg/tree-prof/pr45354.c compilation,  -fprofile-generate -D_PROFILE_GENERATE
-;gcc.dg/tree-prof/pr47187.c compilation,  -fprofile-generate -D_PROFILE_GENERATE
-;gcc.dg/tree-prof/pr49299-1.c compilation,  -fprofile-generate -D_PROFILE_GENERATE
-;gcc.dg/tree-prof/pr49299-2.c compilation,  -fprofile-generate -D_PROFILE_GENERATE
-;gcc.dg/tree-prof/pr50907.c compilation,  -fprofile-generate -D_PROFILE_GENERATE
-;gcc.dg/tree-prof/pr52027.c compilation,  -fprofile-generate -D_PROFILE_GENERATE
-;gcc.dg/tree-prof/pr52150.c compilation,  -fprofile-generate -D_PROFILE_GENERATE
-;gcc.dg/tree-prof/prof-robust-1.c compilation,  -fprofile-generate -D_PROFILE_GENERATE
-;gcc.dg/tree-prof/stringop-1.c compilation,  -fprofile-generate -D_PROFILE_GENERATE
-;gcc.dg/tree-prof/stringop-2.c compilation,  -fprofile-generate -D_PROFILE_GENERATE
-;gcc.dg/tree-prof/tracer-1.c compilation,  -fprofile-generate -D_PROFILE_GENERATE
-;gcc.dg/tree-prof/update-cunroll-2.c compilation,  -fprofile-generate -D_PROFILE_GENERATE
-;gcc.dg/tree-prof/update-loopch.c compilation,  -fprofile-generate -D_PROFILE_GENERATE
-;gcc.dg/tree-prof/update-tailcall.c compilation,  -fprofile-generate -D_PROFILE_GENERATE
-;gcc.dg/tree-prof/val-prof-1.c compilation,  -fprofile-generate -D_PROFILE_GENERATE
-;gcc.dg/tree-prof/val-prof-2.c compilation,  -fprofile-generate -D_PROFILE_GENERATE
-;gcc.dg/tree-prof/val-prof-3.c compilation,  -fprofile-generate -D_PROFILE_GENERATE
-;gcc.dg/tree-prof/val-prof-4.c compilation,  -fprofile-generate -D_PROFILE_GENERATE
-;gcc.dg/tree-prof/val-prof-5.c compilation,  -fprofile-generate -D_PROFILE_GENERATE
-;gcc.dg/tree-prof/val-prof-6.c compilation,  -fprofile-generate -D_PROFILE_GENERATE
-;gcc.dg/tree-prof/wcoverage-mismatch.c compilation,  -fprofile-generate -D_PROFILE_GENERATE
-
-;gcc.dg/tree-ssa/pr44258.c scan-tree-dump-times esra "Created a replacement" 0
-;gcc.misc-tests/bprob-1.c execution: file bprob-1.gcda does not exist,  -fprofile-arcs
-;gcc.misc-tests/bprob-2.c execution: file bprob-2.gcda does not exist,  -fprofile-arcs
-
+This test should be skipped (is a variadic function test similar to another we skip).
 ==== XPASS tests ====
 
-;gcc.dg/tree-ssa/20040204-1.c scan-tree-dump-times optimized "link_error" 0
+;gcc.dg/tree-ssa/20040204-1.c scan-tree-dump-times optimized "link_error" 0/
 
 === C++ compiler ===
 
