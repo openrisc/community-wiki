@@ -154,6 +154,8 @@ and so must be failing the check for max object size of 21.
 :/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/pr45259.c:14:3: error: taking the address of a label is non-standard [-pedantic]
 :/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/pr45259.c:21:2: error: ISO C forbids 'goto *expr;' [-pedantic]
 
+This test appears to want to generate position independent code (PIC) but I don't think we fully support that yet.
+
 ;gcc.dg/pr49994-3.c (test for excess errors)
 :/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/pr49994-3.c:15:7: warning: unsupported argument to '__builtin_return_address' [enabled by default]
 :/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/pr49994-3.c:17:7: warning: unsupported argument to '__builtin_return_address' [enabled by default]
@@ -170,6 +172,8 @@ and so must be failing the check for max object size of 21.
 ;gcc.dg/stack-usage-2.c  (test for warnings, line 26)
 ;gcc.dg/stack-usage-2.c  (test for warnings, line 33)
 
+All of these stack tests are dubious as to whether they should be run or not. As we don't have stack usage computation (so the compiler says) maybe we can ignore these for now?
+
 ;gcc.dg/visibility-14.c scan-hidden hidden[ \t_]*foo
 
 It's not obvious what is wrong with this one. The source file has a comment:
@@ -182,6 +186,7 @@ and is the only reference to the function there.
 ;gcc.dg/torture/stackalign/builtin-apply-2.c  -O0  execution test
 :exit(1)
 This test should be skipped (is a variadic function test similar to another we skip).
+
 ==== XPASS tests ====
 
 ;gcc.dg/tree-ssa/20040204-1.c scan-tree-dump-times optimized "link_error" 0/
