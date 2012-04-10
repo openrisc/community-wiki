@@ -306,15 +306,6 @@ The following gave no output errors and appear to be due to warnings which weren
 ;g++.old-deja/g++.jason/rfg22.C -std=c++98  (test for errors, line 2)
 ;g++.old-deja/g++.jason/rfg22.C -std=c++11  (test for errors, line 2)
 
-;g++.old-deja/g++.law/profile1.C -std=gnu++98 (test for excess errors)
-:/tmp/ccYqbFfV.s: Assembler messages:
-:/tmp/ccYqbFfV.s:24: Error: unrecognized form of instruction `l.load32u r0,LP0'
-:/tmp/ccYqbFfV.s:25: Error: unrecognized instruction `call mcount'
-
-;g++.old-deja/g++.law/profile1.C -std=gnu++11 (test for excess errors)
-:/tmp/cc5a7na3.s:24: Error: unrecognized form of instruction `l.load32u r0,LP0'
-:/tmp/cc5a7na3.s:25: Error: unrecognized instruction `call mcount'
-
 === C++ library ===
 
  <nowiki>
