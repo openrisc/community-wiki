@@ -116,6 +116,12 @@ These commands will typically be added to your .profile or .login file.
 
 '''Note.''' Some users have reported problems when rebuilding the uClibc toolchain a second time, due to the existing headers on the search path. The solution is to remove the existing implementation from the PATH variable.
 
+=== Installation with orbuild ===
+
+The [https://github.com/rdiez/orbuild orbuild] framework can automatically download, build, install and test the toolchain and other components related to the OpenRISC processor architecture. [https://github.com/rdiez/orbuild/tree/master/Scripts/Projects/OpenRISC Click here] for a list of supported components.
+
+Please note that ''orbuild'' is a new project and still lacks some polish.
+
 === Support for non-Linux systems ===
 
 ==== Microsoft Windows with Cygwin ====
@@ -123,6 +129,8 @@ These commands will typically be added to your .profile or .login file.
 At present only the older pre-compiled OpenRISC toolchains exist for Cygwin. The OpenRISC project currently does not have a maintainer for the toolchain on the Cygwin platform. Without one it is not certain that each toolchain release will be built for Cygwin.
 
 If you would like to contribute to the project by maintaining a build script and guide for Cygwin platforms, please contact the OpenRISC team.
+
+Alternatively, the ''orbuild'' framework is known to work under Cygwin, see above for more information.
 
 ===== Precompiled or1ksim and assembler =====
 
