@@ -110,12 +110,12 @@ These are the results of the or1k-elf-gcc (newly renamed) that is still under de
 
 		=== gcc Summary ===
 
-# of expected passes		69977
-# of unexpected failures	28
+# of expected passes		69962
+# of unexpected failures	27
 # of unexpected successes	1
 # of expected failures		97
 # of unresolved testcases	17
-# of unsupported tests		1334</nowiki>
+# of unsupported tests		1342</nowiki>
 
 ==== FAIL tests ====
 ;gcc.c-torture/execute/builtins/memcpy-chk.c compilation,  -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects
@@ -182,10 +182,6 @@ and the generated disassembly has a call to the foo() function with just a l.jal
 :        l.jal           foo
 :        l.nop                   # nop delay slot
 and is the only reference to the function there.
-
-;gcc.dg/torture/stackalign/builtin-apply-2.c  -O0  execution test
-:exit(1)
-This test should be skipped (is a variadic function test similar to another we skip).
 
 ==== XPASS tests ====
 
