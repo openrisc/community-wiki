@@ -1,0 +1,13 @@
+== Unassigned tasks ==
+* Add multiple associativity to cache and MMU
+* Use verilog 2k1 syntax
+* Minimize lint warnings
+* Rename or1200_fpu_intfloat_conv
+* True user mode support [http://bugzilla.opencores.org/show_bug.cgi?id=53 bug 53]
+* Implement Delay Slot Exception bit in SR [http://bugzilla.opencores.org/show_bug.cgi?id=85 bug 85]
+* Swap bit definitions for PICP and PMP in UPR [http://bugzilla.opencores.org/bugzilla4/show_bug.cgi?id=77 bug 77]
+* Replace defines with parameters
+== Release 3 ==
+* Update implementation spec
+* Document changes since last release
+* Add proper versioning register
