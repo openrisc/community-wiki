@@ -8,6 +8,10 @@ The latest draft of the architecture specification can be downloaded [http://ope
 
 This section is to keep track of proposed alterations to the OpenRISC 1000.
 
+=== Typos, Clarifications ===
+
+The following section should be used to list proposed typos and clarifications which need to be made to future revisions of the architecture spec document.
+
 === Versioning ===
 
 There are a few version-tracking issues to be dealt with.
