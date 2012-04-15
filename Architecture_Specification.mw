@@ -1,0 +1,25 @@
+This page contains information relating to the OpenRISC 1000 architecture and the specification document.
+
+= Download Latest Draft =
+
+The latest draft of the architecture specification can be downloaded [http://opencores.org/websvn,filedetails?repname=openrisc&path=%2Fopenrisc%2Ftrunk%2Fdocs%2Fopenrisc_arch_draft.odt here] ([http://en.wikipedia.org/wiki/OpenDocument ODT format])
+
+= Proposed changes =
+
+This section is to keep track of proposed alterations to the OpenRISC 1000.
+
+=== Versioning ===
+
+There are a few version-tracking issues to be dealt with.
+
+==== Version Registers ====
+
+The existing implementation version registers are not as good as they could be, and some proposals for changing them have been made.
+
+==== Architecture Versions ====
+
+As the architecture is modified and possibly expanded there needs to be a way of tracking the various versions of the architecture, both in implementation (eg. via a register) and in the document itself.
+
+==== Architecture Document Versions ====
+
+The document itself will change over time as its contents are amended, clarified or expanded. There needs to be a clear way of tracking the versions of the document. At present, the current draft document is revision 0 pending the first set of updates to the architecture.
