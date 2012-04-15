@@ -36,7 +36,7 @@ The 8-bit CPUID field of the VR can be used to determine the implementation. A l
 
 * A VR2-presence bit in existing VR register - bit 15 (currently reserved)
 
-* Implementation revision/build information registers, REVIR0-REVIR4. These 5 registers provide detailed information on the CPU's revision. The exact use of these registers is implementation-specific but are big enough to store a 160-bit SHA1 hash value.
+* Implementation revision/build information registers, REVIR0-REVIR4, SPR addresses 10-14. These 5 registers provide detailed information on the CPU's revision. The exact use of these registers is implementation-specific but are big enough to store a 160-bit SHA1 hash value.
 
 The REVI registers helps us use that neat trick with git, but is mostly designed to help keep track of local modifications to the project before synthesis is performed. If people aren't using git locally there's many other ways to store local modifications there. For or1ksim, it's a way of getting a useful size amount of information into registers which the software can read.
 
