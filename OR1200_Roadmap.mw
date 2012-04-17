@@ -7,6 +7,8 @@
 * Implement Delay Slot Exception bit in SR [http://bugzilla.opencores.org/show_bug.cgi?id=85 bug 85]
 * Swap bit definitions for PICP and PMP in UPR [http://bugzilla.opencores.org/bugzilla4/show_bug.cgi?id=77 bug 77]
 * Replace defines with parameters
+* Add unit tests
+
 == Release 3 ==
 * Update implementation spec
 * Document changes since last release
