@@ -10,4 +10,4 @@
 == Release 3 ==
 * Update implementation spec
 * Document changes since last release
-* Add proper versioning register
+* Add extended versioning register [[Architecture_Specification#Version_Registers]]
