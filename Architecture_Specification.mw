@@ -21,12 +21,12 @@ Changes to the spec document to make it clearer which cache control registers ar
 
 Mark the following registers as optional to implement, as they have a "present" bit in the I/DCCFGR:
 
-Data Cache Control Register
-Instruction Cache Control Register
-Data Cache Block Flush Register
-Data Cache Block Invalidate Register
-Data Cache Block Write-Back Register
-Instruction Cache Block Invalidate Register
+* Data Cache Control Register
+* Instruction Cache Control Register
+* Data Cache Block Flush Register
+* Data Cache Block Invalidate Register
+* Data Cache Block Write-Back Register
+* Instruction Cache Block Invalidate Register
 
 === Versioning ===
 
