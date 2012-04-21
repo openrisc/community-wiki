@@ -22,10 +22,9 @@ Mark the following registers as optional to implement, as they have a "present" 
 
 * Data Cache Control Register
 * Instruction Cache Control Register
-* Data Cache Block Flush Register
-* Data Cache Block Invalidate Register
 * Data Cache Block Write-Back Register
-* Instruction Cache Block Invalidate Register
+
+Instruction and data block invalidate and data block flush registers are mandatory, and their presence bits in the I/DCCFGR should be marked as always '1'.
 
 ==== Cache Block Invalidate Behaviour Clarification ====
 
