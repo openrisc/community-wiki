@@ -12,6 +12,22 @@ This section is to keep track of proposed alterations to the OpenRISC 1000.
 
 The following section should be used to list proposed typos and clarifications which need to be made to future revisions of the architecture spec document.
 
+
+==== Cache Registers Marked as Optional ====
+
+From [http://bugzilla.opencores.org/show_bug.cgi?id=79 bug #79].
+
+Changes to the spec document to make it clearer which cache control registers are optional.
+
+Mark the following registers as optional to implement, as they have a "present" bit in the I/DCCFGR:
+
+Data Cache Control Register
+Instruction Cache Control Register
+Data Cache Block Flush Register
+Data Cache Block Invalidate Register
+Data Cache Block Write-Back Register
+Instruction Cache Block Invalidate Register
+
 === Versioning ===
 
 There are a few version-tracking issues to be dealt with.
