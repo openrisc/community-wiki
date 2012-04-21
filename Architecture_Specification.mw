@@ -74,7 +74,6 @@ The existing implementation version registers are not as good as they could be, 
 
 The 8-bit CPUID field of the VR can be used to determine the implementation. A list of know implementations and unique IDs can probably be maintained in a document kept alongside the architecture spec and/or on this wiki page. I think the OR1200 should have its ID as 0x12 and  or1ksim as 0x01. Any sufficiently different branch of any implementation, that is not likely to be re-merged, should get its own unique ID.
 
-
 * A VR2-presence bit in existing VR register - bit 15 (currently reserved)
 
 * Implementation revision/build information registers, REVIR0-REVIR4, SPR addresses 10-14. These 5 registers provide detailed information on the CPU's revision. The exact use of these registers is implementation-specific but are big enough to store a 160-bit SHA1 hash value.
@@ -88,3 +87,7 @@ As the architecture is modified and possibly expanded there needs to be a way of
 ==== Architecture Document Versions ====
 
 The document itself will change over time as its contents are amended, clarified or expanded. There needs to be a clear way of tracking the versions of the document. At present, the current draft document is revision 0 pending the first set of updates to the architecture.
+
+=== Topics TODO ===
+
+* Instruction classes
