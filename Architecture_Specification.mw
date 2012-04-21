@@ -38,6 +38,21 @@ The proposed clarifications are:
 # Add to the block invalidate register's function description that the address beyond the bits used to select the cache block are ignored when invalidating, and the invalidation will always occur regardless of whether the block is currently valid. This clears up the behaviour and makes it obvious that software must clear the cache tags after reset.
 # State that block invalidation occurs for all ways.
 
+==== GPR0 usage, implementation ====
+
+It's not clear at the moment whether GPR0 really should be zero all the time and whether implementations would be free to tie it to zero.
+
+The following paragraph in 4.4 should be removed:
+
+ R0 is used as a constant zero. Whether or not R0 is actually hardwired to zero is
+ implementation dependent. R0 should never be used as a destination register.
+ Functions of other registers are explained in chapter Application Binary Interface on page
+ 319.
+
+The following paragraph should be added to the ABI section on GPR0's usage:
+
+ R0 is used as a constant zero. R0 should never be used as a destination register.
+
 === Versioning ===
 
 There are a few version-tracking issues to be dealt with.
