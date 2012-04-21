@@ -159,6 +159,8 @@ A new classification is proposed:
 * Class IV - MAC Instructions - l.mac*, l.msb
 * Class V - Remaining Optional Instructions: l.cmov, l.csync, l.msync, l.psync, l.cust1-8, l.trap
 
+Classes II-IV will be all-or-nothing support classes, with class V individually implementable.
+
 l.sf*i should be made class I.
 
 Some candidates for being moved from class I to class V are:
