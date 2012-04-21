@@ -88,6 +88,14 @@ As the architecture is modified and possibly expanded there needs to be a way of
 
 The document itself will change over time as its contents are amended, clarified or expanded. There needs to be a clear way of tracking the versions of the document. At present, the current draft document is revision 0 pending the first set of updates to the architecture.
 
+=== Exception Vector Base Address ===
+
+The current options for locations of the exception vectors are not very flexible, the only two possible locations are at
+address 0x0 or address 0xf0000000.
+
+The proposal is for the addition of an (optional) SPR register (EVBA)in group 0 (System Control and Status registers) at address 1536 (right after the last possible GPR mapped into SPR space), which would hold the (upper part of the) base address of the exception vectors.
+
+
 === Topics TODO ===
 
 * Instruction classes
