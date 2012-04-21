@@ -78,6 +78,10 @@ The architecture spec currently indicates the trap instruction checks a bit in t
 
 This is not obeyed in any implementation and has no good justification for being specified this way. The specification should remove mention of being conditional on SR[K].
 
+==== Unused SPR space read as zero ====
+
+It should be stated in section 4.3 that un-implemented or reserved SPR space should be read as zero and writing should have no consequence.
+
 === Versioning ===
 
 There are a few version-tracking issues to be dealt with.
