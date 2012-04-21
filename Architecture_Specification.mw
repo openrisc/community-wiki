@@ -51,7 +51,7 @@ The following paragraph in 4.4 should be removed:
 
 The following paragraph should be added to the ABI section on GPR0's usage:
 
- R0 is used as a constant zero. R0 should never be used as a destination register.
+ R0 is used as a constant zero. It should be cleared by software on reset with a <code>l.movhi r0,0</code> instruction.
 
 === Versioning ===
 
