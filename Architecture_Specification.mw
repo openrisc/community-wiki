@@ -49,9 +49,16 @@ The following paragraph in 4.4 should be removed:
  Functions of other registers are explained in chapter Application Binary Interface on page
  319.
 
+The following paragraph should replace it:
+ 
+ R0 is used as a constant zero according to the ABI. R0 may or may not be hard-wired to zero 
+ in implementation. In the case where it is hard-wired to zero, no exception will be raised 
+ when it is used as a destination register. 
+
 The following paragraph should be added to the ABI section on GPR0's usage:
 
- R0 is used as a constant zero. It should be cleared by software on reset with a <code>l.movhi r0,0</code> instruction.
+ R0 is used as a constant zero. If the register is not hard-wired to zero it should be cleared 
+ by software on reset.
 
 === Versioning ===
 
