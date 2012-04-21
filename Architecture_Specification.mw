@@ -60,6 +60,24 @@ The following paragraph should be added to the ABI section on GPR0's usage:
  R0 is used as a constant zero. If the register is not hard-wired to zero it should be cleared 
  by software on reset.
 
+==== l.trap condition ====
+
+The architecture spec currently indicates the trap instruction checks a bit in the SR to test whether it should occur:
+
+ Format:
+ l.trap K
+ 
+ Description:
+ Execution of trap instruction results in the trap exception if specified bit in SR is set. Trap
+ exception is a request to the operating system or to the debug facility to execute certain
+ debug services. Immediate value is used to select which SR bit is tested by trap
+ instruction.
+ 
+ 32-bit Implementation:
+ if SR[K] = 1 then trap-exception()
+
+This is not obeyed in any implementation and has no good justification for being specified this way. The specification should remove mention of being conditional on SR[K].
+
 === Versioning ===
 
 There are a few version-tracking issues to be dealt with.
@@ -102,7 +120,50 @@ address 0x0 or address 0xf0000000.
 
 The proposal is for the addition of an (optional) SPR register (EVBA)in group 0 (System Control and Status registers) at address 1536 (right after the last possible GPR mapped into SPR space), which would hold the (upper part of the) base address of the exception vectors.
 
+=== Instruction Classes ===
 
-=== Topics TODO ===
+At present, there are class I and II instructions. Class I must always be implemented. Class II may be optionally implemented.
 
-* Instruction classes
+There are a few problems with the current scheme.
+
+# There is no register where class II instructions are indicated as present or not
+# Some fundamental instructions, such as compare-and-set-flag-against-immediate (<code>l.sf*i</code>) are class II and should really be I
+# Software multi-lib support with such a configurable instruction set is difficult
+
+Reorganising these will make it clearer which functionality should be tested and expected to be present in an implementation. It will also make it easier for software libraries to be prepared for a particular combination of supported instructions.
+
+==== Current ORBIS32 Class II instructions ====
+
+* l.cmov
+* l.csync
+* l.cust1-8
+* l.div*
+* l.ext[bhw]*
+* l.ff1
+* l.fl1
+* l.mac*,l.msb
+* l.mul*
+* l.psync
+* l.ror,l.rori
+* l.sf*i (l.sfeqi,l.sfgesi etc.)
+* l.trap
+
+==== Proposed ORBIS Classifications ====
+
+Class I should remain mandatory to implement.
+
+A new classification is proposed:
+
+* Class II - Optional Maths: l.div*, l.mul*
+* Class III - Optional Bit Manipulation: l.ext[bwh]*, l.ff1, l.fl1, l.ror, l.rori
+* Class IV - MAC Instructions - l.mac*, l.msb
+* Class V - Remaining Optional Instructions: l.cmov, l.csync, l.msync, l.psync, l.cust1-8, l.trap
+
+l.sf*i should be made class I.
+
+Some candidates for being moved from class I to class V are:
+* l.sys (very operating system-specific)
+
+==== Presence bits ====
+
+Presence bits in a new register should be added for classes II-IV, with a bit for each instruction in class V.
