@@ -58,7 +58,7 @@ The following paragraph should replace it:
 The following paragraph should be added to the ABI section on GPR0's usage:
 
  R0 is used as a constant zero. If the register is not hard-wired to zero it should be cleared 
- by software on reset.
+ by software on reset, eg. l.movhi r0,0.
 
 ==== l.trap condition ====
 
