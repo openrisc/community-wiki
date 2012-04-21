@@ -12,7 +12,6 @@ This section is to keep track of proposed alterations to the OpenRISC 1000.
 
 The following section should be used to list proposed typos and clarifications which need to be made to future revisions of the architecture spec document.
 
-
 ==== Cache Registers Marked as Optional ====
 
 From [http://bugzilla.opencores.org/show_bug.cgi?id=79 bug #79].
@@ -27,6 +26,17 @@ Mark the following registers as optional to implement, as they have a "present" 
 * Data Cache Block Invalidate Register
 * Data Cache Block Write-Back Register
 * Instruction Cache Block Invalidate Register
+
+==== Cache Block Invalidate Behaviour Clarification ====
+
+There are two issues with the cache block invalidation description.
+
+# The behaviour when the address written to the instruction or data cache block invalidate register (xBIR) is not actually cached is not clear - should the corresponding block be marked invalid/empty or not? Current practice in implementations is to not regarding the address and clear the block regardless.
+# There appears to be no way of clearing a block in a particular way.
+
+The proposed clarifications are:
+# Add to the block invalidate register's function description that the address beyond the bits used to select the cache block are ignored when invalidating, and the invalidation will always occur regardless of whether the block is currently valid. This clears up the behaviour and makes it obvious that software must clear the cache tags after reset.
+# State that block invalidation occurs for all ways.
 
 === Versioning ===
 
