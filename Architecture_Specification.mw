@@ -115,7 +115,7 @@ The proposal is for the addition of an (optional) SPR register (EVBA)in group 0 
  [31:13] Exception Vector Base Address
  Location for the start of exception vectors.
  Reset value: 0
- [13:0] Reserved / Constant 0
+ [12:0] Reserved / Constant 0
 
 This register is optional, and in case EPH is asserted, it should be OR'ed together
 with the value in EVBA.
