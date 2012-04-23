@@ -161,4 +161,4 @@ Presence bits in a new register should be added for classes II-IV, with a bit fo
 
 === Delay Slot Optional ===
 
-There is a proposal to make delay slots optional. This will be stated in the architecture specification. Whether a machine has branch delay slots will be indicated via a bit in an SPR to be checked by software at startup.
+There is a proposal to make delay slots optional. This will be stated in the architecture specification. Whether a machine has branch delay slots will be indicated via a bit in an SPR.
