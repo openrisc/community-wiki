@@ -26,17 +26,6 @@ Mark the following registers as optional to implement, as they have a "present" 
 
 Instruction and data block invalidate and data block flush registers are mandatory, and their presence bits in the I/DCCFGR should be marked as always '1'.
 
-==== Cache Block Invalidate Behaviour Clarification ====
-
-There are two issues with the cache block invalidation description.
-
-# The behaviour when the address written to the instruction or data cache block invalidate register (xBIR) is not actually cached is not clear - should the corresponding block be marked invalid/empty or not? Current practice in implementations is to not regarding the address and clear the block regardless.
-# There appears to be no way of clearing a block in a particular way.
-
-The proposed clarifications are:
-# Add to the block invalidate register's function description that the address beyond the bits used to select the cache block are ignored when invalidating, and the invalidation will always occur regardless of whether the block is currently valid. This clears up the behaviour and makes it obvious that software must clear the cache tags after reset.
-# State that block invalidation occurs for all ways.
-
 ==== GPR0 usage, implementation ====
 
 It's not clear at the moment whether GPR0 really should be zero all the time and whether implementations would be free to tie it to zero.
