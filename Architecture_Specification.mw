@@ -126,6 +126,8 @@ Reorganising these will make it clearer which functionality should be tested and
 
 ==== Current ORBIS32 Class II instructions ====
 
+As of revision 0 of the specification, the following are marked as ORBIS32 class II:
+
 * l.cmov
 * l.csync
 * l.cust1-8
