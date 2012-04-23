@@ -158,3 +158,7 @@ l.sf*i and l.trap should be made class I.
 ==== Presence bits ====
 
 Presence bits in a new register should be added for classes II-IV, with a bit for each instruction in class V.
+
+=== Delay Slot Optional ===
+
+There is a proposal to make delay slots optional. This will be stated in the architecture specification. Whether a machine has branch delay slots will be indicated via a bit in an SPR to be checked by software at startup.
