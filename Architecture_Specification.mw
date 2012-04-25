@@ -199,6 +199,6 @@ The following changes will be made to the toolchain in order to facilitate the u
 ** When using <tt>-mno-branch-delay</tt> GCC will emit a <tt>.nodelay</tt> directive in the intermediate <tt>.s</tt> file.
 ** Separate GCC multilib configurations might be useful for each of these flags
 
-* <tt>or1ksim</tt> will be modified to allow the delay slot to be disabled.  This can be configured by setting the ND bit (position 10) in the <tt>cfg</t> configuration variable of the <tt>cpu</t> section of <tt>sim.cfg</tt>.
+* <tt>or1ksim</tt> will be modified to allow the delay slot to be disabled.  This can be configured by setting the ND bit (position 10) in the <tt>cfg</tt> configuration variable of the <tt>cpu</tt> section of <tt>sim.cfg</tt>.
 
 * Where necessary, assembly source files (in testsuites, newlib, etc.) will be modified to use the C preprocessor to detect whether delay slots are to be used, and possibly exchange the position of delay slot instructions.
