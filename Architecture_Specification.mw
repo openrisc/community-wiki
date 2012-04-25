@@ -174,4 +174,31 @@ Presence bits in a new register should be added for classes II-IV, with a bit fo
 
 === Delay Slot Optional ===
 
-There is a proposal to make delay slots optional. This will be stated in the architecture specification. Whether a machine has branch delay slots will be indicated via a bit in an SPR.
+There is a proposal to make delay slots optional. This will be stated in the architecture specification. Whether a machine has branch delay slots will be indicated via a the <tt>ND</tt> bit (position 10) in <tt>CPUCFGR</tt>.
+
+On machines where <tt>CPUCFGR[ND]</tt> is set, jumps and branches change the PC immediately, instead of after the following delay slot instruction.
+Additionally, the <tt>l.jal</tt> and <tt>l.jalr</tt> instructions write <tt>PC+4</tt> to the link register (<tt>R9</tt>), instead of <tt>PC+8</tt>.
+
+The following changes will be made to the toolchain in order to facilitate the use of this option:
+
+* The <tt>EF_OR1K_NODELAY</tt> bit (position 0) in the flags field of the ELF header will be set in all binaries.  The linker should warn whenever this bit is incompatibly set, but not fail or abort.  This warning should be able to be turned off.
+
+* GAS will now understand the directive <tt>.nodelay</tt>.  For now its only effect is to cause the EF_OR1K_NODELAY bit in the ELF file to be set.
+
+* GCC will have the following new flags:
+
+** <tt>-mbranch-delay</tt>: forces use of the delay slot
+** <tt>-mno-branch-delay</tt>: forces branches and jumps to not have a delay slot
+** <tt>-mcompat-branch-delay</tt>: forces delay slots, and fills them with nops
+
+* The <tt>or1knd-elf</tt> and <tt>or1knd-linux</tt> machine specifications will be added.
+
+** When GCC is compiled for the <tt>or1k-*</tt> targets, <tt>-mbranch-delay</tt> will be the default
+** When GCC is compiled for the <tt>or1knd-*</tt> targets, <tt>-mno-branch-delay</tt> will be the default
+** GCC compiled for either target will understand all 3 flags
+** When using <tt>-mno-branch-delay</tt> GCC will emit a <tt>.nodelay</tt> directive in the intermediate <tt>.s</tt> file.
+** Separate GCC multilib configurations might be useful for each of these flags
+
+* <tt>or1ksim</tt> will be modified to allow the delay slot to be disabled.  This can be configured by setting the ND bit (position 10) in the <tt>cfg</t> configuration variable of the <tt>cpu</t> section of <tt>sim.cfg</tt>.
+
+* Where necessary, assembly source files (in testsuites, newlib, etc.) will be modified to use the C preprocessor to detect whether delay slots are to be used, and possibly exchange the position of delay slot instructions.
