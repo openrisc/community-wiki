@@ -196,7 +196,7 @@ The following changes will be made to the toolchain in order to facilitate the u
 ** When GCC is compiled for the <tt>or1k-*</tt> targets, <tt>-mdelay</tt> will be the default
 ** When GCC is compiled for the <tt>or1knd-*</tt> targets, <tt>-mno-delay</tt> will be the default
 ** GCC compiled for either target will understand all 3 flags
-** When using <tt>-mno-delay</tt> GCC will emit a <tt>.nodelay</tt> directive in the intermediate <tt>.s</tt> file.
+** When using <tt>-mno-delay</tt> GCC will emit a <tt>.nodelay</tt> directive in the intermediate <tt>.s</tt> file, and the C preprocessor will include the predefined macro <tt>__OR1K_NODELAY__</tt>
 ** Separate GCC multilib configurations might be useful for each of these flags
 
 * <tt>or1ksim</tt> will be modified to allow the delay slot to be disabled.  This can be configured by setting the ND bit (position 10) in the <tt>cfg</tt> configuration variable of the <tt>cpu</tt> section of <tt>sim.cfg</tt>.
