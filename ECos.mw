@@ -21,6 +21,13 @@ The port is under constant development.
 It has been tested under or1ksim, version 0.5.1rc1, and under ordb2 hardware.
 The provided default configuration passes all eCos test cases.
 
+== Device Drivers ==
+
+Following peripherals are supported:
+* UART 16550 ([http://opencores.org/project,uart16550 uart16550])
+* Ethernet MAC 10/100 Mbps ([http://opencores.org/project,ethmac ethmac])
+* SD Card Controller ([http://opencores.org/project,sdcard_mass_storage_controller sdcard_mass_storage_controller])
+
 == Requirements ==
 
 The [http://opencores.org/or1k/OpenRISC_GNU_tool_chain OpenRISC GNU toolchain], built with newlib is required.
