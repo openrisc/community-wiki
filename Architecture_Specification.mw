@@ -28,7 +28,7 @@ Instruction and data block invalidate and data block flush registers are mandato
 
 ==== GPR0 usage, implementation ====
 
-It's not clear at the moment whether GPR0 really should be zero all the time and whether implementations would be free to tie it to zero.
+To eliminate confusion regarding the behaviour of writes to R0 when it's hardwired in implementation, the mention of its role according to the ABI and the potential implementation shortcuts should be removed. This is intended to imply that R0 must be implemented in the same way the other general-purpose registers are. The mention of its use as constant zero should only be present in the ABI section of the document.
 
 The following paragraph in 4.4 should be removed:
 
@@ -37,16 +37,19 @@ The following paragraph in 4.4 should be removed:
  Functions of other registers are explained in chapter Application Binary Interface on page
  319.
 
-The following paragraph should replace it:
+The following sentence should replace it:
  
- R0 is used as a constant zero according to the ABI. R0 may or may not be hard-wired to zero 
- in implementation. In the case where it is hard-wired to zero, no exception will be raised 
- when it is used as a destination register. 
+ Functions of the registers are explained in chapter Application Binary Interface on page
+ 319.
 
-The following paragraph should be added to the ABI section on GPR0's usage:
+In section 16.2.1, the following:
 
- R0 is used as a constant zero. If the register is not hard-wired to zero it should be cleared 
- by software on reset, eg. l.movhi r0,0.
+ R0 [Zero] Always fixed to zero. 
+ Even if it is writable in some embedded implementations, the software shouldn’t modify it.
+
+Should be changed to:
+
+ R0 [Zero] Holds a zero value.
 
 ==== l.trap condition ====
 
