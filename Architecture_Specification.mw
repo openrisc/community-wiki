@@ -104,6 +104,16 @@ The REVI registers helps us use that neat trick with git, but is mostly designed
 
 As the architecture is modified and possibly expanded there needs to be a way of tracking the various versions of the architecture, both in implementation (eg. via a register) and in the document itself.
 
+Although optional individual features will all have newly added presence bits to test, adherence to other architectural advances will need to be conveyed via a register for quick and easy determination by software.
+
+For example, the GPR0 issue - there can be assurance that any implementation with an architecture revision value above 0 will adhere to the clarified definition of its implementation and use.
+
+===== Architecture Revision Register =====
+
+A new register, the Architecture Revision Register (ARR) should be added at address 15.
+
+This register will contain the latest architecture revision the implementation contains features from. This will allow software to broadly detect which generation of CPU it is running on, and so which assumptions are safe.
+
 ==== Architecture Document Versions ====
 
 The document itself will change over time as its contents are amended, clarified or expanded. There needs to be a clear way of tracking the versions of the document. At present, the current draft document is revision 0 pending the first set of updates to the architecture.
