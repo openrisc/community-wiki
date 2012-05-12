@@ -116,7 +116,9 @@ This register will contain the latest architecture revision the implementation c
 
 ==== Architecture Document Versions ====
 
-The document itself will change over time as its contents are amended, clarified or expanded. There needs to be a clear way of tracking the versions of the document. At present, the current draft document is revision 0 pending the first set of updates to the architecture.
+The document itself will change over time as its contents are amended, clarified or expanded. There needs to be a clear way of tracking the versions of the document.
+
+As the document is amended at present, the document revision history table in section 1.3 must be updated. However the only way to track the document revision is by the recorded date of the edit. It is proposed a new column is added to table 1-2 with an entry for each document revision of the format X-Y where X is the architecture revision the document is at that point and Y is an integer beginning at 0 for each new revision and incrementing by 1 per document update. This would mean the existing document revision is '0-17' (17 recorded updates since March 2000.) The update corresponding with the addition of new features for architecture revision 1 would mean the document revision changes to '1-0'.
 
 === Exception Vector Base Address ===
 
