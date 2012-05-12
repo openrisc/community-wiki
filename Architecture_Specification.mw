@@ -110,7 +110,7 @@ For example, the GPR0 issue - there can be assurance that any implementation wit
 
 ===== Architecture Revision Register =====
 
-A new register, the Architecture Revision Register (ARR) should be added at address 15.
+A new register, the Architecture Revision Register (ARR) should be added at address 27.
 
 This register will contain the latest architecture revision the implementation contains features from. This will allow software to broadly detect which generation of CPU it is running on, and so which assumptions are safe.
 
