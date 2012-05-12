@@ -28,7 +28,7 @@ Instruction and data block invalidate and data block flush registers are mandato
 
 ==== GPR0 usage, implementation ====
 
-To eliminate confusion regarding the behaviour of writes to R0 when it's hardwired in implementation, the mention of its role according to the ABI and the potential implementation shortcuts should be removed. This is intended to imply that R0 must be implemented in the same way the other general-purpose registers are. The mention of its use as constant zero should only be present in the ABI section of the document.
+To eliminate confusion regarding the behaviour of writes to R0 when it's hardwired in implementation, the mention of its role according to the ABI and the potential implementation shortcuts should be removed. This is intended to imply that R0 must be implemented in the same way as the other general-purpose registers. The mention of its use as constant zero should only be present in the ABI section of the document.
 
 The following paragraph in 4.4 should be removed:
 
