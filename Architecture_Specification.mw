@@ -187,6 +187,25 @@ l.sf*i and l.trap should be made class I.
 
 Presence bits in a new register should be added for classes II-IV, with a bit for each instruction in class V.
 
+The CPUCFGR should be extended beyond bit 9 to contain:
+ 
+ [25] l.cust1 instruction supported
+ [24] l.cust2 instruction supported
+ [23] l.cust3 instruction supported
+ [22] l.cust4 instruction supported
+ [21] l.cust5 instruction supported
+ [20] l.cust6 instruction supported
+ [19] l.cust7 instruction supported
+ [18] l.cust8 instruction supported
+ [17] l.cmov instruction supported
+ [16] l.csync instruction supported
+ [15] l.msync instruction supported
+ [14] l.psync instruction supported
+ [13] Class IV instruction supported
+ [12] Class IV instruction supported
+ [11] Class III instruction supported
+ [10] Class II instruction supported
+
 === Delay Slot Optional ===
 
 There is a proposal to make delay slots optional. This will be stated in the architecture specification. Whether a machine has branch delay slots will be indicated via a the <tt>ND</tt> bit (position 10) in <tt>CPUCFGR</tt>.
