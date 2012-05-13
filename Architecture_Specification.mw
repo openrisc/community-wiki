@@ -174,8 +174,8 @@ Class I should remain mandatory to implement.
 
 A new classification is proposed:
 
-* Class II - Optional Maths: l.div*, l.mul*
-* Class III - Optional Bit Manipulation: l.ext[bwh]*, l.ff1, l.fl1, l.ror, l.rori (out of interest, they cost 183 Virtex 5 LUTs)
+* Class II - Optional Maths: l.div*, l.mul* (in OR1200 on Virtex 5, serial l.div, full mult costs 265FF, 550LUT - respectively 71FF, 173LUT and 194FF, 377 LUT)
+* Class III - Optional Bit Manipulation: l.ext[bwh]*, l.ff1, l.fl1, l.ror, l.rori (in OR1200 on Virtex 5 they cost 183 LUT)
 * Class IV - MAC Instructions - l.mac*, l.msb
 * Class V - Remaining Optional Instructions: l.cmov, l.csync, l.msync, l.psync, l.cust1-8
 
