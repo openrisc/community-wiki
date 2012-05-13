@@ -138,6 +138,8 @@ with the value in EVBA.
 The presence of EVBA can be detected in software by writing a value to it and
 see if the same value reads back.
 
+EVBA is only writable/readable when in supervisor mode (i.e. when SR[SM]=1)
+
 === Instruction Classes ===
 
 At present, there are class I and II instructions. Class I must always be implemented. Class II may be optionally implemented.
