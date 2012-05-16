@@ -82,6 +82,8 @@ The l.lwz definition page in the spec should have:
  
  l.lw rD,I(rA)
 
+''Commentary:'' The downside of this is that it is potentially confusing in a 64-bit implementation, where you want to be explicit about sign extension. If we do go down this route, then for consistency, we should also have l.lh and l.lb as synonyms for l.lhz and l.lbz. [[User:Jeremybennett|Jeremybennett]] 11:32, 16 May 2012 (CEST)
+
 ==== Unused SPR space read as zero ====
 
 It should be stated in section 4.3 that un-implemented or reserved SPR space should be read as zero and writing should have no consequence.
