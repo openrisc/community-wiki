@@ -69,6 +69,19 @@ The architecture spec currently indicates the trap instruction checks a bit in t
 
 This is not obeyed in any implementation and has no good justification for being specified this way. The specification should remove mention of being conditional on SR[K].
 
+==== l.lw assembly mnemonic ====
+
+Add the l.lw assembly mnemonic, which encodes as a l.lwz instruction.
+
+The l.lwz definition page in the spec should have:
+
+ Format:
+ l.lwz rD,I(rA)
+ 
+ or
+ 
+ l.lw rD,I(rA)
+
 ==== Unused SPR space read as zero ====
 
 It should be stated in section 4.3 that un-implemented or reserved SPR space should be read as zero and writing should have no consequence.
