@@ -147,6 +147,7 @@ The following fail with a similar issue (memset defined in two places - the test
 It looks like in the generated dump file (not sure how it's created) we have the following line:
 :dpkt_1: maximum object size 24
 and so must be failing the check for max object size of 21.
+::I think this may be a problem with <tt>or1k_struct_alignment</tt>, but I'm not sure [[User:Pgavin|Pgavin]] 02:48, 25 May 2012 (CEST)
 
 ;gcc.dg/pr45259.c (test for excess errors)
 :/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/pr45259.c: In function 'foo':
@@ -155,6 +156,12 @@ and so must be failing the check for max object size of 21.
 :/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/pr45259.c:21:2: error: ISO C forbids 'goto *expr;' [-pedantic]
 
 This test appears to want to generate position independent code (PIC) but I don't think we fully support that yet.
+
+::I think the problem here is that the header of pr45259.c includes:
+:::/* { dg-options "-g -O2 -fpic -w" { target fpic } } */
+::which means those flags are only used when PIC is enabled. When PIC isn't use, the default flags (which includes -pedantic) are used, which causes those errors to be emitted.  Adding the line:
+:::/* { dg-options "-g -O2 -w" } */
+::allows the test case to pass [[User:Pgavin|Pgavin]] 02:48, 25 May 2012 (CEST)
 
 ;gcc.dg/pr49994-3.c (test for excess errors)
 :/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/pr49994-3.c:15:7: warning: unsupported argument to '__builtin_return_address' [enabled by default]
