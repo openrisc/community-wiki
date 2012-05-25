@@ -168,6 +168,7 @@ This test appears to want to generate position independent code (PIC) but I don'
 :/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/pr49994-3.c:17:7: warning: unsupported argument to '__builtin_return_address' [enabled by default]
 :/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/pr49994-3.c:19:7: warning: unsupported argument to '__builtin_return_address' [enabled by default]
 :/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/pr49994-3.c:21:7: warning: unsupported argument to '__builtin_return_address' [enabled by default]
+::We need to define INITIAL_FRAME_ADDRESS_RTX [[User:Pgavin|Pgavin]] 02:54, 25 May 2012 (CEST)
 
 ;gcc.dg/stack-usage-1.c (test for excess errors)
 :/localhome/jules/svn/opencores/openrisc/trunk/gnu-src/unisrc/gcc/testsuite/gcc.dg/stack-usage-1.c:70:1: warning: stack usage computation not supported for this target [enabled by default]
