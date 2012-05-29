@@ -58,7 +58,7 @@ Various libraries are required to compile the GNU tools (see [http://gcc.gnu.org
 Fedora/Red Hat/Centos-based Linux systems use yum:
 
  sudo yum install build-essential make gcc g++ flex bison patch texinfo \
- libncurses-dev libmpfr-dev libgmp3-dev libmpc-dev libzip-dev
+ libncurses-devel libmpfr-devel libgmp3-devel libmpc-devel libzip-devel
 
 Please update this Wiki if any tools are missing, or to provide a one-liner to install the required prerequisites on another distribution.
 
