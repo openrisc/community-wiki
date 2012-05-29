@@ -82,6 +82,8 @@ The source for uClibc and Linux (needed for the header files for the toolchain) 
 
 ==== Building ====
 
+'''Warning.''' Before you get here have you installed all the prerequisites, ''including Or1ksim''. See [[#prerequisites]] for details.
+
 There are two toolchains that can be compiled using different libraries.
 * The newlib toolchain, with toolchain executables prefixed by or32-elf- is for compiling applications which will be run on the bare metal, or without an operating system (this includes building the Linux kernel).
 * The uClibc toolchain, with toolchain exeutables prefixed by or32-linux- is for compiling software intended to run on Linux, as userspace applications.
