@@ -62,7 +62,7 @@ Fedora/Red Hat/Centos-based Linux systems use yum:
 
 Please update this Wiki if any tools are missing, or to provide a one-liner to install the required prerequisites on another distribution.
 
-The [[Or1ksim]] library is needed by GDB (as its simulator), so this should be installed first. See the [[Or1ksim]] page for details. Note that you will not be able to run the Or1ksim tests ('''make check''') until the toolchain has been installed.
+'''Note.''' The [[Or1ksim]] library is needed by GDB (as its simulator), so this ''must'' be installed first. See the [[Or1ksim]] page for details. Note, however, that you will not be able to run the Or1ksim tests ('''make check''') until the toolchain has been installed. This is a known circular dependency in the tool chain build.
 
 ==== Downloading the source ====
 
