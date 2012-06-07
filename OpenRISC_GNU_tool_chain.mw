@@ -28,22 +28,31 @@ Pre-compiled binaries are only available for the 1.0rc1 version of the Newlib to
 * [ftp://ocuser:ocuser@openrisc.opencores.org/toolchain/or32-elf-1.0rc1-CentOS-x86_64.tar.bz2 for CentOS-5.5 x86_64 (64-bit)]
 * [ftp://ocuser:ocuser@openrisc.opencores.org/toolchain/or32-elf-1.0rc1-OS_X-10.6.3.tar.bz2 for OS X 10.6 (Snow Leopard)] ('''Note.''' no C++ libraries)
 
-The following commands indicate how to install the toolchain from the download archive. The tools are installed to the /opt path and symbolic links are created to more general path names (which helps with switching to more updated versions of the toolchain later.) The shell's PATH environment variable must be updated. You may choose to install in any other directory to which you have write access.
+The following commands indicate how to install the toolchain from the download archive. The tools are installed to the /opt path and symbolic links are created to more general path names (which helps with switching to more updated versions of the toolchain later.) The shell's PATH environment variable must be updated so that the tools can be located by the system.  Bear in mind that the PATH variable is scanned for matches starting at the beginning and uses the first match it finds.  If your system is not finding the correct tools when compiling, you may need to add the or32 tools to the beginning of the PATH and not the end.  You may choose to install in any other directory to which you have write access.
 
  cd /opt
  tar xjf ''path to downloaded archive''/''archive name''
  sudo ln -s or32-elf-1.0rc1 or32-elf
  sudo ln -s or1ksim-0.5.1rc1 or1ksim
 
-Having installed the software, add the relevant directories to your path. Under sh or bash use
+Having installed the software, add the relevant directories to your PATH. 
+Under sh or bash use
 
  export PATH=$PATH:/opt/or32-elf/bin:/opt/or1ksim/bin
+
+or, to add the tools to the beginning of the PATH
+
+ export PATH=/opt/or32-elf/bin:/opt/or1ksim/bin:$PATH
 
 Under csh or tcsh use:
 
  setenv PATH $PATH:/opt/or32-elf/bin:/opt/or1ksim/bin
 
-These will typically be added to your .profile or .login file as appropriate. Note. If the toolchain was installed in a directory other than /opt, substitute that directory's path for /opt.
+or, to add the tools to the beginning of the PATH
+
+ setenv PATH /opt/or32-elf/bin:/opt/or1ksim/bin:$PATH
+
+These will typically be added to your .profile, .login, .bashrc, or other shell initialization file as appropriate. Note. If the toolchain was installed in a directory other than /opt, substitute that directory's path for /opt.
 
 === Installation from source ===
 
