@@ -119,11 +119,19 @@ Add the new tools to the path. Under sh or bash
 
  export PATH=$PATH:/opt/openrisc/bin
 
+or, to add the tools to the beginning of the PATH
+ 
+ export PATH=/opt/openrisc/bin:$PATH
+
 Under csh or tcsh
 
  setenv PATH $PATH:/opt/openrisc/bin
 
-These commands will typically be added to your .profile or .login file.
+or, to add the tools to the beginning of the PATH
+
+ setenv PATH /opt/openrisc/bin:$PATH
+
+These commands will typically be added to your .profile, .login, .bashrc, or other shell initialization file.
 
 '''Note.''' Some users have reported problems when rebuilding the uClibc toolchain a second time, due to the existing headers on the search path. The solution is to remove the existing implementation from the PATH variable.
 
