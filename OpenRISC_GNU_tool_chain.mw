@@ -16,7 +16,7 @@ The stable versions of the tools are based on binutils 2.20.1, GCC 4.5.1 and GDB
 
 * [ftp://ocuser:ocuser@openrisc.opencores.org/toolchain/openrisc-toolchain-ocsvn-rev789.tar.bz2 for Ubuntu 32-bit] built from SVN rev. 789, also contains [[or1ksim]]
 
-Extract under /opt and add the following to the ~/.bashrc file
+Extract the file under /opt and add the following to your ~/.bashrc (or other shell-appropriate) file.  See the [[#1.0rc1|1.0rc1]] section for more detailed instructions regarding the PATH environment variable.
 
  export PATH=$PATH:/opt/openrisc/toolchain/bin:/opt/openrisc/or1ksim/bin
 
