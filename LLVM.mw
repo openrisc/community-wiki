@@ -1,0 +1,23 @@
+= About =
+The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. Despite its name, LLVM has little to do with traditional virtual machines, though it does provide helpful libraries that can be used to build them.
+
+More information on the projects [http://llvm.org webpage].
+
+= Getting started =
+The most up-to-date development currently takes place at [https://github.com/skristiansson https://github.com/skristiansson].
+
+In order to be able to compile C/C++ programs, two components are required, Clang and LLVM.
+
+Start with checking out LLVM
+
+ <nowiki>git clone git://github.com/skristiansson/llvm-or1k.git</nowiki>
+
+and Clang
+
+ <nowiki>git clone git://github.com/skristiansson/clang-or1k.git</nowiki>
+
+Clang is held in it's own repository as it is a seperate project from LLVM,
+but is meant to be built together with LLVM in the LLVM tree.
+Create a symlink to the checked out Clang repository in the LLVM tree
+ <nowiki>cd llvm-or1k/tools/
+ ln -s ../../clang-or1k/ clang</nowiki>
