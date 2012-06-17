@@ -20,4 +20,4 @@ Clang is held in it's own repository as it is a seperate project from LLVM,
 but is meant to be built together with LLVM in the LLVM tree.
 Create a symlink to the checked out Clang repository in the LLVM tree
  <nowiki>cd llvm-or1k/tools/
- ln -s ../../clang-or1k/ clang</nowiki>
+ln -s ../../clang-or1k/ clang</nowiki>
