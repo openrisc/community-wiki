@@ -22,3 +22,18 @@ but is meant to be built together with LLVM in the LLVM tree.
 Create a symlink to the checked out Clang repository in the LLVM tree
  <nowiki>cd llvm-or1k/tools/
 ln -s ../../clang-or1k/ clang</nowiki>
+
+go back to the top directory where you you checked out Clang and LLVM and create a build directory
+ <nowiki>cd ../../
+mkdir build
+cd build</nowiki>
+
+LLVM has support for both autotools and cmake based configuration, use the one that suits you best.
+
+cmake:
+ <nowiki>cmake ../llvm-or1k -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=/path/to/instdir</nowiki>
+autotools:
+ <nowiki>../llvm-or1k/configure CC=gcc CXX=g++ --enable-debug-runtime --prefix=/path/to/instdir</nowiki>
+
+and finally build and install
+ <nowiki>make install</nowiki>
