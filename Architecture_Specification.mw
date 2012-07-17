@@ -94,8 +94,8 @@ Currently, the description for returning structures by value says:
  union in the general-purpose RV register."
 
 This should be extended with the following information:
- A function that returns a structure by value expects the address of the
- structure to be placed in function parameter word 0 (R3).
+ A function that returns a structure by value expects the location where that
+ structure is to be placed to be supplied in function parameter word 0 (R3).
 
 === Versioning ===
 
