@@ -88,6 +88,15 @@ The l.lwz definition page in the spec should have:
 
 It should be stated in section 4.3 that un-implemented or reserved SPR space should be read as zero and writing should have no consequence.
 
+==== ABI, returning structures by value ====
+Currently, the description for returning structures by value says:
+ A function that returns a structure or union places the address of the structure or 
+ union in the general-purpose RV register."
+
+This should be extended with the following information:
+ A function that returns a structure by value expects the address of the
+ structure to be placed in function parameter word 0 (R3).
+
 === Versioning ===
 
 There are a few version-tracking issues to be dealt with.
