@@ -97,6 +97,9 @@ This should be extended with the following information:
  A function that returns a structure by value expects the location where that
  structure is to be placed to be supplied in function parameter word 0 (R3).
 
+==== Typo for lf.sfle.d instruction ====
+The current lf.sfle.d (double precision set flag less or equal) states that register rA is 364 bits in size (rA[363:0]) instead of just 64 (rA[63:0]).
+
 === Versioning ===
 
 There are a few version-tracking issues to be dealt with.
