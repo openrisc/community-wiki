@@ -9,6 +9,7 @@ This will require a way of locating the Global Offset Table (GOT) and the associ
 === GOT and PLT entries ===
 
 If we restrict the GOT to 64KB and shared objects to 128MB, we can reserve r10 to point to the GOT. Then Joern suggests the following code would work to load the GOT register:
+[[User:Stekern|Stekern]] 06:25, 12 September 2012 (CEST) r10 is reserved for linux thread info, I suggest r16 as an alternative GOT pointer.
 
           l.mfspr r10,0,16 // NPC
   0:      l.movhi r11,shi(_GLOBAL_OFFSET_TABLE@GOTPC+.-0b)
