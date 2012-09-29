@@ -90,6 +90,12 @@ Remote testing of the library is not currently supported in uClibc.
 
 == GCC 4.8.0 ==
 
+Tests have been performed 2012-09-26 against:
+
+github.com/skristiansson/or1k-gcc<br>
+github.com/skristiansson/or1k-src<br>
+github.com/skristiansson/uClibc-or1k<br>
+
 === C compiler ===
 
  <nowiki>
@@ -105,23 +111,35 @@ Remote testing of the library is not currently supported in uClibc.
 
 ==== FAIL tests ====
 ;gcc.dg/debug/dwarf2/asm-line1.c scan-assembler is_stmt 1
+:Needs investigation.
 ;gcc.dg/attr-weakref-1.c (test for excess errors)
+:Fails in upstream as well.
 ;gcc.dg/builtin-object-size-10.c scan-tree-dump objsz "maximum object size 21"
+:Needs investigation.
 ;gcc.dg/c99-stdint-1.c (test for excess errors)
+:Needs investigation.
 ;gcc.dg/c99-stdint-7.c (test for excess errors)
+:Needs investigation.
 ;gcc.dg/lower-subreg-1.c scan-rtl-dump subreg1 "Splitting reg"
+:Needs investigation.
 ;gcc.dg/sibcall-3.c execution test
+:Needs investigation.
 ;gcc.dg/sibcall-4.c execution test
+:Needs investigation.
 ;gcc.dg/stack-usage-1.c (test for excess errors)
 ;gcc.dg/stack-usage-1.c scan-file foo\t(256|264)\tstatic
 ;gcc.dg/stack-usage-2.c  (test for bogus messages, line 9)
 ;gcc.dg/stack-usage-2.c  (test for warnings, line 16)
 ;gcc.dg/stack-usage-2.c  (test for warnings, line 26)
 ;gcc.dg/stack-usage-2.c  (test for warnings, line 33)
+:Needs investigation.
 ;gcc.dg/strlenopt-2f.c (test for excess errors)
+:Needs investigation.
 ;gcc.dg/visibility-14.c scan-hidden hidden[ \t_]*foo
+:Needs investigation.
 ;gcc.dg/pch/save-temps-1.c  -O0 -g assembly comparison
 ;gcc.dg/pch/save-temps-1.c   -O3 -g  assembly comparison
+:Needs investigation.
 ;gcc.dg/torture/pr48542.c  -O0  execution test
 ;gcc.dg/torture/pr48542.c  -O1  execution test
 ;gcc.dg/torture/pr48542.c  -O2  execution test
@@ -132,6 +150,7 @@ Remote testing of the library is not currently supported in uClibc.
 ;gcc.dg/torture/pr48542.c  -Os  execution test
 ;gcc.dg/torture/pr48542.c  -O2 -flto -fno-use-linker-plugin -flto-partition=none  execution test
 ;gcc.dg/torture/pr48542.c  -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  execution test
+:Needs investigation.
 ;gcc.dg/torture/pr51106-2.c  -O0  (internal compiler error)
 ;gcc.dg/torture/pr51106-2.c  -O0  (test for excess errors)
 ;gcc.dg/torture/pr51106-2.c  -O1  (internal compiler error)
@@ -146,7 +165,9 @@ Remote testing of the library is not currently supported in uClibc.
 ;gcc.dg/torture/pr51106-2.c  -Os  (test for excess errors)
 ;gcc.dg/torture/pr51106-2.c  -O2 -flto -fno-use-linker-plugin -flto-partition=none  (internal compiler error)
 ;gcc.dg/torture/pr51106-2.c  -O2 -flto -fno-use-linker-plugin -flto-partition=none  (test for excess errors)
+:Fails in upstream as well.
 ;gcc.dg/tree-prof/ic-misattribution-1.c compilation,  -fprofile-use -D_PROFILE_USE
+:Needs investigation.
 
 === C++ compiler ===
 
