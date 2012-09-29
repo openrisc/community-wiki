@@ -180,3 +180,36 @@ github.com/skristiansson/uClibc-or1k<br>
 # of unresolved testcases       2
 # of unsupported tests          751
 /opt/or1k/bin/or1k-linux-g++  version 4.8.0 20120611 (experimental) (GCC)</nowiki>
+
+==== FAIL tests ====
+;g++.dg/compat/eh/unexpected1 cp_compat_x_tst.o-cp_compat_y_tst.o execute
+;g++.dg/cpp0x/lambda/lambda-eh2.C execution test
+;g++.dg/cpp0x/nullptr21.C output pattern test, is (no output), should match Test 1 OKTest 2 OK
+;g++.dg/eh/unexpected1.C -std=c++98 execution test
+;g++.dg/eh/unexpected1.C -std=c++11 execution test
+;g++.dg/opt/pr15551.C -std=gnu++98 execution test
+;g++.dg/opt/pr15551.C -std=gnu++11 execution test
+;g++.dg/opt/pr36449.C -std=gnu++98 execution test
+;g++.dg/opt/pr36449.C -std=gnu++11 execution test
+;g++.old-deja/g++.abi/cxa_vec.C -std=gnu++98 execution test
+;g++.old-deja/g++.abi/cxa_vec.C -std=gnu++11 execution test
+;g++.old-deja/g++.eh/spec2.C -std=c++98 execution test
+;g++.old-deja/g++.eh/spec2.C -std=c++11 execution test
+;g++.old-deja/g++.eh/spec3.C -std=c++98 execution test
+;g++.old-deja/g++.eh/spec3.C -std=c++11 execution test
+;g++.old-deja/g++.eh/spec4.C -std=c++98 execution test
+;g++.old-deja/g++.eh/spec4.C -std=c++11 execution test
+;g++.old-deja/g++.jason/rfg22.C -std=c++98  (test for errors, line 2)
+;g++.old-deja/g++.jason/rfg22.C -std=c++11  (test for errors, line 2)
+;g++.old-deja/g++.jason/thunk3.C -std=c++98 (test for excess errors)
+;g++.old-deja/g++.jason/thunk3.C -std=c++11 (test for excess errors)
+;g++.old-deja/g++.law/cvt2.C -std=c++98 execution test
+;g++.old-deja/g++.law/cvt2.C -std=c++11 execution test
+;g++.old-deja/g++.law/virtual3.C -std=c++98 execution test
+;g++.old-deja/g++.law/virtual3.C -std=c++11 execution test
+;g++.old-deja/g++.mike/eh33.C -std=gnu++98 execution test
+;g++.old-deja/g++.mike/eh33.C -std=gnu++11 execution test
+;g++.old-deja/g++.mike/eh50.C -std=gnu++98 execution test
+;g++.old-deja/g++.mike/eh50.C -std=gnu++11 execution test
+;g++.old-deja/g++.mike/eh51.C -std=gnu++98 execution test
+;g++.old-deja/g++.mike/eh51.C -std=gnu++11 execution test
