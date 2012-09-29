@@ -103,6 +103,51 @@ Remote testing of the library is not currently supported in uClibc.
 # of unsupported tests          1286
 /opt/or1k/bin/or1k-linux-gcc  version 4.8.0 20120611 (experimental) (GCC)</nowiki>
 
+==== FAIL tests ====
+;gcc.dg/debug/dwarf2/asm-line1.c scan-assembler is_stmt 1
+;gcc.dg/attr-weakref-1.c (test for excess errors)
+;gcc.dg/builtin-object-size-10.c scan-tree-dump objsz "maximum object size 21"
+;gcc.dg/c99-stdint-1.c (test for excess errors)
+;gcc.dg/c99-stdint-7.c (test for excess errors)
+;gcc.dg/lower-subreg-1.c scan-rtl-dump subreg1 "Splitting reg"
+;gcc.dg/sibcall-3.c execution test
+;gcc.dg/sibcall-4.c execution test
+;gcc.dg/stack-usage-1.c (test for excess errors)
+;gcc.dg/stack-usage-1.c scan-file foo\t(256|264)\tstatic
+;gcc.dg/stack-usage-2.c  (test for bogus messages, line 9)
+;gcc.dg/stack-usage-2.c  (test for warnings, line 16)
+;gcc.dg/stack-usage-2.c  (test for warnings, line 26)
+;gcc.dg/stack-usage-2.c  (test for warnings, line 33)
+;gcc.dg/strlenopt-2f.c (test for excess errors)
+;gcc.dg/visibility-14.c scan-hidden hidden[ \t_]*foo
+;gcc.dg/pch/save-temps-1.c  -O0 -g assembly comparison
+;gcc.dg/pch/save-temps-1.c   -O3 -g  assembly comparison
+;gcc.dg/torture/pr48542.c  -O0  execution test
+;gcc.dg/torture/pr48542.c  -O1  execution test
+;gcc.dg/torture/pr48542.c  -O2  execution test
+;gcc.dg/torture/pr48542.c  -O3 -fomit-frame-pointer  execution test
+;gcc.dg/torture/pr48542.c  -O3 -fomit-frame-pointer -funroll-loops  execution test
+;gcc.dg/torture/pr48542.c  -O3 -fomit-frame-pointer -funroll-all-loops -finline-functions  execution test
+;gcc.dg/torture/pr48542.c  -O3 -g  execution test
+;gcc.dg/torture/pr48542.c  -Os  execution test
+;gcc.dg/torture/pr48542.c  -O2 -flto -fno-use-linker-plugin -flto-partition=none  execution test
+;gcc.dg/torture/pr48542.c  -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  execution test
+;gcc.dg/torture/pr51106-2.c  -O0  (internal compiler error)
+;gcc.dg/torture/pr51106-2.c  -O0  (test for excess errors)
+;gcc.dg/torture/pr51106-2.c  -O1  (internal compiler error)
+;gcc.dg/torture/pr51106-2.c  -O1  (test for excess errors)
+;gcc.dg/torture/pr51106-2.c  -O2  (internal compiler error)
+;gcc.dg/torture/pr51106-2.c  -O2  (test for excess errors)
+;gcc.dg/torture/pr51106-2.c  -O3 -fomit-frame-pointer  (internal compiler error)
+;gcc.dg/torture/pr51106-2.c  -O3 -fomit-frame-pointer  (test for excess errors)
+;gcc.dg/torture/pr51106-2.c  -O3 -g  (internal compiler error)
+;gcc.dg/torture/pr51106-2.c  -O3 -g  (test for excess errors)
+;gcc.dg/torture/pr51106-2.c  -Os  (internal compiler error)
+;gcc.dg/torture/pr51106-2.c  -Os  (test for excess errors)
+;gcc.dg/torture/pr51106-2.c  -O2 -flto -fno-use-linker-plugin -flto-partition=none  (internal compiler error)
+;gcc.dg/torture/pr51106-2.c  -O2 -flto -fno-use-linker-plugin -flto-partition=none  (test for excess errors)
+;gcc.dg/tree-prof/ic-misattribution-1.c compilation,  -fprofile-use -D_PROFILE_USE
+
 === C++ compiler ===
 
  <nowiki>
