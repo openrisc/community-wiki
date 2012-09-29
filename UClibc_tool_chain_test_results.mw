@@ -87,3 +87,30 @@ Not yet available.
 == uClibc 0.9.32 ==
 
 Remote testing of the library is not currently supported in uClibc.
+
+== GCC 4.8.0 ==
+
+=== C compiler ===
+
+ <nowiki>
+                === gcc Summary ===
+
+# of expected passes            73101
+# of unexpected failures        43
+# of unexpected successes       2
+# of expected failures          103
+# of unresolved testcases       4
+# of unsupported tests          1286
+/opt/or1k/bin/or1k-linux-gcc  version 4.8.0 20120611 (experimental) (GCC)</nowiki>
+
+=== C++ compiler ===
+
+ <nowiki>
+                === g++ Summary ===
+
+# of expected passes            46590
+# of unexpected failures        31
+# of expected failures          282
+# of unresolved testcases       2
+# of unsupported tests          751
+/opt/or1k/bin/or1k-linux-g++  version 4.8.0 20120611 (experimental) (GCC)</nowiki>
