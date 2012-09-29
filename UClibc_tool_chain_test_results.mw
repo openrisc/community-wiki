@@ -113,7 +113,7 @@ github.com/skristiansson/uClibc-or1k<br>
 ;gcc.dg/debug/dwarf2/asm-line1.c scan-assembler is_stmt 1
 :Needs investigation.
 ;gcc.dg/attr-weakref-1.c (test for excess errors)
-:Fails in upstream as well.
+:Fails in upstream as well. The problem seems to be that a weakref to a weakref isn't emitted in the asm output.
 ;gcc.dg/builtin-object-size-10.c scan-tree-dump objsz "maximum object size 21"
 :Needs investigation.
 ;gcc.dg/c99-stdint-1.c (test for excess errors)
