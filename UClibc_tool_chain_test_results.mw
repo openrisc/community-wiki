@@ -242,6 +242,8 @@ github.com/skristiansson/uClibc-or1k<br>
 ;g++.old-deja/g++.mike/eh51.C -std=gnu++11 execution test
 :Needs investigation.
 
-==== XPASS tests ====
-
 ==== UNRESOLVED tests ====
+;g++.old-deja/g++.jason/thunk3.C -std=c++98 compilation failed to produce executable
+:Needs investigation.
+;g++.old-deja/g++.jason/thunk3.C -std=c++11 compilation failed to produce executable
+:Needs investigation.
