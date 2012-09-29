@@ -171,13 +171,19 @@ github.com/skristiansson/uClibc-or1k<br>
 
 ==== XPASS tests ====
 ;gcc.dg/Wstrict-overflow-18.c  (test for bogus messages, line 20)
+:Needs investigation.
 ;gcc.dg/tree-ssa/20040204-1.c scan-tree-dump-times optimized "link_error" 0
+:Needs investigation.
 
 ==== UNRESOLVED tests ====
 ;gcc.dg/attr-weakref-1.c compilation failed to produce executable
+:Unresolved in upstream as well.
 ;gcc.dg/pr47793.c scan-file .
+:Needs investigation.
 ;gcc.dg/strlenopt-2f.c compilation failed to produce executable
+:Needs investigation.
 ;gcc.dg/tree-prof/ic-misattribution-1.c execution,    -fprofile-use -D_PROFILE_USE
+:Needs investigation.
 
 === C++ compiler ===
 
