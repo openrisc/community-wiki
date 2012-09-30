@@ -119,7 +119,7 @@ github.com/skristiansson/uClibc-or1k<br>
 ;gcc.dg/c99-stdint-1.c (test for excess errors)
 :Problem here seems to be that uClibc defines WCHAR_MIN to (-2147483647 - 1) and WCHAR_MAX to (2147483647), but __WCHAR_TYPE__  is defined to be unsigned int
 ;gcc.dg/c99-stdint-7.c (test for excess errors)
-:Needs investigation.
+:Fails because WCHAR_MIN != __WCHAR_MIN__
 ;gcc.dg/lower-subreg-1.c scan-rtl-dump subreg1 "Splitting reg"
 :Needs investigation.
 ;gcc.dg/sibcall-3.c execution test
