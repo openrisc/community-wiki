@@ -111,13 +111,13 @@ github.com/skristiansson/uClibc-or1k<br>
 
 ==== FAIL tests ====
 ;gcc.dg/debug/dwarf2/asm-line1.c scan-assembler is_stmt 1
-:Needs investigation.
+:This fails because debug line info isn't generated at all
 ;gcc.dg/attr-weakref-1.c (test for excess errors)
 :Fails in upstream as well. The problem seems to be that a weakref to a weakref isn't emitted in the asm output.
 ;gcc.dg/builtin-object-size-10.c scan-tree-dump objsz "maximum object size 21"
 :Needs investigation.
 ;gcc.dg/c99-stdint-1.c (test for excess errors)
-:Needs investigation.
+:Problem here seems to be that uClibc defines WCHAR_MIN to (-2147483647 - 1) and WCHAR_MAX to (2147483647), but __WCHAR_TYPE__  is defined to be unsigned int
 ;gcc.dg/c99-stdint-7.c (test for excess errors)
 :Needs investigation.
 ;gcc.dg/lower-subreg-1.c scan-rtl-dump subreg1 "Splitting reg"
@@ -128,6 +128,7 @@ github.com/skristiansson/uClibc-or1k<br>
 :Needs investigation.
 ;gcc.dg/stack-usage-1.c (test for excess errors)
 ;gcc.dg/stack-usage-1.c scan-file foo\t(256|264)\tstatic
+:Needs investigation.
 ;gcc.dg/stack-usage-2.c  (test for bogus messages, line 9)
 ;gcc.dg/stack-usage-2.c  (test for warnings, line 16)
 ;gcc.dg/stack-usage-2.c  (test for warnings, line 26)
