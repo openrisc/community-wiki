@@ -135,7 +135,7 @@ github.com/skristiansson/uClibc-or1k<br>
 ;gcc.dg/stack-usage-2.c  (test for warnings, line 33)
 :Needs investigation.
 ;gcc.dg/strlenopt-2f.c (test for excess errors)
-:Needs investigation.
+:Fails with an 'undefined reference to `__memcpy_chk'', uClibc doesn't provide __memcpy_chk. Linking with libssp works.
 ;gcc.dg/visibility-14.c scan-hidden hidden[ \t_]*foo
 :Needs investigation.
 ;gcc.dg/pch/save-temps-1.c  -O0 -g assembly comparison
