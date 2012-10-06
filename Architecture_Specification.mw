@@ -90,6 +90,8 @@ rdiez: For the 32-bit architecture, in order to reduce confusion it would be bes
 
 It should be stated in section 4.3 that un-implemented or reserved SPR space should be read as zero and writing should have no consequence.
 
+rdiez: In my OR10 CPU accessing non-existing SPRs raises an exception. This helps catch bugs early.
+
 ==== ABI, returning structures by value ====
 Currently, the description for returning structures by value says:
  A function that returns a structure or union places the address of the structure or 
