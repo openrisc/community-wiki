@@ -269,3 +269,8 @@ The following changes will be made to the toolchain in order to facilitate the u
 * <tt>or1ksim</tt> will be modified to allow the delay slot to be disabled.  This can be configured by setting the ND bit (position 10) in the <tt>cfg</tt> configuration variable of the <tt>cpu</tt> section of <tt>sim.cfg</tt>.
 
 * Where necessary, assembly source files (in testsuites, newlib, etc.) will be modified to use the C preprocessor to detect whether delay slots are to be used, and possibly exchange the position of delay slot instructions.
+
+=== Atomic operations ===
+One of the biggest deficiencies of the OpenRISC 1000 ISA is the lack of support for atomic operations.
+This should be addressed, but a discussion whether it should be implemented as a load/link-store conditional or a atomic-rmw is needed.
+This functionality should of course be optional to implement.
