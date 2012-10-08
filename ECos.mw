@@ -57,6 +57,8 @@ In order to build ecosconfig, go to the ecos-3.0 directory downloaded from SVN.
 
   ./host/configure
 
+''Note'': If the build fails saying it cannot find the hosts's TCL config information, you'll need to install the tcl-dev and tk-dev packages
+
 By default, ecosconfig installs itself in the /usr/local/ directory. 
 If you like, you can change that directory to something else:
 
@@ -77,6 +79,10 @@ To set the variable, go to the downloaded ecos-3.0 tree.
 == Configuring eCos for OpenRISC ==
 
 Create a directory to build the eCos library.
+
+ mkdir ecos-work
+ cd ecos-work
+
 First start with the default template:
 
   ecosconfig new orpsoc
@@ -101,6 +107,8 @@ It is always a good idea to check for possible conflicts.
   ecosconfig tree
   make
   make tests  
+
+Note that <code>ecosconfig tree</code> will create the skeleton build tree directory structure.
 
 == Writing program with eCos ==
 
