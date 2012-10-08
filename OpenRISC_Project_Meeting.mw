@@ -88,28 +88,28 @@ Below is the running order of the day, estimated durations and times sessions ar
 
 {| style="border-collapse: separate; border-spacing: 0; border-width: 1px; border-style: solid; border-color: #000; padding: 0"
 |-
-! style="border-style: solid; border-width: 0 0 1px 0"| Time
+! style="width: 5%; border-style: solid; border-width: 0 0 1px 0"| Time
 ! style="border-style: solid; border-width: 0 0 1px 0"| Length
 ! style="border-style: solid; border-width: 0 0 1px 0"| Presentation
 ! style="border-style: solid; border-width: 0 0 1px 0"| Who
 |-
-| style="border-style: solid; border-width: 0 0 0 0"| 11:00
-| style="border-style: solid; border-width: 0"| 40 min
+| style="text-align: center; border-style: solid; border-width: 0 0 0 0"| 11:00
+| style="text-align: center; border-style: solid; border-width: 0"| 40 min
 | style="border-style: solid; border-width: 0"| [[Talk:OpenRISC_Project_Meeting#Dynamic_linking_with_OpenRISC_Linux_toolchain|Dynamic linking with OpenRISC toolchain]]
 | style="border-style: solid; border-width: 0 1px 0 0"| Stefan Kristiansson
 |-
-| style="border-style: solid; border-width: 0 0 0 0"| 12:00
-| style="border-style: solid; border-width: 0"| 60 min
+| style="text-align: center; border-style: solid; border-width: 0 0 0 0"| 12:00
+| style="text-align: center; border-style: solid; border-width: 0"| 60 min
 | style="border-style: solid; border-width: 0"| [[Talk:OpenRISC_Project_Meeting#OR1K_architectural_revision_discussion|OR1K architectural revision discussion]]
 | style="border-style: solid; border-width: 0 1px 0 0"| Chair: [[User:Julius|Julius Baxter]]
 |-
-| style="border-style: solid; border-width: 0 0 0 0"| 13:30
-| style="border-style: solid; border-width: 0"| 30 min
+| style="text-align: center; border-style: solid; border-width: 0 0 0 0"| 13:30
+| style="text-align: center; border-style: solid; border-width: 0"| 30 min
 | style="border-style: solid; border-width: 0"| [[Talk:OpenRISC_Project_Meeting#OR2K_architectural_discussion|OR2K discussion]]
 | style="border-style: solid; border-width: 0 1px 0 0"| Chair: [[User:Julius|Julius Baxter]]
 |-
-| style="border-style: solid; border-width: 0 0 0 0"| 14:00
-| style="border-style: solid; border-width: 0"| 
+| style="text-align: center; border-style: solid; border-width: 0 0 0 0"| 14:00
+| style="text-align: center; border-style: solid; border-width: 0"| 
 | style="border-style: solid; border-width: 0"| [[Talk:OpenRISC_Project_Meeting#Bug_squashing_session|Bug squashing session]]
 | style="border-style: solid; border-width: 0 1px 0 0"| Everyone
 |}
