@@ -90,7 +90,7 @@ Remote testing of the library is not currently supported in uClibc.
 
 == GCC 4.8.0 ==
 
-Tests have been performed 2012-09-26 against:
+Tests have been performed 2012-10-10 against:
 
 github.com/skristiansson/or1k-gcc<br>
 github.com/skristiansson/or1k-src<br>
@@ -101,8 +101,8 @@ github.com/skristiansson/uClibc-or1k<br>
  <nowiki>
                 === gcc Summary ===
 
-# of expected passes            73101
-# of unexpected failures        43
+# of expected passes            73112
+# of unexpected failures        32
 # of unexpected successes       2
 # of expected failures          103
 # of unresolved testcases       4
@@ -110,8 +110,6 @@ github.com/skristiansson/uClibc-or1k<br>
 /opt/or1k/bin/or1k-linux-gcc  version 4.8.0 20120611 (experimental) (GCC)</nowiki>
 
 ==== FAIL tests ====
-;gcc.dg/debug/dwarf2/asm-line1.c scan-assembler is_stmt 1
-:This fails because debug line info isn't generated at all
 ;gcc.dg/attr-weakref-1.c (test for excess errors)
 :Fails in upstream as well. The problem seems to be that a weakref to a weakref isn't emitted in the asm output.
 ;gcc.dg/builtin-object-size-10.c scan-tree-dump objsz "maximum object size 21"
@@ -139,18 +137,7 @@ github.com/skristiansson/uClibc-or1k<br>
 ;gcc.dg/visibility-14.c scan-hidden hidden[ \t_]*foo
 :Needs investigation.
 ;gcc.dg/pch/save-temps-1.c  -O0 -g assembly comparison
-;gcc.dg/pch/save-temps-1.c   -O3 -g  assembly comparison
-:Needs investigation.
-;gcc.dg/torture/pr48542.c  -O0  execution test
-;gcc.dg/torture/pr48542.c  -O1  execution test
-;gcc.dg/torture/pr48542.c  -O2  execution test
-;gcc.dg/torture/pr48542.c  -O3 -fomit-frame-pointer  execution test
-;gcc.dg/torture/pr48542.c  -O3 -fomit-frame-pointer -funroll-loops  execution test
-;gcc.dg/torture/pr48542.c  -O3 -fomit-frame-pointer -funroll-all-loops -finline-functions  execution test
-;gcc.dg/torture/pr48542.c  -O3 -g  execution test
-;gcc.dg/torture/pr48542.c  -Os  execution test
-;gcc.dg/torture/pr48542.c  -O2 -flto -fno-use-linker-plugin -flto-partition=none  execution test
-;gcc.dg/torture/pr48542.c  -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  execution test
+;gcc.dg/pch/save-temps-1.c  -O3 -g  assembly comparison
 :Needs investigation.
 ;gcc.dg/torture/pr51106-2.c  -O0  (internal compiler error)
 ;gcc.dg/torture/pr51106-2.c  -O0  (test for excess errors)
