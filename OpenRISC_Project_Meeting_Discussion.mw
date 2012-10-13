@@ -3,7 +3,16 @@ This page contains the discussions from the "Open source processes for OpenRISC"
 __TOC__
 
 === Processes for review/maintainers ===
-
+*   How we work within the project/organising the project?
+**  Do we need a project manager?
+*** Defining the role: Managing groups of people (i.e. 4 people working on something, perhaps joining forces) keeping organisational structure up to date on the wiki
+*** Olof: taking charge of defining the role
+*** Perhaps domain specific managers and someone managing they keep talking?
+**  Process of review
+*** Taking or1ksim structure and process, is this suitable for other parts?
+*** At the very least should be documented.
+**  Too many patches just left in the mailing list, system we have doesn't work.
+*** Is silence (non-object) a sign of approval?
 
 === Structure of the project ===
 
