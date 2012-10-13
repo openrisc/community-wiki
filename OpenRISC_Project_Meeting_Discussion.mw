@@ -13,14 +13,34 @@ __TOC__
 *** At the very least should be documented.
 **  Too many patches just left in the mailing list, system we have doesn't work.
 *** Is silence (non-object) a sign of approval?
+*** Github pull requests a method?
+*** Patchwork - used by uboot
+**** Test setup Monday
+*** Separate mailing list for patches?
+**** No (consensus)
+** Need testing setup for RTL patches
+*** Need to be conservative, can't just accept any patches.
+*** Need release for OR1200 v3
 
 === Structure of the project ===
 
+* Need to split up project?
+** Page on opencores is the architecture, need sub-projects but where?
+** Consensus: OR1K project - just architecture, contain list to subprojects. (A good entry page)
+*** Entry point needs to be maintained. Needs to be definitive list to everything.
+*** Need to sort out details on exactly how this should be done.
 
-=== Choice of version control system ===
+=== Choice of version control system and where do they live? ===
 
-
-=== Where should repositories live? ===
-
+* We have users of SVN, git, upstream tools that use CVS, SVN and git.
+* Opencores only generally have SVN supported
+* What version control system should we use/global definition?
+** Should it not matter as long as there is a link?
+* Where should it live?
+** From a developers standpoint does it matter, but what about for users?
+** Keep stable/released versions on opencores
 
 === Mailing lists and IRC ===
+* We have two different mailing lists
+* Possible solution is to automate the cross-posting system previously agreed on. On opencores side this is ok, need to sort out openrisc side.
+* IRC lists more logically separated.
