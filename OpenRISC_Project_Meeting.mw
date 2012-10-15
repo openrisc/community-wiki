@@ -1,6 +1,6 @@
 This page holds information about OpenRISC Project meetings.
 
-= October 13-14 2012, Stockholm =
+== October 13-14 2012, Stockholm ==
 
 [[File:IMG 1009.JPG|800px|thumb|left|Participants at the OpenRISC conference Stockholm 2012]]
 
@@ -12,17 +12,17 @@ Attendees in the photo from left to right:
 
 More photos of the talks on [http://www.flickr.com/photos/embecosm/sets/72157631773557553/ Flickr].
 
-== Audience ==
+=== Audience ===
 
 It is intended that the meeting would be useful for both developers and users of the platform to attend.
 
-== Date & Time ==
+=== Date & Time ===
 
 The event will run over '''Saturday, October 13''' and '''Sunday, October 14'''.
 
 The venue will be open from 11:00 on Saturday, with a light lunch available from 11:30 and presentations starting at 12:00.
 
-== Venue ==
+=== Venue ===
 
 Realtime Embedded, Sveavagen 64, Stockholm, Sweden
 
@@ -30,11 +30,11 @@ Further details can be found here: [http://www.rte.se/sv/kontakt http://www.rte.
 
 Some drinks and snacks will be provided at the venue by the [[#Sponsors|sponsors]] on the day.
 
-== Schedule ==
+=== Schedule ===
 
 It is planned that the event will be run over Saturday and Sunday, with the bulk of the presentations on the Saturday.
 
-=== Saturday ===
+==== Saturday ====
 
 The day will formally begin at about midday, with a light lunch being provided from 11:30AM to encourage people to come along a little early.
 
@@ -96,7 +96,7 @@ Below is the running order of the day, estimated durations and times sessions ar
 | style="border-style: solid; border-width: 0 1px 0 0"| 
 |}
 
-=== Sunday ===
+==== Sunday ====
 
 {| style="border-collapse: separate; border-spacing: 0; border-width: 1px; border-style: solid; border-color: #000; padding: 0"
 |-
@@ -126,13 +126,13 @@ Below is the running order of the day, estimated durations and times sessions ar
 | style="border-style: solid; border-width: 0 1px 0 0"| Everyone
 |}
 
-== Register Intent ==
+=== Register Intent ===
 
 Please fill in the details on the following link to indicate whether you're likely to come along.
 
 [https://docs.google.com/a/orsoc.se/spreadsheet/viewform?formkey=dC1rQW45emhGZHY0NU1YME9oMVhEcWc6MQ Please register intent to attend here.]
 
-== Presentation Proposals ==
+=== Presentation Proposals ===
 
 No more long presentations can be fit in for the day, however '''if you'd like to do a [http://en.wikipedia.org/wiki/Lightning_talk lightning talk] we'd really like that''' and we'll find a way to fit you in, so please submit your topic as per below! (Or just come along on the day and we'll see what we can do.)
 
@@ -142,7 +142,7 @@ Please submit presentation proposals on the discussion page for this wiki articl
 
 Alternatively please post them to the [[OR1K:Community_Portal#Mailing_lists|OpenRISC mailing lists]].
 
-== Sponsors ==
+=== Sponsors ===
 
 [[File:Rtelogo.png|link=http://www.rte.se|Realtime Embedded]]
 
@@ -153,7 +153,7 @@ Alternatively please post them to the [[OR1K:Community_Portal#Mailing_lists|Open
 
 [http://www.orsoc.se ORSoC] are the owners and operators of OpenCores and are kindly providing lunch for the event.
 
-== Contact ==
+=== Contact ===
 
 Please contact juliusbaxter@gmail.com or post to the [[OR1K:Community_Portal#Mailing_lists|OpenRISC mailing lists]] for further information or presentation proposals. 
 
