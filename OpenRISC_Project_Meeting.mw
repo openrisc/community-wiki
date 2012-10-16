@@ -42,6 +42,8 @@ There will be a brief welcome and introduction of the sponsors before we begin p
 
 Below is the running order of the day, estimated durations and times sessions are expected to start. There is slack in the schedule to allow for questions following presentations, and breaks.
 
+For those that like their nostalgia in large doses can find a YouTube playlist of all videos at http://www.youtube.com/playlist?list=PLOGTP9W1DX5VrmtFbeYczr28_k7fRBbhF)
+
 {| style="border-collapse: separate; border-spacing: 0; border-width: 1px; border-style: solid; border-color: #000; padding: 0"
 |-
 ! style="width: 5%; border-style: solid; border-width: 0 0 1px 0"| Time
@@ -54,16 +56,25 @@ Below is the running order of the day, estimated durations and times sessions ar
 | style="text-align: center; border-style: solid; border-width: 0"| 30 min
 | style="border-style: solid; border-width: 0"| Welcome, introduction
 | style="border-style: solid; border-width: 0"| hosts, [[OpenRISC_Project_Meeting#Sponsors|sponsors]]
+| style="border-style: solid; border-width: 0"| [http://youtu.be/pbZNxo6o4lY Video] [https://dl.dropbox.com/u/4774576/openrisc/orconf2012-02-introduction2.ogg Audio]
+|-
+| style="text-align: center; border-style: solid; border-width: 0 0 0 0"|
+| style="text-align: center; border-style: solid; border-width: 0"|
+| style="border-style: solid; border-width: 0"| 
+| style="border-style: solid; border-width: 0"| All attendees introducing themselves
+| style="border-style: solid; border-width: 0"| [http://youtu.be/gLkYrH7n4L4 Video] [https://dl.dropbox.com/u/4774576/openrisc/orconf2012-01-introduction.ogg Audio]
 |-
 | style="text-align: center; border-style: solid; border-width: 0 0 0 0"| 12:30
 | style="text-align: center; border-style: solid; border-width: 0"| 20 min
 | style="border-style: solid; border-width: 0"| [[Talk:OpenRISC_Project_Meeting#OpenRISC_development_boards_and_modules|OpenCores & OpenRISC boards]] 
 | style="border-style: solid; border-width: 0"| Michael Unneback
+| style="border-style: solid; border-width: 0"| [http://youtu.be/pbZNxo6o4lY Video] [https://dl.dropbox.com/u/4774576/openrisc/orconf2012-03-devboards.ogg Audio]
 |-
 | style="text-align: center; border-style: solid; border-width: 0 0 0 0"| 13:00
 | style="text-align: center; border-style: solid; border-width: 0"| 30 min
 | style="border-style: solid; border-width: 0"| [[Talk:OpenRISC_Project_Meeting#OpenRISC_for_Newbies|OpenRISC for newbies]]
 | style="border-style: solid; border-width: 0"| Sven-Åke Andersson
+| style="border-style: solid; border-width: 0"| [http://youtu.be/6iT_oR5wRSg Video] [https://dl.dropbox.com/u/4774576/openrisc/orconf2012-04-openriscfornewbies.ogg Audio]
 |-
 | style="text-align: center; border-style: solid; border-width: 0 0 0 0"| 13:40
 | style="text-align: center; border-style: solid; border-width: 0"| 40 min
@@ -74,22 +85,46 @@ Below is the running order of the day, estimated durations and times sessions ar
 | style="text-align: center; border-style: solid; border-width: 0"| 40 min
 | style="border-style: solid; border-width: 0"| [[Talk:OpenRISC_Project_Meeting#ORPSoCv3|ORPSoCv3]]
 | style="border-style: solid; border-width: 0"| [[User:Olof|Olof Kindgren]]
+| style="border-style: solid; border-width: 0"| [http://youtu.be/vYJjIoV0G3U Video] [https://dl.dropbox.com/u/4774576/openrisc/orconf2012-05-orpsocv3.ogg Audio]
 |-
 | style="text-align: center; border-style: solid; border-width: 0 0 0 0"| 15:20
 | style="text-align: center; border-style: solid; border-width: 0"| 40 min
 | style="border-style: solid; border-width: 0"| [[Talk:OpenRISC_Project_Meeting#mor1kx_core_presentation|The new mor1kx CPU core]]
-| style="border-style: solid; border-width: 0"| [[User:Julius|Julius Baxter]], Stefan Kristiansson
+| style="border-style: solid; border-width: 0"| [[User:Julius|Julius Baxter]],
+| style="border-style: solid; border-width: 0"| [http://youtu.be/Q0LHzMbkZDk Video] [https://dl.dropbox.com/u/4774576/openrisc/orconf2012-06-mor1kx-pt1.ogg Audio]
+|-
+| style="border-style: solid; border-width: 0"|
+| style="border-style: solid; border-width: 0"|
+| style="border-style: solid; border-width: 0"|
+| style="border-style: solid; border-width: 0"| Stefan Kristiansson
+| style="border-style: solid; border-width: 0"| [http://youtu.be/tUWSPKTtCRg Video] [https://dl.dropbox.com/u/4774576/openrisc/orconf2012-07-mor1kx-pt2.ogg Audio]
 |-
 | style="text-align: center; border-style: solid; border-width: 0 0 0 0"| 16:40
 | style="text-align: center; border-style: solid; border-width: 0"| 50 min
 | style="border-style: solid; border-width: 0"| [[Talk:OpenRISC_Project_Meeting#LLVM_for_OpenRISC|LLVM for OpenRISC]]
 | style="border-style: solid; border-width: 0"| Stefan Kristiansson, Simon Cook
-
+| style="border-style: solid; border-width: 0"| [http://youtu.be/KTz1OkPnewY Video] [https://dl.dropbox.com/u/4774576/openrisc/orconf2012-08-llvm.ogg Audio]
 |-
+|-
+| style="text-align: center; border-style: solid; border-width: 0 0 0 0"|
+| style="text-align: center; border-style: solid; border-width: 0"|
+| style="border-style: solid; border-width: 0"| TechEdSat
+| style="border-style: solid; border-width: 0"| 
+| style="border-style: solid; border-width: 0"| [http://youtu.be/MDxoD1eeRUw Video] [https://dl.dropbox.com/u/4774576/openrisc/orconf2012-09-techedsat.ogg Audio]
+|-
+|-
+| style="text-align: center; border-style: solid; border-width: 0 0 0 0"|
+| style="text-align: center; border-style: solid; border-width: 0"|
+| style="border-style: solid; border-width: 0"| Parallella
+| style="border-style: solid; border-width: 0"| Jeremy Bennett
+| style="border-style: solid; border-width: 0"| [http://youtu.be/RAHDHrPozOU Video] [https://dl.dropbox.com/u/4774576/openrisc/orconf2012-10-parallella.ogg Audio]
+|-
+
 | style="text-align: center; border-style: solid; border-width: 0 0 0 0"| 18:00
 | style="text-align: center; border-style: solid; border-width: 0"| 90 min
 | style="border-style: solid; border-width: 0"| [[Talk:OpenRISC_Project_Meeting#Open_source_processes_for_OpenRISC|Open source processes for OpenRISC]]<br>([[OpenRISC_Project_Meeting_Discussion|Discussion Notes]])
 | style="border-style: solid; border-width: 0"| Chair: [[User:Jeremybennett|Jeremy Bennett]]
+| style="border-style: solid; border-width: 0"| [http://youtu.be/2fnZhePF_vY Video] [https://dl.dropbox.com/u/4774576/openrisc/orconf2012-11-opensourceprocesses.ogg Audio]
 |-
 | style="text-align: center; border-style: solid; border-width: 0 0 0 0"| 19:45
 | style="text-align: center; border-style: solid; border-width: 0"| 
@@ -111,16 +146,19 @@ Below is the running order of the day, estimated durations and times sessions ar
 | style="text-align: center; border-style: solid; border-width: 0"| 40 min
 | style="border-style: solid; border-width: 0"| [[Talk:OpenRISC_Project_Meeting#Dynamic_linking_with_OpenRISC_Linux_toolchain|Dynamic linking with OpenRISC toolchain]]
 | style="border-style: solid; border-width: 0"| Stefan Kristiansson
+| style="border-style: solid; border-width: 0"| [http://youtu.be/j0fAyL4Xo2k Video] [https://dl.dropbox.com/u/4774576/openrisc/orconf2012-12-dynamiclinking.ogg Audio]
 |-
 | style="text-align: center; border-style: solid; border-width: 0 0 0 0"| 12:00
 | style="text-align: center; border-style: solid; border-width: 0"| 60 min
 | style="border-style: solid; border-width: 0"| [[Talk:OpenRISC_Project_Meeting#OR1K_architectural_revision_discussion|OR1K architectural revision discussion]]
 | style="border-style: solid; border-width: 0"| Chair: [[User:Julius|Julius Baxter]]
+| style="border-style: solid; border-width: 0"| Video [https://dl.dropbox.com/u/4774576/openrisc/orconf2012-13-or1karchitecture.ogg Audio]
 |-
 | style="text-align: center; border-style: solid; border-width: 0 0 0 0"| 13:30
 | style="text-align: center; border-style: solid; border-width: 0"| 30 min
 | style="border-style: solid; border-width: 0"| [[Talk:OpenRISC_Project_Meeting#OR2K_architectural_discussion|OR2K discussion]]
 | style="border-style: solid; border-width: 0"| Chair: [[User:Julius|Julius Baxter]]
+| style="border-style: solid; border-width: 0"| Video [https://dl.dropbox.com/u/4774576/openrisc/orconf2012-14-or2k.ogg Audio]
 |-
 | style="text-align: center; border-style: solid; border-width: 0 0 0 0"| 14:00
 | style="text-align: center; border-style: solid; border-width: 0"| 
