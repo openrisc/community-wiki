@@ -75,15 +75,17 @@ Please update this Wiki if any tools are missing, or to provide a one-liner to i
 
 ==== Downloading the source ====
 
-The source for the GNU tools and newlib is available under SVN:
+'''Note''': There has been a recent reorganization of the SVN repository, to reduce the size of the SVN checkout. Rather than a single directory, there are now tree directories, '''gnu-stable''' (for the stable tool chain), '''gnu-old''' (for legacy versions) and '''gnu-dev''' (for experimental versions).
 
- svn co http://opencores.org/ocsvn/openrisc/openrisc/trunk/gnu-src 
+The source for the stable version of the GNU tools and newlib is available under SVN:
+
+ svn co http://opencores.org/ocsvn/openrisc/openrisc/trunk/gnu-stable 
 
 '''Note''': There is a known problem with SVN timing out. The checkout will seem OK, but not all files are downloaded and no error message is shown. The solution is to repeatedly run the following command until no more files are downloaded.
 
- svn update gnu-src
+ svn update gnu-stable
 
-The source for uClibc and Linux (needed for the header files for the toolchain) is currently held in a [http://git-scm.com/ git] repository run by [http://southpole.se/ South Pole]. It is best to save the source for these into the gnu-src path just created when checking out from the OpenCores SVN repository.
+The source for uClibc and Linux (needed for the header files for the toolchain) is currently held in a [http://git-scm.com/ git] repository run by [http://southpole.se/ South Pole]. It is best to save the source for these into the gnu-stable path just created when checking out from the OpenCores SVN repository.
 
  cd gnu-src
  git clone git://git.openrisc.net/jonas/uClibc
