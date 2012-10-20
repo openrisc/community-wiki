@@ -25,6 +25,7 @@ The provided default configuration passes all eCos test cases.
 
 Following peripherals are supported:
 * UART 16550 ([http://opencores.org/project,uart16550 uart16550])
+* SPI ([http://opencores.org/project,simple_spi simple_spi])
 * Ethernet MAC 10/100 Mbps ([http://opencores.org/project,ethmac ethmac])
 * SD Card Controller ([http://opencores.org/project,sdcard_mass_storage_controller sdcard_mass_storage_controller])
 
