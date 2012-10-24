@@ -111,7 +111,7 @@ It is always a good idea to check for possible conflicts.
 
 Note that <code>ecosconfig tree</code> will create the skeleton build tree directory structure.
 
-== Writing program with eCos ==
+== Writing a program with eCos ==
 
 It is now possible to write programs linked with eCos.
 The most simple hello world program would look like this:
@@ -125,20 +125,20 @@ The most simple hello world program would look like this:
 Refer to the [http://www.ecoscentric.com/ecospro/doc/html/ref/index.html eCos Reference Manual] 
 for additional information about kernel mechanisms and drivers.
 
-You can now compile the program. But you have to remember about all the compiler flags: -mhard-mul/-msoft-mul, div, float, branch etc. It is therefore a bit cumbersome to compile applications using single command. It is smarter to use GNU make and import flags that are already computed based on the eCos configuration. They already contain everything that is necessary. I have written a small Makefile example, it is heavily commented so you can easily adapt it to your needs.
+To do a stand-alone compilation of the program, you have to use a number of compiler flags: -mhard-mul/-msoft-mul, div, float, branch etc. It is therefore a bit cumbersome to compile eCos applications this way - a far better option is to use GNU make instead and import flags that have already been computed based on the eCos configuration, as they already contain everything that is necessary. A small, heavily commented Makefile example given below can easily be adapted to your needs.
 
-  # This variable should point to the directory where you have
+  # This variable should point to the directory where you 
   # installed your eCos build.
   ECOS_INSTALL := ../ecos_build/install/
   
-  # As part of the building process, eCos automatically creates
+  # As part of the build process, eCos automatically creates
   # a file with compiler flags. Those flags are computed based
   # on the ecc configuration file. It is smart to use them when
   # compiling your application.
   include $(ECOS_INSTALL)/include/pkgconf/ecos.mak
   
   # Unfortunately, some flags are C++ flags and some are C. We
-  # need to separate them. File rules.mak shipped with the eCos
+  # need to separate them. The file rules.mak shipped with the eCos
   # repository contains the rules to do it. So we need to include
   # this file in the end of the makefile and use more generic
   # names. We also add the paths to the installation directory.
