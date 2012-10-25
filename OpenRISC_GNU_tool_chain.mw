@@ -173,6 +173,17 @@ Version 2.20.1 of binutils, 2.20.1, has been ported to OpenRISC and can be [http
 
 More information about the GNU project's release of binutils can be found at its [http://www.gnu.org/software/binutils/ GNU homepage].
 
+==== Development version ====
+
+A development version of the binutils package is now available.
+
+The following is different from the stable version in SVN:
+
+* it uses a [http://sourceware.org/cgen/ CGEN]-derived machine description
+* it adds dynamic object support
+
+It can be found here: [https://github.com/openrisc/or1k-src https://github.com/openrisc/or1k-src]
+
 === GCC ===
 
 A version of GCC targeted at the OpenRISC platform is provided here. Known as a cross compiler, it is a version which will create code that is executable on an OpenRISC processor.
