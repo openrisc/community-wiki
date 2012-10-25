@@ -181,11 +181,13 @@ Make a build directory alongside the checkouts, change into it and run the follo
  make
  make install
  
- # build again knowing about newlib
+ # build gcc again, this time with newlib
  ../or1k-gcc/configure --target=or1k-elf --prefix=/opt/or1k-toolchain --enable-languages=c,c++ --disable-shared \
  --disable-libssp --with-newlib
  make
  make install
+
+Be sure to add <code>/opt/or1k-toolchain/bin</code> to the shell's <code>PATH</code> variable
 
 === Support for non-Linux systems ===
 
