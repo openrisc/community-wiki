@@ -165,6 +165,12 @@ Robert Guenzel has provided an [http://chschroeder.gamiro.de/rg/or1ksim_macOS10.
 
 == Tools ==
 
+=== CGEN ===
+
+An updated CGEN model is now available along with the development versions of the tools.
+
+It can be found here: [https://github.com/openrisc/or1k-src https://github.com/openrisc/or1k-src]
+
 === binutils ===
 
 This is a collection of tools for the manipulation of object code in various object file formats. Among its many tools, it provides the assembler and linker.
