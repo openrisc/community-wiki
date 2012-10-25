@@ -143,6 +143,50 @@ The [https://github.com/rdiez/orbuild orbuild] framework can automatically downl
 
 Please note that ''orbuild'' is a new project and still lacks some polish.
 
+
+=== Installation of development versions ===
+
+The following can be used to install the development version of the tool chain.
+
+See the following links for the appropriate development versions of the tools and libraries: [[OpenRISC_GNU_tool_chain#Development_version|binutils]], [[OpenRISC_GNU_tool_chain#Development_version_2|gcc]], [[OpenRISC_GNU_tool_chain#Development_version_3|newlib]]
+
+Note the following commands '''do not''' enable shared object support/dynamic linking yet.
+
+The following assumes a checkout of the development repositories, which at present can be done with the following:
+
+ git clone git://github.com/openrisc/or1k-src.git
+ git clone git://github.com/openrisc/or1k-gcc.git
+
+The following compile instructions will install into <code>/opt/or1k-toolchain</code> so make sure it exists and is writable by the user or whoever is running the <code>make install</code> commands.
+
+Make a build directory alongside the checkouts, change into it and run the following
+
+ # Build the first set of tools, binutils etc.
+ ../or1k-src/configure --target=or1k-elf --prefix=/opt/or1k-toolchain --disable-shared \
+ --disable-itcl --disable-tk --disable-tcl --disable-winsup --disable-libgui --disable-rda \
+ --disable-sid --disable-sim --disable-gdb --with-sysroot --disable-newlib --disable-libgloss
+ make
+ make install
+ 
+ # Build gcc
+ ../or1k-gcc/configure --target=or1k-elf --prefix=/opt/or1k-toolchain --enable-languages=c \
+ --disable-shared --disable-libssp
+ make
+ make install
+ 
+ # build newlib
+ ../or1k-src/configure --target=or1k-elf --prefix=/opt/or1k-toolchain --disable-shared --disable-itcl \
+ --disable-tk --disable-tcl --disable-winsup --disable-libgui --disable-rda --disable-sid --disable-sim \
+ --disable-gdb --with-sysroot --enable-newlib --enable-libgloss
+ make
+ make install
+ 
+ # build again knowing about newlib
+ ../or1k-gcc/configure --target=or1k-elf --prefix=/opt/or1k-toolchain --enable-languages=c,c++ --disable-shared \
+ --disable-libssp --with-newlib
+ make
+ make install
+
 === Support for non-Linux systems ===
 
 ==== Microsoft Windows with Cygwin ====
