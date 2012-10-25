@@ -351,6 +351,16 @@ The library is automatically linked when using the newlib version of the GCC com
 
 Further details are available on the [[Newlib | newlib port page]].
 
+==== Development version ====
+
+Hosted alongside the [[OpenRISC_GNU_tool_chain#Development_version:development version of binutils] is a development version of newlib containing:
+
+* an updated OR1K-specific library, improving support
+* functions adding no-delay slot support
+* libgloss improvements
+
+It can be found here: [https://github.com/openrisc/or1k-src https://github.com/openrisc/or1k-src]
+
 === uClibc ===
 
 This is a C library aimed at embedded systems. It removes a lot of the bulk that comes with a standard C library, such as the GNU C Library, but still has all the functionality needed for an operating system such as Linux, so it is ideal for embedded applications.
