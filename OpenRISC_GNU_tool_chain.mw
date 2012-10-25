@@ -353,7 +353,7 @@ Further details are available on the [[Newlib | newlib port page]].
 
 ==== Development version ====
 
-Hosted alongside the [[OpenRISC_GNU_tool_chain#Development_version:development version of binutils] is a development version of newlib containing:
+Hosted alongside the [[OpenRISC_GNU_tool_chain#Development_version|development version of binutils]] is a development version of newlib containing:
 
 * an updated OR1K-specific library, improving support
 * functions adding no-delay slot support
