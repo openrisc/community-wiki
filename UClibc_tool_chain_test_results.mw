@@ -123,6 +123,7 @@ github.com/skristiansson/uClibc-or1k<br>
 :According to the link below, lower subreg has changed upstream.
 :https://blueprints.launchpad.net/gcc-linaro/+spec/investigate-lowersubreg
 :This regression was not present in: GCC: (GNU) 4.8.0 20120303 (experimental), so it seems likely the upstream change is related.
+:Assembly looks correct, but inefficient.
 ;gcc.dg/sibcall-3.c execution test
 :Needs investigation.
 ;gcc.dg/sibcall-4.c execution test
