@@ -121,8 +121,7 @@ github.com/skristiansson/uClibc-or1k<br>
 ;gcc.dg/lower-subreg-1.c scan-rtl-dump subreg1 "Splitting reg"
 :This has to do with splitting large types into registers, according to this:
 :https://blueprints.launchpad.net/gcc-linaro/+spec/investigate-lowersubreg
-:lower subreg has changed upstream.
-:This regression was not present in:
+:lower subreg has changed upstream. This regression was not present in:
 :GCC: (GNU) 4.8.0 20120303 (experimental)
 :so it seems likely the upstream change is related.
 ;gcc.dg/sibcall-3.c execution test
