@@ -2,7 +2,7 @@ This section contains a list of boards, and certain details, that there are push
 
 Once you have your board up and running, you may find the guide to [[Debugging physical targets (FPGA/ASIC)|debugging physical targets]]  useful.
 
-== ORSoC OpenRISC development board ==
+== ORSoC OpenRISC development boards ==
 [http://orsoc.se/fpga-development-board/ More about this board on manufacturer's website]
 
 === The NEW OpenRISC FPGA development board (ordb2a-ep4ce22) ===
@@ -65,7 +65,6 @@ Please use the Actel FlashPro tool to program the FPGA with these images.
 [ftp://ocuser:ocuser@openrisc.opencores.org/orpsoc/images/orpsoc-ordb1a3p1000-20MHz-flashboot.pdb orpsoc-ordb1a3p1000-20MHz-flashboot.pdb] (boot from programmed SPI flash)
 
 See the difference between the Actel FPGAs at the [http://www.actel.com/products/pa3/default.aspx Actel product overview page].
-
 
 == Xilinx ML501 ==
 
