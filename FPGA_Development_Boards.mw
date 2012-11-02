@@ -134,5 +134,6 @@ See the ORPSoC documentation for information on how to program and use the FPGA 
 ** GPIO
 ** SDRAM (32MB)
 ** UART
+** FLASH
 
 [http://de0-nano.terasic.com/ More about this board on manufacturer's website]
