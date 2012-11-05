@@ -157,37 +157,41 @@ The following assumes a checkout of the development repositories, which at prese
  git clone git://github.com/openrisc/or1k-src.git
  git clone git://github.com/openrisc/or1k-gcc.git
 
-The following compile instructions will install into <code>/opt/or1k</code> so make sure it exists and is writable by the user or whoever is running the <code>make install</code> commands.
+The following compile instructions will install into <code>/opt/or1k-toolchain</code> so make sure it exists and is writable by the user or whoever is running the <code>make install</code> commands.
 
-Make a build directory alongside the checkouts, change into it and run the following
+Make a build directory each for the gnu-src tools and gcc, alongside the checkouts, we'll call them <code>bld-or1k-src</code> and <code>bld-or1k-gcc</code> respectively.
 
  # Build the first set of tools, binutils etc.
- ../or1k-src/configure --target=or1k-elf --prefix=/opt/or1k --disable-shared \
+ cd bld-or1k-src
+ ../or1k-src/configure --target=or1k-elf --prefix=/opt/or1k-toolchain --enable-shared \
  --disable-itcl --disable-tk --disable-tcl --disable-winsup --disable-libgui --disable-rda \
  --disable-sid --disable-sim --disable-gdb --with-sysroot --disable-newlib --disable-libgloss
  make
  make install
  
  # Build gcc
- ../or1k-gcc/configure --target=or1k-elf --prefix=/opt/or1k --enable-languages=c \
+ cd ../bld-or1k-gcc
+ ../or1k-gcc/configure --target=or1k-elf --prefix=/opt/or1k-toolchain --enable-languages=c \
  --disable-shared --disable-libssp
  make
  make install
  
  # build newlib
- ../or1k-src/configure --target=or1k-elf --prefix=/opt/or1k --disable-shared --disable-itcl \
+ cd ../bld-or1k-src
+ ../or1k-src/configure --target=or1k-elf --prefix=/opt/or1k-toolchain --enable-shared --disable-itcl \
  --disable-tk --disable-tcl --disable-winsup --disable-libgui --disable-rda --disable-sid --disable-sim \
  --disable-gdb --with-sysroot --enable-newlib --enable-libgloss
  make
  make install
  
  # build gcc again, this time with newlib
- ../or1k-gcc/configure --target=or1k-elf --prefix=/opt/or1k --enable-languages=c,c++ --disable-shared \
+ cd ../bld-or1k-gcc
+ ../or1k-gcc/configure --target=or1k-elf --prefix=/opt/or1k-toolchain --enable-languages=c,c++ --disable-shared \
  --disable-libssp --with-newlib
  make
  make install
 
-Be sure to add <code>/opt/or1k/bin</code> to the shell's <code>PATH</code> variable
+Be sure to add <code>/opt/or1k-toolchain/bin</code> to the shell's <code>PATH</code> variable
 
 === Support for non-Linux systems ===
 
