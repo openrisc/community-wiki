@@ -270,6 +270,28 @@ The following changes will be made to the toolchain in order to facilitate the u
 
 * Where necessary, assembly source files (in testsuites, newlib, etc.) will be modified to use the C preprocessor to detect whether delay slots are to be used, and possibly exchange the position of delay slot instructions.
 
+=== Multiply operations, Carry and Overflow Flags ===
+
+The <tt>l.mul</tt> instruction is hard to implement in the current state.  It performs a signed multiply, but must the set CY flag to indicate that overflow would have happened if the numbers were treated as unsigned.  This is difficult to implement because multiplier macros and DSP slices on FPGAs only let you do either signed or unsigned multiply, and almost never give you the ability to detect unsigned overflow when doing signed multiply.  Implementing it pretty much requires a hand-coded multiplier.
+
+For consistency, we will always use OV to indicate signed overflow, and CY to indicate unsigned overflow.  We will add a CYE bit to the SR register that causes a RANGE exception to be triggered when the CY bit is set by an instruction.  Additionally, we will drop the requirement that the <tt>l.mul</tt> instruction set the CY bit for unsigned overflow, and the requirement that <tt>l.mulu</tt> clear the OV bit.
+
+In addition, the <tt>l.mac</tt> instructions truncate the product of the two registers to 32-bits before performing a 64-bit add.  This seems less useful, and unnecessary, since the simplest implementation of the <tt>l.mul</tt> instructions would use a 32x32-bit to 64-bit multiplier.  So I propose changing the <tt>l.mac</tt> instruction to perform a full 64-bit addition of the accumulator and the 64-bit product, without truncating the result.  Additionally, it seems simple and useful to add unsigned versions of the mac instructions, and a version that does not perform an add or subtraction, and allows the full 64-bit product to be recovered from the HI/LO registers.
+
+The changes are summarized below:
+
+* Remove the requirement that the <tt>l.mul</tt> instruction set the CY flag to indicate unsigned overflow.  The instruction will no longer modify the CY flag at all.
+
+* Remove the requirement that the <tt>l.mulu</tt> instruction clear the OV flag.  The instruction will no longer modify the OV flag at all.
+
+* Change <tt>l.mac</tt> and <tt>l.msb</tt> to perform a full 32x32 to 64-bit product, and add the full 64-bit product to the 64-bit accumulator without any truncation.
+
+* Add <tt>l.macu</tt> and <tt>l.msbu</tt>, which are like <tt>l.mac</tt> and <tt>l.msb</tt>, but perform an unsigned multiplication
+
+* Add <tt>l.muld</tt> and <tt>l.muldu</tt>, which performed a signed/unsigned 32x32 to 64-bit product and write the result to MACHI/MACLO.
+
+* Add a CYE bit to the SR register that, when set, causes the processor to trigger a RANGE exception when an instruction sets the CY bit.
+
 === Atomic operations ===
 One of the bigger deficiencies of the OpenRISC 1000 ISA is the lack of support for atomic operations.
 This should be addressed, but a discussion whether it should be implemented as a load/link-store conditional or a atomic-rmw is needed.
