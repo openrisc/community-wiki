@@ -4,6 +4,8 @@ This page contains information relating to the OpenRISC 1000 architecture and th
 
 The latest draft of the architecture specification can be downloaded [http://opencores.org/websvn,filedetails?repname=openrisc&path=%2Fopenrisc%2Ftrunk%2Fdocs%2Fopenrisc_arch_draft.odt here] ([http://en.wikipedia.org/wiki/OpenDocument ODT format])
 
+Architecture Version 1.0 draft documents can be downloaded here: [https://www.dropbox.com/s/ij91c75xcwqprv6/openrisc-arch-1.0-draft2.pdf PDF] [https://www.dropbox.com/s/bu9eiet0apfoasq/openrisc_arch_draft.odt ODT]
+
 = Proposed changes =
 
 This section is to keep track of proposed alterations to the OpenRISC 1000.
