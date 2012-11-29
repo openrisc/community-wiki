@@ -341,7 +341,7 @@ So to implement more useful arithmetic overflow detection and management I propo
  [8] CYMACADDE
    Carry flag set by unsigned overflow on MAC-unit add/sub operations caused exception
 
-Setting the SR[OVE] will cause a range exception to occur when any of the situations specified in AECR have their bit set. This will cause the range exception to occur and set the bit corresponding to the cause for the exception in the AESR. Writing '0' to the bit in the AESR will cause it to be cleared. Only the occurrence of the exception will cause the range exception to occur, so leaving the bit set in the AESR and l.rfe with ESR[OVE] set shall not cause another exception.
+Setting the SR[OVE] will cause a range exception to occur when any of the situations specified in AECR have their bit set. SR[OV] and SR[CY], as appropriate, shall be set regardless of whether an exception is triggered. This will cause the range exception to occur and set the bit corresponding to the cause for the exception in the AESR. Writing '0' to the bit in the AESR will cause it to be cleared. Only the occurrence of the exception will cause the range exception to occur, so leaving the bit set in the AESR and l.rfe with ESR[OVE] set shall not cause another exception.
 
 Both registers will be R/W in supervisor mode only.
 
