@@ -288,6 +288,93 @@ Summary of changes:
 
 * That's it!
 
+=== Control of Carry and Overflow Flags and Exceptions ===
+
+Continuing with the idea of fixing the definitions of instructions and their setting of carry and overflow flags, where we will have carry (SR[CY]) set on unsigned overflow, and overflow (SR[OV]) set on signed overflow, it's also likely we will want to have relatively fine-grained control over exceptions triggered by this arithmetic.
+
+For instance, we may want an exception on signed multiply overflow, but not on addition overflow (addition is not specific about whether its operands are to be considered signed or unsigned, so it will be setting both OV and CY on signed and unsigned overflow, respectively.)
+
+So to implement more useful arithmetic overflow detection and management I propose the addition of 2 SPRs for control and status of arithmetic overflow exceptions.
+
+ AECR - Arithmetic Exception Control Register
+ 
+ [0] CYADDE
+   Carry flag set by unsigned overflow on integer addition and subtraction instructions causes exception
+ [1] OVADDE
+   Overflow flag set by signed overflow on integer addition and subtraction instructions causes exception
+ [2] CYMULE
+   Carry flag set by unsigned overflow on unsigned integer multiply instructions causes exception
+ [3] OVMULE
+   Overflow flag set by signed overflow on signed integer multiply instructions causes exception
+ [4] DBZE
+   Overflow flag set by divide-by-zero on integer division instruction, or carry flag set by divide-by-zero on l.divu instruction, causes exception
+ [5] OVMACMULE
+   Overflow flag set by signed overflow on MAC-unit multiply operations causes exception
+ [6] CYMACMULE
+   Carry flag set by unsigned overflow on MAC-unit multiply operations causes exception
+ [7] OVMACADDE
+   Overflow flag set by signed overflow on MAC-unit add/sub operations causes exception
+ [8] CYMACADDE
+   Carry flag set by unsigned overflow on MAC-unit add/sub operations causes exception
+ 
+ 
+ AESR - Arithmetic Exception Status Register
+ 
+ [0] CYADDE
+   Carry flag set by unsigned overflow on integer addition and subtraction instructions caused exception
+ [1] OVADDE
+   Overflow flag set by signed overflow on integer addition and subtraction instructions caused exception
+ [2] CYMULE
+   Carry flag set by unsigned overflow on unsigned integer multiply instructions caused exception
+ [3] OVMULE
+   Overflow flag set by signed overflow on signed integer multiply instructions caused exception
+ [4] DBZE
+   Overflow flag set by divide-by-zero on l.div instruction, or carry flag set by divide-by-zero on l.divu instruction, caused exception
+ [5] OVMACMULE
+   Overflow flag set by signed overflow on MAC-unit multiply instructions caused exception
+ [6] CYMACMULE
+   Carry flag set by unsigned overflow on MAC-unit multiply instructions caused exception
+ [7] OVMACADDE
+   Overflow flag set by signed overflow on MAC-unit add/sub operations caused exception
+ [8] CYMACADDE
+   Carry flag set by unsigned overflow on MAC-unit add/sub operations caused exception
+
+Setting the SR[OVE] will cause a range exception to occur when any of the situations specified in AECR have their bit set. This will cause the range exception to occur and set the bit corresponding to the cause for the exception in the AESR. Writing '0' to the bit in the AESR will cause it to be cleared. Only the occurrence of the exception will cause the range exception to occur, so leaving the bit set in the AESR and l.rfe with ESR[OVE] set shall not cause another exception.
+
+Both registers will be R/W in supervisor mode only.
+
+Function of bits [8:2] are obviously dependent on corresponding instructions/units being present.
+
+Modifications to instructions are as follows:
+
+ l.add, l.addc, l.addi, l.addic, l.sub
+   Set SR[CY] on unsigned overflow, else clear
+   Set CR[OV] on signed overflow, else clear
+ 
+ l.mul, l.muli
+   Clear SR[CY]
+   Set SR[OV] on signed overflow, else clear
+ 
+ l.mulu
+   Set SR[CY] on unsigned overflow, else clear
+   Clear SR[OV]
+ 
+ l.div
+   Clear SR[CY]
+   Set SR[OV] on divide-by-zero, else clear
+ 
+ l.divu
+   Set SR[CY] on divide-by-zero, else clear
+   Clear SR[OV]
+ 
+ signed l.mac instructions
+   Clear SR[CY]
+   Set CR[OV] on signed overflow of either multiply or add/subtract, else clear
+ 
+ (proposed) unsigned l.mac instructions
+   Set SR[CY] on unsigned overflow of either multiply or add/subtract, else clear
+   Clear SR[OV]
+
 === Multiply and Accumulate ===
 
 This is a potentially disruptive change, as it is different from the operation of the OR1200.  It may be a good idea to implement it under a new UPR code or similar.
