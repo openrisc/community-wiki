@@ -294,6 +294,8 @@ Continuing with the idea of fixing the definitions of instructions and their set
 
 For instance, we may want an exception on signed multiply overflow, but not on addition overflow (addition is not specific about whether its operands are to be considered signed or unsigned, so it will be setting both OV and CY on signed and unsigned overflow, respectively.)
 
+(Unfortunately the OR1K ISA lacks unsigned addition, so it's not possible to distinguish between unsigned and signed overflow for addition and subtraction.)
+
 So to implement more useful arithmetic overflow detection and management I propose the addition of 2 SPRs for control and status of arithmetic overflow exceptions.
 
  AECR - Arithmetic Exception Control Register
