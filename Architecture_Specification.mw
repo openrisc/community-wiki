@@ -284,11 +284,9 @@ For consistency, we will always use OV to indicate signed overflow, and CY to in
 
 Summary of changes:
 
-* Remove the requirement that the <tt>l.mul</tt> instruction set the CY flag to indicate unsigned overflow.  The instruction will no longer modify the CY flag at all.
+* Remove the requirement that the <tt>l.mul</tt> instruction set the CY flag to indicate unsigned overflow.  The instruction will instead always set CY to zero (for consistency with other arithmetic instructions).
 
-* Remove the requirement that the <tt>l.mulu</tt> instruction clear the OV flag.  The instruction will no longer modify the OV flag at all.
-
-* Add a CYE bit to the SR register that, when set, causes the processor to trigger a RANGE exception when an instruction sets the CY bit.
+* That's it!
 
 === Multiply and Accumulate ===
 
