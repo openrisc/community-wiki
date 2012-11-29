@@ -360,6 +360,7 @@ Modifications to instructions are as follows:
  l.mulu
    Set SR[CY] on unsigned overflow, else clear
    Clear SR[OV]
+   * This differs from current definition, which sets SR[OV] instead of SR[CY] 
  
  l.div
    Clear SR[CY]
@@ -368,14 +369,17 @@ Modifications to instructions are as follows:
  l.divu
    Set SR[CY] on divide-by-zero, else clear
    Clear SR[OV]
+   * This differs from current definition, which sets SR[OV] instead of SR[CY] 
  
  signed l.mac instructions
    Clear SR[CY]
    Set CR[OV] on signed overflow of either multiply or add/subtract, else clear
+   * This differs from current definition, which does not set either SR[OV] or SR[CY]
  
  (proposed) unsigned l.mac instructions
    Set SR[CY] on unsigned overflow of either multiply or add/subtract, else clear
    Clear SR[OV]
+  * This will apply to an entirely new set of instructions
 
 === Multiply and Accumulate ===
 
