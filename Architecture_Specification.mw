@@ -90,9 +90,9 @@ The l.lwz definition page in the spec should have:
 
 rdiez: For the 32-bit architecture, in order to reduce confusion it would be best to remove the l.lws opcode, and remove the l.lws and l.lwz mnemonics, then add an "l.lw" mnemonic which maps to the old l.lwz opcode. or1200 hasn't implemented (or didn't implement) the l.lws opcode for a long time anyway. By the way, l.extws and l.extwz should also be marked as obsolete, as l.ori can achieve the same results. For the 64-bit architecture, l.lw shouldn't be a valid mnemonic, so the programmer must think whether he wants the l.lwz or the l.lws behaviour.
 
-==== Unused SPR space read as zero ====
+==== Accessing unimplemented SPRs ====
 
-It should be stated in section 4.3 that un-implemented or reserved SPR space should be read as zero and writing should have no consequence.
+It should be stated in section 4.3 that un-implemented or reserved SPR space should be read as zero and writing should have no consequence (ie l.mtspr for an unimplemented SPR should be equivalent to a l.nop).
 
 rdiez: In my OR10 CPU accessing non-existing SPRs raises an exception. This helps catch bugs early.
 
