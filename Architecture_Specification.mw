@@ -310,13 +310,9 @@ So to implement more useful arithmetic overflow detection and management I propo
    Overflow flag set by signed overflow on signed integer multiply instructions causes exception
  [4] DBZE
    Overflow flag set by divide-by-zero on integer division instruction, or carry flag set by divide-by-zero on l.divu instruction, causes exception
- [5] OVMACMULE
-   Overflow flag set by signed overflow on MAC-unit multiply operations causes exception
- [6] CYMACMULE
-   Carry flag set by unsigned overflow on MAC-unit multiply operations causes exception
- [7] OVMACADDE
+ [5] OVMACADDE
    Overflow flag set by signed overflow on MAC-unit add/sub operations causes exception
- [8] CYMACADDE
+ [6] CYMACADDE
    Carry flag set by unsigned overflow on MAC-unit add/sub operations causes exception
  
  
@@ -332,13 +328,9 @@ So to implement more useful arithmetic overflow detection and management I propo
    Overflow flag set by signed overflow on signed integer multiply instructions caused exception
  [4] DBZE
    Overflow flag set by divide-by-zero on l.div instruction, or carry flag set by divide-by-zero on l.divu instruction, caused exception
- [5] OVMACMULE
-   Overflow flag set by signed overflow on MAC-unit multiply instructions caused exception
- [6] CYMACMULE
-   Carry flag set by unsigned overflow on MAC-unit multiply instructions caused exception
- [7] OVMACADDE
+ [5] OVMACADDE
    Overflow flag set by signed overflow on MAC-unit add/sub operations caused exception
- [8] CYMACADDE
+ [6] CYMACADDE
    Carry flag set by unsigned overflow on MAC-unit add/sub operations caused exception
 
 Setting the SR[OVE] will cause a range exception to occur when any of the situations specified in AECR have their bit set. SR[OV] and SR[CY], as appropriate, shall be set regardless of whether an exception is triggered. This will cause the range exception to occur and set the bit corresponding to the cause for the exception in the AESR. Writing '0' to the bit in the AESR will cause it to be cleared. Only the occurrence of the exception will cause the range exception to occur, so leaving the bit set in the AESR and l.rfe with ESR[OVE] set shall not cause another exception.
@@ -373,11 +365,11 @@ Modifications to instructions are as follows:
  
  signed l.mac instructions
    Clear SR[CY]
-   Set CR[OV] on signed overflow of either multiply or add/subtract, else clear
+   Set CR[OV] on signed overflow of add/subtract with {MACHI,MACLO}, else clear
    * This differs from current definition, which does not set either SR[OV] or SR[CY]
  
  (proposed) unsigned l.mac instructions
-   Set SR[CY] on unsigned overflow of either multiply or add/subtract, else clear
+   Set SR[CY] on unsigned overflow of add/subtract with {MACHI,MACLO}, else clear
    Clear SR[OV]
   * This will apply to an entirely new set of instructions
 
