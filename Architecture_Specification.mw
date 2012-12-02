@@ -114,6 +114,15 @@ This should be extended with the following information:
 ==== Typo for lf.sfle.d instruction ====
 The current lf.sfle.d (double precision set flag less or equal) states that register rA is 364 bits in size (rA[363:0]) instead of just 64 (rA[63:0]).
 
+==== Remove "Signed" from name of addition and subtraction instructions ====
+
+At present, the l.add, l.addi, l.addc, l.addic and l.sub all say the instructions are "signed" whereas the instructions
+
+* work for both signed and unsigned operands
+* signal both signed overflow and and unsigned overflow (carry)
+
+... so actually are not signed-specific. So removing the "Signed" from the name of the instructions makes things less confusing.
+
 === Versioning ===
 
 There are a few version-tracking issues to be dealt with.
