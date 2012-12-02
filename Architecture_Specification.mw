@@ -388,6 +388,14 @@ Modifications to instructions are as follows:
    Clear SR[OV]
   * This will apply to an entirely new set of instructions
 
+Update: I propose that when these registers are not present (as indicated in the CPUCFGR) then the default behaviour is that any carry or overflow occurrences (as defined by the updated instruction behaviour) cause a range exception when SR[OVE] is set (just like all bits in AECR are set to '1'.)
+
+=== Optional overflow/carry detection logic and exception trigger ===
+
+I propose that the functionality of the carry and overflow detection be optional, and the capability of the CPU to perform it is indicated by a bit in the CPUCFGR.
+
+In the case that it is no present, the SR[CY] and SR[OV] bits are tied low, and SR[OVE] cannot be set. If the AECR/AESR registers are implemented (silly if they are) then they have no effect.
+
 === Multiply and Accumulate ===
 
 This is a potentially disruptive change, as it is different from the operation of the OR1200.  It may be a good idea to implement it under a new UPR code or similar.
