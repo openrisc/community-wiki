@@ -394,7 +394,7 @@ Update: I propose that when these registers are not present (as indicated in the
 
 I propose that the functionality of the carry and overflow detection be optional, and the capability of the CPU to perform it is indicated by a bit in the CPUCFGR.
 
-In the case that it is no present, the SR[CY] and SR[OV] bits are tied low, and SR[OVE] cannot be set. If the AECR/AESR registers are implemented (silly if they are) then they have no effect.
+In the case that it is not present, the SR[CY] and SR[OV] bits are tied low, and SR[OVE] cannot be set. If the AECR/AESR registers are implemented (silly if they are) then they have no effect.
 
 === Multiply and Accumulate ===
 
