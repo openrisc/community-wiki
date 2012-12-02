@@ -96,6 +96,12 @@ It should be stated in section 4.3 that un-implemented or reserved SPR space sho
 
 rdiez: In my OR10 CPU accessing non-existing SPRs raises an exception. This helps catch bugs early.
 
+==== Accessing SPRs with insufficient privileges ====
+
+At present there is no comment on what should happen in the event that l.mtspr/l.mfspr are used on SPRs which require supervisor mode to access.
+
+I propose the specification states that a l.mtspr (write to an SPR) requiring write in supervisor mode while in user mode makes that instruction equivalent to an l.nop. Also that l.mfspr (read from an SPR) with insufficient privileges returns 0, just like an unimplemented SPR would.
+
 ==== ABI, returning structures by value ====
 Currently, the description for returning structures by value says:
  A function that returns a structure or union places the address of the structure or 
