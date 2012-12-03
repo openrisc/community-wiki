@@ -95,6 +95,7 @@ rdiez: For the 32-bit architecture, in order to reduce confusion it would be bes
 It should be stated in section 4.3 that un-implemented or reserved SPR space should be read as zero and writing should have no consequence (ie l.mtspr for an unimplemented SPR should be equivalent to a l.nop).
 
 rdiez: In my OR10 CPU accessing non-existing SPRs raises an exception. This helps catch bugs early.
+firefalcon: +1 rdiez. Also, to make the ISA amenable to virtualization, any attempted access to any (existing or not) privileged SPR should result in an exception.
 
 ==== Accessing SPRs with insufficient privileges ====
 
