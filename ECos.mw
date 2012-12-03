@@ -12,7 +12,7 @@ Using eCos HAL, it is also possible to build RedBoot, the popular bootstrap envi
 
 The port introduces a target called ORPSoC. 
 This target refers to the [http://opencores.org/or1k/ORPSoC ORPSoC project]. 
-It is also suitable for [http://opencores.org/or1k/OR1K:MinSoC MinSoC], but some configuration options may need to be changed.
+It is also suitable for [http://opencores.org/or1k/OR1K:MinSoC MinSoC], but some configuration options (such as memory size) may need to be changed.
 
 The current version of the port is tracking the mainline eCos repository.
 All changes have been rewritten against the code already checked in the official eCos repository.
