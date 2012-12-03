@@ -204,3 +204,7 @@ The following screen presents reslts of the timelice test.
 * Prepare the code structure to support non-compatible OR2k
 * Send the code to eCos maintainers
 * Move some parts of the assembler code to C
+
+== Bugs and patches ==
+
+If you want to file a bug report or patch, please send them on the mailing lists. I browse the forum very rarely.
