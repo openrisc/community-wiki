@@ -104,6 +104,8 @@ At present there is no comment on what should happen in the event that l.mtspr/l
 
 I propose the specification states that a l.mtspr (write to an SPR) requiring write in supervisor mode while in user mode makes that instruction equivalent to an l.nop. Also that l.mfspr (read from an SPR) with insufficient privileges returns 0, just like an unimplemented SPR would.
 
+firefalcon:  I propose that we keep in line with other ISAs and make the ISA fully virtualizable by throwing an exception in this case.
+
 ==== ABI, returning structures by value ====
 Currently, the description for returning structures by value says:
  A function that returns a structure or union places the address of the structure or 
