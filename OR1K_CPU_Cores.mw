@@ -16,7 +16,7 @@ Implemented peripherals are tick timer, PIC unit, debug unit (single stepping an
 
 It is currently hosted here: http://github.com/openrisc/mor1kx
 
-It is licensed under a weak copy-left (source file level) license created specifically for it, the Open Hardware Description License (OHDL), for more details see http://juliusbaxter.net/ohdl
+It is licensed under a weak copy-left (source file level) license created specifically for it, the Open Hardware Description License (OHDL). For details see http://juliusbaxter.net/ohdl
 
 == AltOr32 ==
 
