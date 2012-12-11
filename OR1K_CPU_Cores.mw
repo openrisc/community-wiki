@@ -32,6 +32,12 @@ It is hosted here on OpenCores: http://opencores.org/project,altor32
 
 == OR10 ==
 
+This core implements the complete OpenRISC ORBIS32 instruction set. It has a very simple design, one could say suboptimal, or even naive. It does not implement the jump delay slot. It has a single Wishbone bus for both instruction fetches and data access.
+
+It is flagged as no longer maintained.
+
+See https://github.com/rdiez/orbuild/tree/master/Scripts/Projects/OpenRISC/OR10/CPU for more.
+
 = CPU ID Table =
 
 This table identifies CPU implementations (and models) as per the 8-bit CPUID field in the VR2 introduced in OR1K architecture version 1.0.
