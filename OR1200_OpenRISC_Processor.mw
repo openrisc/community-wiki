@@ -1,8 +1,13 @@
 == Overview ==
 
+[[File:Or1200_blocks.png|link=http://opencores.org/or1k/File:Or1200_blocks.png|right|border|300px]]
 
-[[File:Or1200_blocks.png|link=http://opencores.org/or1k/File:Or1200_blocks.png||border|300px]]
 
+The [[OR1200 OpenRISC Processor|OpenRISC 1200]] is an implementation of OpenRISC 1000 processor family.
+
+The OR1200 is a 32-bit scalar RISC with Harvard microarchitecture, 5 stage integer pipeline, virtual memory support (MMU) and basic DSP capabilities. 
+
+Default caches are 1-way direct-mapped 8KB data cache and 1-way direct-mapped 8KB instruction cache, each with 16-byte line size. Both caches are physically tagged. By default MMUs are implemented and they are constructed of 64-entry hash based 1-way direct-mapped data TLB and 64-entry hash based 1-way direct-mapped instruction TLB. Supplemental facilities include debug unit for real-time debugging, high resolution tick timer, programmable interrupt controller and power management support.
 
 '''General Microarchitecture'''
 * Central CPU/DSP block
@@ -21,6 +26,20 @@
 The OR1200 is stable and has been implemented in various commercial ASICs and FPGA.
 The development is always ongoing with new features and improvements. 
 If you would like to help with the development, please post to the OpenRISC forum or send an email to openrisc_team@opencores.org.
+
+== Verification ==
+
+The main OR1200 implementation is verified by running a range of C and assembler programs under simulation and checking for correct results. The [[Or1ksim]] architectural simulator acts as the golden reference for functional behavior.
+
+For his [http://opencores.org/openrisc,file,YWhtZWQtZGlzc2VydGF0aW9uLnBkZg== MSc dissertation] Waqas Ahmed applied an OVM framework to provide extensive comparison of Or1ksim with the Verilog RTL, uncovering numerous bugs in the process. His code is also available for [http://opencores.org/openrisc,file,YWhtZWQtY29kZS50YXIuYnoy download].
+
+== Debug interface ==
+
+The OpenRISC 1200 platform is usually implemented with a debug unit and one of the JTAG debugging interfaces from OpenCores. This provides hardware access to registers and memory and permits external stalling and reset of the processor.
+
+Debugging can be carried out using physical hardware (FPGA or ASIC) or under [[#Simulation models|simulation]].
+
+More details can be found on the [[OR1K:Debug interface|debug interface]] page.
 
 == Implementation information ==
 When implemented in a worst-case 0.18u 6LM process it should provide over 150 dhrystone 2.1 MIPS at 150MHz and 150 DSP MAC 32x32 operations.
