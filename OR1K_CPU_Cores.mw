@@ -1,0 +1,59 @@
+This page gives a summary of each of the available OR1k-compliant microprocessor soft-cores.
+
+= Cores =
+
+== OR1200 ==
+
+This processor has its own page on this wiki with details - [[OR1200 OpenRISC Processor]]
+
+== mor1kx ==
+
+This core aims to implement a variety of pipelines offering the ability to trade area for speed. It also is intended to be a good platform for experimentation with pipeline implementations such as superscalar, out of order execution, threading and the like.
+
+The current three pipelines, however, are relatively simple and being developed to provide a stable, up-to-date implementation going forward. It is intended for implementation on both FPGA and ASIC.
+
+Implemented peripherals are tick timer, PIC unit, debug unit (single stepping and software breakpoints only), caches (some pipelines only) and Wishbone bus interface.
+
+It is currently hosted here: http://github.com/openrisc/mor1kx
+
+It is licensed under a weak copy-left (source file level) license created specifically for it, the Open Hardware Description License (OHDL), for more details see http://juliusbaxter.net/ohdl
+
+== AltOr32 ==
+
+AltOR32 is an OpenRISC 1000 architecture derived RISC CPU targeted at small FPGAs and contains only the most basic ISA features from the OpenRisc project. 
+
+Instructions & registers relating to Vector, floating-point, 64-bit extensions, MMU & Cache have been omitted.
+
+The aim of AltOR32 is to provide a simple 32-bit soft CPU architecture aimed at control applications that can fit in low-end FPGA technology. 
+
+This architecture re-uses the OpenRisc GNU toolchain hence implements all instructions that cannot be disabled. Anything else is viewed as beyond the scope of this cut-down soft-CPU implementation.
+
+It is hosted here on OpenCores: http://opencores.org/project,altor32
+
+== OR10 ==
+
+= CPU ID Table =
+
+This table identifies CPU implementations (and models) as per the 8-bit CPUID field in the VR2 introduced in OR1K architecture version 1.0.
+
+{| class="wikitable"
+| CPU
+| CPUID
+|-
+| [[Or1ksim|or1ksim]]
+| <tt>0x00</tt>
+|-
+| [[OR1200 OpenRISC Processor|OR1200]]
+| <tt>0x12</tt>
+|-
+| [http://github.com/openrisc/mor1kx mor1kx]
+| <tt>0x01</tt>
+|-
+| [http://opencores.org/project,altor32 AltOr32]
+| <tt>0x32</tt>
+|-
+| [https://github.com/rdiez/orbuild/tree/master/Scripts/Projects/OpenRISC/OR10/CPU OR10]
+| <tt>0x10</tt>
+|}
+
+Please contact the OpenRISC developers via the [[OR1K:Community_portal#Mailing_lists|mailing lists]] if you have an OR1k-compliant implementation and would like to be listed on this page and assigned a CPUID.
