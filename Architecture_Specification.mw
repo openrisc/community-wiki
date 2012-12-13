@@ -27,6 +27,10 @@ Old Architecture manual (April 2006): [http://opencores.org/websvn,filedetails?r
 
 This section is to keep track of proposed alterations to the OpenRISC 1000.
 
+Feel free to add ideas and comment (please sign your name.) It also helps to post to the [[OR1K:Community_Portal#Mailing_lists|mailing list]] outlining your proposal.
+
+The spec update process will occur from time to time and all proposals largely agreed to by the community will make it in.
+
 === Typos, Clarifications ===
 
 The following section should be used to list proposed typos and clarifications which need to be made to future revisions of the architecture spec document.
