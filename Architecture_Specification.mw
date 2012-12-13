@@ -1,10 +1,25 @@
 This page contains information relating to the OpenRISC 1000 architecture and the specification document.
 
-= Download OR1K 1.0 Specification =
+= OpenRISC 1000 architecture 1.0 =
+
+This is the first update to OR1K architecture for many years. It addresses architectural and documentation issues in the manual. A summary of the main features follows:
+
+* jump/branch delay slot is now optional
+* improved version tracking
+* relocatable exception vector space
+* correction of arithmetic overflow and carry detection
+* improvements to MAC and integer multiply behaviour
+* various clarifications regarding hardware and software behaviour
+
+See table 1-2 in the manual for a full list.
+
+== Download OR1K 1.0 Specification ==
 
 Architecture specification document: [http://opencores.org/websvn,filedetails?repname=openrisc&path=%2Fopenrisc%2Ftrunk%2Fdocs%2Fopenrisc-arch-1.0-rev0.pdf PDF]
 
-= Download Previous OR1K (0.0) Specification =
+== Previous specifications ==
+
+These documents are archived. For now it's just the "original" spec, it can be downloaded below:
 
 Old Architecture manual (April 2006): [http://opencores.org/websvn,filedetails?repname=openrisc&path=%2Fopenrisc%2Ftrunk%2Fdocs%2Farchive%2Fopenrisc_arch.pdf PDF]
 
