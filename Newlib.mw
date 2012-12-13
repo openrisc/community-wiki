@@ -2,7 +2,7 @@
 
 The OpenRISC 1000 port of the newlib library aims to provide a library to provide support for running on bare-metal hardware without an operating system. It is also used when running the GNU toolchain regression suite.
 
-The library is automatically linked when using the newlib version of the GCC compiler (or32-elf-gcc). The target board is specified by -m''boardname''. If not board is specified, the default (-mor1ksim) is suitable for use with [[Or1ksim]].
+The library is automatically linked when using the newlib version of the GCC compiler (or32-elf-gcc). The target board is specified by -m''boardname''. If no board is specified, the default (-mor1ksim) is suitable for use with [[Or1ksim]].
 
 = Port acknowledgements =
 
