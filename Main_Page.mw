@@ -14,6 +14,8 @@ The aim of the OpenRISC project is to create free and open source computing plat
 
 * [[OR1K:Community_Portal#Get_source_code|Download]] source code or [http://opencores.org/websvn,listing,openrisc browse in SVN]
 
+* Download the newly released [[Architecture_Specification#Download_Previous_OR1K_.280.0.29_Specification|OR1K architecture specification 1.0 PDF]]
+
 * OpenRISC [http://bugzilla.opencores.org/ bugzilla] and its [[OR1K:Community_Portal#Bug_reporting|documentation]]
 
 * [[Ubuntu_VirtualBox-image_updates_and_information|Ubuntu VirtualBox OpenRISC image ]] - Get started easy, tools are pre-installed
@@ -27,13 +29,5 @@ This project is now fully maintained through a Wiki (the [[OR1K:Community_Portal
 
 {{Special:Overview}}
 [[OR1K:Community_Portal|Click here]] for the OpenRISC project details.
-
-
-
-
-
-
-
-
 
 Active developers are welcome as maintainer of this project. The list will be updated regularly. If you think your name should be in the list, please send an email to [mailto:ocadmin@opencores.org ocadmin@opencores.org].
