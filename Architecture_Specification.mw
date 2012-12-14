@@ -147,6 +147,10 @@ One of the bigger deficiencies of the OpenRISC 1000 ISA is the lack of support f
 This should be addressed, but a discussion whether it should be implemented as a load/link-store conditional or a atomic-rmw is needed.
 This functionality should of course be optional to implement.
 
+=== Optional user-mode support ===
+
+As some processors designed for embedded applications won't necessarily run software with a user/supervisor-mode split of operation, it's not necessary for them to implement user-mode features (eg. protect from unprivileged access to SPRs and the like.) Obviously this lack of support for user mode should be indicated via a bit in the CPUCFGR. So I propose a bit is added so that implementations without user-mode support can be detected by software which requires user-mode.
+
 = Previous proposals =
 
 The suggestions which were accepted, in one form or another, into the 1.0 release of the architecture specification can be found here: [[Architecture_Specification_1.0_proposals]].
