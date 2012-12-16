@@ -11,7 +11,7 @@ This is the first update to OR1K architecture for many years. It addresses archi
 * improvements to MAC and integer multiply behaviour
 * various clarifications regarding hardware and software behaviour
 
-See table 1-2 in the manual for a full list.
+See the [[Architecture Specification 1.0 Changes Summary]] page for a more extensive summary and list of suggested updates for implementations. See table 1-2 in [http://opencores.org/websvn,filedetails?repname=openrisc&path=%2Fopenrisc%2Ftrunk%2Fdocs%2Fopenrisc-arch-1.0-rev0.pdf the manual] for a full list.
 
 == Download OR1K 1.0 Specification ==
 
