@@ -49,7 +49,7 @@ The implementation-specific registers allow CPU implementations to embed up to 2
 * local build version/date information
 * debug features 
 
-= Updates to implementation =
+= Updates to implementations =
 
 It's suggested the following is done to bring implementations into line with OR1k 1.0:
 
