@@ -597,8 +597,7 @@ This is an open source project, so the community provides support (although ther
 
 == Future plans ==
 
-Individual tools above have their own plans laid out for future work. At a toolchain level, there is one issue that needs resolving:
-* Reconsider toolchain prefix (should it be or1k rather than or32)
+Individual tools above have their own plans laid out for future work.
 
 === Wishlist ===
 
