@@ -148,9 +148,10 @@ Please note that ''orbuild'' is a new project and still lacks some polish.
 
 The following can be used to install the development version of the tool chain.
 
+==== Newlib toolchain (or1k-elf) ====
+
 See the following links for the appropriate development versions of the tools and libraries: [[OpenRISC_GNU_tool_chain#Development_version|binutils]], [[OpenRISC_GNU_tool_chain#Development_version_2|gcc]], [[OpenRISC_GNU_tool_chain#Development_version_3|newlib]]
 
-Note the following commands '''do not''' enable shared object support/dynamic linking yet.
 
 The following assumes a checkout of the development repositories, which at present can be done with the following:
 
@@ -192,6 +193,83 @@ Make a build directory each for the gnu-src tools and gcc, alongside the checkou
  make install
 
 Be sure to add <code>/opt/or1k-toolchain/bin</code> to the shell's <code>PATH</code> variable
+
+==== Linux (uClibc) toolchain (or1k-linux) ====
+
+===== Initial preparations =====
+ 
+ cd ~
+ mkdir openrisc
+ cd openrisc
+ 
+ mkdir /opt/or1k-toolchain
+ sudo chown username:username /opt/or1k-toolchain
+ 
+ export PATH=$PATH:/opt/or1k-toolchain/bin
+ 
+===== or1k-src =====
+
+NOTE: on 32-bit machines --disable-werror is needed due to an enum acting as
+bit mask is considered signed
+
+ cd ~/openrisc
+ git clone git://github.com/openrisc/or1k-src.git
+ mkdir build-or1k-src
+ cd build-or1k-src
+ 
+ ../or1k-src/configure --target=or1k-linux --prefix=/opt/or1k-toolchain \
+ --disable-shared --disable-itcl --disable-tk --disable-tcl --disable-winsup \
+ --disable-libgui --disable-rda --disable-sid --disable-sim --disable-gdb \
+ --with-sysroot --disable-newlib --disable-libgloss
+ 
+ make && make install
+
+===== Linux headers =====
+
+ export SYSROOT=/opt/or1k-toolchain/or1k-linux/sys-root
+ 
+ cd ~/openrisc
+ git clone git://openrisc.net/jonas/linux
+ cd linux
+ make INSTALL_HDR_PATH=${SYSROOT}/usr headers_install
+ 
+===== gcc stage 1 =====
+
+ cd ~/openrisc
+ git clone git://github.com/openrisc/or1k-gcc
+ 
+ mkdir build-gcc
+ cd build-gcc
+ 
+ ../or1k-gcc/configure --target=or1k-linux --prefix=/opt/or1k-toolchain --disable-libssp \
+ --srcdir=../or1k-gcc --enable-languages=c --without-headers --enable-threads=single \
+ --disable-libgomp --disable-libmudflap --disable-shared --disable-libquadmath \
+ --disable-libatomic
+ 
+ make && make install
+
+===== uClibc =====
+
+ export SYSROOT=/opt/or1k-toolchain/or1k-linux/sys-root
+ 
+ cd ~/openrisc
+ git clone git://github.com/openrisc/uClibc-or1k.git
+ 
+ cd uClibc-or1k
+ make ARCH=or1k defconfig
+ make && make PREFIX=$SYSROOT install
+
+===== gcc stage 2 =====
+
+ cd ~/openrisc
+ cd build-gcc
+ rm -rf *
+ 
+ ../or1k-gcc/configure --target=or1k-linux --prefix=/opt/or1k-toolchain --disable-libssp \
+ --srcdir=../or1k-gcc --enable-languages=c,c++ --enable-threads=posix --disable-libgomp \
+ --disable-libmudflap --with-sysroot=${SYSROOT} --disable-multilib
+ 
+ make && make install
 
 === Support for non-Linux systems ===
 
