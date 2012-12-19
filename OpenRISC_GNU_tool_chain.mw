@@ -605,11 +605,9 @@ Individual tools above have their own plans laid out for future work. At a toolc
 === Future toolchain development ===
 
 At a technical level, future development of the GNU toolchain is planned to include
-* support for [[OpenRISC PIC|position independent code (PIC)]] and shared object libraries.Currently being worked on by [[User:Jeremybennett|Jeremy Bennett]] and [[User:Amylaar|J&ouml;rn Rennecke]].
 * improved optimization through inclusion of accurate process scheduling models.
 * support for profiling.
 * more efficient thread handling.
-* add support for <code>--gc-sections</code> option to remove unused functions to make binaries as small as possible
 
 There are some structural things we would also really like to have in place:
 * A nice tutorial, showing off the installation and use of the new toolchain.
