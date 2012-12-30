@@ -18,9 +18,9 @@ Support for other debug interface hardware can be added relatively easily.
 
 = Downloading =
 
-The OpenOCD code with basic OpenRISC 1000 support is found on the openrisc.net git tree.
+The OpenOCD code with basic OpenRISC 1000 support is found on the github openrisc organization.
 
- git clone git://openrisc.net/julius/openocd
+ git clone git://github.com/openrisc/openOCD.git
 
 = Prerequisites =
 
