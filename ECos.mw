@@ -202,8 +202,7 @@ The following screen presents reslts of the timelice test.
 * Fix assembly code to use find first instructions
 * Add ordb2 platform HAL with m25pxx flash driver
 * Prepare the code structure to support non-compatible OR2k
-* Send the code to eCos maintainers
-* Move some parts of the assembler code to C
+* Send the code to eCos repositories
 
 == Bugs and patches ==
 
