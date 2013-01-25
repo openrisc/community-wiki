@@ -193,9 +193,7 @@ The following screen presents reslts of the timelice test.
 * Fix the cache bug
 * Add option to use l.nop opcode for printch
 * Add option whether MAC unit is present or not
-* Establish formal release verification
 * Add configuration options for peripheral addresses and interrupt numbers
-* Fix UART prescaler
 * Add interrupt mode for SPI driver
 * Add support for multiple UARTs
 * Review ETHMAC driver (problem with jamming descriptors)
