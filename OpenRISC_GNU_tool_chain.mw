@@ -347,6 +347,7 @@ A development version is underway and is relatively stable. It adds the followin
 
 * dynamic object support
 * no delay-slot code generation
+* support for thread-local storage
 
 It is currently based on gcc-4.8.0.
 
