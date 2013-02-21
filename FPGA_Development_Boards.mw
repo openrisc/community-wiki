@@ -138,7 +138,7 @@ See the ORPSoC documentation for information on how to program and use the FPGA 
 
 [http://de0-nano.terasic.com/ More about this board on manufacturer's website]
 === Pre-built image with orpsoc, U-Boot and Linux ===
-[ftp://ocuser:ocuser@openrisc.opencores.org/orpsoc/images/orpsoc-de0-nano-50mhz.tar.gz orpsoc-de0-nano-50mhz.tar.gz]
+[ftp://ocuser:ocuser@openrisc.opencores.org/orpsoc/images/orpsoc-de0-nano-50mhz.tar orpsoc-de0-nano-50mhz.tar.gz]
 
 Use the following command to program the .jic image onto flash:
  <nowiki>quartus_pgm --mode=jtag -o pi\;orpsoc.jic</nowiki>
