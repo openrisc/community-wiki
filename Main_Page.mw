@@ -22,7 +22,7 @@ The aim of the OpenRISC project is to create free and open source computing plat
 
 * [[Ordb2a-ep4ce22|The NEW OpenRISC FPGA development board information]]
 
-* OpenRISC 1000 emulator written in Javascript, running Linux: [http://simulationcorner.net/opencore4/ jor1k]
+* OpenRISC 1000 emulator written in Javascript, running Linux: [http://s-macke.github.com/jor1k/ jor1k]
 
 
 This project is now fully maintained through a Wiki (the [[OR1K:Community_Portal|Community Portal]]). The [http://opencores.org/openrisc,overview old web pages] are still available, but no longer maintained (should NOT be used).
