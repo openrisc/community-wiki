@@ -73,7 +73,10 @@ This file contains settings for architecture specific definitions. This section 
   #define portDISABLE_INTERRUPTS()   vPortDisableInterrupts()
   #define portENABLE_INTERRUPTS()    vPortEnableInterrupts()
 
-'portSTACK_GROWTH' is specify direction of stack growth. Upwards is 1. Downwards is -1. In case of OpenRISC, stack grows downwards. 'portTICK_RATE_MS' si specify period of tick timer in 1 millisecond. 
+'portSTACK_GROWTH' is specifies direction of stack growth. Upwards is 1. Downwards is -1. In case of OpenRISC, stack grows downwards. 
+
+'portTICK_RATE_MS' specifies period of tick timer in milliseconds.
+
 'port YIELD' will be requested to scheduler for switch to other task  after end of this time slice. It is implemented by system call 0x0FCC.
 
   #define portENTER_CRITICAL()	{	\
