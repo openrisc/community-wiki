@@ -39,6 +39,10 @@ The following section should be used to list proposed typos and clarifications w
 
 ''Synchronization'' is misspelled as ''Syncronization'' on pages 44, 82, 92, 284, and 340.
 
+==== Writable bits in SR ====
+
+At present the fixed-one bit in the supervision register (<tt>SR[FO]</tt>) is listed as readable ''and'' writable. It should be listed as readable only.
+
 ==== Cache Registers Marked as Optional ====
 
 From [http://bugzilla.opencores.org/show_bug.cgi?id=79 bug #79].
