@@ -4,6 +4,8 @@ At present OpenRISC is supported by a 32-bit GNU toolchain offering C and C++ su
 
 The toolchains are available as pre-compiled binaries, and stable source code snapshots and in development versions under SVN.
 
+For help with, or to report any issues, see the [[OpenRISC_GNU_tool_chain_troubleshooting|troubleshooting page]].
+
 == Installation ==
 
 The stable versions of the tools are based on binutils 2.20.1, GCC 4.5.1 and GDB 7.2. For the bare metal toolchain, they use newlib 0.18.0 and for the Linux application toolchain uClibc 0.9.32. Both toolchains are tested using or1ksim-0.5.1. 
@@ -596,6 +598,8 @@ The project uses [http://bugzilla.opencores.org/ Bugzilla] to track all the bugs
 === Support ===
 
 This is an open source project, so the community provides support (although there are companies offering commercial support as well). The various [[OR1K:Community_Portal#Mailing lists|mailing lists]] and [[OR1K:Community_Portal#IRC|IRC]] are good places to seek assistance.
+
+Also check the [[OpenRISC_GNU_tool_chain_troubleshooting|troubleshooting page]] for details on any fixes, or to document any issues with fixes.
 
 == Future plans ==
 
