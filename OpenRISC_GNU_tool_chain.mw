@@ -180,11 +180,12 @@ Make a build directory each for the gnu-src tools and gcc, alongside the checkou
  make
  make install
  
- # build newlib
+ # build newlib and gdb (without or1ksim in this case)
  cd ../bld-or1k-src
  ../or1k-src/configure --target=or1k-elf --prefix=/opt/or1k-toolchain --enable-shared --disable-itcl \
- --disable-tk --disable-tcl --disable-winsup --disable-libgui --disable-rda --disable-sid --disable-sim \
- --disable-gdb --with-sysroot --enable-newlib --enable-libgloss
+ --disable-tk --disable-tcl --disable-winsup --disable-libgui --disable-rda --disable-sid \
+ --enable-sim --disable-or1ksim \
+ --enable-gdb  --with-sysroot --enable-newlib --enable-libgloss
  make
  make install
  
