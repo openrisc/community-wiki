@@ -74,7 +74,7 @@ The following configures the proxy to be built to interface with the Mohor unit 
 
 = Running =
 
-The following is an example of using the ''Moho'' debug unit.
+The following is an example of using the ''Mohor'' debug unit.
 
 See [http://www.elec4fun.fr/2011-03-30-10-16-30/2012-08-22-20-50-31/or1k-on-de1-openocd this guide] for details on running OpenOCD against the ''adv_debug_sys''.
 
