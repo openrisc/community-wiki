@@ -82,7 +82,7 @@ See [http://www.elec4fun.fr/2011-03-30-10-16-30/2012-08-22-20-50-31/or1k-on-de1-
 
 OpenOCD uses TCL script fragments to configure different parts of the debug ''chain'' (transport, interface, protocol, hardware). The following TCL source was used during development to bring the system up. Place it in a file in the build directory (bld-openocd - presumably where you are running the following commands from.) Assume it's called or1k-dev.tcl for now:
 
- source [find ../openocd/tcl/target/or1k.cfg]
+ source [find ../tcl/target/or1k.cfg]
  
  proc or1k_test_init {} {
      
