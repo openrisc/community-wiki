@@ -6,7 +6,7 @@ This page contains information about the OpenRISC 1000 architecture port.
 
 == Features ==
 
-The following for designs using the[http://opencores.org/project,dbg_interface SoC Debug (Mohor) Interface]:
+The proxy supports designs using either the[http://opencores.org/project,dbg_interface SoC Debug (Mohor) Interface] or [http://opencores.org/project,adv_debug_sys adv_debug_sys] to do the following:
 * Memory access for program download, data inspection
 * CPU register read and write
 * CPU stall control
@@ -22,34 +22,65 @@ The OpenOCD code with basic OpenRISC 1000 support is found on the github openris
 
  git clone git://github.com/openrisc/openOCD.git
 
-= Prerequisites =
+= Hardware requirements =
 
 For the basic requirements of compiling and running OpenOCD see its [http://openocd.berlios.de/doc/html/index.html User Guide].
 
-The required hardware is an [http://openocd.berlios.de/doc/html/Debug-Adapter-Hardware.html OpenOCD-supported debug cable] and an OpenRISC-based design with the supported debug interface.
+The required hardware depends on whether the FPGA's integrated JTAG TAP is being used. For the ''Mohor'' debug interface, a [http://openocd.berlios.de/doc/html/Debug-Adapter-Hardware.html OpenOCD-supported debug cable] will be required to interface with the FPGA design.
 
-So far development has been done using the [http://opencores.org/shop,item,3 ORSoC USB debug cable] against an [[ORPSoC]] system using the [http://opencores.org/project,dbg_interface SoC Debug (Mohor) Interface], but there's no reason why any other [http://openocd.berlios.de/doc/html/Debug-Adapter-Hardware.html OpenOCD-supported cable] wouldn't work.
+The ''Mohor'' support in OpenOCD has been tested with the [http://opencores.org/shop,item,3 ORSoC USB debug cable] against an [[ORPSoC]] system, but there's no reason why any other [http://openocd.berlios.de/doc/html/Debug-Adapter-Hardware.html OpenOCD-supported cable] wouldn't work.
+
+The ''adv_debug_sys'' is capable of using the in-built JTAG TAP circuits in the FPGA, and thus doesn't necessarily require additional hardware. However, it can also be configured to use a separate TAP.
+
+You must understand the design you're debugging to know which is right for you.
 
 = Building =
 
-The source from the git repository needs to be setup before it can be configured. Instructions on this are in the README file in the root of the project. The bootstrap script for the source is run like so:
+== Bootstrap ==
 
- cd openocd
+The source from the git repository needs to be setup '''once''', and once only, before it can be configured. This is done with a provided bootstrap script, run as just:
+
  ./bootstrap
 
-It may prompt you to install a few tools such as libtool and autoconf. Install these if they are not on your system.
+'''Note''': It may prompt you to install a few tools such as '''libtool''' and '''autoconf'''. Install these if they are not on your system. eg. on a Ubuntu system:
 
-Make a build directory parallel to the source and configure using the free and open source libftdi driver.
+ sudo apt-get install libtool autoconf
+
+== Configure and compile ==
+
+Make a build directory in <tt>openocd</tt> directory and configure depending on which debug interface you have in your FPGA.
  
- mkdir bld-openocd && cd bld-openocd
- ../openocd/configure --enable-ft2232_libftdi --enable-maintainer-mode
+ mkdir build
+ cd build
+
+=== adv_debug_sys ===
+
+The following configures OpenOCD to work with the ''adv_debug_sys'' on an Altera FPGA. (This is as per instructions on [http://www.elec4fun.fr/2011-03-30-10-16-30/2012-08-22-20-50-31/or1k-on-de1-openocd elec4fun.fr]):
+
+ ../configure --enable-usb_blaster_libftdi --enable-adv_debug_sys --enable-altera_vjtag --enable-maintainer-mode
+
+=== Mohor debug unit ===
+
+The following configures the proxy to be built to interface with the Mohor unit over an FTDI-based cable (such as the [http://opencores.org/shop,item,3 ORSoC USB debug cable]):
+
+ ../configure --enable-ft2232_libftdi --enable-maintainer-mode
  make
+
+=== FTDI driver ===
+
+'''Note''': You may be required to install the FTDI driver (if running make and it cannot find the <tt>ftdi.h</tt>, then this is the problem). Under Ubuntu this is done with:
+
+ sudo apt-get install libtftdi-dev
 
 = Running =
 
+The following is an example of using the ''Moho'' debug unit.
+
+See [http://www.elec4fun.fr/2011-03-30-10-16-30/2012-08-22-20-50-31/or1k-on-de1-openocd this guide] for details on running OpenOCD against the ''adv_debug_sys''.
+
 == Setup ==
 
-OpenOCD uses TCL for everything. The following TCL source was used during development to bring the system up. Place it in a file in the build directory (bld-openocd - presumably where you are running the following commands from.) Assume it's called or1k-dev.tcl for now:
+OpenOCD uses TCL script fragments to configure different parts of the debug ''chain'' (transport, interface, protocol, hardware). The following TCL source was used during development to bring the system up. Place it in a file in the build directory (bld-openocd - presumably where you are running the following commands from.) Assume it's called or1k-dev.tcl for now:
 
  source [find ../openocd/tcl/target/or1k.cfg]
  
@@ -88,10 +119,6 @@ Note - I had to run with ''sudo'' but that's because my permissions weren't set 
 
 = Issues = 
 
-* Not thoroughly tested - the basics have been checked on one implementation, but further use on other hardware, and feedback about it would be good.
-
 * Lack of usage documentation. OpenOCD is quite powerful and at the moment we're using it solely as a GDB proxy.
 
-* Resetting the target is not done properly yet in the port.
-
-* The port, in its current state, will not be accepted in OpenOCD upstream due to the implementation of support for the read and write SPR commands done via the RSP <tt>qRcmd</tt> mechanism. Perhaps the OR1K GDB port could be changed to instead use the <tt>p</tt>/<tt>P</tt> command to access registers.
+* Resetting the target is not done properly yet in the ''mohor'' port.
