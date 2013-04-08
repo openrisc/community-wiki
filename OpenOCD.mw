@@ -108,14 +108,13 @@ This tells OpenOCD to use the OpenRISC 1000 target configuration information whi
 
 Using something like the following to a) tell OpenOCD which cable to use to connect, and b) which TCL command file to then run some commands from. From the build directory run:
 
- sudo ./src/openocd -f ../openocd/tcl/interface/orsoc-jtag.cfg -f or1k-dev.tcl 
+ sudo ./src/openocd -f ../tcl/interface/orsoc-jtag.cfg -f or1k-dev.tcl 
 
 OpenOCD should establish communication with the target and stall it and wait for GDB to connect.
 
 Add the switch ''--debug 3'' to the command line to see lots of debug output.
 
 Note - I had to run with ''sudo'' but that's because my permissions weren't set correctly on the USB debug cable. This is not a good thing to do, and it's advisable that correct permissions on the USB debug cable are set to allow users to access it.
-
 
 = Issues = 
 
