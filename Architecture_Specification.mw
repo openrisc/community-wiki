@@ -159,6 +159,37 @@ This functionality should of course be optional to implement.
 
 As some processors designed for embedded applications won't necessarily run software with a user/supervisor-mode split of operation, it's not necessary for them to implement user-mode features (eg. protect from unprivileged access to SPRs and the like.) Obviously this lack of support for user mode should be indicated via a bit in the CPUCFGR. So I propose a bit is added so that implementations without user-mode support can be detected by software which requires user-mode.
 
+=== Consistency ===
+
+The following section should be used to list proposed consistency issues that should be discussed for future revisions of the architecture specification document. This may refer to naming conventions but also more trivial matters such as use of whitespace and formatting.
+
+==== Naming conventions ====
+
+The naming of l.addi and l.addic are not consistent with the naming of l.andi, l.ori and l.xori.
+
+Currently there exist three naming patterns.
+
+* Instructions which always take halfword immediate values and thus make them implicit in the name and the mnemonic.
+
+ l.addi: Add Immediate
+ l.addic: Add Immediate and Carry
+
+* Instructions which always take halfword immediate values but still makes them explicit in the name, although implicit in the mnemonic.
+
+ l.andi: And with Immediate Half Word
+ l.ori: Or with Immediate Half Word
+ l.xori: Exclusive Or with Immediate Half Word
+
+* Related instructions which handle values of varying size and thus make them explicit in the name and the mnemonic.
+
+ l.lbs: Load Byte and Extend with Sign
+ l.lhs: Load Half Word and Extend with Sign
+ l.lws: Load Single Word and Extend with Sign
+
+==== Whitespace ====
+
+To be consistent with l.add and l.addc an empty new line should be inserted between the two paragraphs in the description of l.addi and l.addic.
+
 = Previous proposals =
 
 The suggestions which were accepted, in one form or another, into the 1.0 release of the architecture specification can be found here: [[Architecture_Specification_1.0_proposals]].
