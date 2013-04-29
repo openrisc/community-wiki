@@ -79,7 +79,7 @@ A quick installation instruction list for most Linux platforms is provided below
  mkdir objdir; cd objdir
  export CXX=g++
  ../configure
- #(note that this configures the current location as the permanent location of the systemc library)
+ # note that this configures the current location as the permanent location of the systemc library
  make
 
 If using SystemC version 2.2.0, and make errors out with the following:
