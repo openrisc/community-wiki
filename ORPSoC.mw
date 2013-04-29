@@ -115,7 +115,7 @@ Extract it and follow the instructions in the included README file. A quick inst
  make test (optional)
  sudo make install
 
-Add export SYSTEMPERL=/path/to/systemperl_kit to ~/.bashrc
+Export the SYSTEMPERL environment variable in your shell startup script to point to the directory of this kit (the directory you ran <tt>make</tt> in). Eg for bash add something like <tt>export SYSTEMPERL=/path/to/SystemPerl-1.341</tt> to your ~/.bashrc file.
 
 
 '''Installing Verilator'''
