@@ -92,7 +92,7 @@ Add export SYSTEMC=/path/to/systemc-x.x.x to ~/.bashrc
 
 Download the latest release of Verilog-Perl by visiting its [http://search.cpan.org/search?module=Verilog::Language CPAN] site.
 
-Currently the latest release can be downloaded from [http://search.cpan.org/CPAN/authors/id/W/WS/WSNYDER/Verilog-Perl-3.210.tar.gz here].
+Currently the latest release (3.400) can be downloaded from [http://search.cpan.org/CPAN/authors/id/W/WS/WSNYDER/Verilog-Perl-3.400.tar.gz here].
 Extract it and follow the instructions in the include README file.
 
 A quick installation instruction list for most Linux platforms is provided:
