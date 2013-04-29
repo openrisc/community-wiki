@@ -120,17 +120,7 @@ Export the SYSTEMPERL environment variable in your shell startup script to point
 
 '''Installing Verilator'''
 
-Installing Verilator can be done a couple of ways - using either the latest sources from the repository, or from a packaged release. ORPSoC may not work with older versions.
-
-A packaged release (on modern Ubuntu systems) can be installed simply via <tt>apt</tt> eg:
-
- sudo apt-get install verilator
-
-It will usually get installed to /usr/share/verilator so you'll have to do the following in your ~/.bashrc:
-
- export VERILATOR_ROOT=/usr/share/verilator
-
-From source, you can do via git with:
+It is recommended Verilator is built and installed from source as follows:
 
  <nowiki>git clone http://git.veripool.org/git/verilator</nowiki>
  cd verilator
