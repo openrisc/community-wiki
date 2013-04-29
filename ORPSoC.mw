@@ -106,7 +106,7 @@ A quick installation instruction list for most Linux platforms is provided:
 
 Download the latest release of Verilog-Perl by visiting its [http://search.cpan.org/search?module=Verilog::Language CPAN] site.
 
-Currently the latest release can be downloaded from [http://search.cpan.org/search?module=SystemC::Netlist here].
+Currently the latest release (1.341) can be downloaded from [http://search.cpan.org/CPAN/authors/id/W/WS/WSNYDER/SystemPerl-1.341.tar.gz here].
 
 Extract it and follow the instructions in the included README file. A quick installation instruction list for most Linux platforms is provided:
  perl Makefile.PL
