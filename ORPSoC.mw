@@ -71,7 +71,8 @@ Following are the SystemC library installation instructions. Next is instruction
 
 '''Installing the SystemC library'''
 
-The SystemC library can be obtained from the [http://www.systemc.org/ Open SystemC Initiative] (OSCI) website. The Standards Download page contains the link to download the core SystemC language and examples archive. Registration with the OSCI is required before downloading.
+The SystemC library can be obtained from the [http://www.accellera.org/downloads/standards/systemc Open SystemC Initiative] (OSCI) website. The Standards Download page contains the link to download the core SystemC language and examples archive. Annoyingly, registration with the OSCI is required before downloading.
+
 Once the package is downloaded and extracted, follow the provided README for full compilation and installation instructions.
 A quick installation instruction list for most Linux platforms is provided below, starting in the systemc-x.x.x directory:
 
