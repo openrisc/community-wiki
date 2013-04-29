@@ -79,30 +79,11 @@ A quick installation instruction list for most Linux platforms is provided below
  mkdir objdir; cd objdir
  export CXX=g++
  ../configure
- # note that this configures the current location as the permanent location of the systemc library
+ # Note that this configures the current location as the permanent location of the systemc library
  make
-
-If using SystemC version 2.2.0, and make errors out with the following:
-
- ../../../../src/sysc/utils/sc_utils_ids.cpp: In function int 'sc_core::initialize()':
- ../../../../src/sysc/utils/sc_utils_ids.cpp:110: error: 'getenv' is not a member of std
- ../../../../src/sysc/utils/sc_utils_ids.cpp:111: error: 'strcmp' was not declared in this scope
-
-Then change the includes in the file systemc-2.2.0/src/sysc/utils/sc_utils_ids.cpp to look like the following:
-
- #include <cstdlib>
- #include <string.h>
- #include "sysc/utils/sc_report.h"
- using namespace std; 
-
-and re-run make. Hopefully this will be addressed in the next release of SystemC:
-
- make
-
-When make has completed, continue with:
-
  make install
- make check (optional)
+ # Optionally....
+ make check
 
 Add export SYSTEMC=/path/to/systemc-x.x.x to ~/.bashrc
 
