@@ -120,18 +120,26 @@ Export the SYSTEMPERL environment variable in your shell startup script to point
 
 '''Installing Verilator'''
 
-Installing Verilator can be done a couple of ways - using either the latest sources from the repository, or from a packaged release. ORPSoC works with Verilator version 3.710 onwards (the very latest as of May '09).
-Please see Verilator's installation page for instructions. Further instructions can be found in the README file included with the Verilator sources. A quick installation instruction list for most Linux platforms is provided below. It uses the method of a repository checkout with git (please install git-core with your package manager if it's not on your system):
+Installing Verilator can be done a couple of ways - using either the latest sources from the repository, or from a packaged release. ORPSoC may not work with older versions.
+
+A packaged release (on modern Ubuntu systems) can be installed simply via <tt>apt</tt> eg:
+
+ sudo apt-get install verilator
+
+It will usually get installed to /usr/share/verilator so you'll have to do the following in your ~/.bashrc:
+
+ export VERILATOR_ROOT=/usr/share/verilator
+
+From source, you can do via git with:
 
  <nowiki>git clone http://git.veripool.org/git/verilator</nowiki>
  cd verilator
  autoconf
  ./configure
  make
- make test (recommended)
  sudo make install
 
-Add export VERILATOR_ROOT=/path/to/verilator_kit to ~/.bashrc
+Add export <tt>VERILATOR_ROOT=/path/to/verilator_kit</tt> to ~/.bashrc (where /path/to/verilator_kit is the directory you typed <tt>make</tt> in).
 
 The SystemC model toolchain should now be ready to compile ORPSoC.
 
