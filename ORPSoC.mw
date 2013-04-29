@@ -109,21 +109,8 @@ Download the latest release of Verilog-Perl by visiting its [http://search.cpan.
 Currently the latest release (1.341) can be downloaded from [http://search.cpan.org/CPAN/authors/id/W/WS/WSNYDER/SystemPerl-1.341.tar.gz here].
 
 Extract it and follow the instructions in the included README file. A quick installation instruction list for most Linux platforms is provided:
+
  perl Makefile.PL
-
-It's possible the following message will be displayed:
-
- -Info: Your SystemC distribution has NOT been patched to allow sc_bv
- tracing. Type 'make sc_patch' to attempt the edits.v
- See the README file for details.
-
-If so, perform the patch:
-
- make sc_patch
-
-Then continue with, again:
-
- perl Makefile.PL (ignore it if it says it's not patched - it is)
  make
  make test (optional)
  sudo make install
