@@ -1,0 +1,200 @@
+= Operand representations =
+
+Currently there exist 16 different variations of operand representations for
+instructions (excluding l.custN instructions) in the OpenRISC 1000 architecture
+specification.
+
+Some of these variations have identical or very similar meaning. For instance
+the variation which has a destination register (rD), source register (rA) and an
+immediate value (I, K or L).
+
+From a consistency stand point it would be nice if all of these instructions
+agreed on using the same letter to represent an immediate value.
+
+For instance why should the opperand representation of l.andi and l.ori differ
+from the opperand representation of l.xori?
+
+ Format: l.andi rD,rA,K
+ Format: l.ori rD,rA,K
+
+ Format: l.xori rD,rA,I
+
+The goal is to reach a consensus on how to make the operand representations
+consistent. Which letter should be used for immediate values (I, K, L or N) and
+which register name should be used in the various cases.
+
+Below follows the 16 different variations. They have been grouped into 13
+general groups which try to encapsulate their behaviour. Feel free to comment
+about this division and revise it if necessary.
+
+== Groups ==
+
+=== dst (reg), src1 (reg), src2 (reg) ===
+
+==== rD,rA,rB ====
+
+ Format: l.add rD,rA,rB
+ Format: l.addc rD,rA,rB
+ Format: l.and rD,rA,rB
+ Format: l.cmov rD,rA,rB
+ Format: l.div rD,rA,rB
+ Format: l.divu rD,rA,rB
+ Format: l.ff1 rD,rA,rB
+ Format: l.fl1 rD,rA,rB
+ Format: l.mul rD,rA,rB
+ Format: l.mulu rD,rA,rB
+ Format: l.or rD,rA,rB
+ Format: l.ror rD,rA,rB
+ Format: l.sll rD,rA,rB
+ Format: l.sra rD,rA,rB
+ Format: l.srl rD,rA,rB
+ Format: l.sub rD,rA,rB
+ Format: l.xor rD,rA,rB
+
+=== dst (reg), src1 (reg), src2 (imm) ===
+
+==== rD,rA,I ====
+
+ Format: l.addi rD,rA,I
+ Format: l.addic rD,rA,I
+ Format: l.muli rD,rA,I
+ Format: l.xori rD,rA,I
+
+==== rD,rA,K ====
+
+ Format: l.andi rD,rA,K
+ Format: l.mfspr rD,rA,K
+ Format: l.ori rD,rA,K
+
+==== rD,rA,L ====
+
+ Format: l.rori rD,rA,L
+ Format: l.slli rD,rA,L
+ Format: l.srai rD,rA,L
+ Format: l.srli rD,rA,L
+
+=== src (imm) ===
+
+==== K ====
+
+ Format: l.nop K
+ Format: l.sys K
+ Format: l.trap K
+
+==== N ====
+
+ Format: l.bf N
+ Format: l.bnf N
+ Format: l.j N
+ Format: l.jal N
+
+=== src (reg) ===
+
+==== rB ====
+
+ Format: l.jalr rB
+ Format: l.jr rB
+
+=== dst (reg), src (imm) ===
+
+==== rD,K ====
+
+ Format: l.movhi rD,K
+
+=== dst (reg) ===
+
+==== rD ====
+
+ Format: l.macrc rD
+
+=== dst (reg), src (addr) ===
+
+==== rD,I(rA) ====
+
+ Format: l.lbs rD,I(rA)
+ Format: l.lbz rD,I(rA)
+ Format: l.lhs rD,I(rA)
+ Format: l.lhz rD,I(rA)
+ Format: l.lws rD,I(rA)
+ Format: l.lwz rD,I(rA)
+
+=== dst (addr), src (reg) ===
+
+==== I(rA),rB ====
+
+ Format: l.sb I(rA),rB
+ Format: l.sd I(rA),rB
+ Format: l.sh I(rA),rB
+ Format: l.sw I(rA),rB
+
+=== dst (reg), src (reg) ===
+
+==== rD,rA ====
+
+ Format: l.extbs rD,rA
+ Format: l.extbz rD,rA
+ Format: l.exths rD,rA
+ Format: l.exthz rD,rA
+ Format: l.extws rD,rA
+ Format: l.extwz rD,rA
+
+=== src1 (reg), src2 (reg) ===
+
+==== rA,rB ====
+
+ Format: l.mac rA,rB
+ Format: l.macu rA,rB
+ Format: l.msb rA,rB
+ Format: l.msbu rA,rB
+ Format: l.muld rA,rB
+ Format: l.muldu rA,rB
+ Format: l.sfeq rA,rB
+ Format: l.sfges rA,rB
+ Format: l.sfgeu rA,rB
+ Format: l.sfgts rA,rB
+ Format: l.sfgtu rA,rB
+ Format: l.sfles rA,rB
+ Format: l.sfleu rA,rB
+ Format: l.sflts rA,rB
+ Format: l.sfltu rA,rB
+ Format: l.sfne rA,rB
+
+=== src1 (reg), src2 (imm) ===
+
+==== rA,I ====
+
+ Format: l.maci rA,I
+ Format: l.sfeqi rA,I
+ Format: l.sfgesi rA,I
+ Format: l.sfgeui rA,I
+ Format: l.sfgtsi rA,I
+ Format: l.sfgtui rA,I
+ Format: l.sflesi rA,I
+ Format: l.sfleui rA,I
+ Format: l.sfltsi rA,I
+ Format: l.sfltui rA,I
+ Format: l.sfnei rA,I
+
+=== src1 (reg), src2 (reg), src3 (imm) ===
+
+==== rA,rB,K ====
+
+ Format: l.mtspr rA,rB,K
+
+=== no operand ===
+
+ Format: l.csync
+ Format: l.msync
+ Format: l.psync
+ Format: l.rfe
+
+=== custom implementation ===
+
+ Format: l.cust1
+ Format: l.cust2
+ Format: l.cust3
+ Format: l.cust4
+ Format: l.cust5 rD,rA,rB,L,K
+ Format: l.cust6
+ Format: l.cust7
+ Format: l.cust8
