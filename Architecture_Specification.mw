@@ -163,6 +163,34 @@ As some processors designed for embedded applications won't necessarily run soft
 
 The following section should be used to list proposed consistency issues that should be discussed for future revisions of the architecture specification document. This may refer to naming conventions but also more trivial matters such as use of whitespace and formatting.
 
+==== Operand representations ====
+
+Currently there exist 16 different variations of operand representations for
+instructions (excluding l.custN instructions) in the OpenRISC 1000 architecture
+specification.
+
+Some of these variations have identical or very similar meaning. For instance
+the variation which has a destination register (rD), source register (rA) and an
+immediate value (I, K or L).
+
+From a consistency stand point it would be nice if all of these instructions
+agreed on using the same letter to represent an immediate value.
+
+For instance why should the opperand representation of l.andi and l.ori differ
+from the opperand representation of l.xori?
+
+ Format: l.andi rD,rA,K
+ Format: l.ori rD,rA,K
+
+ Format: l.xori rD,rA,I
+
+The goal is to reach a consensus on how to make the operand representations
+consistent. Which letter should be used for immediate values (I, K, L or N) and
+which register name should be used in the various cases.
+
+The following page contains a list of all instructions arranged by their operand representations:
+http://opencores.org/or1k/Operand_representation
+
 ==== Naming conventions ====
 
 The naming of l.addi and l.addic are not consistent with the naming of l.andi, l.ori and l.xori.
