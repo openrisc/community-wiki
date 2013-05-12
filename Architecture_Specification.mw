@@ -74,6 +74,22 @@ The l.lwz definition page in the spec should have:
 
 rdiez: For the 32-bit architecture, in order to reduce confusion it would be best to remove the l.lws opcode, and remove the l.lws and l.lwz mnemonics, then add an "l.lw" mnemonic which maps to the old l.lwz opcode. or1200 hasn't implemented (or didn't implement) the l.lws opcode for a long time anyway. By the way, l.extws and l.extwz should also be marked as obsolete, as l.ori can achieve the same results. For the 64-bit architecture, l.lw shouldn't be a valid mnemonic, so the programmer must think whether he wants the l.lwz or the l.lws behaviour.
 
+==== l.msbu name ====
+
+There exist a typo in the name of l.msbu. The current name is "Multiply and Subtract Signed" but it should be "Multiply and Subtract Unsigned".
+
+==== l.ff1 and l.fl1 format ====
+
+There exist a typo in the format of l.ff1 and l.fl1. They both include the rB register, even though it is not part of the instruction.
+
+Format:
+
+ before: l.ff1 rD,rA,rB
+ after:  l.ff1 rD,rA
+
+ before: l.fl1 rD,rA,rB
+ after:  l.fl1 rD,rA
+
 ==== Accessing SPRs with insufficient privileges ====
 
 At present there is no comment on what should happen in the event that l.mtspr/l.mfspr are used on SPRs which require supervisor mode to access.
