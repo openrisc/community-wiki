@@ -275,6 +275,23 @@ bit mask is considered signed
  
  make && make install
 
+===== Hints when cross compiling with the or1k-linux-uclibc toolchain =====
+
+Since autotools doesn't know about or1k run the following command to replace or32 with or1k
+
+ find ./ -type f -name '*' -print | xargs sed -i 's/or32/or1k/'
+
+Building with the following commands will work in a number of situations
+
+ ./configure --host=or1k-linux-uclibc --prefix=/opt/or1k-toolchain/or1k-linux-uclibc/sys-root/usr
+ make
+ make install
+
+Some programs embed the --prefix parameter into the binaries, but those programs usually use the DESTDIR environment variable
+ ./configure --host=or1k-linux-uclibc --prefix=/usr
+ make
+ make DESTDIR=/opt/or1k-toolchain/or1k-linux-uclibc/sys-root install
+
 === Support for non-Linux systems ===
 
 ==== Microsoft Windows with Cygwin ====
