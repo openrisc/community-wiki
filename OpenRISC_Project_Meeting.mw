@@ -6,9 +6,15 @@ For previous OpenRISC meetings and conferences, see the [[OpenRISC_Project_Meeti
 
 The second annual OpenRISC project conference - ORCONF2013. 
 
-The event is in the early stages of planning at present, so check back or subscribe to the [[OR1K:Community_Portal#Mailing_lists|project's mailing lists]] to be kept up to date.
-
 Submissions for presentations, discussion topics and the like are now welcome - see the [[OpenRISC_Project_Meeting#Schedule|schedule section]] for details.
+
+=== Registration ===
+
+Registration is free and allows us to know who will be attending for scheduling and catering purposes.
+
+'''Registration for the event is now open via Eventbrite:''' [http://orconf2013.eventbrite.co.uk/ Click here to register for ORCONF]
+
+Please let us know any timing constraints on your attendance (<tt>set_multicycle_path -start 1hr -from {i:you} -to {i:orconf}</tt>)
 
 === Audience ===
 
@@ -24,7 +30,7 @@ This arrangement should allow people to travel on Saturday morning and return ho
 
 === Venue ===
 
-This year's conference will be held at the [http://www.cl.cam.ac.uk/ University of Cambridge Computer Laboratory] in '''Cambridge, England'''.
+This year's conference will be held at the [http://www.cl.cam.ac.uk/ University of Cambridge Computer Laboratory] in '''Cambridge, England'''. A ''big'' thank you to David Greaves and the Computer Labs for hosting us.
 
 Cambridge is well connected in the UK by train, and internationally via all of London's airports. However, '''London Stansted''' airport is the closest, and is only a 30-minute train ride from the center of Cambridge.
 
