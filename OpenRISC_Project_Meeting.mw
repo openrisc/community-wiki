@@ -14,7 +14,7 @@ Registration is free and allows us to know who will be attending for scheduling 
 
 '''Registration for the event is now open via Eventbrite:''' [http://orconf2013.eventbrite.co.uk/ Click here to register for ORCONF]
 
-Please let us know any timing constraints on your attendance (<tt>set_multicycle_path -start 1hr -from {i:you} -to {i:orconf}</tt>)
+Please let us know any timing constraints on your attendance when registering. (<tt>set_multicycle_path -start 1hr -from {i:you} -to {i:orconf}</tt>)
 
 === Audience ===
 
