@@ -1,4 +1,6 @@
-The aim of the OpenRISC project is to create free and open source computing platforms available under the GNU (L)GPL license. The platforms aim to provide:
+The aim of the OpenRISC project is to create free and open source computing platforms. 
+
+It aims to provide:
 * a free, open source RISC architecture with DSP features
 * a set of free, open source implementations of the architecture
 * a complete set of free, open source software development tools, libraries, operating systems and applications
@@ -8,21 +10,23 @@ The aim of the OpenRISC project is to create free and open source computing plat
 
 * [[OR1K:Community_Portal|OpenRISC Community Portal Wiki]]
 
-* Information about the [[OR1200 OpenRISC Processor]] and other [[OR1K:Community_Portal#Further_information|sources of information]]
+* Information about the [[OR1K_CPU_Cores|OpenRISC CPU cores]], [[OR1K:Community_Portal#Toolchains|tool chains]], and other [[OR1K:Community_Portal#Further_information|sources of information]]
 
 * The [http://opencores.org/forum,OpenRISC OpenRISC web-forum] and [[OR1K:Community_Portal#Mailing_lists|OpenRISC mailing lists.]]
 
 * [[OR1K:Community_Portal#Get_source_code|Download]] source code or [http://opencores.org/websvn,listing,openrisc browse in SVN]
 
-* Download the newly released [[Architecture_Specification#Download_OR1K_1.0_Specification|OR1K architecture specification 1.0 PDF]]
+* Download the [[Architecture_Specification#Download_OR1K_1.0_Specification|OR1K architecture specification 1.0 PDF]]
 
 * OpenRISC [http://bugzilla.opencores.org/ bugzilla] and its [[OR1K:Community_Portal#Bug_reporting|documentation]]
 
-* [[Ubuntu_VirtualBox-image_updates_and_information|Ubuntu VirtualBox OpenRISC image ]] - Get started easy, tools are pre-installed
+* [[Ubuntu_VirtualBox-image_updates_and_information|Ubuntu VirtualBox OpenRISC image]] - Get started easy, tools are pre-installed
 
 * [[Ordb2a-ep4ce22|The NEW OpenRISC FPGA development board information]]
 
-* OpenRISC 1000 emulator written in Javascript, running Linux: [http://s-macke.github.com/jor1k/ jor1k]
+* OR1K emulator written in Javascript, running Linux: [http://s-macke.github.com/jor1k/ jor1k]
+
+* [[OpenRISC_Project_Meeting#ORCONF_2013|ORCONF 2013]] - The upcoming project conference, to be held in Cambridge, England on October 5th and 6th
 
 
 This project is now fully maintained through a Wiki (the [[OR1K:Community_Portal|Community Portal]]). The [http://opencores.org/openrisc,overview old web pages] are still available, but no longer maintained (should NOT be used).
