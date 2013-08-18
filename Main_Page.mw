@@ -5,18 +5,17 @@ It aims to provide:
 * a set of free, open source implementations of the architecture
 * a complete set of free, open source software development tools, libraries, operating systems and applications
 
-
 '''Some useful hot-links:'''
 
 * [[OR1K:Community_Portal|OpenRISC Community Portal Wiki]]
 
-* Information about the [[OR1K_CPU_Cores|OpenRISC CPU cores]], [[OR1K:Community_Portal#Toolchains|tool chains]], and other [[OR1K:Community_Portal#Further_information|sources of information]]
-
-* The [http://opencores.org/forum,OpenRISC OpenRISC web-forum] and [[OR1K:Community_Portal#Mailing_lists|OpenRISC mailing lists.]]
-
-* [[OR1K:Community_Portal#Get_source_code|Download]] source code or [http://opencores.org/websvn,listing,openrisc browse in SVN]
-
 * Download the [[Architecture_Specification#Download_OR1K_1.0_Specification|OR1K architecture specification 1.0 PDF]]
+
+* Information about the [[OR1K:Community_Portal#Processor_Implementations|available synthesisable processor cores]], and [[OR1K:Community_Portal#Toolchains|tool chains]]
+
+* [[OR1K:Community_Portal#Get_source_code|Download source code]] for the various components
+
+* Interact with the community via the [http://opencores.org/forum,OpenRISC OpenRISC forum] and [[OR1K:Community_Portal#Mailing_lists|mailing lists]]
 
 * OpenRISC [http://bugzilla.opencores.org/ bugzilla] and its [[OR1K:Community_Portal#Bug_reporting|documentation]]
 
