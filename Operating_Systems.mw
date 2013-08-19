@@ -1,6 +1,8 @@
 Below are different operating systems that are ported to the OpenRISC processor:
 
 == Linux ==
+OpenRISC 1000 is supported in the mainline Linux kernel from [http://www.kernel.org kernel.org]. At the time, it is however recommended to use the latest development version from [http://git.openrisc.net/cgit.cgi/jonas/linux/ openrisc.net]
+
 Click here for in depth information about [[Linux]]
 
 == eCos ==
