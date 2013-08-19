@@ -1,4 +1,4 @@
-This page gives a summary of each of the available OR1k-compliant microprocessor soft-cores.
+This page gives a summary of each of the known available OR1k-compliant implementations.
 
 = Cores =
 
@@ -37,6 +37,16 @@ This core implements the complete OpenRISC ORBIS32 instruction set. It has a ver
 It is flagged as no longer maintained.
 
 See https://github.com/rdiez/orbuild/tree/master/Scripts/Projects/OpenRISC/OR10/CPU for more.
+
+= Simulation models =
+
+== or1ksim ==
+
+[[Or1ksim]] is the golden reference instruction set simulator (ISS) for OpenRISC 1000, providing instruction level simulation of the processor and common peripherals. It also provides extensive trace and debug facilities.
+
+== jor1k ==
+
+[http://s-macke.github.com/jor1k/ jor1k] is an OpenRISC 1000 emulator written in Javascript. Developed by Sebastian Macke and Gerard Braad. Find documentation [https://github.com/s-macke/jor1k/wiki here].
 
 = CPU ID Table =
 
