@@ -1,3 +1,4 @@
+{{obsolete|This page is obsolete as new ORPSoC isn't based on makefiles}}
 Standardized makefiles will help porting ORPSoC to new boards and toolchains. This proposal aims to find a set of rules for the various tasks involved in making a ORPSoC build
 
 == Rationale ==
