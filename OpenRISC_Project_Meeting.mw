@@ -93,3 +93,53 @@ Embecosm is a UK based consultancy providing open source compiler development an
 Please contact juliusbaxter@gmail.com or post to the [[OR1K:Community_Portal#Mailing_lists|OpenRISC mailing lists]] for further information or presentation proposals.
 
 The organisers are also easily contactable via IRC in [[OR1K:Community_Portal#IRC|#openrisc on irc.freenode.net]]
+
+== Talk and workshop abstracts ==
+
+=== A SystemC model of a multicore OpenRISC with power annotation ===
+
+David Greaves, Cambridge University Computer Laboratory
+
+David has developed a SystemC model of a multicore OpenRISC design, which has been used for teaching at the University for some years. This model is unusual in having annotations for power usage, so it can give estimates of power consumption as well as system performance when run.
+
+=== Defining a Domain Specific Language for the Configuration of SoPCs Based on the OpenRISC Platform ===
+
+Martin Schulze
+
+=== OpTiMSoC - an OpenRISC-based Manycore System-on-Chip
+
+Stefan Wallentowitz, Technical University of Munich
+
+=== ORPSoCv2 on the DE0-nano ===
+
+Julius Baxter
+
+This is a workshop first given by Julius Baxter at[chiphack.org ChipHack], showing how to bring up ORPSoC on the DE0-nano. Partipants are encouraged to install the free Mentor Graphics FPGA tools before arriving at the conference. A number of DE0-nano's will be available, but feel free to bring your own.
+
+=== mor1kx progress report and demo ===
+
+Stefan Kristiansson and Julius Baxter
+
+=== Hands off the cores! Hands-on withORPSoCv3 ===
+
+Olof Kindgren and others
+
+A walkthrough to get started with using ORPSoCv3. Might be organized as a workshop if there is interest for it.
+
+=== OpenRISC 2000 ===
+
+Jeremy Bennett
+
+This has been bouncing around for a couple of years, and it would be good to start to get some more concrete direction. Implementing OpenRISC (in silicon and in simulation) is a popular undergraduate project, and defining OR2K now might give a chance for someone to implement it during the coming academic year.
+
+=== Update and discussion on the OpenRISC toolchain ===
+
+Stefan Kristiansson
+
+This year has been a lot quieter on the toolchain side than last year, but there are a couple of things of interest that could be discussed. At least one thing I have in mind is our ABI. There have been a couple of occurrences of projects that abuse the C standard for varargs, hurting us "small, different guys".
+
+There are a couple of other things in our ABI that aren't all perfect, so maybe some venting of those issues and whether we need an "ABI v2.0" would be something we should consider.
+
+=== Bug squashing session ===
+
+We did this last year as the final session after lunch on Sunday. People joined in for as long as they could until their flights/trains left. It's a good chance to clear up Bugzilla once each year.
