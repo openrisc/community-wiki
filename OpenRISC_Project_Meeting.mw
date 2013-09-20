@@ -64,32 +64,35 @@ The schedule is still somewhat fluid, so keep watching this space. It will consi
 
 Saturday:
 * 12:30pm: Lunch.
-* 2:00pm: Welcome (Jeremy Bennett and David Greaves).
-* 2:15pm: A SystemC model of a multicore OpenRISC with power annotation (David Greaves).
-* 3:00pm: Defining a Domain Specific Language for the Configuration of SoPCs Based on the OpenRISC Platform (Martin Schulze).
 <br>
-* 3:45pm: Tea break
+* 1:30pm: Welcome (Jeremy Bennett and David Greaves).
+* 1:45pm: A SystemC model of a multicore OpenRISC with power annotation (David Greaves).
+* 2:30pm: Defining a Domain Specific Language for the Configuration of SoPCs Based on the OpenRISC Platform (Martin Schulze).
+* 3:15pm: [http://optimsoc.org OpTiMSoC] - an OpenRISC-based Manycore System-on-Chip (Stefan Wallentowitz).
 <br>
-* 4:15pm:[http://optimsoc.org OpTiMSoC] - an OpenRISC-based Manycore System-on-Chip (Stefan Wallentowitz).
-* 5:00pm: ORPSoCv2 on the DE0-nano. Workshop first given at [chiphack.org ChipHack]. DE0-nano's will be provided, but feel free to bring your own (Julius Baxter to lead).
+* 4:00pm: Tea break
 <br>
-* 7:30pm: Dinner. Venue TBA.
+* 4:15pm:[http://www.cl.cam.ac.uk/research/security/ctsrd/cheri.html CHERI] - an open source capability enhanced MIPS processor specified in Bluespec (Jon Woodruff).
+* 5:00pm: ORPSoC on the DE0-nano. Based on the workshop first given at [chiphack.org ChipHack], but upgraded for ORPSoCv3. DE0-nano's will be provided, but feel free to bring your own (Julius Baxter to lead).
+<br>
+* 7:30pm: Dinner. The Brewhouse, King Street.
 <br>
 Sunday:
 * 9:00am:[https://github.com/openrisc/mor1kx mor1kx] progress report and demo (Stefan Kristiansson and Julius Baxter).
-* 9:45am: Hands off the cores! Hands-on with[https://github.com/openrisc/orpsoc ORPSoCv3] - A walkthrough to get started with using ORPSoCv3. Might be organized as a workshop if there is interest for it (Olof Kindgren and others).
+* 9:45am: Hands off the cores! Hands-on with[https://github.com/openrisc/orpsoc ORPSoCv3] - A walkthrough to get started with using ORPSoCv3. Follows on from the workshop on Saturday (Olof Kindgren and others).
 <br>
 * 10:30am: Coffee break
 <br>
-* 11:00am: OpenRISC 2000. A collaborative session to firm up the architecture specification (Jeremy Bennett to chair).
-* 11:45am: Update and discussion on the OpenRISC toolchain, including "do we need ABIv2" (Stefan Kristiansson to lead).
+* 10:45am: Modifying the OR1200 for ETH Z&uuml;rich (Davide Rossi)
+* 11:30am: OpenRISC 2000. A collaborative session to firm up the architecture specification (Jeremy Bennett to chair).
+* 12:15am: Update and discussion on the OpenRISC toolchain, including "do we need ABIv2" (Stefan Kristiansson to lead).
 <br>
-* 12:30am: Lunch
+* 1:00pm: Lunch
 <br>
 * 2:00pm: Bug squashing session (all).
 * 3:30pm (approx): close
 
-If you would like to submit a proposal for any of the above, contact juliusbaxter@gmail.com or post to the [[OR1K:Community_Portal#Mailing_lists|OpenRISC mailing lists]].
+The schedule is now pretty full, but we should be able to fit in some lightning talks over tea/coffee/lunch. Please contact juliusbaxter@gmail.com or post to the [[OR1K:Community_Portal#Mailing_lists|OpenRISC mailing lists]] with your suggestions.
 
 === Sponsors ===
 
