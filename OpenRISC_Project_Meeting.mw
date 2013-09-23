@@ -80,12 +80,13 @@ Saturday:
 Sunday:
 * 9:00am:[https://github.com/openrisc/mor1kx mor1kx] progress report and demo (Stefan Kristiansson and Julius Baxter).
 * 9:45am: Hands off the cores! Hands-on with[https://github.com/openrisc/orpsoc ORPSoCv3] - A walkthrough to get started with using ORPSoCv3. Follows on from the workshop on Saturday (Olof Kindgren and others).
+* 10:15am: OpenRISC for space applications and EurySpace SoC (Guillaume Rembert)
 <br>
 * 10:30am: Coffee break
 <br>
 * 10:45am: Modifying the OR1200 for ETH Z&uuml;rich (Davide Rossi)
 * 11:30am: OpenRISC 2000. A collaborative session to firm up the architecture specification (Jeremy Bennett to chair).
-* 12:15am: Update and discussion on the OpenRISC toolchain, including "do we need ABIv2" (Stefan Kristiansson to lead).
+* 12:15pm: Update and discussion on the OpenRISC toolchain, including "do we need ABIv2" (Stefan Kristiansson to lead).
 <br>
 * 1:00pm: Lunch
 <br>
