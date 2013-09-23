@@ -122,11 +122,11 @@ Martin Schulze
 
 Stefan Wallentowitz, Technical University of Munich
 
-=== ORPSoCv2 on the DE0-nano ===
+=== ORPSoC on the DE0-nano ===
 
 Julius Baxter
 
-This is a workshop first given by Julius Baxter at[chiphack.org ChipHack], showing how to bring up ORPSoC on the DE0-nano. Partipants are encouraged to install the free Mentor Graphics FPGA tools before arriving at the conference. A number of DE0-nano's will be available, but feel free to bring your own.
+This is a workshop first given by Julius Baxter at[chiphack.org ChipHack], showing how to bring up ORPSoC on the DE0-nano. Partipants are encouraged to install the free Altera Quartus FPGA tools before arriving at the conference. A number of DE0-nano's will be available, but feel free to bring your own.
 
 === mor1kx progress report and demo ===
 
