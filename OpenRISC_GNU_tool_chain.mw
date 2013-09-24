@@ -166,7 +166,9 @@ The following assumes a checkout of the development repositories, which at prese
 The following compile instructions will install into <code>/opt/or1k-toolchain</code> so make sure it exists and is writable by the user or whoever is running the <code>make install</code> commands.
 
 Make a build directory each for the gnu-src tools and gcc, alongside the checkouts, we'll call them <code>bld-or1k-src</code> and <code>bld-or1k-gcc</code> respectively.
-
+ # Add toolchain to PATH
+ export PATH=$PATH:/opt/or1k-toolchain/bin
+ 
  # Build the first set of tools, binutils etc.
  # NOTE: on 32-bit machines --disable-werror is needed due to an enum acting as bit mask is considered signed
  cd bld-or1k-src
