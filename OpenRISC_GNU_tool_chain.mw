@@ -201,8 +201,6 @@ Make a build directory each for the gnu-src tools and gcc, alongside the checkou
  make
  make install
 
-Be sure to add <code>/opt/or1k-toolchain/bin</code> to the shell's <code>PATH</code> variable
-
 ==== Linux (uClibc) toolchain (or1k-linux-uclibc) ====
 
 ===== Initial preparations =====
