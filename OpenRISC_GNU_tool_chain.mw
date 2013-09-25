@@ -166,45 +166,48 @@ The following assumes a checkout of the development repositories, which at prese
 The following compile instructions will install into <code>/opt/or1k-toolchain</code> so make sure it exists and is writable by the user or whoever is running the <code>make install</code> commands.
 
 Make a build directory each for the gnu-src tools and gcc, alongside the checkouts, we'll call them <code>bld-or1k-src</code> and <code>bld-or1k-gcc</code> respectively.
- # Add toolchain to PATH
+ mkdir bld-or1k-src
+ mkdir bld-or1k-gcc
+
+Add toolchain to PATH
  export PATH=$PATH:/opt/or1k-toolchain/bin
- 
- # Build the first set of tools, binutils etc.
- # NOTE: on 32-bit machines --disable-werror is needed due to an enum acting as bit mask is considered signed
+
+Build the first set of tools, binutils etc.
+NOTE: on 32-bit machines --disable-werror is needed due to an enum acting as bit mask is considered signed
  cd bld-or1k-src
  ../or1k-src/configure --target=or1k-elf --prefix=/opt/or1k-toolchain --enable-shared \
  --disable-itcl --disable-tk --disable-tcl --disable-winsup --disable-libgui --disable-rda \
  --disable-sid --disable-sim --disable-gdb --with-sysroot --disable-newlib --disable-libgloss
  make
  make install
- 
- # Build gcc
+
+Build gcc
  cd ../bld-or1k-gcc
+ 
  ../or1k-gcc/configure --target=or1k-elf --prefix=/opt/or1k-toolchain --enable-languages=c \
  --disable-shared --disable-libssp
  make
  make install
 
+Build newlib and gdb (without or1ksim in this case)
  cd ..
  rm -rf bld-or1k-src
  mkdir bld-or1k-src  
-
- # build newlib and gdb (without or1ksim in this case)
  cd bld-or1k-src
+ 
  ../or1k-src/configure --target=or1k-elf --prefix=/opt/or1k-toolchain --enable-shared --disable-itcl \
  --disable-tk --disable-tcl --disable-winsup --disable-libgui --disable-rda --disable-sid \
  --enable-sim --disable-or1ksim \
  --enable-gdb  --with-sysroot --enable-newlib --enable-libgloss
  make
  make install
- 
 
+Build gcc again, this time with newlib
  cd ..
  rm -rf bld-or1k-gcc
  mkdir bld-or1k-gcc
-
- # build gcc again, this time with newlib
  cd bld-or1k-gcc
+ 
  ../or1k-gcc/configure --target=or1k-elf --prefix=/opt/or1k-toolchain --enable-languages=c,c++ --disable-shared \
  --disable-libssp --with-newlib
  make
