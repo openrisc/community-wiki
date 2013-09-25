@@ -184,9 +184,13 @@ Make a build directory each for the gnu-src tools and gcc, alongside the checkou
  --disable-shared --disable-libssp
  make
  make install
- 
+
+ cd ..
+ rm -rf bld-or1k-src
+ mkdir bld-or1k-src  
+
  # build newlib and gdb (without or1ksim in this case)
- cd ../bld-or1k-src
+ cd bld-or1k-src
  ../or1k-src/configure --target=or1k-elf --prefix=/opt/or1k-toolchain --enable-shared --disable-itcl \
  --disable-tk --disable-tcl --disable-winsup --disable-libgui --disable-rda --disable-sid \
  --enable-sim --disable-or1ksim \
@@ -194,8 +198,13 @@ Make a build directory each for the gnu-src tools and gcc, alongside the checkou
  make
  make install
  
+
+ cd ..
+ rm -rf bld-or1k-gcc
+ mkdir bld-or1k-gcc
+
  # build gcc again, this time with newlib
- cd ../bld-or1k-gcc
+ cd bld-or1k-gcc
  ../or1k-gcc/configure --target=or1k-elf --prefix=/opt/or1k-toolchain --enable-languages=c,c++ --disable-shared \
  --disable-libssp --with-newlib
  make
