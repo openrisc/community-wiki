@@ -1,6 +1,6 @@
 = Introduction =
 
-This page contains the guide for the workshop being held during ORCONF 2013.
+This page contains the guide for the workshop being held during [[ORCONF#ORCONF_2013|ORCONF 2013]].
 
 It will go through setting up the tools to build an ORPSoC system for the [http://www.terasic.com.tw/cgi-bin/page/archive.pl?No=593 Terasic DE0 Nano] board, and get code running on that system.
 
