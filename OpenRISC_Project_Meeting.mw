@@ -127,7 +127,9 @@ Stefan Wallentowitz, Technical University of Munich
 
 Julius Baxter
 
-This is a workshop first given by Julius Baxter at[chiphack.org ChipHack], showing how to bring up ORPSoC on the DE0-nano. Partipants are encouraged to install the free Altera Quartus FPGA tools before arriving at the conference. A number of DE0-nano's will be available, but feel free to bring your own.
+This is a workshop first given by Julius Baxter at[chiphack.org ChipHack], showing how to bring up ORPSoC on the DE0-nano. A number of DE0-nano's will be available, but feel free to bring your own.
+
+Partipants are encouraged to [[ORCONF2013_Workshop_ORPSoC_On_DE0_Nano|read the workshop requirements]] and perform the tool installation prior to arriving ORCONF. Please contact Julius Baxter via IRC, the mailing lists or directly (see email below) if you experience problems with your preparation.
 
 === mor1kx progress report and demo ===
 
