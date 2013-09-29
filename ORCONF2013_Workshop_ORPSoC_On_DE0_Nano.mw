@@ -55,9 +55,13 @@ This is the software which compiles RTL and ultimately generates an FPGA program
 
 Unfortunately this software is closed source, extremely large, and requires registration to download. However, it is required.
 
-It's possible that [http://download.altera.com/akdlm/software/acdsinst/13.0sp1/232/ib_tar/Quartus-web-13.0.1.232-linux.tar this link] will download the installer directly, without requiring you to go to the Altera website. '''It is 4.5GB in size and will obviously take a while to download'''. Once it is downloaded, extract it and run the <tt>setup.sh</tt> file in there.
+It's possible that [http://download.altera.com/akdlm/software/acdsinst/13.0sp1/232/ib_tar/Quartus-web-13.0.1.232-linux.tar this link] will download the installer directly, without requiring you to go to the Altera website. 
 
-Otherwise, visit the [http://www.altera.com/products/software/quartus-ii/web-edition/qts-we-index.html Quartus II Web Edition page] and click on the "Download Software Web Edition - Free" button. Register and then download the installer, or the DVD .iso files, whichever you prefer.
+Otherwise, visit the [http://www.altera.com/products/software/quartus-ii/web-edition/qts-we-index.html Quartus II Web Edition page] and click on the "Download Software Web Edition - Free" button. Register and then download the installer.
+
+'''It is 4.5GB in size and will obviously take a while to download'''. 
+
+Once it is downloaded, extract it and run the <tt>setup.sh</tt> file in there.
 
 They mention that "''64-bit operating systems must install 32-bit compatibility libraries before installing the Quartus II software''". Presumably this is the <tt>ia32-libs</tt> package on Ubuntu, or similar.
 
