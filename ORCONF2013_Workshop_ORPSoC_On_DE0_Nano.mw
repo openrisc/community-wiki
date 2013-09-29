@@ -116,6 +116,6 @@ You may then simply add the <tt>/path/to/orpsoc-3.1/bin</tt> directory onto your
 
 === ORPSoC cores ===
 
-This must be cloned from the github repository. It is easiest if this resides along side the <tt>orpsoc-3.1</tt> directory.
+This must be cloned from the github repository. It is easiest if this resides alongside the <tt>orpsoc-3.1</tt> directory.
 
  git clone https://github.com/openrisc/orpsoc-cores.git
