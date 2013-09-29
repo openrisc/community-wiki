@@ -75,7 +75,7 @@ Once this is done, then the <tt>orpsoc</tt> tool will be available.
 
 === Without installing ===
 
-It's possible to just export the <tt><path to orpsoc location>orpsoc/bin</tt> to your $PATH variable to able to use <tt>orpsoc</tt>
+It's possible to just add the /<tt><path to orpsoc location>/orpsoc/bin</tt> to your $PATH variable to able to use <tt>orpsoc</tt>
 
 == Set Up ==
 
