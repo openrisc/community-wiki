@@ -71,9 +71,9 @@ It's possible to just export the <tt><path to orpsoc location>orpsoc/bin</tt> to
 
 ORPSoC can be run from an arbitrary work directory (where all intermediate and results files will be generated and stored). All that is required is that the location of the <tt>orpsoc-cores/cores</tt> and <tt>orpsoc-cores/systems</tt> directories are specified to the tool.
 
-The simplest way to do that is via the <tt>orpsoc.conf</tt> config file. This file must exist wherever <tt>orpsoc</tt> is run from.
+The easiest way to do that is via the <tt>orpsoc.conf</tt> config file. This file must exist wherever <tt>orpsoc</tt> is run from.
 
-So the simplest set up would be, alongside the <tt>orspoc</tt> and <tt>orpsoc-cores</tt> directory, '''create an <tt>orpsoc-build</tt> directory''' with an <tt>orpsoc.conf</tt> file. This file (<tt>orpsoc-build/orpsoc.conf</tt>) should contain:
+So the simplest set up would be to, alongside the <tt>orspoc</tt> and <tt>orpsoc-cores</tt> directory, '''create an <tt>orpsoc-build</tt> directory''' with an <tt>orpsoc.conf</tt> file. This file (<tt>orpsoc-build/orpsoc.conf</tt>) should contain:
 
  [main]
  cores_root   = ../orpsoc-cores/cores
