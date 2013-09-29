@@ -65,6 +65,12 @@ Once this is done, then the <tt>orpsoc</tt> tool will be available.
 
 It's possible to just export the <tt><path to orpsoc location>orpsoc/bin</tt> to your $PATH variable to able to use <tt>orpsoc</tt>
 
+= Using =
+
+ORPSoC can simply be used by going to the <tt>orpsoc-cores</tt> directory and using the <tt>orpsoc</tt> tool. eg. for a list of commands:
+
+ ~/git/orpsoc-cores$ orpsoc --help
+
 
 =Rationale=
 The following problems with current ORPSoC have been identified. The next version will try to rectify these issues
