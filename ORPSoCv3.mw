@@ -67,10 +67,35 @@ It's possible to just export the <tt><path to orpsoc location>orpsoc/bin</tt> to
 
 = Using =
 
-ORPSoC can simply be used by going to the <tt>orpsoc-cores</tt> directory and using the <tt>orpsoc</tt> tool. eg. for a list of commands:
+== Set Up ==
 
- ~/git/orpsoc-cores$ orpsoc --help
+ORPSoC can be run from an arbitrary work directory (where all intermediate and results files will be generated and stored). All that is required is that the location of the <tt>orpsoc-cores/cores</tt> and <tt>orpsoc-cores/systems</tt> directories are specified to the tool.
 
+The simplest way to do that is via the <tt>orpsoc.conf</tt> config file. This file must exist wherever <tt>orpsoc</tt> is run from.
+
+So the simplest set up would be, alongside the <tt>orspoc</tt. and <tt>orpsoc-cores</tt> directory, create an <tt>orpsoc-build</tt> directory with an <tt>orpsoc.conf</tt> file. This file (<tt>orpsoc-build/orpsoc.conf</tt>) should contain:
+
+ [main]
+ cores_root   = ../orpsoc-cores/cores
+ systems_root = ../orpsoc-cores/systems
+
+Now <tt>orpsoc</tt> may be run from this <tt>orpsoc-build</tt> directory.
+
+== Running ==
+
+Once in the ''build'' directory, <tt>orpsoc</tt> can be run.
+
+=== Help ===
+
+ orpsoc --help
+
+=== List available systems ===
+
+ orpsoc list-systems
+
+=== Build system FPGA image ===
+ 
+ orpsoc build <system_name>
 
 =Rationale=
 The following problems with current ORPSoC have been identified. The next version will try to rectify these issues
