@@ -73,7 +73,7 @@ ORPSoC can be run from an arbitrary work directory (where all intermediate and r
 
 The simplest way to do that is via the <tt>orpsoc.conf</tt> config file. This file must exist wherever <tt>orpsoc</tt> is run from.
 
-So the simplest set up would be, alongside the <tt>orspoc</tt>. and <tt>orpsoc-cores</tt> directory, create an <tt>orpsoc-build</tt> directory with an <tt>orpsoc.conf</tt> file. This file (<tt>orpsoc-build/orpsoc.conf</tt>) should contain:
+So the simplest set up would be, alongside the <tt>orspoc</tt> and <tt>orpsoc-cores</tt> directory, '''create an <tt>orpsoc-build</tt> directory''' with an <tt>orpsoc.conf</tt> file. This file (<tt>orpsoc-build/orpsoc.conf</tt>) should contain:
 
  [main]
  cores_root   = ../orpsoc-cores/cores
