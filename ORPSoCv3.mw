@@ -1,101 +1,10 @@
+'''Most of the information on this page is now out of date. The latest details on ORPSoCv3 can be found on the main [[ORPSoC]] page. This page will get a clean up at some point.'''
+
 = Introduction =
 
 ORPSoC is the '''O'''penRISC '''R'''eference '''P'''latform '''S'''ystem-'''o'''n-'''C'''hip. It is intended to be a development and verification environment for IP cores and SoC designs. It is a collaboratively developed project. 
 
 As a development platform it should provide a modular, easy to use environment to perform RTL development with push-button simulation and synthesis flows. A basic software build environment is also present to support OpenRISC development in simulation and on target. The project should be easy enough for users, both new and experienced, to get started with OpenRISC designs and develop quickly and collaborate easily.
-
-= How it works =
-
-ORPSoC provides both system description files and the scripts to simulate and build these systems.
-
-ORPSoC is split into more than one repository. The scripts and automation tools (<tt>orpsoc</tt>) are separate from the system and core descriptions (<tt>orpsoc-cores</tt>).
-
-The primary interface with ORPSoC is via the <tt>orpsoc</tt> command-line executable. Users edit HDL source code and system configuration files before launching <tt>orpsoc</tt> to either launch simulation or FPGA image generation.
-
-= Download =
-
-The <tt>orpsoc</tt> and <tt>orpsoc-cores</tt> repositories should be set up alongside each other.
-
-== ORPSoC ==
-
-This is the scripting and automation component of ORPSoC.
-
-=== Latest Release ===
-
-The latest release '''ORPSoC 3.1''' [ftp://ocuser:ocuser@openrisc.opencores.org/orpsoc/orpsoc-3.1.tar.gz can be downloaded here].
-
-=== Repository ===
-
-The ORPSoC source is hosted under the OpenRISC organisation on github - [https://github.com/openrisc/orpsoc https://github.com/openrisc/orpsoc]
-
-Clone a copy of the repository with git like so:
-
- git clone https://github.com/openrisc/orpsoc.git
-
-== ORPSoC cores ==
-
-This contains the IP core and system configuration information.
-
-=== Repository ===
-
-The ORPSoC cores source is hosted under the OpenRISC organisation on github - [https://github.com/openrisc/orpsoc https://github.com/openrisc/orpsoc-cores]
-
-Clone a copy of the repository with git like so:
-
- git clone https://github.com/openrisc/orpsoc-cores.git
-
-= Install =
-
-The only component which can be installed is the <tt>orpsoc</tt> tool. It is possible to use the tool without installing it, too. See below.
-
-== ORPSoC ==
-
-'''Note''': If you have downloaded the [[#Latest_Release|latest release]] then you may omit the <tt>autoreconf -i</tt> step below as it has already been run before archiving.
-
-From within the <tt>orpsoc</tt> directory run the following:
-
- autoreconf -i
- ./configure
- make
- make install
-
-Once this is done, then the <tt>orpsoc</tt> tool will be available.
-
-=== Without installing ===
-
-It's possible to just export the <tt><path to orpsoc location>orpsoc/bin</tt> to your $PATH variable to able to use <tt>orpsoc</tt>
-
-= Using =
-
-== Set Up ==
-
-ORPSoC can be run from an arbitrary work directory (where all intermediate and results files will be generated and stored). All that is required is that the location of the <tt>orpsoc-cores/cores</tt> and <tt>orpsoc-cores/systems</tt> directories are specified to the tool.
-
-The easiest way to do that is via the <tt>orpsoc.conf</tt> config file. This file must exist wherever <tt>orpsoc</tt> is run from.
-
-So the simplest set up would be to, alongside the <tt>orspoc</tt> and <tt>orpsoc-cores</tt> directory, '''create an <tt>orpsoc-build</tt> directory''' with an <tt>orpsoc.conf</tt> file. This file (<tt>orpsoc-build/orpsoc.conf</tt>) should contain:
-
- [main]
- cores_root   = ../orpsoc-cores/cores
- systems_root = ../orpsoc-cores/systems
-
-Now <tt>orpsoc</tt> may be run from this <tt>orpsoc-build</tt> directory.
-
-== Running ==
-
-Once in the ''build'' directory, <tt>orpsoc</tt> can be run.
-
-=== Help ===
-
- orpsoc --help
-
-=== List available systems ===
-
- orpsoc list-systems
-
-=== Build system FPGA image ===
- 
- orpsoc build <system_name>
 
 =Rationale=
 The following problems with current ORPSoC have been identified. The next version will try to rectify these issues
