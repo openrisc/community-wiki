@@ -94,6 +94,8 @@ ORPSoC is the system-on-chip build infrastructure which will be used for this wo
 
 It is made up of 2 parts - one is the build scripts (<tt>orpsoc</tT>) and one is the systems and IP cores (<tt>orpsoc-cores</tt>).
 
+See the [[ORPSoC]] page here on the OpenCores wiki for further details.
+
 === ORPSoC build system ===
 
 For this workshop, we will be using the <tt>orpsoc-3.1</tt> release of the scripts. You can download them here: [ftp://ocuser:ocuser@openrisc.opencores.org/orpsoc/orpsoc-3.1.tar.gz orpsoc-3.1.tar.gz]
