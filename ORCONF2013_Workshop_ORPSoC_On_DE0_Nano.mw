@@ -27,7 +27,7 @@ On that system the following will be required
 
 Both git and subversion should be easily installed via your distribution's package management system. These will be needed to download the source for the tools which are compiled.
 
-== OpenRISC GNU software tool chain ==
+== OpenRISC GNU tool chain ==
 
 The OpenRISC software tool chain consists of all the tools require to compile and manipulate software for the platform. Specifically, the tool chain which is considered the development version will be used to compile code to run on the "bare metal" system. That is, with no underlying operating system.
 
