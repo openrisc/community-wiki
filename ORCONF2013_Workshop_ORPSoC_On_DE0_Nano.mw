@@ -1,0 +1,115 @@
+= Introduction =
+
+This page contains the guide for the workshop being held during ORCONF 2013.
+
+It will go through setting up the tools to build an ORPSoC system for the [http://www.terasic.com.tw/cgi-bin/page/archive.pl?No=593 Terasic DE0 Nano] board, and get code running on that system.
+
+= Requirements =
+
+This workshop will need to be run on a machine which has
+
+* a relatively recent Linux distribution (up to 2-3 years old?)
+* around 10GB of disk space free for the development tools
+* an internet connection
+
+On that system the following will be required
+
+* repository control software git and subversion
+* an OpenRISC software tool chain for compiling code
+** if building from source this will require a number of software development packages installed on your system
+* the Altera Quartus EDA software for compiling RTL for the FPGA
+* the OpenOCD debug proxy
+* Python 2.7 (or above)
+
+= Tool installation =
+
+== Repository control software ==
+
+Both git and subversion should be easily installed via your distribution's package management system. These will be needed to download the source for the tools which are compiled.
+
+== OpenRISC GNU software tool chain ==
+
+The OpenRISC software tool chain consists of all the tools require to compile and manipulate software for the platform. Specifically, the tool chain which is considered the development version will be used to compile code to run on the "bare metal" system. That is, with no underlying operating system.
+
+There are two options for obtaining the OpenRISC tool chain. One is to download a set of pre-compiled binaries for your platform, or compiling from source.
+
+=== Building from source ===
+
+See the [[OpenRISC_GNU_tool_chain#Newlib_toolchain_.28or1k-elf.29|instructions on building the "newlib" tool chain from source]] on the GNU tool chain page on this wiki.
+
+'''Note''': be sure to ensure your system has the [[OpenRISC_GNU_tool_chain#Prerequisites|appropriate prerequisites installed]] to compile a GNU tool chain.
+
+=== Pre-compiled ===
+
+Some pre-compiled tool chains are available (thanks to Stefan Kristiansson!) on the [[OpenRISC_GNU_tool_chain#Prebuilt_versions|GNU tool chain page]], too.
+
+Extract these somewhere like <tt>/opt</tt>.
+
+=== Add to PATH ===
+
+Be sure to add the tool chain's <tt>/<installation_dir>/bin</tt> directory to your $PATH variable in your <tt>.bashrc</tt> file or similar after installation.
+
+== Altera Quartus ==
+
+This is the software which compiles RTL and ultimately generates an FPGA programming file.
+
+Unfortunately this software is closed source, extremely large, and requires registration to download. However, it is required.
+
+It's possible that [http://download.altera.com/akdlm/software/acdsinst/13.0sp1/232/ib_tar/Quartus-web-13.0.1.232-linux.tar this link] will download the installer directly, without requiring you to go to the Altera website. '''It is 4.5GB in size and will obviously take a while to download'''. Once it is downloaded, extract it and run the <tt>setup.sh</tt> file in there.
+
+Otherwise, visit the [http://www.altera.com/products/software/quartus-ii/web-edition/qts-we-index.html Quartus II Web Edition page] and click on the "Download Software Web Edition - Free" button. Register and then download the installer, or the DVD .iso files, whichever you prefer.
+
+They mention that "''64-bit operating systems must install 32-bit compatibility libraries before installing the Quartus II software''". Presumably this is the <tt>ia32-libs</tt> package on Ubuntu, or similar.
+
+'''Note:''' Make sure you select to include the '''Cyclone IV E''' device families during installation.
+
+Altera provide [http://www.altera.com/download/faq/dnl-v130-download-installation-faq.html this installation FAQ] and [http://dl.altera.com/static/quick_start_guide/quick_start_guide_13.0_en.pdf this quick start guide in PDF].
+
+== Add to PATH ==
+
+Be sure to add the <tt>/<quartus_install_path>/quartus/bin</tt> directory to your $PATH variable in your <tt>.bashrc</tt> file or similar after installation.
+
+== OpenOCD ==
+
+This is a debug proxy program and will initially talk to the system on the FPGA before we attach a software debugger.
+
+Download the source with
+
+ git clone https://github.com/openrisc/openOCD.git
+
+Once cloned, the source in the repository must be ''bootstrapped'' before it is configured '''the first time only'''. Do this with
+
+ ./bootstrap
+
+Now configure and build
+
+ ./configure --enable-usb_blaster_libftdi --enable-adv_debug_sys --enable-altera_vjtag --enable-maintainer-mode
+ make
+
+You may also choose to install it with <tt>make install</tt>.
+
+== ORPSoC ==
+
+ORPSoC is the system-on-chip build infrastructure which will be used for this workshop.
+
+It is made up of 2 parts - one is the build scripts (<tt>orpsoc</tT>) and one is the systems and IP cores (<tt>orpsoc-cores</tt>).
+
+=== ORPSoC build system ===
+
+For this workshop, we will be using the <tt>orpsoc-3.1</tt> release of the scripts. You can download them here: [ftp://ocuser:ocuser@openrisc.opencores.org/orpsoc/orpsoc-3.1.tar.gz orpsoc-3.1.tar.gz]
+
+Once downloaded extract this archive somewhere sensible with
+
+ tar xzf orpsoc-3.1.tar.gz
+
+You may then simply add the <tt>/path/to/orpsoc-3.1/bin</tt> directory onto your PATH variable, or you can install it with
+
+ ./configure
+ make
+ make install
+
+=== ORPSoC cores ===
+
+This must be cloned from the github repository. It is easiest if this resides along side the <tt>orpsoc-3.1</tt> directory.
+
+ git clone https://github.com/openrisc/orpsoc-cores.git
