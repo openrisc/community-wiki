@@ -79,7 +79,7 @@ This is a debug proxy program and will initially talk to the system on the FPGA 
 
 Download the source with
 
- git clone http://repo.or.cz/w/openocd.git
+ git clone git://repo.or.cz/openocd.git
 
 Once cloned, the source in the repository must be ''bootstrapped'' before it is configured '''the first time only'''. Do this with
 
