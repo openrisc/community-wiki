@@ -231,6 +231,8 @@ To create this <code>libboard.a</code> see examples of the existing <code>''boar
 
 For example, the ml501 board's code is in the <code>newlib-1.x.0/libgloss/or32/ml501.S</code> file and is as follows:
 
+ #include "or1k-asm.h"
+ 
  /*
   * Define symbols to be used during startup - file is linked at compile time
   *
