@@ -221,6 +221,8 @@ Build gcc again, this time with newlib
  make
  make install
 
+See the page on the [[Newlib|newlib library port]] for details on what you've just built and installed.
+
 ==== Linux (uClibc) toolchain (or1k-linux-uclibc) ====
 
 ===== Initial preparations =====
