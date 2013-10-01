@@ -173,18 +173,27 @@ In the version currently in the repository, a handful of boards and the or1ksim 
 |or1ksim simulator with a UART
 |-
 |ordb1a3pe1500	
-|ORSoC dedvelopment board 1, A3PE1500 part, as in ORPSoC
+|ORSoC development board 1, A3PE1500 part, as in ORPSoC
 |-
 |ml501	
 |Xilinx ML501 board, as in ORPSoC
 |-
 |orpsocrefdesign	
 |ORPSoC reference design
+|-
+|de0_nano	
+|Terasic DE0 Nano
+|-
+|ordb2a	
+|ORSoC development board 2
+|-
+|atlys
+|Digilent Atlys board
 |}
 
-For example, to compile with support for the ''ordb1a3pe1500'' board, one would pass the following options at compile-time.
+For example, to compile with support for the ''de0_nano'' board, one would pass the following options at compile-time.
 
- <code>or32-elf-gcc -mboard=ordb1a3pe1500</code>
+ <code>or32-elf-gcc -mboard=de0_nano</code>
 
 Each <code>libboard.a</code> defines the following symbols:
 
@@ -209,6 +218,9 @@ Each <code>libboard.a</code> defines the following symbols:
 |-
 |_board_uart_IRQ	
 |IRQ number of UART
+|-
+|_board_exit
+|A board exit function (weak, may be overriden in C)
 |}
 
 === Adding support for a new board ===
@@ -240,5 +252,10 @@ For example, the ml501 board's code is in the <code>newlib-1.x.0/libgloss/or32/m
  _board_uart_base:	.long	0x90000000
  _board_uart_baud:	.long	115200
  _board_uart_IRQ:	.long	2
+ 
+ .weak _board_exit
+ _board_exit:
+         OR1K_DELAYED_NOP(l.j _board_exit)
+
 
 This file should be assembled and archived, and then placed into the correct install path as mentioned above.
