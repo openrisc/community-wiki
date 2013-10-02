@@ -252,7 +252,7 @@ to
 
 Basically, set the '''b''' to a '''f''' in the FPGATAPID value.
 
-Now retry rerunning OpenOCD.
+Save and close the file, and re-run OpenOCD with the same command as before.
 
 == Compiling software ==
 
