@@ -197,7 +197,7 @@ This is caused by the debug proxy, OpenOCD, still being attached to the device w
 
 Close OpenOCD before re-running the <tt>quartus_pgm</tt> command.
 
-== Connect to the system with OpenOCD ==
+== Attach the debug proxy ==
 
 It is time to run OpenOCD, the debug proxy program which will talk to the system for us.
 
