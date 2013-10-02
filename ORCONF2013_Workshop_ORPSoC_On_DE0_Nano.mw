@@ -199,7 +199,7 @@ Close OpenOCD before re-running the <tt>quartus_pgm</tt> command.
 
 == Attach the debug proxy ==
 
-It is time to run OpenOCD, the debug proxy program which will talk to the system for us.
+It is time to run OpenOCD, the debug proxy program which will talk to the ORPSoC system now implemented on the FPGA.
 
 It will use the same cable which programs the board, so the DE0 nano must be connected and programmed with the image we generated.
 
