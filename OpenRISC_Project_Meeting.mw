@@ -119,6 +119,8 @@ David has developed a SystemC model of a multicore OpenRISC design, which has be
 
 Martin Schulze
 
+After some words about my motivation I will give a demo of the current state of the project, the eclipse editor and a simple solution to the question how to integrate into ORPSoCv2 (yes, it's v2 for now).
+
 === OpTiMSoC - an OpenRISC-based Manycore System-on-Chip ===
 
 Stefan Wallentowitz, Technical University of Munich
