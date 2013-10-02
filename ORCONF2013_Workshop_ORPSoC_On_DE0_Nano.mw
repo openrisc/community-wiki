@@ -137,7 +137,7 @@ There is a pre-configured one in the <tt>orpsoc</tt> directory, which assumes th
 
 We are now ready to build
 
-== Build FPGA image for DE0 Nano ==
+== Build FPGA image ==
 
 The image is simply built by running
 
