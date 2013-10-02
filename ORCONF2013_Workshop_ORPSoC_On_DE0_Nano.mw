@@ -119,3 +119,137 @@ You may then simply add the <tt>/path/to/orpsoc-3.1/bin</tt> directory onto your
 This must be cloned from the github repository. It is easiest if this resides alongside the <tt>orpsoc-3.1</tt> directory.
 
  git clone https://github.com/openrisc/orpsoc-cores.git
+
+= Building ORPSoC for the DE0 nano =
+
+== Create build area ==
+
+ORPSoC requires a separate directory be created as its work area. Create this directory, something like <tt>orpsoc-build</tt> along side the <tt>orpsoc-cores</tt> and <tt>orpsoc</tt> checkouts.
+
+ mkdir orpsoc-build
+ cd orpsoc-build
+
+The build directory needs a config file, which simply tells the scripts where the <tt>cores</tt> and <tt>systems</tt> are.
+
+There is a pre-configured one in the <tt>orpsoc</tt> directory, which assumes the build directory is parallel to it. We can copy that into the build directory.
+
+ cp ../orpsoc/orpsoc.conf .
+
+We are now ready to build
+
+== Build FPGA image for DE0 Nano ==
+
+The image is simply built by running
+
+ orpsoc build de0_nano
+
+This will handle the downloading (yes, you will need internet connectivity) of all the source, generation of parts of the system and scripts and launching of FPGA tools.
+
+If your environment has not been set up correctly, this step will likely error out.
+
+Once it is complete, you will end up with an image, <tt>build/de0_nano/bld-quartus/de0_nano.sof</tt> which you can program on the DE0 nano. You are then ready to program your FPGA board.
+
+== Programming the DE0 Nano board ==
+
+ORPSoC doesn't handle this automatically (yet...) but it's simple enough to do on the command line. 
+
+Plug your board into your PC via the provided USB cable and a blue LED should light up, indicating it's powered.
+
+We will use the <tt>quartus_pgm</tt> tool to do this with:
+
+ quartus_pgm --mode=jtag -o p\;build/de0_nano/bld-quartus/de0_nano.sof
+
+If this worked you'll see a message like:
+
+ Info (209017): Device 1 contains JTAG ID code 0x020F30DD
+ Info (209007): Configuration succeeded -- 1 device(s) configured
+ Info (209011): Successfully performed operation(s)
+
+You are now ready to connect to the SoC with a debug proxy
+
+If not, see the troubleshooting section.
+
+=== Troubleshooting ===
+
+==== Error (213019): Can't scan JTAG chain. Error code 89. ====
+
+If you see this (red) error message, then you have not started the Altera JTAG daemon.
+
+First, kill any other <tt>jtagd</tt> processes which may be running
+
+ sudo killall jtagd
+
+Now check the Altera one is installed and available
+
+ which jtagd
+
+One should be available in the <tt>/your/altera/install/dir/'''quartus/bin'''</tt> directory
+
+If so, now run it with
+
+ sudo /your/altera/install/dir/quartus/bin/jtagd
+
+And try to program again.
+
+== Connect to the system with OpenOCD ==
+
+It is time to run OpenOCD, the debug proxy program which will talk to the system for us.
+
+It will use the same cable which programs the board, so the DE0 nano must be connected and programmed with the image we generated.
+
+Go to the OpenOCD directory in which everything was compiled and run
+
+ sudo ./src/openocd -s ./tcl -f ./tcl/interfacaltera-usb-blaster.cfg -f ./tcl/board/or1k_generic.cfg
+
+This should attach to the board and not report any errors, looking like:
+
+ Open On-Chip Debugger 0.8.0-dev-00195-g4e79b48 (2013-09-30-21:08)
+ Licensed under GNU GPL v2
+ For bug reports, read http://openocd.sourceforge.net/doc/doxygen/bugs.html
+ Warn : Adapter driver 'usb_blaster' did not declare which transports it allows; assuming legacy JTAG-only
+ Info : only one transport option; autoselect 'jtag'
+ Info : vjtag tap selected
+ Info : adv debug unit selected
+ Info : Option 1 is passed to adv debug unit adapter speed: 3000 kHz
+ Info : No lowlevel driver configured, will try them all
+ Info : usb blaster interface using libftdi
+ Info : This adapter doesn't support configurable speed
+ Info : JTAG tap: or1200.cpu tap/device found: 0x020f30dd (mfg: 0x06e, part: 0x20f3, ver: 0x0)
+ Info : adv debug unit is configured with option ADBG_USE_HISPEED
+ Halting processor
+ Chip is or1200.cpu, Endian: big, type: or1k
+ Target ready...
+
+If so, you are ready to communicate with the SoC and download some software
+
+Otherwise, see the troubleshooting section
+
+=== Troubleshooting ===
+
+==== Error: JTAG tap: or1200.cpu  expected 1 of 1: 0x020b30dd ====
+
+The default OpenRISC target config file in OpenOCD expects to talk to a different JTAG TAP than is on the DE0 nano. We must change one line in a file.
+
+If you haven't already, exit OpenOCD with ctrl+c.
+
+Open the following file from the OpenOCD tree in a text editor
+
+ tcl/board/or1k_generic.cfg
+
+Change the following line (second line of the file)
+
+ set FPGATAPID 0x020b30dd
+
+to
+
+ set FPGATAPID 0x020'''f'''30dd
+
+Basically, set the '''b''' to a '''f''' in the FPGATAPID value.
+
+Now retry rerunning OpenOCD.
+
+== Compiling software ==
+
+Some demo software to run on the DE0 nano is provided.
+
+== Download and run OpenRISC software on SoC ==
