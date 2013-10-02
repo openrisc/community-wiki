@@ -149,7 +149,7 @@ If your environment has not been set up correctly, this step will likely error o
 
 Once it is complete, you will end up with an image, <tt>build/de0_nano/bld-quartus/de0_nano.sof</tt> which you can program on the DE0 nano. You are then ready to program your FPGA board.
 
-== Programming the DE0 Nano board ==
+== Programming the FPGA ==
 
 ORPSoC doesn't handle this automatically (yet...) but it's simple enough to do on the command line. 
 
