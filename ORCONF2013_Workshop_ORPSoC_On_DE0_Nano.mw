@@ -292,4 +292,12 @@ The result executables are named the same as the directory, and can be downloade
 
 == Download and run OpenRISC software on SoC ==
 
-Once the debug proxy is attached it can be used to download and execute code on the board in a couple of ways.
+Once the [[#Attach_the_debug_proxy|debug proxy is attached]] it can be used to download and execute code on the board in a couple of ways.
+
+=== Telnet ===
+
+OpenOCD runs a telnet server which can be used to issue commands to halt, download and image and set the processor running.
+
+It runs a telnet server on port '''4444'''. Connect to it in a terminal with
+
+ telnet localhost 4444
