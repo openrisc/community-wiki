@@ -218,7 +218,7 @@ It will use the same cable which programs the board, so the DE0 nano must be con
 
 Go to the OpenOCD directory in which everything was compiled and run
 
- sudo ./src/openocd -s ./tcl -f ./tcl/interfacaltera-usb-blaster.cfg -f ./tcl/board/or1k_generic.cfg
+ sudo ./src/openocd -s ./tcl -f ./tcl/interface/altera-usb-blaster.cfg -f ./tcl/board/or1k_generic.cfg
 
 This should attach to the board and not report any errors, looking like:
 
