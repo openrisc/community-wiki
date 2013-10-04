@@ -324,3 +324,11 @@ OpenOCD runs a telnet server which can be used to issue commands to halt, downlo
 It runs a telnet server on port '''4444'''. Connect to it in a terminal with
 
  telnet localhost 4444
+
+Once connected, the list of commands the proxy supports may be listed with <tt>help</tt>.
+
+[[#Compiling_software|Compile some software]] to download on the board and get the full path to this file.
+
+To download and run a program, the following line may be used (replace the path here with the appropriate executable path).
+
+ halt; load_image /<path to your>/orconf2013/sw/timer/timer; reg npc 0x100; resume
