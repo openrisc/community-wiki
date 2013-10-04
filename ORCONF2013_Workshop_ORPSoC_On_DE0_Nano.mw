@@ -277,6 +277,29 @@ These should be attached so that the <tt>GND</tt> pin is on pin 12 of header JP2
 
 A pinout for the DE0 nano can be found [http://semilleroadt.upbbga.edu.co/Archivos_Generales/DE0-Nano%20pinout.pdf here].
 
+
+== Open a UART terminal ==
+
+This will open a terminal attached to the UART device.
+
+There are several terminal programs we could use to attach to the UART but I will use <tt>screen</tt>.
+
+It is assumed there is only 1 USB-UART attached, and is mounted as <tt>/dev/ttyUSB0</tt>, so alter the following instructions if it appears somewhere else on your machine.
+
+Attach with
+
+ screen /dev/ttyUSB0 115200
+
+If this didn't work, check the troubleshooting section
+
+=== Troubleshooting ===
+
+==== Permissions problems ====
+
+Unless you have a rule to allow these USB-UART devices to be read/write by the user you will need to change the permissions on it. Do this with
+
+ sudo chmod a+rwx /dev/ttyUSB0
+
 == Compiling software ==
 
 Make sure you have [[#Demo_bare_metal_software_for_ORPSoC|downloaded the demo bare metal software]].
