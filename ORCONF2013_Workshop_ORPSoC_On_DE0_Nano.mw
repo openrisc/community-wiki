@@ -332,3 +332,41 @@ Once connected, the list of commands the proxy supports may be listed with <tt>h
 To download and run a program, the following line may be used (replace the path here with the appropriate executable path).
 
  halt; load_image /<path to your>/orconf2013/sw/timer/timer; reg npc 0x100; resume
+
+It may be required to reset the board once the software has been downloaded this can be done with
+
+ reset
+
+This will usually halt the processor, and it can be set running again with
+
+ resume
+
+=== GDB ===
+
+The GNU debugger can also be used. This should be included in the [[#OpenRISC_GNU_tool_chain|tool chain]].
+
+Run it with
+
+ or1k-elf-gdb 
+
+Attach to the [[#Attach_the_debug_proxy|running proxy]] with
+ 
+ target remote :3333
+
+Select an executable to debug
+
+  file /<path to your>/orconf2013/sw/timer/timer
+
+Download it to the board with
+
+  load
+
+Set the PC to the reset address
+
+  spr npc 0x100
+
+Now set the processor running
+  
+  continue
+
+'''Note''': This doesn't appear to be working properly, so probably best to use the [[#Telnet|telnet]] method.
