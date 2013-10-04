@@ -269,6 +269,15 @@ Save and close the file, and re-run OpenOCD with the same command as before.
 
 == Compiling software ==
 
-Some demo software to run on the DE0 nano is provided.
+Make sure you have [[#Demo_bare_metal_software_for_ORPSoC|downloaded the demo bare metal software]].
+
+This software is all very simple bare metal examples of using the OR1K timers, flashing the LEDs and performing UART I/O.
+
+Go into any of the directories under <tt>orconf2013/sw/</tt> and build with a simple <tt>make</tt>. For example:
+
+ cd orconf2013/sw/timer
+ make
+
+The result executables are named the same as the directory, and can be downloaded to the board.
 
 == Download and run OpenRISC software on SoC ==
