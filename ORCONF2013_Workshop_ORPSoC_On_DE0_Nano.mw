@@ -289,3 +289,5 @@ Go into any of the directories under <tt>orconf2013/sw/</tt> and build with a si
 The result executables are named the same as the directory, and can be downloaded to the board.
 
 == Download and run OpenRISC software on SoC ==
+
+Once the debug proxy is attached it can be used to download and execute code on the board in a couple of ways.
