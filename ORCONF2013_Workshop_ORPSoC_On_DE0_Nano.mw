@@ -114,8 +114,6 @@ You may then simply add the <tt>/path/to/orpsoc-3.1/bin</tt> directory onto your
  make
  make install
 
-== Source download ==
-
 === ORPSoC cores ===
 
 This must be cloned from the github repository. It is easiest if this resides alongside the <tt>orpsoc-3.1</tt> directory.
@@ -129,9 +127,9 @@ The code we will actually build is slightly different from the upstream version.
  git remote update
  git checkout orconf2013/master
 
-=== Demo bare metal software ===
+=== Demo bare metal software for ORPSoC ===
 
-Some basic bare metal software is also available
+Software is not handled by ORPSoC, yet. Some basic bare metal software, which will build against our [[Newlib|newlib-based]] tool chain.
 
  git clone https://github.com/juliusbaxter/orconf2013.git
 
