@@ -120,6 +120,13 @@ This must be cloned from the github repository. It is easiest if this resides al
 
  git clone https://github.com/openrisc/orpsoc-cores.git
 
+The code we will actually build is slightly different from the upstream version. You'll need to add a remote repository containing this modified version.
+
+ cd orpsoc-cores
+ git remote add orconf2013 https://github.com/juliusbaxter/orpsoc-cores.git 
+ git remote update
+ git checkout orconf2013/master
+
 = Building ORPSoC for the DE0 nano =
 
 == Create build area ==
