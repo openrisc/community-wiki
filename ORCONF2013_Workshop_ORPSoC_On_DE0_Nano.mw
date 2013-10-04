@@ -267,6 +267,14 @@ Basically, set the '''b''' to a '''f''' in the FPGATAPID value.
 
 Save and close the file, and re-run OpenOCD with the same command as before.
 
+== Physically attach the UART  ==
+
+[http://www.embecosm.com Embecosm] have graciously provided some [http://www.embecosm.com/resources/hardware/#EHW1 USB UART adapters] which can be attached to the DE0 nano.
+
+These should be attached so that the <tt>GND</tt> pin is on pin 12 of header JP2.
+
+A pinout for the DE0 nano can be found [http://semilleroadt.upbbga.edu.co/Archivos_Generales/DE0-Nano%20pinout.pdf here].
+
 == Compiling software ==
 
 Make sure you have [[#Demo_bare_metal_software_for_ORPSoC|downloaded the demo bare metal software]].
