@@ -341,32 +341,16 @@ This will usually halt the processor, and it can be set running again with
 
  resume
 
-=== GDB ===
+The <tt>timerled</tt> software will output to the UART, and be interactive.
 
-The GNU debugger can also be used. This should be included in the [[#OpenRISC_GNU_tool_chain|tool chain]].
+== Run Linux ==
 
-Run it with
+Of course, we wouldn't run a workshop without booting our Linux system
 
- or1k-elf-gdb 
+Download a pre-compiled Linux kernel with BusyBox here:
 
-Attach to the [[#Attach_the_debug_proxy|running proxy]] with
- 
- target remote :3333
+[https://www.dropbox.com/s/bi5vx8kmqnjdldx/vmlinux-de0_nano vmlinux-de0_nano]
 
-Select an executable to debug
+Load it with the following method via [[#Telnet|telnet]]:
 
-  file /<path to your>/orconf2013/sw/timer/timer
-
-Download it to the board with
-
-  load
-
-Set the PC to the reset address
-
-  spr npc 0x100
-
-Now set the processor running
-  
-  continue
-
-'''Note''': This doesn't appear to be working properly, so probably best to use the [[#Telnet|telnet]] method.
+ halt; load_image /work/orpsoc-build/vmlinux-de0_nano; reset
