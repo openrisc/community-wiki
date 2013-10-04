@@ -282,7 +282,7 @@ A pinout for the DE0 nano can be found [http://semilleroadt.upbbga.edu.co/Archiv
 
 This will open a terminal attached to the UART device.
 
-There are several terminal programs we could use to attach to the UART but I will use <tt>screen</tt>.
+There are several terminal programs we could use to attach to the UART but we will use <tt>screen</tt> here. The essential information, however, is that it's the default (?) UART protocol (8-bits data, 1 stop bit, no parity) at 115200 baud.
 
 It is assumed there is only 1 USB-UART attached, and is mounted as <tt>/dev/ttyUSB0</tt>, so alter the following instructions if it appears somewhere else on your machine.
 
