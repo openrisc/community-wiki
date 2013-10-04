@@ -302,7 +302,7 @@ Unless you have a rule to allow these USB-UART devices to be read/write by the u
 
  sudo chmod a+rwx /dev/ttyUSB0
 
-== Compiling software ==
+== Compiling demo bare metal software ==
 
 Make sure you have [[#Demo_bare_metal_software_for_ORPSoC|downloaded the demo bare metal software]].
 
