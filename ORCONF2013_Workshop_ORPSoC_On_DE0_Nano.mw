@@ -347,7 +347,7 @@ The <tt>timerled</tt> software will output to the UART, and be interactive.
 
 === Run Linux ===
 
-Of course, we wouldn't run a workshop without booting our Linux system
+Of course, we wouldn't hold a workshop without booting our Linux system :)
 
 Download a pre-compiled Linux kernel with BusyBox here:
 
