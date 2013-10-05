@@ -96,11 +96,18 @@ You may also choose to install it with <tt>make install</tt>.
 
 ==== Missing packages required for <tt>bootstrap</tt> ====
 
-Your system will require the 
+Your system will require  
 
 * autoconf
 * automake
 * libtool
+
+
+==== Missing libusb error during configure ====
+
+Install
+
+ * libusb-1.0-0-dev
 
 == ORPSoC ==
 
