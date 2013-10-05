@@ -133,6 +133,8 @@ The code we will actually build is slightly different from the upstream version.
 
 Software is not handled by ORPSoC, yet. Some basic bare metal software, which will build against our [[Newlib|newlib-based]] tool chain.
 
+Clone this repository alongside the others:
+
  git clone https://github.com/juliusbaxter/orconf2013.git
 
 = Building ORPSoC for the DE0 nano =
