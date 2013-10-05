@@ -151,8 +151,8 @@ The build directory needs a config file, which simply tells the scripts where th
 Create a file which tells <tt>orpsoc</tt> where these directories are. The following should be sufficient if your <tt>orpsoc-build</tt> directory is alongside the <tt>orpsoc-cores</tt> directory. So in your <tt>orpsoc-build</tt> directory create a file called '''<tt>orpsoc.conf</tt>''' with the following contents:
 
  [main] 
-  cores_root   = ../orpsoc-cores/cores
-  systems_root = ../orpsoc-cores/systems
+ cores_root   = ../orpsoc-cores/cores
+ systems_root = ../orpsoc-cores/systems
 
 We are now ready to build
 
