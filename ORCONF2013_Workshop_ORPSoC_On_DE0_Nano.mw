@@ -99,9 +99,9 @@ You may also choose to install it with <tt>make install</tt>.
 Your system will require  
 
 * autoconf
+* pkg-config
 * automake
 * libtool
-
 
 ==== Missing packages during configure ====
 
@@ -110,6 +110,10 @@ Install
 * libusb-1.0-0-dev
 * libtclcl1-dev
 * libftdi-dev
+
+==== TCL error message during configure ====
+
+If you have already installed the Altera Quartus suite and its <tt>quartus/bin</tt> directory is in your $PATH then remove it while you configure and build OpenOCD.
 
 == ORPSoC ==
 
