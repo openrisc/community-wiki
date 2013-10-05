@@ -357,4 +357,4 @@ Load it with the following method via [[#Telnet|telnet]]:
 
  halt; load_image /work/orpsoc-build/vmlinux-de0_nano; reset
 
-Once booted, the image contains a [http://www.eembc.org/coremark/ <tt>coremark</tt>]] executable in the root directory which can be run.
+Once booted, the image contains a [http://www.eembc.org/coremark/ <tt>coremark</tt>] executable in the root directory which can be run.
