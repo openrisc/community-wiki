@@ -109,6 +109,7 @@ Install
 
 * libusb-1.0-0-dev
 * libtclcl1-dev
+* libftdi-dev
 
 == ORPSoC ==
 
