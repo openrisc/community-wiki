@@ -92,6 +92,17 @@ Now configure and build
 
 You may also choose to install it with <tt>make install</tt>.
 
+
+=== Troubleshooting ===
+
+==== Missing packages required for <tt>bootstrap</tt> ====
+
+Your system will require the 
+
+* autoconf
+* automake
+* libtool
+
 == ORPSoC ==
 
 ORPSoC is the system-on-chip build infrastructure which will be used for this workshop.
