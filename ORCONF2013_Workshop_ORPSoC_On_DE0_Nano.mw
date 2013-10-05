@@ -102,7 +102,9 @@ See the [[ORPSoC]] page here on the OpenCores wiki for further details.
 
 === ORPSoC build system ===
 
-For this workshop, we will be using the <tt>orpsoc-3.1</tt> release of the scripts. You can download them here: [ftp://ocuser:ocuser@openrisc.opencores.org/orpsoc/orpsoc-3.1.tar.gz orpsoc-3.1.tar.gz]
+For this workshop, we will be using the <tt>orpsoc-3.1</tt> release of the scripts. You can download them here: [ftp://ocuser:ocuser@openrisc.opencores.org/orpsoc/orpsoc-3.1.tar.gz orpsoc-3.1.tar.gz] or with
+
+ wget ftp://ocuser:ocuser@openrisc.opencores.org/orpsoc/orpsoc-3.1.tar.gz
 
 Once downloaded extract this archive somewhere sensible with
 
