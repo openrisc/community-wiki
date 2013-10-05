@@ -103,11 +103,12 @@ Your system will require
 * libtool
 
 
-==== Missing libusb error during configure ====
+==== Missing packages during configure ====
 
 Install
 
- * libusb-1.0-0-dev
+* libusb-1.0-0-dev
+* libtcl
 
 == ORPSoC ==
 
