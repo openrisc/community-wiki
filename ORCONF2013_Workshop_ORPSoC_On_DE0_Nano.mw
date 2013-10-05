@@ -191,6 +191,8 @@ If your environment has not been set up correctly, this step will likely error o
 
 Once it is complete, you will end up with an image, <tt>build/de0_nano/bld-quartus/de0_nano.sof</tt> which you can program on the DE0 nano. You are then ready to program your FPGA board.
 
+If you are having problems building the image, or suspect yours isn't correct, you can download a known-good one here: [https://www.dropbox.com/s/s7djpgtgbxmdhyi/de0_nano_orconf2013.sof de0_nano_orconf2013.sof]
+
 = Running ORPSoC on DE0 Nano =
 
 == Programming the FPGA ==
