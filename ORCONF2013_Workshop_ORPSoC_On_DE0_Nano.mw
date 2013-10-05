@@ -108,7 +108,7 @@ Your system will require
 Install
 
 * libusb-1.0-0-dev
-* libtcl
+* libtclcl1-dev
 
 == ORPSoC ==
 
