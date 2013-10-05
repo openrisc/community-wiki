@@ -148,9 +148,11 @@ ORPSoC requires a separate directory be created as its work area. Create this di
 
 The build directory needs a config file, which simply tells the scripts where the <tt>cores</tt> and <tt>systems</tt> are.
 
-There is a pre-configured one in the <tt>orpsoc</tt> directory, which assumes the build directory is parallel to it. We can copy that into the build directory.
+Create a file which tells <tt>orpsoc</tt> where these directories are. The following should be sufficient if your <tt>orpsoc-build</tt> directory is alongside the <tt>orpsoc-cores</tt> directory. So in your <tt>orpsoc-build</tt> directory create a file called '''<tt>orpsoc.conf</tt>''' with the following contents:
 
- cp ../orpsoc/orpsoc.conf .
+ [main] 
+  cores_root   = ../orpsoc-cores/cores
+  systems_root = ../orpsoc-cores/systems
 
 We are now ready to build
 
