@@ -71,7 +71,7 @@ Altera provide [http://www.altera.com/download/faq/dnl-v130-download-installatio
 
 === Add to PATH ===
 
-Be sure to add the <tt>/<quartus_install_path>/quartus/bin</tt> directory to your $PATH variable in your <tt>.bashrc</tt> file or similar after installation.
+Be sure to add the <tt>/<quartus_install_path>/quartus/bin</tt> directory '''to the end''' your $PATH variable in your <tt>.bashrc</tt> file or similar after installation. Failing to add this to the end of your $PATH variable will cause issues when running [[#OpenOCD]].
 
 == OpenOCD ==
 
