@@ -208,7 +208,7 @@ One should be available in the <tt>/your/altera/install/dir/'''quartus/bin'''</t
 
 If so, now run it with
 
- sudo /your/altera/install/dir/quartus/bin/jtagd
+ sudo `which jtagd`
 
 And try to program again.
 
