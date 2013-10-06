@@ -35,9 +35,11 @@ The spec update process will occur from time to time and all proposals largely a
 
 The following section should be used to list proposed typos and clarifications which need to be made to future revisions of the architecture spec document.
 
-==== Misspellings ====
+==== Misspellings, Typos ====
 
 ''Synchronization'' is misspelled as ''Syncronization'' on pages 44, 82, 92, 284, and 340.
+
+In Table 4-7 on page 31, "EEA" label should be "ESR".
 
 ==== Writable bits in SR ====
 
