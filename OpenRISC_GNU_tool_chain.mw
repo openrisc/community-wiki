@@ -206,7 +206,7 @@ Build newlib and gdb (without or1ksim in this case)
  ../or1k-src/configure --target=or1k-elf --prefix=/opt/or1k-toolchain --enable-shared --disable-itcl \
  --disable-tk --disable-tcl --disable-winsup --disable-libgui --disable-rda --disable-sid \
  --enable-sim --disable-or1ksim \
- --enable-gdb  --with-sysroot --enable-newlib --enable-libgloss --with-expat
+ --enable-gdb  --with-sysroot --enable-newlib --enable-libgloss
  make
  make install
 
