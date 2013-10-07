@@ -41,9 +41,17 @@ The following section should be used to list proposed typos and clarifications w
 
 In Table 4-7 on page 31, "EEA" label should be "ESR".
 
-==== Writable bits in SR ====
+==== SPRs ====
 
 At present the fixed-one bit in the supervision register (<tt>SR[FO]</tt>) is listed as readable ''and'' writable. It should be listed as readable only.
+
+Move the section about GPRs from the NPC section (4.10, page 31) into its own section.  Better explain how GPRs from other contexts are accessed (section 6.4.3, page 257).
+
+PPC should be read-only (table 4-2, page 24).
+
+For backwards compatibility, the AECR register (section 15.14, page 326) should be initialized to a state that has behavior identical to a machine without AECR support, instead of the current "0".  I believe this would be the value (OVADDE|OVMULE|OVMACADDE).
+
+ESR (section 4.9, page 30) should have the same bit layout as SR0.
 
 ==== Cache Registers Marked as Optional ====
 
