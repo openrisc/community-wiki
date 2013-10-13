@@ -339,7 +339,7 @@ Robert Guenzel has provided an [http://chschroeder.gamiro.de/rg/or1ksim_macOS10.
 
 It seems Guenzel was able to install the toolchain without hick-ups. This is not the case anymore, please follow the instructions below to install the newlib toolchain.  
 
-== Newlib toolchain (or1k-elf) ==
+===== Newlib toolchain (or1k-elf) =====
 
 See the following links for the appropriate development versions of the tools and libraries: [[OpenRISC_GNU_tool_chain#Development_version|binutils]], [[OpenRISC_GNU_tool_chain#Development_version_2|gcc]], [[OpenRISC_GNU_tool_chain#Development_version_3|newlib]]
 
