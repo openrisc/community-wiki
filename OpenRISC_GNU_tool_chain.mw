@@ -337,6 +337,84 @@ It can be downloaded [http://j-software.dk/or1k/or32.zip here].
 
 Robert Guenzel has provided an [http://chschroeder.gamiro.de/rg/or1ksim_macOS10.4.pdf application note] on building the toolchain (excluding GDB) for Mac OS 10.4. Users will find this provides valuable additional information beyond the instructions above.
 
+It seems Guenzel was able to install the toolchain without hick-ups. This is not the case anymore, please follow the instructions below to install the newlib toolchain.  
+
+=== Newlib toolchain (or1k-elf) ===
+
+See the following links for the appropriate development versions of the tools and libraries: [[OpenRISC_GNU_tool_chain#Development_version|binutils]], [[OpenRISC_GNU_tool_chain#Development_version_2|gcc]], [[OpenRISC_GNU_tool_chain#Development_version_3|newlib]]
+
+
+The following assumes a checkout of the development repositories, which at present can be done with the following:
+
+ git clone git://github.com/openrisc/or1k-src.git
+ git clone git://github.com/openrisc/or1k-gcc.git
+
+The following compile instructions will install into <code>/opt/or1k-toolchain</code> so make sure it exists and is writable by the user or whoever is running the <code>make install</code> commands.
+
+Make a build directory each for the gnu-src tools and gcc, alongside the checkouts, we'll call them <code>bld-or1k-src</code> and <code>bld-or1k-gcc</code> respectively.
+ mkdir bld-or1k-src
+ mkdir bld-or1k-gcc
+
+Requirements: 
+  Apple Developer: Command Line Tools
+  Brew installations: gmp libmpc mpfr cloog isl
+  Variables ~/.bash_profile: export CC=cc / export CXX=c++
+  Add toolchain to PATH: /opt/or1k-toolchain/bin
+
+Build the first set of tools, binutils etc.
+ cd bld-or1k-src
+
+ ../or1k-src/configure --target=or1k-elf --prefix=/opt/or1k-toolchain --enable-shared \
+ --disable-itcl --disable-tk --disable-tcl --disable-winsup --disable-libgui --disable-rda \
+ --disable-sid --disable-sim --disable-gdb --with-sysroot --disable-newlib \
+ --disable-libgloss  --disable-werror
+ make
+ make install
+
+Build gcc
+ cd ../bld-or1k-gcc
+ 
+ ../or1k-gcc/configure --target=or1k-elf --prefix=/opt/or1k-toolchain --enable-languages=c \
+ --disable-shared --disable-libssp
+ make
+ make install
+
+Build newlib and gdb (without or1ksim in this case)
+ cd ..
+ rm -rf bld-or1k-src
+ mkdir bld-or1k-src  
+ cd bld-or1k-src
+ 
+ ../or1k-src/configure --target=or1k-elf --prefix=/opt/or1k-toolchain --enable-shared \
+ --disable-itcl --disable-tk --disable-tcl --disable-winsup --disable-libgui --disable-rda \
+ --disable-sid --disable-sim --disable-or1ksim --enable-gdb  --with-sysroot --enable-newlib \
+ --enable-libgloss --disable-gdbtk --disable-werror
+ make
+ make install
+
+Build gcc again, this time with newlib
+ cd ..
+ rm -rf bld-or1k-gcc
+ mkdir bld-or1k-gcc
+ cd bld-or1k-gcc
+ 
+ ../or1k-gcc/configure --target=or1k-elf --prefix=/opt/or1k-toolchain --enable-languages=c,c++ \
+ --disable-shared --disable-libssp --with-newlib
+ make
+ make install
+
+See the page on the [[Newlib|newlib library port]] for details on what you've just built and installed.
+
+Obs.: 
+# We compile or1k-src without "sim". Generally it is enabled. But if you turn it on, you get compilation problems with or1k-sim. 
+# We disable gdbtk (probably gdbtui). We do this to avoid tcl/tk problems that arise on OSX. Some of it can be circumvented by changing the following lines in acinclude.m4 under gdb and libgui. 
+ dir=`echo ${TCL_INCLUDE_SPEC}/tcl-private/generic | sed -e s/-I//` 
+ dir=`echo ${TK_INCLUDE_SPEC}/tk-private/generic | sed -e s/-I//`
+to
+ dir=`echo ${TCL_INCLUDE_SPEC}/Headers/tcl-private | sed -e s/-I//` 
+ dir=`echo ${TK_INCLUDE_SPEC}/Headers/tk-private | sed -e s/-I//`
+* Then run autoconf under gdb and libgui. But you end up still having some other problems because the variable MAC_TCL turns out not be defined by the configure script.
+
 == Tools ==
 
 === CGEN ===
