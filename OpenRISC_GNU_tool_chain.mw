@@ -235,7 +235,8 @@ See the page on the [[Newlib|newlib library port]] for details on what you've ju
  sudo chown username:username /opt/or1k-toolchain
  
  export PATH=$PATH:/opt/or1k-toolchain/bin
- 
+ unset LD_LIBRARY_PATH
+
 ===== or1k-src =====
 
 NOTE: on 32-bit machines --disable-werror is needed due to an enum acting as
