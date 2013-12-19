@@ -92,7 +92,7 @@ The source for the stable version of the GNU tools and newlib is available under
 
 The source for uClibc and Linux (needed for the header files for the toolchain) is currently held in a [http://git-scm.com/ git] repository run by [http://southpole.se/ South Pole]. It is best to save the source for these into the gnu-stable path just created when checking out from the OpenCores SVN repository.
 
- cd gnu-src
+ cd gnu-stable
  git clone git://git.openrisc.net/jonas/uClibc
  git clone git://git.openrisc.net/jonas/linux
 
