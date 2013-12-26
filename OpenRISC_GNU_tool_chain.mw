@@ -293,6 +293,7 @@ bit mask is considered signed
 
  cd ~/openrisc
  cd build-gcc
+
  rm -rf *
  
  ../or1k-gcc/configure --target=or1k-linux-uclibc --prefix=/opt/or1k-toolchain --disable-libssp \
