@@ -25,64 +25,7 @@ The following problems with current ORPSoC have been identified. The next versio
 
 =Implementation=
 
-==Project Structure==
-
-*<root>/
-**bench/ Main ORPSoC testbench
-**boards/ Contain all board-specific directories
-***digilent-atlys/
-***ordb2a/
-***generic/
-***...
-***de0-nano
-**config/ ORPSoC configuration files
-**cores/
-***or1200
-***simple_spi
-***...
-***uart16550
-**scripts/ Makefile snippets and other ORPSoC scripts
-**sw/ ORPSoC-specific software
-
-==Software managment==
-Structure
-* sw/
-** apps/ Example apps to run on board or in simulation
-** tests/ Source code for test cases
-** utils/ Utility programs for ORPSoC
-
-==Handling of external cores==
-External cores from opencores or other locations will be pulled in when needed, and patched to work in ORPSoC. Each core will live in a separate directory with the following structure:
-* <core_name>
-**driver/ .c/.h/.S files for bare-metal driver
-**core/ Upstream core
-**patches/ ORPSoC-specific patches for core
-**Makefile
-
-Makefile should contain the following rules:
-* fetch Get the core from it's upstream repository
-* patch Apply core-specific patches
-* driver Build an object of the bare-metal driver
-
-Each core will need a Makefile in it's upstream root directory that need the following rules
-* list-rtl-files Return a list of RTL files in core
-* list-include-dirs Return a list of include directories in core
-* list-tb-files Return a list of files needed for simulation
-This makefile can be included as a patch if it is not in the upstream core
-
-==Board-specific configuration==
-Each board is required to have a Makefile with the following rules
-* config Initialize all cores
-* rtl-test Launch a simulation with a defined test case
-* netlist Generate a post-synthesis netlist
-* loadmodule Generate an image that can be downloaded to an FPGA
-Apart from that, there are no restrictions, but the following structure is recommended:
-* <board root>
-**data/ General input files such as simulation configurations, constraint files, coregen descriptions
-**rtl/ ORPSoC top-level, clock generation and other board-specific files that are not found in the cores
-**tb/ Board-specific test-bench top-level and other testbench related files
-**board.conf All board-specific parameters
-**Makefile Implements the required as well as optional board-specific makefile targets
+See the documentation which comes with the project. [https://github.com/openrisc/orpsoc See the project's page on github.]
 
 =Workflow=
 
