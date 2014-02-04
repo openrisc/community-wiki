@@ -48,7 +48,7 @@ This contains the IP core and system configuration information.
 
 === Repository ===
 
-The ORPSoC cores source is hosted under the OpenRISC organisation on github - [https://github.com/openrisc/orpsoc https://github.com/openrisc/orpsoc-cores]
+The ORPSoC cores source is hosted under the OpenRISC organisation on github - [https://github.com/openrisc/orpsoc-cores https://github.com/openrisc/orpsoc-cores]
 
 Clone a copy of the repository with git like so:
 
