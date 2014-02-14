@@ -726,35 +726,4 @@ Also check the [[OpenRISC_GNU_tool_chain_troubleshooting|troubleshooting page]] 
 
 == Future plans ==
 
-Individual tools above have their own plans laid out for future work.
-
-=== Wishlist ===
-
-=== Future toolchain development ===
-
-At a technical level, future development of the GNU toolchain is planned to include
-* improved optimization through inclusion of accurate process scheduling models.
-* support for profiling.
-* more efficient thread handling.
-
-There are some structural things we would also really like to have in place:
-* A nice tutorial, showing off the installation and use of the new toolchain.
-* Maintainers for various platforms (Cygwin, Mac OS X)
-* Maintainers for packaging toolchain for Debian (apt) and Fedora (yum) package managers.
-
-Feel free to post any suggestions or offers to assist the project to the [[OR1K:Community_Portal#Mailing lists|mailing lists]] or talk to us on [[OR1K:Community_Portal#IRC|IRC]].
-
-=== The toolchain development team ===
-
-* [[User:Jeremybennett|Jeremy Bennett]] (binutils, GCC, GDB, Newlib, Or1ksim)
-* [[User:Marcus_ericsson|Marcus Erlandsson]]
-* [[User:julius|Julius Baxter]] (program manager, install script, newlib, Or1ksim)
-* [[User:jonibo|Jonas Bonn]] (uClibc)
-* Peter Gavin
-* Stefan Kristiansson
-
-=== Why and How to Volunteer ===
-
-Taking responsibility for maintaining a package is a great way to gain experience of practical program management. If you are a student, or early in your career, it adds important credibility to your resume. And since it is all open source, your expertise can be publicly verified by any potential employer.
-
-To take part, post a message on the [[OR1K:Community_Portal#Mailing lists|mailing lists]] , or email the Release Manager, [mailto:julius@opencores.org Julius Baxter] or come and talk to us on [[OR1K:Community_Portal#IRC|IRC]].
+See [[OR1K:FutureWork|Future Work]]
