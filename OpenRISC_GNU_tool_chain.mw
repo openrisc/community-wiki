@@ -231,7 +231,7 @@ See the page on the [[Newlib|newlib library port]] for details on what you've ju
  mkdir openrisc
  cd openrisc
  
- mkdir /opt/or1k-toolchain
+ sudo mkdir /opt/or1k-toolchain
  sudo chown username:username /opt/or1k-toolchain
  
  export PATH=$PATH:/opt/or1k-toolchain/bin
