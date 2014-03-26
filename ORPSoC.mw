@@ -40,7 +40,7 @@ The FuseSoC source is hosted on Olof Kindgren's github page - [https://github.co
 
 Clone a copy of the repository with git like so:
 
- git clone https://github.com/fusesoc/fusesoc.git
+ git clone https://github.com/olofk/fusesoc.git
 
 == ORPSoC cores ==
 
