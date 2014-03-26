@@ -97,7 +97,7 @@ Once in the ''build'' directory, <tt>orpsoc</tt> can be run.
 
 == Help ==
 
- orpsoc --help
+ fusesoc --help
 
 == List available systems ==
 
