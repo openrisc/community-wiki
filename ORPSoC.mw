@@ -56,9 +56,9 @@ Clone a copy of the repository with git like so:
 
 = Install & set up=
 
-''Instructions for setting up ORPSoC can also be found in the <tt>INSTALL</tt> file in the <tt>orpsoc</tt> repository.''
+''Instructions for setting up FuseSoC can also be found in the <tt>INSTALL</tt> file in the <tt>fusesoc</tt> repository.''
 
-The only component which may be installed is the <tt>orpsoc</tt> tool. It also is possible to use the tool without installing it on your system. See below.
+The only component which may be installed is the <tt>fusesoc</tt> tool. It also is possible to use the tool without installing it on your system. See below.
 
 == FuseSoC ==
 
@@ -81,15 +81,15 @@ It's possible to just add the /<tt><path to fusesoc location>/fusesoc/bin</tt> t
 
 ORPSoC can be run from an arbitrary work directory (where all intermediate and results files will be generated and stored). All that is required is that the location of the <tt>orpsoc-cores/cores</tt> and <tt>orpsoc-cores/systems</tt> directories are specified to the tool.
 
-The easiest way to do that is via the <tt>orpsoc.conf</tt> config file. This file must exist wherever <tt>orpsoc</tt> is run from.
+The easiest way to do that is via the <tt>fusesoc.conf</tt> config file. This file must exist wherever <tt>fusesoc</tt> is run from.
 
-So the simplest set up would be to, alongside the <tt>orspoc</tt> and <tt>orpsoc-cores</tt> directory, '''create an <tt>orpsoc-build</tt> directory''' with an <tt>orpsoc.conf</tt> file. This file (<tt>orpsoc-build/orpsoc.conf</tt>) should contain:
+So the simplest set up would be to, alongside the <tt>fusesoc</tt> and <tt>orpsoc-cores</tt> directory, '''create an <tt>orpsoc-build</tt> directory''' with an <tt>fusesoc.conf</tt> file. This file (<tt>orpsoc-build/fusesoc.conf</tt>) should contain:
 
  [main]
  cores_root   = ../orpsoc-cores/cores
  systems_root = ../orpsoc-cores/systems
 
-Now <tt>orpsoc</tt> may be run from this <tt>orpsoc-build</tt> directory.
+Now <tt>fusesoc</tt> may be run from this <tt>orpsoc-build</tt> directory.
 
 = Using =
 
