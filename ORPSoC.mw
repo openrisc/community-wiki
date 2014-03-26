@@ -32,7 +32,7 @@ This is the scripting and automation component of FuseSoC.
 
 The latest release '''ORPSoC 3.1''' [ftp://ocuser:ocuser@openrisc.opencores.org/orpsoc/orpsoc-3.1.tar.gz can be downloaded here].
 
-Note that the <tt>orpsoc-cores</tt> 
+Note that the <tt>orpsoc-cores</tt> are not included in the release tar-balls.
 
 === Repository ===
 
