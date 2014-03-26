@@ -22,7 +22,7 @@ The primary interface with ORPSoC is via the <tt>orpsoc</tt> command-line execut
 
 = Download =
 
-The <tt>orpsoc</tt> and <tt>orpsoc-cores</tt> repositories should be set up alongside each other.
+The <tt>fusesoc</tt> and <tt>orpsoc-cores</tt> repositories should be set up alongside each other.
 
 == FuseSoC ==
 
