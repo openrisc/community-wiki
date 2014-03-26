@@ -24,9 +24,9 @@ The primary interface with ORPSoC is via the <tt>orpsoc</tt> command-line execut
 
 The <tt>orpsoc</tt> and <tt>orpsoc-cores</tt> repositories should be set up alongside each other.
 
-== ORPSoC ==
+== FuseSoC ==
 
-This is the scripting and automation component of ORPSoC.
+This is the scripting and automation component of FuseSoC.
 
 === Latest Release ===
 
@@ -36,11 +36,11 @@ Note that the <tt>orpsoc-cores</tt>
 
 === Repository ===
 
-The ORPSoC source is hosted under the OpenRISC organisation on github - [https://github.com/openrisc/orpsoc https://github.com/openrisc/orpsoc]
+The FuseSoC source is hosted on Olof Kindgren's github page - [https://github.com/olofk/fusesoc https://github.com/olofk/fusesoc]
 
 Clone a copy of the repository with git like so:
 
- git clone https://github.com/openrisc/orpsoc.git
+ git clone https://github.com/fusesoc/fusesoc.git
 
 == ORPSoC cores ==
 
