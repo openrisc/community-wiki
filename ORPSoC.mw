@@ -60,22 +60,22 @@ Clone a copy of the repository with git like so:
 
 The only component which may be installed is the <tt>orpsoc</tt> tool. It also is possible to use the tool without installing it on your system. See below.
 
-== ORPSoC ==
+== FuseSoC ==
 
 '''Note''': If you have downloaded the [[#Latest_Release|latest release]] then you may omit the <tt>autoreconf -i</tt> step below as it has already been run before archiving.
 
-From within the <tt>orpsoc</tt> directory run the following:
+From within the <tt>fusesoc</tt> directory run the following:
 
  autoreconf -i   # Omit this if downloaded a release archive
  ./configure
  make
  make install
 
-Once this is done, then the <tt>orpsoc</tt> tool will be available.
+Once this is done, then the <tt>fusesoc</tt> tool will be available.
 
 === Without installing ===
 
-It's possible to just add the /<tt><path to orpsoc location>/orpsoc/bin</tt> to your $PATH variable to able to use <tt>orpsoc</tt>
+It's possible to just add the /<tt><path to fusesoc location>/fusesoc/bin</tt> to your $PATH variable to able to use <tt>fusesoc</tt>
 
 == Set Up ==
 
