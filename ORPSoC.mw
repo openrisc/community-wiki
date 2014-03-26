@@ -105,7 +105,7 @@ Once in the ''build'' directory, <tt>orpsoc</tt> can be run.
 
 == Build system FPGA image ==
  
- orpsoc build <system_name>
+ fusesoc build <system_name>
 
 = Contributing =
 
