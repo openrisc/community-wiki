@@ -101,7 +101,7 @@ Once in the ''build'' directory, <tt>orpsoc</tt> can be run.
 
 == List available systems ==
 
- orpsoc list-systems
+ fusesoc list-systems
 
 == Build system FPGA image ==
  
