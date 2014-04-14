@@ -284,12 +284,14 @@ To enable multicore systems, a Special Purpose Register 'Core ID' is needed.
 
 Proposal: Use system status register address 14. In table on page 24 add:
 
+<nowiki>
 Grp #: 0
 Reg #: 14
 Reg Name: COREID
 USER MODE: -
 SUPV MODE: R
 Description: Core Identifier Register
+</nowiki>
 
 From my point of view it is not necessary to add section 4.12 to explain this. Instead, we should add an extended explanation of the multicore capabilities if all are integrated.
 
