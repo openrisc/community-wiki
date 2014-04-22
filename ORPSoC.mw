@@ -18,7 +18,7 @@ ORPSoC provides both system description files and the scripts to simulate and bu
 
 ORPSoC is split into more than one repository. The scripts and automation tools (<tt>fusesoc</tt>) are separate from the system and core descriptions (<tt>orpsoc-cores</tt>).
 
-The primary interface with ORPSoC is via the <tt>orpsoc</tt> command-line executable. Users edit HDL source code and system configuration files before launching <tt>orpsoc</tt> to either launch simulation or FPGA image generation.
+The primary interface with ORPSoC is via the <tt>fusesoc</tt> command-line executable. Users edit HDL source code and system configuration files before launching <tt>orpsoc</tt> to either launch simulation or FPGA image generation.
 
 = Download =
 
