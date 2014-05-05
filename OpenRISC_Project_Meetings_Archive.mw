@@ -2,6 +2,173 @@ This page is an archive of previous OpenRISC meeting and conference events wiki 
 
 For the latest information see the [[OpenRISC_Project_Meeting|main page]].
 
+== ORCONF 2013 ==
+
+The second annual OpenRISC project conference - ORCONF 2013. 
+
+See the [[OpenRISC_Project_Meeting#Schedule|schedule section]] for details of the weekend.
+
+=== Registration ===
+
+Registration is free and allows us to know who will be attending for scheduling and catering purposes.
+
+'''Registration for the event is now open via Eventbrite:''' [http://orconf2013.eventbrite.co.uk/ Click here to register for ORCONF]
+
+Please let us know any timing constraints on your attendance when registering. (<tt>set_multicycle_path -start 1hr -from {i:you} -to {i:orconf}</tt>)
+
+=== Audience ===
+
+This meeting will be accessible for anyone with a background in embedded systems at any level, whether acquainted with the project or not.
+
+=== Date & Time ===
+
+The event will run from 2pm on '''Saturday, October 5''' to early afternoon on '''Sunday, October 6'''.
+
+Lunch will be available from 12:30 on Saturday. The sessions will run until the evening, and be followed by dinner in a local pub. Sessions will resume Sunday morning and conclude after lunch in the early afternoon.
+
+This arrangement should allow people to travel on Saturday morning and return home Sunday evening.
+
+=== Venue ===
+
+[[File:University_of_Cambridge_Computer_Laboratory.jpg|right|400px]]
+
+This year's conference will be held at the [http://www.cl.cam.ac.uk/ University of Cambridge Computer Laboratory] in '''Cambridge, England'''. A ''big'' thank you to David Greaves and the Computer Labs for hosting us.
+
+The address is:
+
+'''Room FW11''', Cambridge University Computer Laboratory,
+15 JJ Thomson Avenue,
+CB3 0FD Cambridge,
+United Kingdom 
+
+==== Accommodation ====
+
+Some recommendations for places to stay are:
+
+* [http://www.travelodge.co.uk/hotels/577/Cambridge-Newmarket-Road-hotel Travelodge Newmarket Road] - they are quoting 50GBP for Friday night and 86GBP for Saturday night. It is close enough to town to walk, but is a 45-minute walk to the conference venue. Taxis between the train station and conference venue would be the best bet (if several are staying here they could be shared).
+* [http://www.kayak.co.uk/#/hotels/Arundel-House-Hotel,Cambridge,CAM,United-Kingdom-c17146-h80251/2013-10-04/2013-10-06 Arundel House] - this is a well located hotel, and are quoting 77GBP per night when booked on Kayak.co.uk. The conference venue is a 25-minute walk from here.
+
+==== Travel ====
+
+Cambridge is well connected in the UK by train, and internationally via all of London's airports. However, '''London Stansted''' airport is the closest, and is only a 30-minute train ride from the center of Cambridge.
+
+The Cambridge University Computer Laboratory website has a good section on[http://www.cl.cam.ac.uk/directions/ how to get there].
+
+=== Cost ===
+
+It is expected the conference will be free to attend, thanks to our wonderful [[#Sponsors|sponsors]].
+
+=== Schedule ===
+
+
+A playlist with all videos from ORCONF 2013 can be found on [http://www.youtube.com/playlist?list=PLOGTP9W1DX5VpHSd9F9kVQl5hsDVA45I9 YouTube]
+
+Saturday:
+{| width="100%" class="wikitable"
+|-
+! Time !! Presentation !! Video !! Slides, etc.
+|-
+| 1:45pm ||  A SystemC model of a multicore OpenRISC with power annotation (David Greaves). || [http://youtu.be/uW9tAiL_oSc Video] || 
+|-
+| 2:30pm || [http://optimsoc.org OpTiMSoC] - an OpenRISC-based Manycore System-on-Chip (Stefan Wallentowitz). || [http://youtu.be/gEfEFahvAQ Video] || 
+|-
+| 3:15pm || [http://www.cl.cam.ac.uk/research/security/ctsrd/beri.html BERI]: A Bluespec Extensible RISC Implementation. The development of a full-featured 64-bit MIPS processor for hardware-software co-design targeting rapid and robust extensibility (Jon Woodruff). || [http://youtu.be/8_enfBQXuO0 Video] || 
+|-
+| 4:15pm ||  Hands off the cores! Hands-on with[https://github.com/openrisc/orpsoc ORPSoCv3] - A walkthrough to get started with using ORPSoCv3 (Olof Kindgren and others). || [http://youtu.be/W3-fUkrdR1M Video] || 
+|-
+| 5:00pm ||  [[ORCONF2013_Workshop_ORPSoC_On_DE0_Nano|ORPSoC on the DE0-nano]]. Based on the workshop first given at [chiphack.org ChipHack], but upgraded for ORPSoCv3. DE0-nano's will be provided, but feel free to bring your own (Julius Baxter to lead). ||  || 
+|}
+
+Sunday:
+{| width="100%" class="wikitable"
+|-
+! Time !! Presentation !! Video !! Slides, etc.
+|-
+| 9:00am || [https://github.com/openrisc/mor1kx mor1kx] progress report and demo (Stefan Kristiansson and Julius Baxter). || [http://youtu.be/8CwbNGKrjl Video] || 
+|-
+| 9:45am ||  Defining a Domain Specific Language for the Configuration of SoPCs Based on the OpenRISC Platform (Martin Schulze). || [http://youtu.be/oLmDYf-S6pc Video]|| 
+|-
+| 10:15am ||  OpenRISC for space applications and EurySpace SoC (Guillaume Rembert) || [http://youtu.be/tsuB32vTj_o Video] || 
+|-
+| 10:30am ||  OpenOCD and GDB for OpenRISC (Franck Jullien)  || [http://youtu.be/zcDVcXE5-sE Video] || 
+|-
+| 10:45am ||  Modifying the OR1200 for ETH Z&uuml;rich (Davide Rossi) || [http://youtu.be/PJLZx3PnRvE Video] || 
+|-
+| 11:30am ||  OpenRISC 2000. A collaborative session to firm up the architecture specification (Jeremy Bennett to chair). || [http://youtu.be/1rQlAmlEwRg Video] || [http://opencores.org/or2k/OR2K_ORCONF2013_Discussion Notes]
+|-
+| 12:15pm ||  Update and discussion on the OpenRISC toolchain, including "do we need ABIv2" (Stefan Kristiansson to lead). || [http://youtu.be/o8DReLrNn_k Video] || 
+|-
+| 1:00pm ||  A Couple of Things at Lightning Speed (Julius Baxter) || [http://youtu.be/XWDJy_EPLgs Video] ||
+|-
+| 1:00pm ||  Verilator Update (Jeremy Bennett) || [http://youtu.be/yOk8DcK4-f0 Video] || 
+|}
+
+=== Sponsors ===
+
+[[File:Embecosm_logo_new.png|link=http://www.embecosm.com|Embecosm]]
+
+Embecosm is a UK based consultancy providing open source compiler development and silicon modeling. More information at[http://www.embecosm.com www.embecosm.com].
+
+=== Contact ===
+
+Please contact juliusbaxter@gmail.com or post to the [[OR1K:Community_Portal#Mailing_lists|OpenRISC mailing lists]] for further information or presentation proposals.
+
+The organisers are also easily contactable via IRC in [[OR1K:Community_Portal#IRC|#openrisc on irc.freenode.net]]
+
+== Talk and workshop abstracts ==
+
+=== A SystemC model of a multicore OpenRISC with power annotation ===
+
+David Greaves, Cambridge University Computer Laboratory
+
+David has developed a SystemC model of a multicore OpenRISC design, which has been used for teaching at the University for some years. This model is unusual in having annotations for power usage, so it can give estimates of power consumption as well as system performance when run.
+
+=== Defining a Domain Specific Language for the Configuration of SoPCs Based on the OpenRISC Platform ===
+
+Martin Schulze
+
+After some words about my motivation I will give a demo of the current state of the project, the eclipse editor and a simple solution to the question how to integrate into ORPSoCv2 (yes, it's v2 for now).
+
+=== OpTiMSoC - an OpenRISC-based Manycore System-on-Chip ===
+
+Stefan Wallentowitz, Technical University of Munich
+
+=== ORPSoC on the DE0-nano ===
+
+Julius Baxter
+
+This is a workshop first given by Julius Baxter at[chiphack.org ChipHack], showing how to bring up ORPSoC on the DE0-nano. A number of DE0-nano's will be available, but feel free to bring your own.
+
+Partipants are encouraged to [[ORCONF2013_Workshop_ORPSoC_On_DE0_Nano|read the workshop requirements]] and perform the tool installation prior to arriving ORCONF. Please contact Julius Baxter via IRC, the mailing lists or directly (see email below) if you experience problems with your preparation.
+
+=== mor1kx progress report and demo ===
+
+Stefan Kristiansson and Julius Baxter
+
+=== Hands off the cores! Hands-on with ORPSoCv3 ===
+
+Olof Kindgren and others
+
+A walkthrough to get started with using ORPSoCv3. This will precede the workshop.
+
+=== OpenRISC 2000 ===
+
+Jeremy Bennett
+
+This has been bouncing around for a couple of years, and it would be good to start to get some more concrete direction. Implementing OpenRISC (in silicon and in simulation) is a popular undergraduate project, and defining OR2K now might give a chance for someone to implement it during the coming academic year.
+
+=== Update and discussion on the OpenRISC toolchain ===
+
+Stefan Kristiansson
+
+This year has been a lot quieter on the toolchain side than last year, but there are a couple of things of interest that could be discussed. At least one thing I have in mind is our ABI. There have been a couple of occurrences of projects that abuse the C standard for varargs, hurting us "small, different guys".
+
+There are a couple of other things in our ABI that aren't all perfect, so maybe some venting of those issues and whether we need an "ABI v2.0" would be something we should consider.
+
+=== Bug squashing session ===
+
+We did this last year as the final session after lunch on Sunday. People joined in for as long as they could until their flights/trains left. It's a good chance to clear up Bugzilla once each year.
+
 == April 14 2013, Teleconference ==
 
 === Audience ===
