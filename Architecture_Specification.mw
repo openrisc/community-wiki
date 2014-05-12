@@ -1,4 +1,7 @@
 This page contains information relating to the OpenRISC 1000 architecture and the specification document.
+= OpenRISC 1000 architecture 1.1 =
+
+* Adds support for l.lwa and l.swa atomic operations
 
 = OpenRISC 1000 architecture 1.0 =
 
