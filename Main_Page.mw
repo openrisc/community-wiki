@@ -11,7 +11,7 @@ The project strives to provide:
 
 * Download the [http://opencores.org/websvn,filedetails?repname=openrisc&path=%2Fopenrisc%2Ftrunk%2Fdocs%2Fopenrisc-arch-1.1-rev0.pdf OR1K architecture specification 1.1 PDF]
 
-* Visit the [[Architecture_Specification#Download_OR1K_1.0_Specification|OR1K architecture specification ]] page.
+* Visit the [[Architecture_Specification|OR1K architecture specification ]] page.
 
 * Information about the [[OR1K:Community_Portal#Processor_Implementations|available synthesisable processor cores]], and [[OR1K:Community_Portal#Toolchains|tool chains]]
 
