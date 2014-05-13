@@ -70,7 +70,7 @@ The following configures the proxy to be built to interface with the Mohor unit 
 
 '''Note''': You may be required to install the FTDI driver (if running make and it cannot find the <tt>ftdi.h</tt>, then this is the problem). Under Ubuntu this is done with:
 
- sudo apt-get install libtftdi-dev
+ sudo apt-get install libftdi-dev
 
 = Running =
 
