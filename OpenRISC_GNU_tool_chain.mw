@@ -261,7 +261,7 @@ bit mask is considered signed
  cd ~/openrisc
  git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
  cd linux
- make INSTALL_HDR_PATH=${SYSROOT}/usr headers_install
+ ARCH=openrisc make INSTALL_HDR_PATH=${SYSROOT}/usr headers_install
 
 ===== gcc stage 1 =====
 
