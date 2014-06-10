@@ -259,10 +259,10 @@ bit mask is considered signed
  export SYSROOT=/opt/or1k-toolchain/or1k-linux-uclibc/sys-root
  
  cd ~/openrisc
- git clone git://openrisc.net/jonas/linux
+ git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
  cd linux
  make INSTALL_HDR_PATH=${SYSROOT}/usr headers_install
- 
+
 ===== gcc stage 1 =====
 
  cd ~/openrisc
