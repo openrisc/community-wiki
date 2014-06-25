@@ -14,7 +14,7 @@ More information on this event will be made available here and on the [[OR1K:Com
 
 We are now accepting presentation proposals.
 
-We'd really enjoy presentations from anyone who is involved in the open source hardware design sphere. The OpenRISC project's concerns are many and varied, from computer architecture and RTL implementations, to open source EDA tools and flows, to tool chains, debuggers and software from bare metal to Linux user space, so we'd like to reflect this in the presentations. Your project, of course, need not be related to OpenRISC, specifically.
+We'd welcome presentations from anyone who is involved in the open source hardware design sphere. The OpenRISC project's concerns are many and varied, from '''computer architecture''' and '''RTL implementations''', to open source '''EDA tools''' and '''flows''', to '''tool chains''', '''debuggers''' and '''software''' from '''bare metal RTOS''' to '''Linux''' user space, so we'd like to reflect this in the presentations. Your project, of course, need not be related to OpenRISC, specifically.
 
 Presentation formats are flexible, let us know what you'd prefer and we'll be sure to accommodate you.
 
@@ -22,4 +22,4 @@ Please send proposals to either:
 # [mailto:openrisc@lists.openrisc.net;openrisc@lists.opencores.org?Subject=ORCONF2014%20Presentation%20Proposal OpenRISC mailinglist(s)]
 # [mailto:juliusbaxter@gmail.com;olof.kindgren@gmail.com?Subject=ORCONF2014%20Presentation%20Proposal the event organisers directly]. 
 
-If you're unsure about anything feel free to drop us a line via email or on our [[OR1K:Community_Portal#IRC|IRC channel, #openrisc on irc.freenode.net]].
+If you're unsure about anything, feel free to contact us via email or via the [[OR1K:Community_Portal#IRC|IRC channel, #openrisc on irc.freenode.net]].
