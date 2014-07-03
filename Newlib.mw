@@ -36,7 +36,7 @@ The following functions are provided
 |'''Return value'''
 |-
 |<code>or1k_interrupt_handler_add</code>
-|<code>int irq, void(*function_name)(void*)</code>
+|<code>int irq, void(*function_name)(void)</code>
 |Install function_name as handler for interrupt at IRQ <code>irq</code>
 |none
 |-
