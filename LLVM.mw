@@ -12,11 +12,11 @@ In order to be able to compile C/C++ programs, two components are required, Clan
 
 Start with checking out LLVM
 
- <nowiki>git clone git://github.com/skristiansson/llvm-or1k.git</nowiki>
+ <nowiki>git clone git://github.com/openrisc/llvm-or1k.git</nowiki>
 
 and Clang
 
- <nowiki>git clone git://github.com/skristiansson/clang-or1k.git</nowiki>
+ <nowiki>git clone git://github.com/openrisc/clang-or1k.git</nowiki>
 
 Clang is held in it's own repository as it is a seperate project from LLVM,
 but is meant to be built together with LLVM in the LLVM tree.
