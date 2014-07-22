@@ -6,7 +6,7 @@ This page describes the port of LLVM for the OpenRISC 1000 architecture.
 Further generic information on the [http://llvm.org LLVM project's webpage].
 
 = Getting started =
-The most up-to-date development currently takes place at [https://github.com/skristiansson https://github.com/skristiansson].
+The most up-to-date development currently takes place at [https://github.com/openrisc https://github.com/openrisc].
 
 In order to be able to compile C/C++ programs, two components are required, Clang and LLVM.
 
