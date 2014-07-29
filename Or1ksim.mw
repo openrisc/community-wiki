@@ -56,11 +56,9 @@ The current stable version has been tested under Fedora 11 Linux and Ubuntu 10.0
 
 == Development release ==
 
-You may checkout the latest version of Or1ksim from SVN using:
+You may checkout the latest version of Or1ksim from git using:
 
- <nowiki>svn co http://opencores.org/ocsvn/openrisc/openrisc/trunk/or1ksim</nowiki>
-
-'''Note.''' The checkout process may take a while. The current top of SVN tree is not considered stable, but should always build correctly.
+ <nowiki>git clone git://github.com/openrisc/or1ksim.git</nowiki>
 
 === New features ===
 
