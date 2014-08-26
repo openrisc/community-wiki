@@ -38,6 +38,11 @@ It is flagged as no longer maintained.
 
 See https://github.com/rdiez/orbuild/tree/master/Scripts/Projects/OpenRISC/OR10/CPU for more.
 
+== or1knd i5 ==
+The ''or1knd i5'' is written in VHDL and is part of the [https://github.com/pgavin/carpe ''CARPE''] research project by Peter Gavin. It is a 5-stage pipeline, delay-slot-free implementation.
+
+Find its source code at https://github.com/pgavin/carpe/tree/master/hdl
+
 = Simulation models =
 
 == or1ksim ==
@@ -70,6 +75,9 @@ This table identifies CPU implementations (and models) as per the 8-bit CPUID fi
 |-
 | [https://github.com/rdiez/orbuild/tree/master/Scripts/Projects/OpenRISC/OR10/CPU OR10]
 | <tt>0x10</tt>
+|-
+| [https://github.com/pgavin/carpe/tree/master/hdl or1knd i5]
+| <tt>0xd5</tt>
 |}
 
 Please contact the OpenRISC developers via the [[OR1K:Community_portal#Mailing_lists|mailing lists]] if you have an OR1k-compliant implementation and would like to be listed on this page and assigned a CPUID.
