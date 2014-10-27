@@ -250,9 +250,10 @@ bit mask is considered signed
  ../or1k-src/configure --target=or1k-linux-uclibc --prefix=/opt/or1k-toolchain \
  --disable-shared --disable-itcl --disable-tk --disable-tcl --disable-winsup \
  --disable-libgui --disable-rda --disable-sid --disable-sim --disable-gdb \
- --with-sysroot --disable-newlib --disable-libgloss
+ --with-sysroot --disable-newlib --disable-libgloss --disable-werror
  
- make && make install
+ make -j9
+ make install
 
 ===== Linux headers =====
 
