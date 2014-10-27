@@ -289,7 +289,8 @@ bit mask is considered signed
  
  cd uClibc-or1k
  make ARCH=or1k defconfig
- make && make PREFIX=$SYSROOT install
+ make -j9
+ make PREFIX=$SYSROOT install
 
 ===== gcc stage 2 =====
 
