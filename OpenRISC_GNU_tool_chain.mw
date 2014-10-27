@@ -275,9 +275,10 @@ bit mask is considered signed
  ../or1k-gcc/configure --target=or1k-linux-uclibc --prefix=/opt/or1k-toolchain --disable-libssp \
  --srcdir=../or1k-gcc --enable-languages=c --without-headers --enable-threads=single \
  --disable-libgomp --disable-libmudflap --disable-shared --disable-libquadmath \
- --disable-libatomic
+ --disable-libatomic --disable-werror
  
- make && make install
+ make -j9
+ make install
 
 ===== uClibc =====
 
