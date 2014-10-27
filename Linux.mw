@@ -43,13 +43,16 @@ The following commands, will build a kernel, and then run it on the OpenRISC arc
 
 Note that you will need the latest OpenRISC GNU toolchain port and or1ksim installed.
 
-  linux-3.0$ make ARCH=openrisc defconfig
+ make ARCH=openrisc defconfig
   
-  linux-3.0$ make menuconfig
+ make menuconfig
+ 
+ Make edits according to http://opencores.net/forum,OpenRISC,0,5435 
+
+ make CROSS_COMPILER=or1k-elf-
   
-  linux-3.0$ make CROSS_COMPILER=or32-linux-
-  
-  linux-3.0$ or32-elf-sim -f arch/openrisc/or1ksim.cfg vmlinux
+ or1k-elf-sim -f arch/openrisc/or1ksim.cfg vmlinux
+
 [[File:linux30_menuconf_doc.jpg|thumb|350px|left|linux-3.0 menuconf Photo]]
 [[File:linux30_xterm.png|thumb|400px|center|linux-3.0 xterm Photo]]
 
