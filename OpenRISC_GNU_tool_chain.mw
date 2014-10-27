@@ -185,16 +185,16 @@ NOTE: on 32-bit machines --disable-werror is needed due to an enum acting as bit
  cd bld-or1k-src
  ../or1k-src/configure --target=or1k-elf --prefix=/opt/or1k-toolchain --enable-shared \
  --disable-itcl --disable-tk --disable-tcl --disable-winsup --disable-gdbtk --disable-libgui --disable-rda \
- --disable-sid --disable-sim --disable-gdb --with-sysroot --disable-newlib --disable-libgloss
- make
+ --disable-sid --disable-sim --disable-gdb --with-sysroot --disable-newlib --disable-libgloss --disable-werror
+ make -j9
  make install
 
 Build gcc
  cd ../bld-or1k-gcc
  
  ../or1k-gcc/configure --target=or1k-elf --prefix=/opt/or1k-toolchain --enable-languages=c \
- --disable-shared --disable-libssp
- make
+ --disable-shared --disable-libssp --disable-werror
+ make -j9
  make install
 
 Build newlib and gdb (without or1ksim in this case)
@@ -206,8 +206,8 @@ Build newlib and gdb (without or1ksim in this case)
  ../or1k-src/configure --target=or1k-elf --prefix=/opt/or1k-toolchain --enable-shared --disable-itcl \
  --disable-tk --disable-tcl --disable-winsup --disable-gdbtk --disable-libgui --disable-rda --disable-sid \
  --enable-sim --disable-or1ksim \
- --enable-gdb  --with-sysroot --enable-newlib --enable-libgloss
- make
+ --enable-gdb  --with-sysroot --enable-newlib --enable-libgloss --disable-werror
+ make -j9
  make install
 
 Build gcc again, this time with newlib
@@ -217,8 +217,8 @@ Build gcc again, this time with newlib
  cd bld-or1k-gcc
  
  ../or1k-gcc/configure --target=or1k-elf --prefix=/opt/or1k-toolchain --enable-languages=c,c++ --disable-shared \
- --disable-libssp --with-newlib
- make
+ --disable-libssp --with-newlib --disable-werror
+ make -j9
  make install
 
 See the page on the [[Newlib|newlib library port]] for details on what you've just built and installed.
