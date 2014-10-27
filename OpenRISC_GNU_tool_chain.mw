@@ -301,9 +301,10 @@ bit mask is considered signed
  
  ../or1k-gcc/configure --target=or1k-linux-uclibc --prefix=/opt/or1k-toolchain --disable-libssp \
  --srcdir=../or1k-gcc --enable-languages=c,c++ --enable-threads=posix --disable-libgomp \
- --disable-libmudflap --with-sysroot=${SYSROOT} --disable-multilib
+ --disable-libmudflap --with-sysroot=${SYSROOT} --disable-multilib --disable-werror
  
- make && make install
+ make -j9
+ make install
 
 ===== Hints when cross compiling with the or1k-linux-uclibc toolchain =====
 
