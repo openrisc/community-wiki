@@ -47,10 +47,10 @@ Note that you will need the latest OpenRISC GNU toolchain port and or1ksim insta
   
  make menuconfig
  
- Make edits according to http://opencores.net/forum,OpenRISC,0,5435 
+ Make edits according to http://opencores.net/forum,OpenRISC,0,5435
 
  make CROSS_COMPILER=or1k-elf-
-  
+ 
  or1k-elf-sim -f arch/openrisc/or1ksim.cfg vmlinux
 
 [[File:linux30_menuconf_doc.jpg|thumb|350px|left|linux-3.0 menuconf Photo]]
