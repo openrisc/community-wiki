@@ -593,23 +593,7 @@ Note that the usage is slightly different, you are connecting to a model that is
 
 === newlib ===
 
-There is a fully tested port of the GNU toolchan using the version 1.18.0 of newlib, with board support packages suitable for use with Or1ksim and a number of other boards.
-
-This is a smaller and simpler C library than uClibc, and is better suited to development of bare-metal applications. It is also used to test the entire GNU toolchain.
-
-The library is automatically linked when using the newlib version of the GCC compiler (or32-elf-gcc). The target board is specified by -m''boardname''. If not board is specified, the default (-mor1ksim) is suitable for use with [[Or1ksim]]. 
-
-Further details are available on the [[Newlib | newlib port page]].
-
-==== Development version ====
-
-Hosted alongside the [[OpenRISC_GNU_tool_chain#Development_version|development version of binutils]] is a development version of newlib containing:
-
-* an updated OR1K-specific library, improving support
-* functions adding no-delay slot support
-* libgloss improvements
-
-It can be found here: [https://github.com/openrisc/or1k-src https://github.com/openrisc/or1k-src]
+Newlib is a smaller and simpler C library than uClibc, and is better suited to development of bare-metal applications. OpenRISC is officially supported in Newlib since version 2.2.0 and can be downloaded from the [ftp://sourceware.org/pub/newlib/index.html Newlib FTP] Further details about the OpenRISC version of Newlib are available on the [[Newlib | newlib port page]].
 
 === uClibc ===
 
