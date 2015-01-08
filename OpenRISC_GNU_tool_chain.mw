@@ -96,12 +96,6 @@ These commands will typically be added to your .profile, .login, .bashrc, or oth
 
 '''Note.''' Some users have reported problems when rebuilding the uClibc toolchain a second time, due to the existing headers on the search path. The solution is to remove the existing implementation from the PATH variable.
 
-=== Installation with orbuild ===
-
-The [https://github.com/rdiez/orbuild orbuild] framework can automatically download, build, install and test the toolchain and other components related to the OpenRISC processor architecture. [https://github.com/rdiez/orbuild/tree/master/Scripts/Projects/OpenRISC Click here] for a list of supported components.
-
-Please note that ''orbuild'' is no longer maintained and may not be compiling the latest OpenRISC tool chain.
-
 === Installation of development versions ===
 
 The following can be used to install the development version of the tool chain.
