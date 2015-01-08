@@ -309,8 +309,6 @@ More information about the GNU project's release of binutils can be found at its
 
 It can be found here: [https://github.com/openrisc/or1k-src https://github.com/openrisc/or1k-src]
 
-'''Note:''' There is an older version in OpenCores SVN for compatibility with the old or32 toolchain. That version is no longer being developed and doesn't have support for dynamic objects and atomic operations among other things . Only use this is you require the or32 toolchain
-
 === GCC ===
 
 A version of GCC targeted at the OpenRISC platform is provided here. Known as a cross compiler, it is a version which will create code that is executable on an OpenRISC processor.
