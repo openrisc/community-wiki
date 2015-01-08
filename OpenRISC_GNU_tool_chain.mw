@@ -317,16 +317,6 @@ A version of GCC targeted at the OpenRISC platform is provided here. Known as a 
 
 More information about the official GCC releases can be found at the project's homepage.
 
-==== GCC stable version ====
-
-==== Development version ====
-
-A development version is underway and is relatively stable. It adds the following features:
-
-* dynamic object support
-* no delay-slot code generation
-* support for thread-local storage
-
 It is currently based on gcc-4.8.0.
 
 It is hosted here: [https://github.com/openrisc/or1k-gcc https://github.com/openrisc/or1k-gcc]
@@ -334,7 +324,7 @@ It is hosted here: [https://github.com/openrisc/or1k-gcc https://github.com/open
 ==== Backwards compatibility ====
 
 A number of backwards compatibility issues have been identified.
-* As noted above, global variables in the source code are no longer prefixed by underscore ('_') in the generated code.
+* Global variables in the source code are no longer prefixed by underscore ('_') in the generated code.
 * The constants '''OR1K''', '''__or1k__''' and '''__OR1K__''' were not defined in GCC 4.2.2 (they had been in earlier releases). These are now defined.
 * GCC 3.4.4. for OpenRISC assumed the availability of hardware multiplication, but not hardware division by default (i.e. -mhard-mul, -msoft-div), which was consistent with the default Verilog configuration. GCC 4.2.2 changed this to assume neither hardware multiplication nor hardware division are present (i.e. -msoft-mul, -msoft-div). The current GCC 4.5.1, has restored the default to -mhard-mul, -msoft-div ofr consistency with the default hardware configuration.
 
