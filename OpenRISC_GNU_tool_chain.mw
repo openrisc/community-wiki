@@ -11,7 +11,14 @@ For help with, or to report any issues, see the [[OpenRISC_GNU_tool_chain_troubl
 
 == Installation ==
 
-The stable versions of the tools are based on binutils 2.20.1, GCC 4.5.1 and GDB 7.2. For the bare metal toolchain, they use newlib 0.18.0 and for the Linux application toolchain uClibc 0.9.32. Both toolchains are tested using or1ksim-0.5.1. 
+=== Prebuilt versions ===
+
+The following tool chains were compiled from the head of [https://github.com/openrisc/ the OpenRISC github] or1k-gcc and or1k-src repositories as they were on 27 September 2013. They contain not just GCC, but binutils, GDB, etc. and are newlib-based.
+
+* [ftp://ocuser:ocuser@openrisc.opencores.org/toolchain/gcc-or1k-elf-4.8.1-x86_64.tar.bz2 gcc-or1k-elf-4.8.1-x86_64]
+* [ftp://ocuser:ocuser@openrisc.opencores.org/toolchain/gcc-or1k-elf-4.8.1-x86.tar.bz2 gcc-or1k-elf-4.8.1-x86] (built on a slightly old Debian machine)
+* [ftp://ocuser:ocuser@openrisc.opencores.org/toolchain/gcc-or1k-elf-4.8.1-ubuntu-13.04-x86.tar.bz2 gcc-or1k-elf-4.8.1-ubuntu-13.04-x86.tar.bz2] (built on a Ubuntu 13.04 machine)
+* [ftp://ocuser:ocuser@openrisc.opencores.org/toolchain/gcc-or1k-elf-4.8.1-armhf.tar.bz2 gcc-or1k-elf-4.8.1-armhf]
 
 === Installation from source ===
 
@@ -31,21 +38,6 @@ Fedora/Red Hat/Centos-based Linux systems use yum:
 Please update this Wiki if any tools are missing, or to provide a one-liner to install the required prerequisites on another distribution.
 
 '''Note.''' The [[Or1ksim]] library is needed by GDB (as its simulator), so this ''must'' be installed first. See the [[Or1ksim]] page for details. Note, however, that you will not be able to run the Or1ksim tests ('''make check''') until the toolchain has been installed. This is a known circular dependency in the tool chain build.
-
-==== Downloading the source ====
-
-=== Installation of development versions ===
-
-The following can be used to install the development version of the tool chain.
-
-==== Prebuilt versions ====
-
-The following tool chains were compiled from the head of [https://github.com/openrisc/ the OpenRISC github] or1k-gcc and or1k-src repositories as they were on 27 September 2013. They contain not just GCC, but binutils, GDB, etc. and are newlib-based.
-
-* [ftp://ocuser:ocuser@openrisc.opencores.org/toolchain/gcc-or1k-elf-4.8.1-x86_64.tar.bz2 gcc-or1k-elf-4.8.1-x86_64]
-* [ftp://ocuser:ocuser@openrisc.opencores.org/toolchain/gcc-or1k-elf-4.8.1-x86.tar.bz2 gcc-or1k-elf-4.8.1-x86] (built on a slightly old Debian machine)
-* [ftp://ocuser:ocuser@openrisc.opencores.org/toolchain/gcc-or1k-elf-4.8.1-ubuntu-13.04-x86.tar.bz2 gcc-or1k-elf-4.8.1-ubuntu-13.04-x86.tar.bz2] (built on a Ubuntu 13.04 machine)
-* [ftp://ocuser:ocuser@openrisc.opencores.org/toolchain/gcc-or1k-elf-4.8.1-armhf.tar.bz2 gcc-or1k-elf-4.8.1-armhf]
 
 ==== Newlib toolchain (or1k-elf) ====
 
