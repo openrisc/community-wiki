@@ -13,52 +13,6 @@ For help with, or to report any issues, see the [[OpenRISC_GNU_tool_chain_troubl
 
 The stable versions of the tools are based on binutils 2.20.1, GCC 4.5.1 and GDB 7.2. For the bare metal toolchain, they use newlib 0.18.0 and for the Linux application toolchain uClibc 0.9.32. Both toolchains are tested using or1ksim-0.5.1. 
 
-=== Precompiled binaries ===
-
-==== Latest version ====
-
-'''Note''': This is not an official release but should still be fine to use.
-
-* [ftp://ocuser:ocuser@openrisc.opencores.org/toolchain/openrisc-toolchain-ocsvn-rev789.tar.bz2 for Ubuntu 32-bit] built from SVN rev. 789, also contains [[or1ksim]]
-
-Extract the file under /opt and add the following to your ~/.bashrc (or other shell-appropriate) file.  See the [[#1.0rc1|1.0rc1]] section for more detailed instructions regarding the PATH environment variable.
-
- export PATH=$PATH:/opt/openrisc/toolchain/bin:/opt/openrisc/or1ksim/bin
-
-For precompiled versions for other PC architectures see below.
-
-==== 1.0rc1 ====
-Pre-compiled binaries are only available for the 1.0rc1 version of the Newlib toolchain. All commands have the prefix or32-elf- (for example or32-elf-gcc). Or1ksim 0.5.1 and newlib 0.18.0 are included.
-* [ftp://ocuser:ocuser@openrisc.opencores.org/toolchain/or32-elf-1.0rc1-x86.tar.bz2 for Ubuntu x86/i686 (32-bit)]
-* [ftp://ocuser:ocuser@openrisc.opencores.org/toolchain/or32-elf-1.0rc1-CentOS-x86_64.tar.bz2 for CentOS-5.5 x86_64 (64-bit)]
-* [ftp://ocuser:ocuser@openrisc.opencores.org/toolchain/or32-elf-1.0rc1-OS_X-10.6.3.tar.bz2 for OS X 10.6 (Snow Leopard)] ('''Note.''' no C++ libraries)
-
-The following commands indicate how to install the toolchain from the download archive. The tools are installed to the /opt path and symbolic links are created to more general path names (which helps with switching to more updated versions of the toolchain later.) The shell's PATH environment variable must be updated so that the tools can be located by the system.  Bear in mind that the PATH variable is scanned for matches starting at the beginning and uses the first match it finds.  If your system is not finding the correct tools when compiling, you may need to add the or32 tools to the beginning of the PATH and not the end.  You may choose to install in any other directory to which you have write access.
-
- cd /opt
- tar xjf ''path to downloaded archive''/''archive name''
- sudo ln -s or32-elf-1.0rc1 or32-elf
- sudo ln -s or1ksim-0.5.1rc1 or1ksim
-
-Having installed the software, add the relevant directories to your PATH. 
-Under sh or bash use
-
- export PATH=$PATH:/opt/or32-elf/bin:/opt/or1ksim/bin
-
-or, to add the tools to the beginning of the PATH
-
- export PATH=/opt/or32-elf/bin:/opt/or1ksim/bin:$PATH
-
-Under csh or tcsh use:
-
- setenv PATH $PATH:/opt/or32-elf/bin:/opt/or1ksim/bin
-
-or, to add the tools to the beginning of the PATH
-
- setenv PATH /opt/or32-elf/bin:/opt/or1ksim/bin:$PATH
-
-These will typically be added to your .profile, .login, .bashrc, or other shell initialization file as appropriate. Note. If the toolchain was installed in a directory other than /opt, substitute that directory's path for /opt.
-
 === Installation from source ===
 
 ==== Prerequisites ====
@@ -617,7 +571,56 @@ See [[OR1K:FutureWork|Future Work]]
 
 The OpenRISC toolchain previously used the or32 prefix instead of or1k. If you encounter any tools starting with or32, this is probably part of the legacy toolchain. No further development is being made on the or32 toolchain, and we recommend that you use the or1k toolchain for all new projects. The or32 toolchain is primarily for projects that for different reasons can't or won't upgrade to the or1k toolchain
 
-The legacy toolchain can be found in [[http://opencores.org/websvn,listing?repname=openrisc&path=%2Fopenrisc%2Ftrunk%2Fgnu-stable%2F#path_openrisc_trunk_gnu-stable_ OpenCores SVN]]
+
+=== Precompiled binaries ===
+
+Source code for the legacy toolchain can be found in [[http://opencores.org/websvn,listing?repname=openrisc&path=%2Fopenrisc%2Ftrunk%2Fgnu-stable%2F#path_openrisc_trunk_gnu-stable_ OpenCores SVN]]
+
+==== Latest version ====
+
+'''Note''': This is not an official release but should still be fine to use.
+
+* [ftp://ocuser:ocuser@openrisc.opencores.org/toolchain/openrisc-toolchain-ocsvn-rev789.tar.bz2 for Ubuntu 32-bit] built from SVN rev. 789, also contains [[or1ksim]]
+
+Extract the file under /opt and add the following to your ~/.bashrc (or other shell-appropriate) file.  See the [[#1.0rc1|1.0rc1]] section for more detailed instructions regarding the PATH environment variable.
+
+ export PATH=$PATH:/opt/openrisc/toolchain/bin:/opt/openrisc/or1ksim/bin
+
+For precompiled versions for other PC architectures see below.
+
+==== 1.0rc1 ====
+Pre-compiled binaries are only available for the 1.0rc1 version of the Newlib toolchain. All commands have the prefix or32-elf- (for example or32-elf-gcc). Or1ksim 0.5.1 and newlib 0.18.0 are included.
+* [ftp://ocuser:ocuser@openrisc.opencores.org/toolchain/or32-elf-1.0rc1-x86.tar.bz2 for Ubuntu x86/i686 (32-bit)]
+* [ftp://ocuser:ocuser@openrisc.opencores.org/toolchain/or32-elf-1.0rc1-CentOS-x86_64.tar.bz2 for CentOS-5.5 x86_64 (64-bit)]
+* [ftp://ocuser:ocuser@openrisc.opencores.org/toolchain/or32-elf-1.0rc1-OS_X-10.6.3.tar.bz2 for OS X 10.6 (Snow Leopard)] ('''Note.''' no C++ libraries)
+
+The following commands indicate how to install the toolchain from the download archive. The tools are installed to the /opt path and symbolic links are created to more general path names (which helps with switching to more updated versions of the toolchain later.) The shell's PATH environment variable must be updated so that the tools can be located by the system.  Bear in mind that the PATH variable is scanned for matches starting at the beginning and uses the first match it finds.  If your system is not finding the correct tools when compiling, you may need to add the or32 tools to the beginning of the PATH and not the end.  You may choose to install in any other directory to which you have write access.
+
+ cd /opt
+ tar xjf ''path to downloaded archive''/''archive name''
+ sudo ln -s or32-elf-1.0rc1 or32-elf
+ sudo ln -s or1ksim-0.5.1rc1 or1ksim
+
+Having installed the software, add the relevant directories to your PATH. 
+Under sh or bash use
+
+ export PATH=$PATH:/opt/or32-elf/bin:/opt/or1ksim/bin
+
+or, to add the tools to the beginning of the PATH
+
+ export PATH=/opt/or32-elf/bin:/opt/or1ksim/bin:$PATH
+
+Under csh or tcsh use:
+
+ setenv PATH $PATH:/opt/or32-elf/bin:/opt/or1ksim/bin
+
+or, to add the tools to the beginning of the PATH
+
+ setenv PATH /opt/or32-elf/bin:/opt/or1ksim/bin:$PATH
+
+These will typically be added to your .profile, .login, .bashrc, or other shell initialization file as appropriate. Note. If the toolchain was installed in a directory other than /opt, substitute that directory's path for /opt.
+
+
 
 === Binutils ===
 
