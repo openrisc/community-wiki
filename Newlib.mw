@@ -13,6 +13,8 @@ Further information is availble in [http://www.embecosm.com/download/ean9.html E
 
 The port was subsequently extended by [[User:Julius|Julius Baxter]] to make support of multiple boards much more flexible.
 
+Once again the port was rewritten mostly by Stefan Wallentowitz and is now a part of the official newlib library since 2.2.0
+
 = OpenRISC support library =
 
 To assist with using features of the OpenRISC processor such as exceptions, interrupts and timers, a support library has been implemented.
