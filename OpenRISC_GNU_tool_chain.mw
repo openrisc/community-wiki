@@ -423,30 +423,15 @@ to
 
 == Tools ==
 
-=== CGEN ===
-
-An updated CGEN model is now available along with the development versions of the tools.
-
-It can be found here: [https://github.com/openrisc/or1k-src https://github.com/openrisc/or1k-src]
-
 === binutils ===
 
 This is a collection of tools for the manipulation of object code in various object file formats. Among its many tools, it provides the assembler and linker.
 
-Version 2.20.1 of binutils, 2.20.1, has been ported to OpenRISC and can be [http://www.opencores.org/ocsvn/openrisc/openrisc/trunk/gnu-src/binutils-2.20.1 downloaded from SVN].
-
 More information about the GNU project's release of binutils can be found at its [http://www.gnu.org/software/binutils/ GNU homepage].
 
-==== Development version ====
-
-A development version of the binutils package is now available.
-
-The following is different from the stable version in SVN:
-
-* it uses a [http://sourceware.org/cgen/ CGEN]-derived machine description
-* it adds dynamic object support
-
 It can be found here: [https://github.com/openrisc/or1k-src https://github.com/openrisc/or1k-src]
+
+'''Note:''' There is an older version in OpenCores SVN for compatibility with the old or32 toolchain. That version is no longer being developed and doesn't have support for dynamic objects and atomic operations among other things . Only use this is you require the or32 toolchain
 
 === GCC ===
 
