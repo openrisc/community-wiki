@@ -41,9 +41,6 @@ Please update this Wiki if any tools are missing, or to provide a one-liner to i
 
 ==== Newlib toolchain (or1k-elf) ====
 
-See the following links for the appropriate development versions of the tools and libraries: [[OpenRISC_GNU_tool_chain#Development_version|binutils]], [[OpenRISC_GNU_tool_chain#Development_version_2|gcc]], [[OpenRISC_GNU_tool_chain#Development_version_3|newlib]]
-
-
 The following assumes a checkout of the development repositories, which at present can be done with the following:
 
  git clone git://github.com/openrisc/or1k-src.git
