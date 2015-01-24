@@ -102,6 +102,37 @@ gdb for OpenRISC is not yet part of the official binutils distribution and must 
 
 See the page on the [[Newlib|newlib library port]] for details on what you've just built and installed.
 
+==== Linux (musl) toolchain (or1k-linux-musl) ====
+
+The musl toolchain is the preferred toolchain for build programs that should run on Linux. The exceptions to this is software that depend on extensions only found in glibc. For example, building Debian requires glibc
+
+===== Initial preparations =====
+
+Building the musl toolchain is handled by the musl-cross scripts. First get musl-cross:
+
+ git clone https://github.com/GregorR/musl-cross.git
+
+Change the default configuration to set some OpenRISC-specific options. Edit config.sh and append the following lines to the end of the file
+
+ ARCH=or1k
+ BINUTILS_URL=http://ftp.gnu.org/gnu/binutils/binutils-2.25.tar.bz2
+ 
+ GCC_URL=https://github.com/openrisc/or1k-gcc/archive/musl-4.9.1.tar.gz
+ 
+ GCC_EXTRACT_DIR=or1k-gcc-musl-4.9.1
+ GCC_VERSION=or1k-4.9.1
+ 
+ MUSL_VERSION=1.1.6
+ 
+ LINUX_HEADERS_URL=http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.15.tar.xz
+
+===== Building =====
+
+From the musl-cross directory run 
+./build.sh
+
+musl toolchain should now be installed in <code>/opt/cross</code>. Make sure to add <code>/opt/cross/or1k-linux-musl/bin</code> to your PATH variable
+
 ==== Linux (uClibc) toolchain (or1k-linux-uclibc) ====
 
 ===== Initial preparations =====
