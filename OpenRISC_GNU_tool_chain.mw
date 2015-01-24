@@ -41,59 +41,61 @@ Please update this Wiki if any tools are missing, or to provide a one-liner to i
 
 ==== Newlib toolchain (or1k-elf) ====
 
-The following assumes a checkout of the development repositories, which at present can be done with the following:
 
- git clone git://github.com/openrisc/or1k-src.git
- git clone git://github.com/openrisc/or1k-gcc.git
+===== Initial preparations =====
 
-The following compile instructions will install into <code>/opt/or1k-toolchain</code> so make sure it exists and is writable by the user or whoever is running the <code>make install</code> commands.
+Download and extract all the necessary tools. Please note that the version numbers on the tools will not always be up-to-date, so make sure to check for newer versions.
 
-Make a build directory each for the gnu-src tools and gcc, alongside the checkouts, we'll call them <code>bld-or1k-src</code> and <code>bld-or1k-gcc</code> respectively.
- mkdir bld-or1k-src
- mkdir bld-or1k-gcc
+binutils
+ wget http://ftp.gnu.org/gnu/binutils/binutils-2.25.tar.bz2
+ tar xjvf binutils-2.25.tar.bz2
 
-Add toolchain to PATH
- export PATH=$PATH:/opt/or1k-toolchain/bin
+gcc
+ git clone git@github.com:openrisc/or1k-gcc
 
-Build the first set of tools, binutils etc.
-NOTE: on 32-bit machines --disable-werror is needed due to an enum acting as bit mask is considered signed
- cd bld-or1k-src
- ../or1k-src/configure --target=or1k-elf --prefix=/opt/or1k-toolchain --enable-shared \
- --disable-itcl --disable-tk --disable-tcl --disable-winsup --disable-gdbtk --disable-libgui --disable-rda \
- --disable-sid --disable-sim --disable-gdb --with-sysroot --disable-newlib --disable-libgloss --disable-werror
- make -j9
+newlib
+ git clone git://sourceware.org/git/newlib.git
+
+Set up environment variables. PREFIX can be changed to wherever you want to have the toolchain installed.
+ export PREFIX=/opt/or1k-elf
+ export PATH=$PATH:$PREFIX/bin
+
+===== binutils =====
+
+ mkdir build-binutils; cd build-binutils
+ ../binutils-2.25/configure --target=or1k-elf --prefix=$PREFIX --enable-shared --disable-itcl --disable-tk --disable-tcl --disable-winsup --disable-gdbtk --disable-libgui --disable-rda --disable-sid --disable-sim --with-sysroot --disable-newlib --disable-libgloss
+ make
  make install
 
-Build gcc
- cd ../bld-or1k-gcc
- 
- ../or1k-gcc/configure --target=or1k-elf --prefix=/opt/or1k-toolchain --enable-languages=c \
- --disable-shared --disable-libssp --disable-werror
- make -j9
+===== gcc stage 1 =====
+
+ mkdir build-gcc-stage1; cd build-gcc-stage1
+ ../or1k-gcc/configure --target=or1k-elf --prefix=$PREFIX --enable-languages=c --disable-shared --disable-libssp
+ make
  make install
 
-Build newlib and gdb (without or1ksim in this case)
- cd ..
- rm -rf bld-or1k-src
- mkdir bld-or1k-src  
- cd bld-or1k-src
- 
- ../or1k-src/configure --target=or1k-elf --prefix=/opt/or1k-toolchain --enable-shared --disable-itcl \
- --disable-tk --disable-tcl --disable-winsup --disable-gdbtk --disable-libgui --disable-rda --disable-sid \
- --enable-sim --disable-or1ksim \
- --enable-gdb  --with-sysroot --enable-newlib --enable-libgloss --disable-werror
- make -j9
+===== newlib =====
+
+ mkdir build-newlib; cd build-newlib
+ ../newlib/configure --target=or1k-elf --prefix=$PREFIX
+ make
  make install
 
-Build gcc again, this time with newlib
- cd ..
- rm -rf bld-or1k-gcc
- mkdir bld-or1k-gcc
- cd bld-or1k-gcc
- 
- ../or1k-gcc/configure --target=or1k-elf --prefix=/opt/or1k-toolchain --enable-languages=c,c++ --disable-shared \
- --disable-libssp --with-newlib --disable-werror
- make -j9
+===== gcc stage 2 =====
+
+ mkdir build-gcc-stage2; cd build-gcc-stage2
+ ../or1k-gcc/configure --target=or1k-elf --prefix=$PREFIX --enable-languages=c,c++ --disable-shared --disable-libssp --with-newlib
+ make
+ make install
+
+===== gdb =====
+
+gdb for OpenRISC is not yet part of the official binutils distribution and must therefore be built from our git repository
+
+ git clone git@github.com:openrisc/or1k-src
+ mkdir build-gdb; cd build-gdb
+ ../or1k-src/configure --target=or1k-elf --prefix=$PREFIX --enable-shared --disable-itcl --disable-tk --disable-tcl --disable-winsup --disable-gdbtk --disable-libgui --disable-rda --disable-sid --enable-sim --disable-or1ksim --enable-gdb  --with-sysroot --disable-newlib --disable-libgloss
+ make
  make install
 
 See the page on the [[Newlib|newlib library port]] for details on what you've just built and installed.
