@@ -1,12 +1,14 @@
-At present OpenRISC is supported by a 32-bit GNU toolchain offering C and C++ support with static libraries only. The toolchain is available in two forms
-* for bare metal use, based on the newlib library
-* for Linux application use, based on the uClibc library. 
+At present OpenRISC is supported by a 32-bit GNU toolchain offering C and C++ support with static libraries only. The toolchain is available in several forms, depending on which C standard library they use
+
+* or1k-elf for bare metal use, based on the newlib library
+* or1k-linux-uclibc for Linux application use, based on the uClibc library.
+* or1k-linux-musl for Linux application use, based on the musl library. (recommended over uClibc)
 
 The toolchains are available as pre-compiled binaries, and stable source code snapshots and in development versions under SVN.
 
 For help with, or to report any issues, see the [[OpenRISC_GNU_tool_chain_troubleshooting|troubleshooting page]].
 
-'''Note: There is an ongoing transition away from the or32- prefix to or1k-. In practice this means that the stable toolchain uses the old CPU target or32 (e.g. or32-elf, or32-linux), while the new/developemnt toolchain uses or1k (eg. or1k-elf, or1k-linux). Please consider using the new or1k toolchain - especially if you're building straight from the development repos and don't have any issues with backwards compatibility. Binaries, build instructions and more information about the or32- toolchain is available on the [[Or32Toolchain|or32 toolchain]] page.
+'''Note: Older versions of the toolchain used the or32- prefix instead of or1k-. Please consider using the new or1k toolchain, unless you have special requirements regarding backwards compatibility with existing code. Binaries, build instructions and more information about the or32- toolchain is available on the [[Or32Toolchain|or32 toolchain]] page.
 '''
 
 == Installation ==
