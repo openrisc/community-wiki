@@ -49,29 +49,26 @@ Setup a generic default configuration for OpenRISC targets. This will likely gen
 Optionally select other options you want to enable or disable
  make menuconfig
 
-== Build and run on or1ksim ==
+
+[[File:linux30_menuconf_doc.jpg|350px|linux-3.0 menuconf Photo]]
 
 
-The following commands, will build a kernel, and then run it on the OpenRISC architectural simulator. Note that there is a build of BusyBox pre-configured in the initial ramdisk filesystem.
+== Build ==
 
-Note that you will need the latest OpenRISC GNU toolchain port and or1ksim installed.
+ make
 
- make ARCH=openrisc defconfig
-  
- make menuconfig
- 
- Make edits according to http://opencores.net/forum,OpenRISC,0,5435
+After `make` is complete, there will be a file called `vmlinux` in the kernel root directory. This is the built Linux Kernel in the form of an `ELF` file that can be run in or1ksim, or uploaded to a running OpenRISC Instance with OpenOCD or GDB, or be converted to a `bin` file that can be programmed to a Flash memory
 
- make CROSS_COMPILER=or1k-elf-
- 
+== Run on or1ksim ==
+
+The following commands will run a kernel on the OpenRISC architectural simulator. This is a good way to test if your kernel will boot up before you try it on hardware
+
  or1k-elf-sim -f arch/openrisc/or1ksim.cfg vmlinux
 
-[[File:linux30_menuconf_doc.jpg|thumb|350px|left|linux-3.0 menuconf Photo]]
-[[File:linux30_xterm.png|thumb|400px|center|linux-3.0 xterm Photo]]
 
-== Build and run on FPGA ==
+[[File:linux30_xterm.png|400px|linux-3.0 xterm Photo]]
 
-
+== Run on FPGA target ==
 
 The following commands, will build a kernel, and then run it on FPGA board. An example of demonstration using Virtex5 ML501 is illustrate in the following photo
 
@@ -81,8 +78,13 @@ These guides go into detail regarding debugging specific targets. [[Debugging ph
   linux-3.0$ Minicom (115200 8N1)
   
   linux-3.0$ or32-linux-gdb vmlinux
-[[File:linux_30_work.png|thumb|400px|center|linux-3.0 ML501 Photo]]
+
+[[File:linux_30_work.png|400px|linux-3.0 ML501 Photo]]
 
 Remember that this is using GDB to debug the kernel itself. The GDB remote serial protocol server (or_debug_proxy) does not have visibility of the MMU, so you will be using physical addresses, which means symbolic names almost certainly will not work.
 
 If you wish to debug applications running under Linux, you should use [[OpenRISC GNU tool chain#Building_gdbserver|gdbserver]] instead.
+
+== Adapt to a new board ==
+
+== Make changes to built-in filesystem ==
