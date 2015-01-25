@@ -24,7 +24,7 @@ A gdbserver is now available in SVN for use when debugging applications under Or
 
 ===Supported Boards===
  
-Only DE0 Nano and a configuration for or1ksim are officially supported in the kernel sources. See below for how to add support for additional boards
+Only DE0 Nano and a configuration for or1ksim are officially supported in the kernel sources. See below for how to add support for additional boards. Device trees and configuration files cod other boards can be found in the [[https://github.com/openrisc/orpsoc-cores orpsoc-cores]] collection (e.g. https://github.com/openrisc/orpsoc-cores/blob/master/systems/neek/data/sw/neek.dts)
 
 == Download source ==
  
