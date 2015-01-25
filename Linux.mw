@@ -43,7 +43,7 @@ The environment variables `ARCH` and `CROSS_COMPILE` must be set prior to runnin
  export ARCH=openrisc
  export CROSS_COMPILE=or1k-elf-
 
-Setup a default configuration. This will likely generate a bunch of questions for options that are not set in the default configuration file. Choose values that seem appropriate for these options
+Setup a generic default configuration for OpenRISC targets. This will likely generate a bunch of questions for options that are not set in the default configuration file. Choose values that seem appropriate for these options.
  make defconfig
 
 Optionally select other options you want to enable or disable
