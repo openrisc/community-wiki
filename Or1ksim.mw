@@ -267,6 +267,21 @@ The up to date details may be found in the MAINTAINERS file at the top level of 
 
 The submission process uses the OpenRISC mailing lists, in preference to the OpenRISC forum. Cross post to both the opencores.org and openrisc.net lists, since they have disjoint sets of readers.
 
+Or1ksim is built using ''autotools'' (''autoconf'', ''automake'' and ''libtool''). We follow the GNU practice of adding the generated ''autotools'' files to the Version Control System.
+
+A number of our developers use older operating systems (e.g. RHEL4), and all ''autotools'' scripts should be capable of using the following versions:
+* autoconf 1.59
+* automake 1.9.2
+* libtool 1.5.6
+
+Steps to take before committing to VCS:
+
+* (trunk commits only) should pass '''make distcheck'''  and regression tests.
+
+* ChangeLog '''must''' be updated.
+
+* Changes must be posted to the [[#Mailing_lists|OpenRISC mailing lists]] (not the forum) and be reviewed and approved by the [[Project Maintainers|project maintainer]].
+
 ==== SVN HEAD and release branches ====
 
 For changes to SVN HEAD or release branches, this is the process in summary.
