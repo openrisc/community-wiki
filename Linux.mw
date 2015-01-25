@@ -70,18 +70,22 @@ The following commands will run a kernel on the OpenRISC architectural simulator
 
 == Run on FPGA target ==
 
-The following commands, will build a kernel, and then run it on FPGA board. An example of demonstration using Virtex5 ML501 is illustrate in the following photo
+Start a serial console that is connected to the UART on the OpenRISC system. There are many different serial consoles and physical UART connections to choose from. Below is a common example using <code>screen</code> and an USB-to-UART adapter
 
-These guides go into detail regarding debugging specific targets. [[Debugging physical targets (FPGA/ASIC)]] 
-  or_debog_proxy$ ./or_debug_proxy -r 55555
-  
-  linux-3.0$ Minicom (115200 8N1)
-  
-  linux-3.0$ or32-linux-gdb vmlinux
+ screen /dev/ttyUSB0 115200
+
+Start OpenOCD in a new terminal window with the correct OpenOCD configuration files. Detailed instructions for how to build and set up OpenOCD can be found here [[Debugging physical targets (FPGA/ASIC)]]. Below is an example for how to connect to an OpenRISC system using the Altera Virtual JTAG TAP and Advanced Debug Interface
+
+ openocd -f tcl/interface/altera-usb-blaster.cfg -f tcl/board/or1k_generic.cfg
+
+Start a third terminal and connect to the running OpenOCD proxy. More advanced usage with GDB is described in [[Debugging physical targets (FPGA/ASIC)]]. Adjust the path to vmlinux if necessary. The default path is relative to the directory from where OpenOCD was started
+
+ telnet localhost 4444
+ halt; load_image vmlinux; reg npc 0x100; reset
+
+The Linux kernel should now be seen booting up in the serial console. After it has booted up, press enter to start using Linux
 
 [[File:linux_30_work.png|400px|linux-3.0 ML501 Photo]]
-
-Remember that this is using GDB to debug the kernel itself. The GDB remote serial protocol server (or_debug_proxy) does not have visibility of the MMU, so you will be using physical addresses, which means symbolic names almost certainly will not work.
 
 If you wish to debug applications running under Linux, you should use [[OpenRISC GNU tool chain#Building_gdbserver|gdbserver]] instead.
 
