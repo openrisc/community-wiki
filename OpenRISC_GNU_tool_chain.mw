@@ -482,24 +482,6 @@ In a separate window on the same machine start up GDB
 
 Note that the usage is slightly different, you are connecting to a model that is already "started", so you just continue execution. Don't worry, connecting stalls the model, while loading the image sets the PC to its entry point, so you will continue at the right place.
 
-== Libraries ==
-
-=== newlib ===
-
-Newlib is a smaller and simpler C library than uClibc, and is better suited to development of bare-metal applications. OpenRISC is officially supported in Newlib since version 2.2.0 and can be downloaded from the [ftp://sourceware.org/pub/newlib/index.html Newlib FTP] Further details about the OpenRISC version of Newlib are available on the [[Newlib | newlib port page]].
-
-=== uClibc ===
-
-This is a C library aimed at embedded systems. It removes a lot of the bulk that comes with a standard C library, such as the GNU C Library, but still has all the functionality needed for an operating system such as Linux, so it is ideal for embedded applications.
-
-At present the OpenRISC port of uClibc is hosted on a git repository provided by [http://southpole.se/ South Pole], which can be browsed and downloaded from [http://openrisc.southpole.se/cgit.cgi/jonas/uClibc/ http://openrisc.southpole.se/cgit.cgi/jonas/uClibc/]
-
-For more information about uClibc see the [http://www.uclibc.org/about.html project's homepage].
-
-==== Future plans for uClibc ====
-
-* Write optimized versions of routines in uClibc instead of using generic ones.
-
 == Testing ==
 
 Each tool is tested using the GNU tool regression test suites. The newlib toolchain is tested using the GDB simulator (which is [[Or1ksim]]) standalone. The uClibc toolchain is tested using OpenRISC linux running on Or1ksim, using FTP and telnet through a TUN/TAP Ethernet interface.
