@@ -43,6 +43,7 @@ Please update this Wiki if any tools are missing, or to provide a one-liner to i
 
 ==== Newlib toolchain (or1k-elf) ====
 
+Newlib is a smaller and simpler C library than uClibc, and is better suited to development of bare-metal applications. OpenRISC is officially supported in Newlib since version 2.2.0 and can be downloaded from the [ftp://sourceware.org/pub/newlib/index.html Newlib FTP] Further details about the OpenRISC version of Newlib are available on the [[Newlib | newlib port page]].
 
 ===== Initial preparations =====
 
