@@ -15,9 +15,7 @@ debugging physical target block diagram
 The GNU debugger, GDB, is a popular tool that is capable of debugging many architectures from many platforms. The OpenRISC port of GDB, currently maintained by Jeremy Bennett of [http://www.embecosm.com/ Embecosm] is used as the primary debugging tool for all OpenRISC targets. It functions as, among other things, the actual user interface when debugging.
 ===The OpenRISC Debug Proxy===
 
-The debug proxy controls the link between GDB and the physical target. It implements a GDB stub, and provides support for most GDB commands. Physical connection to the board is made with the use of a USB debug cable. At present the [http://www.orsoc.se/ ORSoC USB Debug Cable] is the only supported USB cable.
-
-The proxy first establishes a connection with the target and stalls the processor. Next it waits for a connection with GDB via network sockets, and then begins translating received GDB commands into JTAG transactions with the debug interface via the USB cable. Transactions such as reading and writing registers, or downloading executables to memory are done through this interface.
+[http://openocd.sourceforge.net/ OpenOCD] is used as the debug proxy both for verilog simulations and for running OpenRISC on a physical target.
 
 ===The JTAG TAP===
 
