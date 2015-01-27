@@ -360,13 +360,6 @@ It is currently based on gcc-4.8.0.
 
 It is hosted here: [https://github.com/openrisc/or1k-gcc https://github.com/openrisc/or1k-gcc]
 
-==== Backwards compatibility ====
-
-A number of backwards compatibility issues have been identified.
-* Global variables in the source code are no longer prefixed by underscore ('_') in the generated code.
-* The constants '''OR1K''', '''__or1k__''' and '''__OR1K__''' were not defined in GCC 4.2.2 (they had been in earlier releases). These are now defined.
-* GCC 3.4.4. for OpenRISC assumed the availability of hardware multiplication, but not hardware division by default (i.e. -mhard-mul, -msoft-div), which was consistent with the default Verilog configuration. GCC 4.2.2 changed this to assume neither hardware multiplication nor hardware division are present (i.e. -msoft-mul, -msoft-div). The current GCC 4.5.1, has restored the default to -mhard-mul, -msoft-div ofr consistency with the default hardware configuration.
-
 === GDB ===
 
 The GNU Project Debugger (GDB) is a standard debugging tool. It is used for debugging code while it is executing on any OpenRISC target, be it simulated (architectural simulator or RTL) or physical (FPGA, or ASIC.) It also provides a convenient mechanism for transferring and running code in any OpenRISC based system.
