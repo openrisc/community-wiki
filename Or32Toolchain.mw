@@ -138,6 +138,7 @@ The key changes since the previous version (4.2.2) are:
 * The frame pointer is omitted for all optimization levels above -O0.
 * Option -maj is no longer supported.
 * All regression tests now pass.
-
+* The constants '''OR1K''', '''__or1k__''' and '''__OR1K__''' were not defined in GCC 4.2.2 (they had been in earlier releases). These are now defined.
+* GCC 3.4.4. for OpenRISC assumed the availability of hardware multiplication, but not hardware division by default (i.e. -mhard-mul, -msoft-div), which was consistent with the default Verilog configuration. GCC 4.2.2 changed this to assume neither hardware multiplication nor hardware division are present (i.e. -msoft-mul, -msoft-div). The current GCC 4.5.1, has restored the default to -mhard-mul, -msoft-div ofr consistency with the default hardware configuration.
 
 === Newlib ===
