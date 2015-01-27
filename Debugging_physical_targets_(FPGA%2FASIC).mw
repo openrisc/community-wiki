@@ -76,43 +76,44 @@ Another issue to be aware of is that closing and restarting the proxy while the 
 The following explains how to setup the connection to the physical target.
 ===Connecting to the target===
 
-Once the tools are setup, a connection to the system must be established. This connection occurs in two steps. The first step is to establish the connection between the proxy and the JTAG tap controller via the USB debug cable. Next, GDB connects to the proxy, and the debugging session can begin.
-===Connecting the proxy to the target===
+Start OpenOCD in a new terminal window with the correct OpenOCD configuration files. The configuration files are used to identify both how to connect to the JTAG interface and how to communicate with the on-chip debug interface.
 
-Connecting the proxy to the target is the first step to setting up the debugging chain. The proxy attempts to create the connection automatically when it is run. When the proxy is launched it automatically performs some actions, these are: reading of the JTAG TAP controller ID and check it's sensible, set the TAP to debug mode, stall the CPU, read back a few registers (PC, NPC, GPR1), and finally open a socket for the connection from GDB.
+OpenOCD supports [http://repo.or.cz/w/openocd.git/tree/HEAD:/tcl/interface many different JTAG adapters], so the first step is to find out which adapter to use. Below is a list of common interfaces used for OpenRISC development
 
-The port for GDB to connect to is specified on the command line when launching the proxy with the -r option. In the following example port 55555 is used.
+{|
+! style="text-align:left;"| Config file
+! Usage
+|-
+|jtag_vpi.cfg
+|Used for verilog simulations only. Can connect to a jtag_vpi instance in a running simulator (e.g. modelsim, Icarus)
+|-
+|altera_usb_blaster.cfg
+|Connects to an Altera USB Blaster programming cable
+|}
 
-A successful connection to the board should produce the following output to the console on either Cygwin Windows or Linux.
+The next step is to select a configuration file that describes the target that the JTAG interface connects to. For OpenRISC we only need to specify the <code>or1k_generic.cfg</code> file as that contains the necessary information for OpenOCD
 
- user@host:~/or_debug_proxy$ ./or_debug_proxy -r 55555
+Below is an example for how to connect to an OpenRISC system using the Altera Virtual JTAG TAP and Advanced Debug Interface
 
-===Connecting to OR1k via USB debug cable===
+ openocd -f tcl/interface/altera-usb-blaster.cfg -f tcl/board/or1k_generic.cfg
 
- Initialising USB JTAG interface
- JTAG ID = a188a928
- Stalling or1k
- Read npc = 00000594 ppc = 000005a4 r1 = 00008000
- Waiting for gdb connection on localhost:55555
- Press CTRL+c to exit.
-
-If this did not occur then see the troubleshooting section at the end of this page
 ===Connecting GDB to the proxy===
 
 Once the proxy is running, the next step is connecting to the proxy from GDB. Since GDB 6.8, communication between the proxy and GDB uses the remote serial protocol. The older remote JTAG protocol used with previous versions of GDB for the OpenRISC is now deprecated. If using the version of GDB installed with the OpenRISC toolchain install script then it will be compatible with the proxy.
 
 The following commands show an example of starting GDB and connecting to the proxy. If the proxy is running on the same machine as GDB is being run on, then the following commands will work, otherwise substitute the IP of the machine running the proxy for localhost:
 
- user@host:~$ or32-elf-gdb
+ user@host:~$ or1k-elf-gdb
  ...
- (gdb) target remote localhost:55555
- Remote debugging using localhost:55555
+ (gdb) target remote localhost:3333
+ Remote debugging using localhost:3333
  0x00000594 in ?? ()
  (gdb)
 
 GDB normally attempts to display where the processor is located in the code whenever the system is halted, but as we have not provided GDB with any code it is not aware of the context, hence the ?? (), indicating this.
 
 At this stage, the proxy is connected to the board, and GDB is connected to the proxy. At this stage all connections enabling debugging are complete.
+
 ==Run the UART terminal==
 
 At this stage, it is a good idea to start running the terminal that will interface with the target via its UART.
