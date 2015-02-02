@@ -1,4 +1,4 @@
-At present OpenRISC is supported by a 32-bit GNU toolchain offering C and C++ support. The toolchain is available in several forms, depending on which C standard library they use
+OpenRISC is supported by a 32-bit GNU toolchain offering C and C++ support. The toolchain is available in several forms, depending on which C standard library they use
 
 * or1k-elf for bare metal use, based on the newlib library
 * or1k-linux-uclibc for Linux application use, based on the uClibc library.
