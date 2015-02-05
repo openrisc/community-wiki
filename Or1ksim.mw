@@ -265,7 +265,7 @@ If you have a suggestion that you'd like to see developed, feel free to add it t
 
 The up to date details may be found in the MAINTAINERS file at the top level of the Or1ksim source tree.
 
-The submission process uses the OpenRISC mailing lists, in preference to the OpenRISC forum. Cross post to both the opencores.org and openrisc.net lists, since they have disjoint sets of readers.
+The submission process uses the OpenRISC mailing lists, in preference to the OpenRISC forum. Sing up at http://lists.opencores.org
 
 Or1ksim is built using ''autotools'' (''autoconf'', ''automake'' and ''libtool''). We follow the GNU practice of adding the generated ''autotools'' files to the Version Control System.
 
