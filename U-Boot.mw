@@ -6,9 +6,7 @@ This page contains information about the OpenRISC 1000 architecture port and boa
 
 = Downloading =
 
-U-Boot sources with OpenRISC 1000 support is found on the openrisc.net git tree.
-
- <nowiki>git clone git://openrisc.net/stefan/u-boot</nowiki>
+U-Boot sources with OpenRISC 1000 support is available in the official U-boot sources and can be downloaded from http://www.denx.de/wiki/U-Boot/SourceCode
 
 = Configuration =
 There are two different ways to do configuration in U-Boot, one is the pre-compile configuration in the '''include/configs/boardname.h'''
