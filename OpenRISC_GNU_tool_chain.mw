@@ -59,7 +59,7 @@ gcc
  git clone git@github.com:openrisc/or1k-gcc
 
 newlib
- git clone git://sourceware.org/git/newlib.git
+ wget ftp://sourceware.org/pub/newlib/newlib-2.2.0.201502225.tar.gz
 
 Set up environment variables. PREFIX can be changed to wherever you want to have the toolchain installed.
  export PREFIX=/opt/or1k-elf
