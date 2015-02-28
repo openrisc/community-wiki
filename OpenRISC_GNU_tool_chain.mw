@@ -15,14 +15,14 @@ For help with, or to report any issues, see the [[OpenRISC_GNU_tool_chain_troubl
 
 === Prebuilt versions ===
 
-The following tool chains were compiled from the head of [https://github.com/openrisc/ the OpenRISC github] or1k-gcc and or1k-src repositories as they were on 27 September 2013. They contain not just GCC, but binutils, GDB, etc. and are newlib-based.
+The newest pre-built newlib-based OpenRISC toolchains (or1k-elf) are available [http://openrisc.github.io/newlib/ here]
+
+There are also older toolchains available for other target listed below. These were compiled from the head of [https://github.com/openrisc/ the OpenRISC github] or1k-gcc and or1k-src repositories as they were on 27 September 2013. They contain not just GCC, but binutils, GDB, etc. and are newlib-based.
 
 * [ftp://ocuser:ocuser@openrisc.opencores.org/toolchain/gcc-or1k-elf-4.8.1-x86_64.tar.bz2 gcc-or1k-elf-4.8.1-x86_64]
 * [ftp://ocuser:ocuser@openrisc.opencores.org/toolchain/gcc-or1k-elf-4.8.1-x86.tar.bz2 gcc-or1k-elf-4.8.1-x86] (built on a slightly old Debian machine)
 * [ftp://ocuser:ocuser@openrisc.opencores.org/toolchain/gcc-or1k-elf-4.8.1-ubuntu-13.04-x86.tar.bz2 gcc-or1k-elf-4.8.1-ubuntu-13.04-x86.tar.bz2] (built on a Ubuntu 13.04 machine)
-* [ftp://ocuser:ocuser@openrisc.opencores.org/toolchain/gcc-or1k-elf-4.8.1-armhf.tar.bz2 gcc-or1k-elf-4.8.1-armhf]
-
-Pre-built development versions are also available [http://openrisc.github.io/newlib/ here]
+* [ftp://ocuser:ocuser@openrisc.opencores.org/toolchain/gcc-or1k-elf-4.8.1-armhf.tar.bz2 gcc-or1k-elf-4.8.1-armhf] (for ARM hosts)
 
 === Installation from source ===
 
