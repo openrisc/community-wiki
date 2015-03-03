@@ -208,10 +208,11 @@ The following section should be used to list proposed typos and clarifications w
 
 * ESR (section 4.9, page 30) should have the same bit layout as SR0.
 
-* There exist a typo in the name of l.msbu. The current name is "Multiply and Subtract Signed" but it should be "Multiply and Subtract Unsigned".
+* <s>There exist a typo in the name of l.msbu. The current name is "Multiply and Subtract Signed" but it should be "Multiply and Subtract Unsigned".</s> (fixed in proposal, [[User:Wallento|Wallento]] 13:01, 3 March 2015 (CET))
 
-* There exist a typo in the format of l.ff1 and l.fl1. They both include the rB register, even though it is not part of the instruction.
+* <s>There exist a typo in the format of l.ff1 and l.fl1. They both include the rB register, even though it is not part of the instruction.</s> (fixed in proposal, [[User:Wallento|Wallento]] 13:01, 3 March 2015 (CET))
 
+<s>
 Format:
 
  before: l.ff1 rD,rA,rB
@@ -219,9 +220,11 @@ Format:
 
  before: l.fl1 rD,rA,rB
  after:  l.fl1 rD,rA
+</s>
 
-* There exist a typo in the bit representation of l.ff1 and l.fl1. They both include the rB register, even though it is not part of the instruction.
+* <s>There exist a typo in the bit representation of l.ff1 and l.fl1. They both include the rB register, even though it is not part of the instruction.</s> (fixed in proposal, [[User:Wallento|Wallento]] 13:01, 3 March 2015 (CET))
 
+<s>
 Format: l.ff1 rD,rA
  bits before: 111000DDDDDAAAAABBBBB-00----1111
  bits after:  111000DDDDDAAAAA------00----1111
@@ -229,9 +232,11 @@ Format: l.ff1 rD,rA
 Format: l.fl1 rD,rA
  bits before: 111000DDDDDAAAAABBBBB-01----1111
  bits after:  111000DDDDDAAAAA------01----1111
+</s>
 
-There exist a typo in the bit representation of l.muld and l.muldu. They both include the rD register, even though it is not part of the instruction.
+* <s>There exist a typo in the bit representation of l.muld and l.muldu. They both include the rD register, even though it is not part of the instruction.</s> (fixed in proposal, [[User:Wallento|Wallento]] 13:01, 3 March 2015 (CET))
 
+<s>
 Format: l.muld rA,rB
  bits before: 111000DDDDDAAAAABBBBB-11----0111
  bits after:  111000-----AAAAABBBBB-11----0111
@@ -239,6 +244,7 @@ Format: l.muld rA,rB
 Format: l.muldu rA,rB
  bits before: 111000DDDDDAAAAABBBBB-11----1100
  bits after:  111000-----AAAAABBBBB-11----1100
+</s>
 
 ==== Cache Registers Marked as Optional ====
 
