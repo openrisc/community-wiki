@@ -74,9 +74,9 @@ The following section should be used to list proposed typos and clarifications w
 
 <s>In Table 4-7 on page 31, "EEA" label should be "ESR".</s> (fixed in proposal, [[User:Wallento|Wallento]] 11:35, 3 March 2015 (CET))
 
-==== SPRs ====
+=== SPRs ===
 
-At present the fixed-one bit in the supervision register (<tt>SR[FO]</tt>) is listed as readable ''and'' writable. It should be listed as readable only.
+<s>At present the fixed-one bit in the supervision register (<tt>SR[FO]</tt>) is listed as readable ''and'' writable. It should be listed as readable only.</s> (fixed in proposal, [[User:Wallento|Wallento]] 11:37, 3 March 2015 (CET))
 
 Move the section about GPRs from the NPC section (4.10, page 31) into its own section.  Better explain how GPRs from other contexts are accessed (section 6.4.3, page 257).
 
