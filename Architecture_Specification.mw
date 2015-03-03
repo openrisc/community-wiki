@@ -188,6 +188,10 @@ The CPUCFGR should be extended beyond bit 9 to contain:
  [11] Class III instruction supported
  [10] Class II instruction supported
 
+== Work in Progress ==
+
+Remove "1.4 Work in Progress". Reason: The architecture revision should be stable and the remaining parts are essentially community stuff, not for the spec.
+
 == Typos, Clarifications ==
 
 The following section should be used to list proposed typos and clarifications which need to be made to future revisions of the architecture spec document.
