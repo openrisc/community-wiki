@@ -66,6 +66,13 @@ Therefore, in table on page 24 add:
 
 Add 4.12, explaining those.
 
+
+== Optional user-mode support ==
+
+As some processors designed for embedded applications won't necessarily run software with a user/supervisor-mode split of operation, it's not necessary for them to implement user-mode features (eg. protect from unprivileged access to SPRs and the like.) Obviously this lack of support for user mode should be indicated via a bit in the CPUCFGR. So I propose a bit is added so that implementations without user-mode support can be detected by software which requires user-mode.
+
+''Comment:'' I think this is maybe too much of generalization. Except there is a specific plan to also implement a core without it, I don't think we should over-complicate the spec. [[User:Wallento|Wallento]] 11:51, 3 March 2015 (CET)
+
 == SPR access updates ==
 
 There has been a discussion about different SPRs and the possibility to access them from user space.
@@ -113,81 +120,7 @@ The l.lwz definition page in the spec should have:
 
 rdiez: For the 32-bit architecture, in order to reduce confusion it would be best to remove the l.lws opcode, and remove the l.lws and l.lwz mnemonics, then add an "l.lw" mnemonic which maps to the old l.lwz opcode. or1200 hasn't implemented (or didn't implement) the l.lws opcode for a long time anyway. By the way, l.extws and l.extwz should also be marked as obsolete, as l.ori can achieve the same results. For the 64-bit architecture, l.lw shouldn't be a valid mnemonic, so the programmer must think whether he wants the l.lwz or the l.lws behaviour.
 
-== Typos, Clarifications ==
-
-The following section should be used to list proposed typos and clarifications which need to be made to future revisions of the architecture spec document.
-
-=== Misspellings, Typos ===
-
-<s>''Synchronization'' is misspelled as ''Syncronization'' on pages 44, 82, 92, 284, and 340.</s> (fixed in proposal, [[User:Wallento|Wallento]] 11:35, 3 March 2015 (CET))
-
-<s>In Table 4-7 on page 31, "EEA" label should be "ESR".</s> (fixed in proposal, [[User:Wallento|Wallento]] 11:35, 3 March 2015 (CET))
-
-=== SPRs ===
-
-<s>At present the fixed-one bit in the supervision register (<tt>SR[FO]</tt>) is listed as readable ''and'' writable. It should be listed as readable only.</s> (fixed in proposal, [[User:Wallento|Wallento]] 11:37, 3 March 2015 (CET))
-
-Move the section about GPRs from the NPC section (4.10, page 31) into its own section.  Better explain how GPRs from other contexts are accessed (section 6.4.3, page 257).
-
-PPC should be read-only (table 4-2, page 24).
-
-For backwards compatibility, the AECR register (section 15.14, page 326) should be initialized to a state that has behavior identical to a machine without AECR support, instead of the current "0".  I believe this would be the value (OVADDE|OVMULE|OVMACADDE).
-
-ESR (section 4.9, page 30) should have the same bit layout as SR0.
-
-==== Cache Registers Marked as Optional ====
-
-From [http://bugzilla.opencores.org/show_bug.cgi?id=79 bug #79].
-
-Changes to the spec document to make it clearer which cache control registers are optional.
-
-Mark the following registers as optional to implement, as they have a "present" bit in the I/DCCFGR:
-
-* Data Cache Control Register
-* Instruction Cache Control Register
-* Data Cache Block Write-Back Register
-
-Instruction and data block invalidate and data block flush registers are mandatory, and their presence bits in the I/DCCFGR should be marked as always '1'.
-
-==== l.msbu name ====
-
-There exist a typo in the name of l.msbu. The current name is "Multiply and Subtract Signed" but it should be "Multiply and Subtract Unsigned".
-
-==== l.ff1 and l.fl1 format ====
-
-There exist a typo in the format of l.ff1 and l.fl1. They both include the rB register, even though it is not part of the instruction.
-
-Format:
-
- before: l.ff1 rD,rA,rB
- after:  l.ff1 rD,rA
-
- before: l.fl1 rD,rA,rB
- after:  l.fl1 rD,rA
-
-==== bit representation of l.ff1, l.fl1, l.muld and l.muldu ====
-
-There exist a typo in the bit representation of l.ff1 and l.fl1. They both include the rB register, even though it is not part of the instruction.
-
-Format: l.ff1 rD,rA
- bits before: 111000DDDDDAAAAABBBBB-00----1111
- bits after:  111000DDDDDAAAAA------00----1111
-
-Format: l.fl1 rD,rA
- bits before: 111000DDDDDAAAAABBBBB-01----1111
- bits after:  111000DDDDDAAAAA------01----1111
-
-There exist a typo in the bit representation of l.muld and l.muldu. They both include the rD register, even though it is not part of the instruction.
-
-Format: l.muld rA,rB
- bits before: 111000DDDDDAAAAABBBBB-11----0111
- bits after:  111000-----AAAAABBBBB-11----0111
-
-Format: l.muldu rA,rB
- bits before: 111000DDDDDAAAAABBBBB-11----1100
- bits after:  111000-----AAAAABBBBB-11----1100
-
-=== Instruction Classes ===
+== Instruction Classes ==
 
 At present, there are class I and II instructions. Class I must always be implemented. Class II may be optionally implemented.
 
@@ -199,7 +132,7 @@ There are a few problems with the current scheme.
 
 Reorganising these will make it clearer which functionality should be tested and expected to be present in an implementation. It will also make it easier for software libraries to be prepared for a particular combination of supported instructions.
 
-==== Current ORBIS32 Class II instructions ====
+=== Current ORBIS32 Class II instructions ===
 
 As of revision 0 of the specification, the following are marked as ORBIS32 class II:
 
@@ -255,14 +188,71 @@ The CPUCFGR should be extended beyond bit 9 to contain:
  [11] Class III instruction supported
  [10] Class II instruction supported
 
-=== Atomic operations ===
-One of the bigger deficiencies of the OpenRISC 1000 ISA is the lack of support for atomic operations.
-This should be addressed, but a discussion whether it should be implemented as a load/link-store conditional or a atomic-rmw is needed.
-This functionality should of course be optional to implement.
+== Typos, Clarifications ==
 
-=== Optional user-mode support ===
+The following section should be used to list proposed typos and clarifications which need to be made to future revisions of the architecture spec document.
 
-As some processors designed for embedded applications won't necessarily run software with a user/supervisor-mode split of operation, it's not necessary for them to implement user-mode features (eg. protect from unprivileged access to SPRs and the like.) Obviously this lack of support for user mode should be indicated via a bit in the CPUCFGR. So I propose a bit is added so that implementations without user-mode support can be detected by software which requires user-mode.
+=== Misspellings, Typos ===
+
+* <s>''Synchronization'' is misspelled as ''Syncronization'' on pages 44, 82, 92, 284, and 340.</s> (fixed in proposal, [[User:Wallento|Wallento]] 11:35, 3 March 2015 (CET))
+
+* <s>In Table 4-7 on page 31, "EEA" label should be "ESR".</s> (fixed in proposal, [[User:Wallento|Wallento]] 11:35, 3 March 2015 (CET))
+
+* <s>At present the fixed-one bit in the supervision register (<tt>SR[FO]</tt>) is listed as readable ''and'' writable. It should be listed as readable only.</s> (fixed in proposal, [[User:Wallento|Wallento]] 11:37, 3 March 2015 (CET))
+
+* Move the section about GPRs from the NPC section (4.10, page 31) into its own section.  Better explain how GPRs from other contexts are accessed (section 6.4.3, page 257).
+
+* PPC should be read-only (table 4-2, page 24).
+
+* For backwards compatibility, the AECR register (section 15.14, page 326) should be initialized to a state that has behavior identical to a machine without AECR support, instead of the current "0".  I believe this would be the value (OVADDE|OVMULE|OVMACADDE).
+
+* ESR (section 4.9, page 30) should have the same bit layout as SR0.
+
+* There exist a typo in the name of l.msbu. The current name is "Multiply and Subtract Signed" but it should be "Multiply and Subtract Unsigned".
+
+* There exist a typo in the format of l.ff1 and l.fl1. They both include the rB register, even though it is not part of the instruction.
+
+Format:
+
+ before: l.ff1 rD,rA,rB
+ after:  l.ff1 rD,rA
+
+ before: l.fl1 rD,rA,rB
+ after:  l.fl1 rD,rA
+
+* There exist a typo in the bit representation of l.ff1 and l.fl1. They both include the rB register, even though it is not part of the instruction.
+
+Format: l.ff1 rD,rA
+ bits before: 111000DDDDDAAAAABBBBB-00----1111
+ bits after:  111000DDDDDAAAAA------00----1111
+
+Format: l.fl1 rD,rA
+ bits before: 111000DDDDDAAAAABBBBB-01----1111
+ bits after:  111000DDDDDAAAAA------01----1111
+
+There exist a typo in the bit representation of l.muld and l.muldu. They both include the rD register, even though it is not part of the instruction.
+
+Format: l.muld rA,rB
+ bits before: 111000DDDDDAAAAABBBBB-11----0111
+ bits after:  111000-----AAAAABBBBB-11----0111
+
+Format: l.muldu rA,rB
+ bits before: 111000DDDDDAAAAABBBBB-11----1100
+ bits after:  111000-----AAAAABBBBB-11----1100
+
+==== Cache Registers Marked as Optional ====
+
+From [http://bugzilla.opencores.org/show_bug.cgi?id=79 bug #79].
+
+Changes to the spec document to make it clearer which cache control registers are optional.
+
+Mark the following registers as optional to implement, as they have a "present" bit in the I/DCCFGR:
+
+* Data Cache Control Register
+* Instruction Cache Control Register
+* Data Cache Block Write-Back Register
+
+Instruction and data block invalidate and data block flush registers are mandatory, and their presence bits in the I/DCCFGR should be marked as always '1'.
 
 === Consistency ===
 
