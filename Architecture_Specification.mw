@@ -38,6 +38,8 @@ Feel free to add ideas and comment (please sign your name.) It also helps to pos
 
 The spec update process will occur from time to time and all proposals largely agreed to by the community will make it in.
 
+The current working copy of accepted proposals for architecture version 1.2 can be found [https://github.com/openrisc/doc/blob/arch-1.2-proposal/openrisc-arch-1.2-rev0.odt here].
+
 == Core Identifier and Number of Cores ==
 
 To enable multicore systems, a Special Purpose Register 'Core ID' is needed. Although it is principally not necessary, but allows for a self-contained solution, I furthermore propose a 'Number of Cores' register, which contains the number of cores in a SMP cluster.
