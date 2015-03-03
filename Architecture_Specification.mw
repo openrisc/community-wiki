@@ -38,15 +38,41 @@ Feel free to add ideas and comment (please sign your name.) It also helps to pos
 
 The spec update process will occur from time to time and all proposals largely agreed to by the community will make it in.
 
-=== Typos, Clarifications ===
+== Core Identifier and Number of Cores ==
+
+To enable multicore systems, a Special Purpose Register 'Core ID' is needed. Although it is principally not necessary, but allows for a self-contained solution, I furthermore propose a 'Number of Cores' register, which contains the number of cores in a SMP cluster.
+
+Proposal: Use system status register address space 128+ for multicore specifics. I think there may further things come up, so that it may make sense to reserve some space.
+
+This is already in mor1kx..
+
+Therefore, in table on page 24 add:
+
+ Grp #: 0
+ Reg #: 128
+ Reg Name: COREID
+ USER MODE: -
+ SUPV MODE: R
+ Description: Core Identifier Register
+
+ Grp #: 0
+ Reg #: 129
+ Reg Name: NUMCORES
+ USER MODE: -
+ SUPV MODE: R
+ Description: Number of Cores Register
+
+Add 4.12, explaining those.
+
+== Typos, Clarifications ==
 
 The following section should be used to list proposed typos and clarifications which need to be made to future revisions of the architecture spec document.
 
-==== Misspellings, Typos ====
+=== Misspellings, Typos ===
 
-''Synchronization'' is misspelled as ''Syncronization'' on pages 44, 82, 92, 284, and 340.
+<s>''Synchronization'' is misspelled as ''Syncronization'' on pages 44, 82, 92, 284, and 340.</s> (fixed in proposal)
 
-In Table 4-7 on page 31, "EEA" label should be "ESR".
+<s>In Table 4-7 on page 31, "EEA" label should be "ESR".</s> (fixed in proposal)
 
 ==== SPRs ====
 
@@ -284,30 +310,6 @@ Currently there exist three naming patterns.
 ==== Whitespace ====
 
 To be consistent with l.add and l.addc an empty new line should be inserted between the two paragraphs in the description of l.addi and l.addic.
-
-=== Core Identifier and Number of Cores ===
-
-To enable multicore systems, a Special Purpose Register 'Core ID' is needed. Although it is principally not necessary, but allows for a self-contained solution, I furthermore propose a 'Number of Cores' register, which contains the number of cores in a SMP cluster.
-
-Proposal: Use system status register address space 128+ for multicore specifics. I think there may further things come up, so that it may make sense to reserve some space.
-
-Therefore, in table on page 24 add:
-
- Grp #: 0
- Reg #: 128
- Reg Name: COREID
- USER MODE: -
- SUPV MODE: R
- Description: Core Identifier Register
-
- Grp #: 0
- Reg #: 129
- Reg Name: NUMCORES
- USER MODE: -
- SUPV MODE: R
- Description: Number of Cores Register
-
-From my point of view it is not necessary to add section 4.12 to explain this. Instead, we should add an extended explanation of the multicore capabilities if all are integrated.
 
 = Previous proposals =
 
