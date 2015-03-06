@@ -189,6 +189,64 @@ The CPUCFGR should be extended beyond bit 9 to contain:
  [11] Class III instruction supported
  [10] Class II instruction supported
 
+== ORBIS64/ORFPX64 ==
+
+=== Additions ===
+
+==== l.lda, l.sda ====
+
+We need 64-bit atomic memory ops, akin to the l.lwa and l.swa instructions for ORBIS32.
+Use major opcodes 0x3a (l.lda) and 0x3b (l.sda).
+
+==== l.adrp ====
+
+We need an efficient method of forming 64-bit addresses.  The fact that this will improve
+-fpic code generation in 32-bit mode too is an added bonus.
+
+<pre>
+31    26   21   0
+[ 0x03 | rD | N ]
+
+rD <- exts(Immediate << 13) + (InsnAddr & -8192)
+</pre>
+
+That is, it computes the address of the page of the target from the address of the page of the insn.
+The balance of the address is the 13 bit page offset, computable at link time.
+This can be added to the page in several ways:
+
+<pre>
+l.adrp  r3, foo
+l.ori   r4, r3, po(foo)
+l.lbz   r5, po(foo)(r3)
+l.sb    po(foo)(r3), r6
+</pre>
+
+==== l.stod, l.dtos ====
+
+The ORFPX64 extension is missing instructions to convert between single and double precision.
+
+=== Corrections ===
+
+==== l.ftoi.s ====
+
+The 64-bit version of this instruction should produce a 64-bit signed integer result, rather
+than truncating to a 32-bit unsigned number.
+
+==== l.itof.s ====
+
+The 64-bit version of this instruction should use a 64-bit signed integer as input, rather
+than reading only the low 32 bits.  This does mean that 64-bit code wanting to convert a
+real 32-bit integer to single-precision must sign-extend beforehand, but that is also the
+case for more fundamental instructions like l.sfeq, and so should not be a burden.
+
+==== l.ext* ====
+
+These should be class I mandatory for ORBIS64, not relegated to class III optional.
+
+In particular, there are no comparison instructions that ignore the high 32-bits, and one
+cannot simply use l.andi to discard the high 32 bits, so l.extw* will be used often prior
+to comparisons.
+
 == Work in Progress ==
 
 Remove "1.4 Work in Progress". Reason: The architecture revision should be stable and the remaining parts are essentially community stuff, not for the spec.
