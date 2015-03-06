@@ -288,27 +288,34 @@ For the purposes of discussion, name this set of instructions "ACC" (Alternate a
 
 <pre>
 31    26   21   16   11    6     5     4     0
-[ 0x14 | rD | rA | rB | rC | SOV | SCY | opc ] 
+[ 0x14 | rD | rA | rB | rC | SOV | SCY | opc ]
 
-rD:rA <- func(rD, rA, rB, rC)
+Mnemonic    Opc   Setup
+---------------------------------------------
+l.aadd      0000  a=D:A, m=0, c=0, s=0
+l.asub      0001  a=D:A, m=0, c=1, s=1
+l.aadc      0010  a=D:A, m=0, c=SR[CY], s=0
+l.asbb      0011  a=D:A, m=0, c=~SR[CY], s=1
+l.amul      0100  a=0, m=1, e=1, c=0, s=0
+l.amulu     0101  a=0, m=1, e=0, c=0, s=0
+l.amac      0110  a=D:A, m=1, e=1, c=0, s=0
+l.amacu     0111  a=D:A, m=1, e=0, c=0, s=0
+l.amsb      1000  a=D:A, m=1, e=1, c=1, s=1
+l.amsbu     1001  a=D:A, m=1, e=0, c=1, s=1
+
+if (m)
+  x = (e ? exts(rB) : extz(rB))
+  y = (e ? exts(rC) : extz(rC))
+  p = x * y
+else
+  p = rB:rC
+
+rD:rA <- a + (s ? ~p : p) + c
 
 if (~SCY)
-  SR[CY] <- carry-out (unsigned overflow)
+  SR[CY] <- (s ? ~carry-out : carry-out) (unsigned overflow)
 if (~SOV)
   SR[OV] <- signed overflow
-
-Mnemonic    Opc   Func
----------------------------------------------
-l.aadd      0000  out = D:A + B:C + 0
-l.asub      0001  out = D:A - B:C - 0 (D:A + ~(B:C) + 1)
-l.aadc      0010  out = D:A + B:C + SR[CY]
-l.asbb      0011  out = D:A - B:C - SR[CY] (D:A + ~(B:C) + ~SR[CY])
-l.amul      0100  out = 0 + exts(B) * exts(C)
-l.amulu     0101  out = 0 + extz(B) * extz(C)
-l.amac      0110  out = D:A + exts(B) * exts(C)
-l.amacu     0111  out = D:A + extz(B) * extz(C)
-l.amsb      1000  out = D:A - exts(B) * exts(C)
-l.amsbu     1001  out = D:A - extu(B) * extu(C)
 </pre>
 
 The circuits needed to implement these insns are virtually identical to
