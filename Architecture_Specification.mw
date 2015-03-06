@@ -189,6 +189,54 @@ The CPUCFGR should be extended beyond bit 9 to contain:
  [11] Class III instruction supported
  [10] Class II instruction supported
 
+=== ORFPX32/ORFPX64 ===
+
+==== lf.madd.s, lf.madd.d ====
+
+The description of these instructions needs to make it clear that the result is computed without
+intermediate rounding.  See the ISO C 99 functions fma and fmaf.
+
+With no other changes, this would suggest a definition of
+
+<pre>
+rD <- rD + rA * rB
+</pre>
+
+However, there's nearly room in the instruction set to make this a full 3-operand insn.
+The bits at fault are l.cust1.s, l.cust1.d, whose opcode spills over into bit 6.  As I doubt there
+are any users of these opcodes, I propose altering them.
+
+<pre>
+31    26  21  16  11   6     0
+[ 0x32 | D | A | B | C | opc ]
+
+Mnemonic    Opc
+--------------------
+lf.cust1.s  0bx0111x
+lf.cust1.d  0bx1111x
+</pre>
+
+This gives each lf.cust1 4 sub-opcodes to work with.  It also restores the invariant, currently broken,
+that bit 4 of the opcode set indicates double-precision, otherwise single-precision.
+
+This lets us define a family of madd instructions as 
+
+<pre>
+31    26  21  16  11   6     0
+[ 0x32 | D | A | B | C | opc ]
+
+Mnemonic  NegA  NegP  BaseOpc
+-----------------------------
+lf.madds  0     0     0b000111
+lf.msub   1     0     0b100000
+lf.nmadd  0     1     0b100001
+lf.nmsub  1     1     0b100011
+
+Define inv(x,y) to return x with the sign-bit xor'd with y
+
+rD <- (rA * inv(rB,NegP)) + inv(rC,NegA)
+</pre>
+
 == ORBIS64/ORFPX64 ==
 
 === Additions ===
