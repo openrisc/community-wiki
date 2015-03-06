@@ -282,8 +282,8 @@ immediate value (I, K or L).
 From a consistency stand point it would be nice if all of these instructions
 agreed on using the same letter to represent an immediate value.
 
-For instance why should the opperand representation of l.andi and l.ori differ
-from the operand representation of l.xori?
+<s>For instance why should the opperand representation of l.andi and l.ori differ
+from the operand representation of l.xori?</s>
 [rth: Because l.andi and l.ori have unsigned immediates and l.xori has a signed immediate.]
 
  Format: l.andi rD,rA,K
