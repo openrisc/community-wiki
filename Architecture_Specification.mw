@@ -363,6 +363,91 @@ In particular, there are no comparison instructions that ignore the high 32-bits
 cannot simply use l.andi to discard the high 32 bits, so l.extw* will be used often prior
 to comparisons.
 
+== Fine grained control of SR[OV] and SR[CY] ==
+
+With more precise control over which instructions set these status bits, the compiler can do a better
+job of producing multi-word arithmetic.  At present the compiler must represent multi-word arithmetic
+as a single indivisible unit until quite late in the compilation process.
+
+The primary factor is that the register allocator must be able to insert instructions to compute addresses
+at any point in the function.  This happens as the allocator runs out of registers, inserts a spill to
+(or fill from) the local stack frame, and grows the size of the stack frame beyond the range addressable
+from the stack or frame pointers.
+
+A secondary factor is freedom to schedule instructions without unnecessary constraints.  If most arithmetic
+modifies the carry flag, then the window in which we can schedule a block of multi-word arithmetic is small.
+However if most arithmetic is not interested in carry or overflow, and is able to avoid modifying those
+flags, the scheduling window grows significantly.
+
+A third factor unrelated to multi-word arithmetic is being able to indicate to the SR[OVE] and AECR exceptions
+which arithmetic insns are signed and which are unsigned.  Thus an add with OV disabled, but CY enabled, must
+indicate an unsigned add.  While the reverse would indicate a signed add.
+
+There are five major opcodes that modify these bits: 0x13 (maci), 0x27 (addi), 0x28 (addic), 0x31 (mac), 0x38 (alu).
+
+The MAC and ALU major opcodes both currently have bits 4 and 5 reserved, and thus currently 0-filled.
+As a backward-compatible change, propose decoding bit 4 as SCY (Suppress CY), and bit 5 as SOV (Suppress OV).
+Propose changing the assembly to use "/modifier" mnemonic suffixes: "/c", "/co", "/o" to indicate setting of these bits.
+
+<pre>
+l.add     r2,r3,r4   OV and CY set
+l.addc    r2,r3,r4
+l.sub     r2,r3,r4
+
+l.mac     r3,r4      OV set
+l.msb     r3,r4
+l.mul     r2,r3,r4
+l.muld    r3,r4
+l.div     r2,r3,r4
+l.add/c   r2,r3,r4
+l.addc/c  r2,r3,r4
+l.sub/c   r2,r3,r4
+
+l.macu    r3,r4      CY set
+l.msbu    r3,r4
+l.mulu    r2,r3,r4
+l.divu    r2,r3,r4
+l.muldu   r3,r4
+l.add/o   r2,r3,r4
+l.addc/o  r2,r3,r4
+l.sub/o   r2,r3,r4
+
+l.mac/o   r3,r4      No bits set
+l.msb/o   r3,r4
+l.mul/o   r2,r3,r4
+l.muld/o  r3,r4
+l.div/o   r2,r3,r4
+l.macu/c  r3,r4
+l.msbu/c  r3,r4
+l.mulu/c  r2,r3,r4
+l.muldu/c r3,r4
+l.divu/c  r2,r3,r4
+l.add/co  r2,r3,r4
+l.addc/co r2,r3,r4
+l.sub/co  r2,r3,r4
+</pre>
+
+The syntax isn't pretty, but all other alternatives seemed worse.  At least the syntax is clear, and backward
+compatible with existing assembly.
+
+Note that this introduces some overlap between l.mul and l.mulu, so it might be less confusing to create aliases
+
+<pre>
+l.mul/c   (l.mul with SOV and SCY clear)
+l.mul/o   (l.mulu with SOV and SCY clear)
+l.mul/co  (l.mul with SOV set)
+</pre>
+
+and then deprecate the l.mulu mnemonic.
+
+For the the three insns using immediates: l.maci, l.addi, l.addic, all bits are decoded and so we cannot make
+any adjustments.  However, addition is important enough to register allocation and address formation to make
+it worth while to add a "l.addi/co" like l.addi except that both CY and OV are suppressed.  The alternative
+is to spill yet another register in which to load the offset and then use l.add/co.  Propose reserving major 
+opcode 0x07 for "l.addi/co".
+
+The change in assembly syntax would call for the "l.addl" instruction proposed above to be spelled "l.addl/co".
+
 == Work in Progress ==
 
 Remove "1.4 Work in Progress". Reason: The architecture revision should be stable and the remaining parts are essentially community stuff, not for the spec.
