@@ -221,6 +221,8 @@ l.lbz   r5, po(foo)(r3)
 l.sb    po(foo)(r3), r6
 </pre>
 
+Where the assembler function "po" (page offset) produces the new relocations.
+
 ==== l.movl, l.addl ====
 
 We need an efficient method of forming 64-bit constants.  Currently it takes 5 insns and two registers,
