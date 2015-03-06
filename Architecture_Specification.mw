@@ -283,7 +283,8 @@ From a consistency stand point it would be nice if all of these instructions
 agreed on using the same letter to represent an immediate value.
 
 For instance why should the opperand representation of l.andi and l.ori differ
-from the opperand representation of l.xori?
+from the operand representation of l.xori?
+[rth: Because l.andi and l.ori have unsigned immediates and l.xori has a signed immediate.]
 
  Format: l.andi rD,rA,K
  Format: l.ori rD,rA,K
@@ -293,6 +294,7 @@ from the opperand representation of l.xori?
 The goal is to reach a consensus on how to make the operand representations
 consistent. Which letter should be used for immediate values (I, K, L or N) and
 which register name should be used in the various cases.
+[rth: We're currently fairly consistent in using I for signed 16 bit, K for unsigned 16 bit, and L for the 6-bit shift count.]
 
 The following page contains a list of all instructions arranged by their operand representations:
 http://opencores.org/or1k/Operand_representation
