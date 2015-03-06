@@ -191,7 +191,7 @@ The CPUCFGR should be extended beyond bit 9 to contain:
 
 === ORFPX32/ORFPX64 ===
 
-==== lf.madd.s, lf.madd.d ====
+==== lf.madd ====
 
 The description of these instructions needs to make it clear that the result is computed without
 intermediate rounding.  See the ISO C 99 functions fma and fmaf.
@@ -204,20 +204,8 @@ rD <- rD + rA * rB
 
 However, there's nearly room in the instruction set to make this a full 3-operand insn.
 The bits at fault are l.cust1.s, l.cust1.d, whose opcode spills over into bit 6.  As I doubt there
-are any users of these opcodes, I propose altering them.
-
-<pre>
-31    26  21  16  11   6     0
-[ 0x32 | D | A | B | C | opc ]
-
-Mnemonic    Opc
---------------------
-lf.cust1.s  0bx0111x
-lf.cust1.d  0bx1111x
-</pre>
-
-This gives each lf.cust1 4 sub-opcodes to work with.  It also restores the invariant, currently broken,
-that bit 4 of the opcode set indicates double-precision, otherwise single-precision.
+are any users of these opcodes, I propose removing them.  One can always use one of the l.cust*
+major opcodes to interact with your custom fp hardware.
 
 This lets us define a family of madd instructions as 
 
@@ -236,6 +224,51 @@ Define inv(x,y) to return x with the sign-bit xor'd with y
 
 rD <- (rA * inv(rB,NegP)) + inv(rC,NegA)
 </pre>
+
+==== lf.sf* ====
+
+The current definitions of comparisons do not allow easily testing the "unordered" property, which is
+important in the presence of NaNs.  There are four conditions for which we might want to test, which
+when combined produce all of the possible results.  Referencing the ISO C 99 <math.h> functions:
+
+<pre>
+31    26    21   16   11     6     0
+[ 0x32 | res | rA | rB | res | opc ]
+
+                            Setup
+          Mnemonic    Opc   U E L G X
+          ---------------------------
+Existing  lf.sfeq.s   0x08  0 1 0 0 0
+          lf.sfne.s   0x09  1 0 1 1 0
+          lf.sfgt.s   0x0a  0 0 0 1 1
+          lf.sfge.s   0x0b  0 1 0 1 1
+          lf.sflt.s   0x0c  0 0 1 0 1
+          lf.sfle.s   0x0d  0 1 1 0 1
+
+New       lf.sfun.s   0x28  1 0 0 0 0  /* isunordered(rA,rB) */
+          lf.sfult.s  0x29  1 0 1 0 0  /* !isgreaterequal(rA,rB) */
+          lf.sfule.s  0x2a  1 1 1 0 0  /* !isgreater(rA,rB) */
+          lf.sfueq.s  0x2b  1 1 0 0 0  /* !islessgreater(rA,rB) */
+
+un <- isnan(rA) | isnan(rB)
+eq <- rA == rB
+lt <- rA < rB
+gt <- rB < rA
+
+SR[F] <- (u & un) | (e & eq) | (l & lt) | (g & gt)
+
+if (X & un)
+  raise INVALID_OPERAND exception
+</pre>
+
+The hardwqre that produces the existing comparisons must be able to
+produce all of the proper intermediate conditions.  It's merely a 
+matter of exposing all of the conditions we need to be able to test
+in order to implement <math.h> properly.
+
+If we drop backward compatibility, i.e. drop lf.sfgt and lf.sfge,
+there are only 8 comparisons and we can fit them into 0b0-1xxx.
+Which has a nice bit of symmetry to it.
 
 == ORBIS64/ORFPX64 ==
 
