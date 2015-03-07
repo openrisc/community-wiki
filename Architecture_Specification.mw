@@ -292,7 +292,7 @@ Which has a nice bit of symmetry to it.
 We need 64-bit atomic memory ops, akin to the l.lwa and l.swa instructions for ORBIS32.
 Use major opcodes 0x3a (l.lda) and 0x3b (l.sda).
 
-==== l.adrp ====
+==== l.adrp (P9) ====
 
 We need an efficient method of forming 64-bit addresses.  The fact that this will improve
 -fpic code generation in 32-bit mode too is an added bonus.
@@ -317,7 +317,7 @@ l.sb    po(foo)(r3), r6
 
 Where the assembler function "po" (page offset) produces the new relocations.
 
-==== l.movl, l.addl ====
+==== l.movl, l.addl (P10) ====
 
 We need an efficient method of forming 64-bit constants.  Currently it takes 5 insns and two registers,
 or 6 insns and one register to form a full 64-bit constant.  Propose extending opcode 0x06 (l.movhi/l.macrc)
@@ -366,11 +366,11 @@ Note that since the intent of l.addl is both constant formation and address arit
 and carry bits will be computed.  If overflow or carry is desired, form the 64-bit constant into a
 register and then use l.add.
 
-==== l.stod, l.dtos ====
+==== l.stod, l.dtos (P11)  ====
 
 The ORFPX64 extension is missing instructions to convert between single and double precision.
 
-==== ACC instructions ====
+==== ACC instructions (P12) ====
 
 At present, the SPRs are defined to be 32-bits wide, which restricts the width of the MACHI:MACLO
 accumulator register.  This is emphasized by the definition of the l.macrc instruction.  Further,
@@ -435,7 +435,7 @@ SR[CY] from the addition when they're not desired by the programmer.
 The inverted sense of these bits (set to suppress rather than set to
 generate) will tie in to another proposal for normal arithmetic.
 
-=== Corrections ===
+=== Corrections (P13) ===
 
 ==== l.ftoi.s ====
 
