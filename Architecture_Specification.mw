@@ -115,7 +115,7 @@ Proposal A:
 * Add exception at 0xf00: Access violation from user mode
 * Add exception 0xf00 to l.mfspr, l.mtspr and l.rfe
 
-== l.lw assembly mnemonic ==
+== l.lw assembly mnemonic (P4) ==
 
 Add the l.lw assembly mnemonic, which encodes as a l.lwz instruction.
 
