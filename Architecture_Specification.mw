@@ -542,6 +542,36 @@ opcode 0x07 for "l.addi/co".
 
 The change in assembly syntax would call for the "l.addl" instruction proposed above to be spelled "l.addl/co".
 
+== FPCSR Extension ==
+
+The proposal is to extend FPCSR (Floating Point Control and Status Register) with mask bits to have an ability to enable/disable each FPU related exception flag independently.
+
+The additional bits:
+<pre>
+[12] Enable (1) / Disable (0) Overflow Flag
+[13] Enable (1) / Disable (0) Underflow Flag
+....
+[20] Enable (1) / Disable (0) Division by Zero Flag
+</pre>
+
+The bit [0] "FPU Exception  Enable (FPEE)" keeps it's global behavior.
+<pre>
+if FPEE == 0 than all FPU related exceptions are disabled
+if FPEE == 1 than FPU related exceptions are controlled by Enable / Disable Flags listed above
+</pre>
+
+The proposed default value:
+<pre>
+0x1C5001
+</pre>
+
+* deactivates minimally useful flags ("Quiet NaN", "Zero", "Inexact" and "Underflow")
+* activates most useful exceptions ( "Div by zero", "Inf", "Invalid", "Signaling NaN" and "Overflow")
+* set mode "round to nearest even"
+* enables exceptions listed above as "most useful exceptions"
+
+[[User:BAndViG|BAndViG]] 20:27, 8 March 2015 (CET) 
+
 == Work in Progress ==
 
 Remove "1.4 Work in Progress". Reason: The architecture revision should be stable and the remaining parts are essentially community stuff, not for the spec.
