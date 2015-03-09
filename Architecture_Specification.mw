@@ -570,7 +570,10 @@ The proposed default value:
 * set mode "round to nearest even"
 * enables exceptions listed above as "most useful exceptions"
 
-[[User:BAndViG|BAndViG]] 20:27, 8 March 2015 (CET) 
+[[User:BAndViG|BAndViG]] 20:27, 8 March 2015 (CET)
+
+[rth: The default value should almost certainly remain 0: all exceptions disabled and round to nearest.
+That's the same default as virtually every other cpu, including x86.  Anything else would be surprising.]
 
 == Work in Progress ==
 
