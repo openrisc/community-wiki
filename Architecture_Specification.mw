@@ -327,10 +327,9 @@ to be able to form a 64-bit constant (or add a 64-bit displacement!) in only 4 i
 31    26   21  20  19  18    17    16     0
 [ 0x06 | rD | A | U | L | SH1 | SH2 |  K  ]
 
-shift = (SH1 * 2 | ~SH2) * 16
-upper = ~0xffff << shift
-lower = (1 << shift) - 1
-const = upper | K << shift | lower
+shift = (SH1:~SH2) << 4
+lower = (L << shift) - 1
+const = exts(U:K) << shift | lower
 input = (A ? rD : 0)                /* l.addl vs l.movl */
 
 rD <- input + const
