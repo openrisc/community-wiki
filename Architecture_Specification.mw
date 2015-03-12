@@ -456,6 +456,36 @@ In particular, there are no comparison instructions that ignore the high 32-bits
 cannot simply use l.andi to discard the high 32 bits, so l.extw* will be used often prior
 to comparisons.
 
+== ORFPX64A32 ==
+Adaptation double precision floating point ISA for 32-bit OR1K architecture.
+The idea is analogue to other 32-bit architectures. Namely use paired GPRs for perform operations with double precision floating point data.
+Example:
+<pre>
+lf.add.d rD,rA,rB
+
+32-bit Implementation (ORFPX64A32):
+{rD[31:0],(rD+1)[31:0]} ← {rA[31:0],(rA+1)[31:0]} + {rB[31:0],(rB+1)[31:0]}
+
+64-bit Implementation (ORFPX64):
+rD[63:0] ← rA[63:0] + rB[63:0]
+</pre>
+
+
+If R2 is not used for frame pointer, than the following GPRs could be paired:
+<pre>
+{R2,R3} … {R6,R7}, {R11,R12} … {R29,R30}
+</pre>
+''As far as I understand it is the case of current implementation in GCC. GCC operates with 64-bit data as structured type and uses stack to transmit such parameters into a function.''
+
+
+For case when R2 is used for frame pointer:
+<pre>
+{R3,R4} … {R7,R8}, {R11,R12} … {R29,R30}
+</pre>
+''For the case we also able to extend binary interface by allow for a compiler to transmit up to three 64-bit values as function parameters through R3 … R8. Personally, I would like to vote for this variant. Even so, the approach leads to binary backward incompatibility; I don’t think that could be a big problem for such open source project as OpenRISC and its application.''
+
+[[User:BAndViG|BAndViG]] 15:35, 12 March 2015 (CET)
+
 == Fine grained control of SR[OV] and SR[CY] (P14) ==
 
 With more precise control over which instructions set these status bits, the compiler can do a better
@@ -559,20 +589,22 @@ if FPEE == 0 than all FPU related exceptions are disabled
 if FPEE == 1 than FPU related exceptions are controlled by Enable / Disable Flags listed above
 </pre>
 
-The proposed default value:
-<pre>
+<s>The proposed default value:</s>
+<s><pre>
 0x1C5001
-</pre>
+</pre></s>
 
-* deactivates minimally useful flags ("Quiet NaN", "Zero", "Inexact" and "Underflow")
-* activates most useful exceptions ( "Div by zero", "Inf", "Invalid", "Signaling NaN" and "Overflow")
-* set mode "round to nearest even"
-* enables exceptions listed above as "most useful exceptions"
-
-[[User:BAndViG|BAndViG]] 20:27, 8 March 2015 (CET)
+* <s>deactivates minimally useful flags ("Quiet NaN", "Zero", "Inexact" and "Underflow")</s>
+* <s>activates most useful exceptions ( "Div by zero", "Inf", "Invalid", "Signaling NaN" and "Overflow")</s>
+* <s>set mode "round to nearest even"</s>
+* <s>enables exceptions listed above as "most useful exceptions"</s>
 
 [rth: The default value should almost certainly remain 0: all exceptions disabled and round to nearest.
 That's the same default as virtually every other cpu, including x86.  Anything else would be surprising.]
+
+Edited: remove non-zero default value as Richard Henderson (?) stays that “0x0” is unofficial industry standard.
+
+[[User:BAndViG|BAndViG]] 15:35, 12 March 2015 (CET)
 
 == Work in Progress ==
 
