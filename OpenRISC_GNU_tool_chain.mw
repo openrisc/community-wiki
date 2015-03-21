@@ -82,6 +82,7 @@ Set up environment variables. PREFIX can be changed to wherever you want to have
  ../or1k-gcc/configure --target=or1k-elf --prefix=$PREFIX --enable-languages=c --disable-shared --disable-libssp
  make
  make install
+ cd ..
 
 ===== newlib =====
 
