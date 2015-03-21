@@ -56,7 +56,7 @@ binutils
  tar xjvf binutils-2.25.tar.bz2
 
 gcc
- git clone git@github.com:openrisc/or1k-gcc
+ git clone https://github.com/openrisc/or1k-gcc
 
 newlib
  git clone git://sourceware.org/git/newlib.git
