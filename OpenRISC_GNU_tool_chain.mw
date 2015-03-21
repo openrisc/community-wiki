@@ -69,7 +69,9 @@ Set up environment variables. PREFIX can be changed to wherever you want to have
 ===== binutils =====
 
  mkdir build-binutils; cd build-binutils
- ../binutils-2.25/configure --target=or1k-elf --prefix=$PREFIX --enable-shared --disable-itcl --disable-tk --disable-tcl --disable-winsup --disable-gdbtk --disable-libgui --disable-rda --disable-sid --disable-sim --with-sysroot --disable-newlib --disable-libgloss
+ ../binutils-2.25/configure --target=or1k-elf --prefix=$PREFIX --enable-shared \
+ --disable-itcl --disable-tk --disable-tcl --disable-winsup --disable-gdbtk \
+ --disable-libgui --disable-rda --disable-sid --disable-sim --with-sysroot
  make
  make install
 
