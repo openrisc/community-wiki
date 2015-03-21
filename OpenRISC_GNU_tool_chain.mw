@@ -106,9 +106,12 @@ gdb for OpenRISC is not yet part of the official binutils distribution and must 
 
  git clone git@github.com:openrisc/or1k-src
  mkdir build-gdb; cd build-gdb
- ../or1k-src/configure --target=or1k-elf --prefix=$PREFIX --enable-shared --disable-itcl --disable-tk --disable-tcl --disable-winsup --disable-gdbtk --disable-libgui --disable-rda --disable-sid --enable-sim --disable-or1ksim --enable-gdb  --with-sysroot --disable-newlib --disable-libgloss
+ ../or1k-src/configure --target=or1k-elf --prefix=$PREFIX --enable-shared --disable-itcl --disable-tk \
+ --disable-tcl --disable-winsup --disable-gdbtk --disable-libgui --disable-rda --disable-sid --enable-sim \
+ --disable-or1ksim --enable-gdb  --with-sysroot --disable-newlib --disable-libgloss
  make
  make install
+ cd ..
 
 See the page on the [[Newlib|newlib library port]] for details on what you've just built and installed.
 
