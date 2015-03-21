@@ -27,17 +27,10 @@ A gdbserver is now available in SVN for use when debugging applications under Or
 Only DE0 Nano and a configuration for or1ksim are officially supported in the kernel sources. See below for how to add support for additional boards. Device trees and configuration files cod other boards can be found in the [https://github.com/openrisc/orpsoc-cores orpsoc-cores] collection (e.g. https://github.com/openrisc/orpsoc-cores/blob/master/systems/neek/data/sw/neek.dts)
 
 == Initial preparations ==
- 
-At present the Linux port is maintained by Jonas Bonn of South Pole and kept in their git repositories http://git.openrisc.net/cgit.cgi/jonas/linux/.
-
 
 To obtain a copy of the kernel tree source with OpenRISC support, ensure git is installed and run
  
-  git clone git://git.openrisc.net/jonas/linux
-
-'''NOTE:''' At the time of writing, the best supported version is the `smp` branch of http://git.openrisc.net/cgit.cgi/stefan/linux/ Use the following commands to clone and switch to the smp branch
- git clone git://git.openrisc.net/stefan/linux
- git checkout smp
+  git clone https://github.com/openrisc/linux
 
 The environment variables `ARCH` and `CROSS_COMPILE` must be set prior to running any `make` command. The `CROSS_COMPILE` command can be set to any toolchain capable of building an OpenRISC Linux kernel (e.g. or1k-linux-musl-)
  export ARCH=openrisc
@@ -51,7 +44,6 @@ Optionally select other options you want to enable or disable
 
 
 [[File:linux30_menuconf_doc.jpg|350px|linux-3.0 menuconf Photo]]
-
 
 == Build ==
 
