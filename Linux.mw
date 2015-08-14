@@ -60,6 +60,8 @@ The following commands will run a kernel on the OpenRISC architectural simulator
 
 [[File:linux30_xterm.png|400px|linux-3.0 xterm Photo]]
 
+By default, or1ksim configured to use TCP port 10084 for standard input/output once the kernel has booted. This means that output to terminal where or1ksim was launched will stop after printing out "Configuring loopback device". At this point, you should launch a new terminal and connect with e.g. "telnet localhost 10084" to interact with the system
+
 == Run on FPGA target ==
 
 Start a serial console that is connected to the UART on the OpenRISC system. There are many different serial consoles and physical UART connections to choose from. Below is a common example using <code>screen</code> and an USB-to-UART adapter
