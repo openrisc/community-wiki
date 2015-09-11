@@ -1,33 +1,5 @@
-This page holds information about upcoming OpenRISC Project meetings.
+Details for this year's ORCONF can be found by visiting the conference site by clicking the logo below.
+
+[[File:Orconf201501.png|link=http://openrisc.io/orconf/|center|500px]]
 
 For previous OpenRISC meetings and conferences, see the [[OpenRISC_Project_Meetings_Archive|archive page]].
-
-== ORCONF 2014 ==
-
-[[File:Orconf2014-resized.png|center|500px]]
-
-The third annual project meeting will be held in '''Munich, Germany''' over the weekend of '''Saturday, October 11''' and '''Sunday, October 12''' 2014.
-
-[[File:Munich-skyline.jpg|right|350px]]
-
-More information on this event will be made available here and on the [[OR1K:Community_Portal#Mailing_lists|OpenRISC mailing lists]] over the next couple of months.
-
-=== Presentation Proposals ===
-
-We are now accepting presentation proposals.
-
-We'd welcome presentations from anyone who is involved in the open source hardware design sphere. The OpenRISC project's concerns are many and varied, from '''computer architecture''' and '''RTL implementations''', to open source '''EDA tools''' and '''flows''', to '''tool chains''', '''debuggers''' and '''software''' from '''bare metal RTOS''' to '''Linux''' user space, so we'd like to reflect this in the presentations. Your project, of course, need not be related to OpenRISC, specifically.
-
-Presentation formats are flexible, let us know what you'd prefer and we'll be sure to accommodate you.
-
-Please send proposals to either:
-# [mailto:openrisc@lists.openrisc.net;openrisc@lists.opencores.org?Subject=ORCONF2014%20Presentation%20Proposal OpenRISC mailinglist(s)]
-# [mailto:julius@orconf.org;olof@orconf.org?Subject=ORCONF2014%20Presentation%20Proposal the event organisers directly]. 
-
-For questions and comments, contact us the emails above or via the [[OR1K:Community_Portal#IRC|IRC channel, #openrisc on irc.freenode.net]].
-
-=== Conference Format ===
-
-The conference will likely run from about midday on Saturday to early afternoon on Sunday. This will allow people to travel Saturday morning and Sunday afternoon.
-
-The conference will primarily consist of presentations, with perhaps a workshop allowing people to get their hands dirty with OpenRISC. We're also open to [http://en.wikipedia.org/wiki/Birds_of_a_feather_(computing) BoF] sessions.
