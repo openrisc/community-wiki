@@ -316,7 +316,7 @@ Build gcc
  Rename to mpfr and move to or1k-gcc/.
  Download and unpack libmpc
  Rename to mpc and move to or1k-gcc/.
-
+ 
  cd ../bld-or1k-gcc
  
  ../or1k-gcc/configure --target=or1k-elf --prefix=/opt/or1k-toolchain --enable-languages=c \
