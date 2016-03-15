@@ -18,13 +18,13 @@ Features are:
 
 == Status ==
  
-OpenRISC is officially supported in the Linux kernel since version 3.1 and can be downloaded from https://www.kernel.org. We do however recommend that you use one of the kernels from http://git.openrisc.net/ as they contain some convenient features such as a built-in initramfs and extra board configurations for OpenRISC not found in the upstream kernel. 
+OpenRISC is officially supported in the Linux kernel since version 3.1 and can be downloaded from https://www.kernel.org. We do however recommend that you use one of the kernels from https://github.com/openrisc/linux/ as they contain some convenient features such as a built-in initramfs and extra board configurations for OpenRISC not found in the upstream kernel. 
 
 A gdbserver is now available in SVN for use when debugging applications under Or1ksim Linux. gdbserver acts as a GDB remote serial protocol server for a Linux application, allowing the program to be debugged remotely using GDB.
 
 ===Supported Boards===
  
-Only DE0 Nano and a configuration for or1ksim are officially supported in the kernel sources. See below for how to add support for additional boards. Device trees and configuration files cod other boards can be found in the [https://github.com/openrisc/orpsoc-cores orpsoc-cores] collection (e.g. https://github.com/openrisc/orpsoc-cores/blob/master/systems/neek/data/sw/neek.dts)
+Only DE0 Nano and a configuration for or1ksim are officially supported in the kernel sources. See below for how to add support for additional boards. Device trees and configuration files for other boards can be found in the [https://github.com/openrisc/orpsoc-cores orpsoc-cores] collection (e.g. https://github.com/openrisc/orpsoc-cores/blob/master/systems/neek/data/sw/neek.dts)
 
 == Initial preparations ==
 
