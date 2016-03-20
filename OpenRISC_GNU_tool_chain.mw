@@ -6,33 +6,7 @@ OpenRISC is supported by a 32-bit GNU toolchain offering C and C++ support. The 
 
 You can find more information about the toolchains on the [http://openrisc.io/software software overview]
 
-==== Linux (musl) toolchain (or1k-linux-musl) ====
-
-The musl toolchain is the preferred toolchain for build programs that should run on Linux. The exceptions to this is software that depend on extensions only found in glibc. For example, building Debian requires glibc
-
-===== Initial preparations =====
-
-Building the musl toolchain is handled by the musl-cross scripts. First get musl-cross:
-
- git clone https://github.com/GregorR/musl-cross.git
-
-Change the default configuration to set some OpenRISC-specific options. Edit config.sh and append the following lines to the end of the file
-
- ARCH=or1k
- 
- GCC_URL=https://github.com/openrisc/or1k-gcc/archive/musl-4.9.1.tar.gz
- 
- GCC_EXTRACT_DIR=or1k-gcc-musl-4.9.1
- GCC_VERSION=or1k-4.9.1
- 
- LINUX_HEADERS_URL=http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.15.tar.xz
-
-===== Building =====
-
-From the musl-cross directory run 
-./build.sh
-
-musl toolchain should now be installed in <code>/opt/cross</code>. Make sure to add <code>/opt/cross/or1k-linux-musl/bin</code> to your PATH variable
+Below you find some '''legacy''' alternatives to the currently maintained toolchains.
 
 ==== Linux (uClibc) toolchain (or1k-linux-uclibc) ====
 
