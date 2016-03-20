@@ -4,7 +4,7 @@ OpenRISC is supported by a 32-bit GNU toolchain offering C and C++ support. The 
 * or1k-linux-uclibc for Linux application use, based on the uClibc library.
 * or1k-linux-musl for Linux application use, based on the musl library. (recommended over uClibc)
 
-You can find more information about the toolchains on the [http://openrisc.io/software software overview]
+'''You can find more information about the toolchains on the [http://openrisc.io/software software overview]'''
 
 Below you find some '''legacy''' alternatives to the currently maintained toolchains.
 
