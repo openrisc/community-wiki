@@ -6,6 +6,8 @@ This page gives a summary of each of the known available OR1k-compliant implemen
 
 This processor has its own page on this wiki with details, see [[OR1200 OpenRISC Processor]]
 
+It's source code can be found in the [http://opencores.org/websvn,listing?repname=openrisc&path=%2Fopenrisc%2Ftrunk%2For1200%2F#path_openrisc_trunk_or1200_ OpenCores SVN]
+
 == mor1kx ==
 
 This core aims to implement a variety of pipelines offering the ability to trade area for speed. It also is intended to be a good platform for experimentation with pipeline implementations such as superscalar, out of order execution, threading and the like.
