@@ -18,26 +18,19 @@ Features are:
 
 == Status ==
  
-OpenRISC is officially supported in the Linux kernel since version 3.1 and can be downloaded from https://www.kernel.org. We do however recommend that you use one of the kernels from http://git.openrisc.net/ as they contain some convenient features such as a built-in initramfs and extra board configurations for OpenRISC not found in the upstream kernel. 
+OpenRISC is officially supported in the Linux kernel since version 3.1 and can be downloaded from https://www.kernel.org. We do however recommend that you use one of the kernels from https://github.com/openrisc/linux/ as they contain some convenient features such as a built-in initramfs and extra board configurations for OpenRISC not found in the upstream kernel. 
 
 A gdbserver is now available in SVN for use when debugging applications under Or1ksim Linux. gdbserver acts as a GDB remote serial protocol server for a Linux application, allowing the program to be debugged remotely using GDB.
 
 ===Supported Boards===
  
-Only DE0 Nano and a configuration for or1ksim are officially supported in the kernel sources. See below for how to add support for additional boards. Device trees and configuration files cod other boards can be found in the [https://github.com/openrisc/orpsoc-cores orpsoc-cores] collection (e.g. https://github.com/openrisc/orpsoc-cores/blob/master/systems/neek/data/sw/neek.dts)
+Only DE0 Nano and a configuration for or1ksim are officially supported in the kernel sources. See below for how to add support for additional boards. Device trees and configuration files for other boards can be found in the [https://github.com/openrisc/orpsoc-cores orpsoc-cores] collection (e.g. https://github.com/openrisc/orpsoc-cores/blob/master/systems/neek/data/sw/neek.dts)
 
 == Initial preparations ==
- 
-At present the Linux port is maintained by Jonas Bonn of South Pole and kept in their git repositories http://git.openrisc.net/cgit.cgi/jonas/linux/.
-
 
 To obtain a copy of the kernel tree source with OpenRISC support, ensure git is installed and run
  
-  git clone git://git.openrisc.net/jonas/linux
-
-'''NOTE:''' At the time of writing, the best supported version is the `smp` branch of http://git.openrisc.net/cgit.cgi/stefan/linux/ Use the following commands to clone and switch to the smp branch
- git clone git://git.openrisc.net/stefan/linux
- git checkout smp
+  git clone https://github.com/openrisc/linux
 
 The environment variables `ARCH` and `CROSS_COMPILE` must be set prior to running any `make` command. The `CROSS_COMPILE` command can be set to any toolchain capable of building an OpenRISC Linux kernel (e.g. or1k-linux-musl-)
  export ARCH=openrisc
@@ -51,7 +44,6 @@ Optionally select other options you want to enable or disable
 
 
 [[File:linux30_menuconf_doc.jpg|350px|linux-3.0 menuconf Photo]]
-
 
 == Build ==
 
@@ -67,6 +59,8 @@ The following commands will run a kernel on the OpenRISC architectural simulator
 
 
 [[File:linux30_xterm.png|400px|linux-3.0 xterm Photo]]
+
+By default, or1ksim configured to use TCP port 10084 for standard input/output once the kernel has booted. This means that output to terminal where or1ksim was launched will stop after printing out "Configuring loopback device". At this point, you should launch a new terminal and connect with e.g. "telnet localhost 10084" to interact with the system
 
 == Run on FPGA target ==
 

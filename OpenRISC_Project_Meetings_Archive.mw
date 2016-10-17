@@ -2,6 +2,37 @@ This page is an archive of previous OpenRISC meeting and conference events wiki 
 
 For the latest information see the [[OpenRISC_Project_Meeting|main page]].
 
+== ORCONF 2014 ==
+
+[[File:Orconf2014-resized.png|center|500px]]
+
+See [http://openrisc.io/orconf/2014/ the official conference page for all details of the conference].
+
+The third annual project meeting will be held in '''Munich, Germany''' over the weekend of '''Saturday, October 11''' and '''Sunday, October 12''' 2014.
+
+[[File:Munich-skyline.jpg|right|350px]]
+
+More information on this event will be made available here and on the [[OR1K:Community_Portal#Mailing_lists|OpenRISC mailing lists]] over the next couple of months.
+
+=== Presentation Proposals ===
+
+We are now accepting presentation proposals.
+
+We'd welcome presentations from anyone who is involved in the open source hardware design sphere. The OpenRISC project's concerns are many and varied, from '''computer architecture''' and '''RTL implementations''', to open source '''EDA tools''' and '''flows''', to '''tool chains''', '''debuggers''' and '''software''' from '''bare metal RTOS''' to '''Linux''' user space, so we'd like to reflect this in the presentations. Your project, of course, need not be related to OpenRISC, specifically.
+
+Presentation formats are flexible, let us know what you'd prefer and we'll be sure to accommodate you.
+
+Please send proposals to either:
+# [mailto:openrisc@lists.openrisc.net;openrisc@lists.opencores.org?Subject=ORCONF2014%20Presentation%20Proposal OpenRISC mailinglist(s)]
+# [mailto:julius@orconf.org;olof@orconf.org?Subject=ORCONF2014%20Presentation%20Proposal the event organisers directly]. 
+
+For questions and comments, contact us the emails above or via the [[OR1K:Community_Portal#IRC|IRC channel, #openrisc on irc.freenode.net]].
+
+=== Conference Format ===
+
+The conference will likely run from about midday on Saturday to early afternoon on Sunday. This will allow people to travel Saturday morning and Sunday afternoon.
+
+The conference will primarily consist of presentations, with perhaps a workshop allowing people to get their hands dirty with OpenRISC. We're also open to [http://en.wikipedia.org/wiki/Birds_of_a_feather_(computing) BoF] sessions.
 == ORCONF 2013 ==
 
 The second annual OpenRISC project conference - ORCONF 2013. 
@@ -191,7 +222,7 @@ The teleconference took place via a Google Hangout. A recording was made and is 
 
 Attendees in the photo from left to right:
 
-:Johan Rilegård (ORSoC AB), Olof Kindgren (ORSoC AB), Stefan Kristiansson, Stephen Battazzo (ÅAC Microtec), Mikael Gielda (Ant Micro), Patrik Ekström (Real Time Embedded), Magnus Norgren (ÅAC Microtec), Yann Vernier (ORSoC AB), Piotr Skrzypek (Ant Micro), Sven-Åke Andersson (Real Time Embedded), Franck Jullien, Michael Unnebäck (ORSoC AB), Julius Baxter, Peter Gielda (Ant Micro), Jeremy Bennett (Embecosm), Magnus Mokvist (Real Time Embedded), Simon Cook (Embecosm).
+:Johan Rilegård (ORSoC AB), Olof Kindgren (ORSoC AB), Stefan Kristiansson, Stephen Battazzo (ÅAC Microtec), Michael Gielda (Antmicro), Patrik Ekström (Real Time Embedded), Magnus Norgren (ÅAC Microtec), Yann Vernier (ORSoC AB), Piotr Skrzypek (Antmicro), Sven-Åke Andersson (Real Time Embedded), Franck Jullien, Michael Unnebäck (ORSoC AB), Julius Baxter, Peter Gielda (Antmicro), Jeremy Bennett (Embecosm), Magnus Mokvist (Real Time Embedded), Simon Cook (Embecosm).
 
 More photos of the talks on [http://www.flickr.com/photos/embecosm/sets/72157631773557553/ Flickr].
 
@@ -262,7 +293,7 @@ For those that like their nostalgia in large doses can find a YouTube playlist o
 | style="text-align: center; border-style: solid; border-width: 0 0 0 0"| 13:40
 | style="text-align: center; border-style: solid; border-width: 0"| 40 min
 | style="border-style: solid; border-width: 0"| [[Talk:OpenRISC_Project_Meeting#eCos_for_OpenRISC|eCos for OpenRISC]]
-| style="border-style: solid; border-width: 0"| Michał Giełda, Piotr Skrzypek
+| style="border-style: solid; border-width: 0"| Michael Gielda, Piotr Skrzypek
 | style="border-style: solid; border-width: 0"| Video, Audio unfortunately unavailable [https://dl.dropbox.com/u/4774576/openrisc/AM--openRISC--13.10.2012.pdf Slides]
 |-
 | style="text-align: center; border-style: solid; border-width: 0 0 0 0"| 14:30

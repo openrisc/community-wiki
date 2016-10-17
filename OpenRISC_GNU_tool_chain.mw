@@ -4,137 +4,9 @@ OpenRISC is supported by a 32-bit GNU toolchain offering C and C++ support. The 
 * or1k-linux-uclibc for Linux application use, based on the uClibc library.
 * or1k-linux-musl for Linux application use, based on the musl library. (recommended over uClibc)
 
-The toolchains are available as pre-compiled binaries, and stable source code snapshots and in development versions under SVN.
+'''You can find more information about the toolchains on the [http://openrisc.io/software software overview]'''
 
-For help with, or to report any issues, see the [[OpenRISC_GNU_tool_chain_troubleshooting|troubleshooting page]].
-
-'''Note: Older versions of the toolchain used the or32- prefix instead of or1k-. Please consider using the new or1k toolchain, unless you have special requirements regarding backwards compatibility with existing code. Binaries, build instructions and more information about the or32- toolchain is available on the [[Or32Toolchain|or32 toolchain]] page.
-'''
-
-== Installation ==
-
-=== Prebuilt versions ===
-
-The newest pre-built newlib-based OpenRISC toolchains (or1k-elf) are available [http://openrisc.github.io/newlib/ here]
-
-There are also older toolchains available for other target listed below. These were compiled from the head of [https://github.com/openrisc/ the OpenRISC github] or1k-gcc and or1k-src repositories as they were on 27 September 2013. They contain not just GCC, but binutils, GDB, etc. and are newlib-based.
-
-* [ftp://ocuser:ocuser@openrisc.opencores.org/toolchain/gcc-or1k-elf-4.8.1-x86_64.tar.bz2 gcc-or1k-elf-4.8.1-x86_64]
-* [ftp://ocuser:ocuser@openrisc.opencores.org/toolchain/gcc-or1k-elf-4.8.1-x86.tar.bz2 gcc-or1k-elf-4.8.1-x86] (built on a slightly old Debian machine)
-* [ftp://ocuser:ocuser@openrisc.opencores.org/toolchain/gcc-or1k-elf-4.8.1-ubuntu-13.04-x86.tar.bz2 gcc-or1k-elf-4.8.1-ubuntu-13.04-x86.tar.bz2] (built on a Ubuntu 13.04 machine)
-* [ftp://ocuser:ocuser@openrisc.opencores.org/toolchain/gcc-or1k-elf-4.8.1-armhf.tar.bz2 gcc-or1k-elf-4.8.1-armhf] (for ARM hosts)
-
-=== Installation from source ===
-
-==== Prerequisites ====
-
-Various libraries are required to compile the GNU tools (see [http://gcc.gnu.org/install/prerequisites.html Prerequisites for GCC]). The following is a command for Ubuntu/Debian-based GNU/Linux systems to ensure the required libraries are installed. 
-
- sudo apt-get -y install build-essential make gcc g++ flex bison patch \
- texinfo libncurses5-dev libmpfr-dev libgmp3-dev libmpc-dev libzip-dev \
- python-dev libexpat1-dev
-
-Fedora/Red Hat/Centos-based Linux systems use yum:
-
- sudo yum install build-essential make gcc g++ flex bison patch texinfo \
- libncurses-devel libmpfr-devel libgmp3-devel libmpc-devel libzip-devel
-
-Please update this Wiki if any tools are missing, or to provide a one-liner to install the required prerequisites on another distribution.
-
-'''Note.''' The [[Or1ksim]] library is needed by GDB (as its simulator), so this ''must'' be installed first. See the [[Or1ksim]] page for details. Note, however, that you will not be able to run the Or1ksim tests ('''make check''') until the toolchain has been installed. This is a known circular dependency in the tool chain build.
-
-==== Newlib toolchain (or1k-elf) ====
-
-Newlib is a smaller and simpler C library than uClibc, and is better suited to development of bare-metal applications. OpenRISC is officially supported in Newlib since version 2.2.0 and can be downloaded from the [ftp://sourceware.org/pub/newlib/index.html Newlib FTP] Further details about the OpenRISC version of Newlib are available on the [[Newlib | newlib port page]].
-
-===== Initial preparations =====
-
-Download and extract all the necessary tools. Please note that the version numbers on the tools will not always be up-to-date, so make sure to check for newer versions.
-
-binutils
- wget http://ftp.gnu.org/gnu/binutils/binutils-2.25.tar.bz2
- tar xjvf binutils-2.25.tar.bz2
-
-gcc
- git clone git@github.com:openrisc/or1k-gcc
-
-newlib
- git clone git://sourceware.org/git/newlib.git
-
-Set up environment variables. PREFIX can be changed to wherever you want to have the toolchain installed.
- export PREFIX=/opt/or1k-elf
- export PATH=$PATH:$PREFIX/bin
-
-===== binutils =====
-
- mkdir build-binutils; cd build-binutils
- ../binutils-2.25/configure --target=or1k-elf --prefix=$PREFIX --enable-shared --disable-itcl --disable-tk --disable-tcl --disable-winsup --disable-gdbtk --disable-libgui --disable-rda --disable-sid --disable-sim --with-sysroot --disable-newlib --disable-libgloss
- make
- make install
-
-===== gcc stage 1 =====
-
- mkdir build-gcc-stage1; cd build-gcc-stage1
- ../or1k-gcc/configure --target=or1k-elf --prefix=$PREFIX --enable-languages=c --disable-shared --disable-libssp
- make
- make install
-
-===== newlib =====
-
- mkdir build-newlib; cd build-newlib
- ../newlib/configure --target=or1k-elf --prefix=$PREFIX
- make
- make install
-
-===== gcc stage 2 =====
-
- mkdir build-gcc-stage2; cd build-gcc-stage2
- ../or1k-gcc/configure --target=or1k-elf --prefix=$PREFIX --enable-languages=c,c++ --disable-shared --disable-libssp --with-newlib
- make
- make install
-
-===== gdb =====
-
-gdb for OpenRISC is not yet part of the official binutils distribution and must therefore be built from our git repository
-
- git clone git@github.com:openrisc/or1k-src
- mkdir build-gdb; cd build-gdb
- ../or1k-src/configure --target=or1k-elf --prefix=$PREFIX --enable-shared --disable-itcl --disable-tk --disable-tcl --disable-winsup --disable-gdbtk --disable-libgui --disable-rda --disable-sid --enable-sim --disable-or1ksim --enable-gdb  --with-sysroot --disable-newlib --disable-libgloss
- make
- make install
-
-See the page on the [[Newlib|newlib library port]] for details on what you've just built and installed.
-
-==== Linux (musl) toolchain (or1k-linux-musl) ====
-
-The musl toolchain is the preferred toolchain for build programs that should run on Linux. The exceptions to this is software that depend on extensions only found in glibc. For example, building Debian requires glibc
-
-===== Initial preparations =====
-
-Building the musl toolchain is handled by the musl-cross scripts. First get musl-cross:
-
- git clone https://github.com/GregorR/musl-cross.git
-
-Change the default configuration to set some OpenRISC-specific options. Edit config.sh and append the following lines to the end of the file
-
- ARCH=or1k
- BINUTILS_URL=http://ftp.gnu.org/gnu/binutils/binutils-2.25.tar.bz2
- 
- GCC_URL=https://github.com/openrisc/or1k-gcc/archive/musl-4.9.1.tar.gz
- 
- GCC_EXTRACT_DIR=or1k-gcc-musl-4.9.1
- GCC_VERSION=or1k-4.9.1
- 
- MUSL_VERSION=1.1.6
- 
- LINUX_HEADERS_URL=http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.15.tar.xz
-
-===== Building =====
-
-From the musl-cross directory run 
-./build.sh
-
-musl toolchain should now be installed in <code>/opt/cross</code>. Make sure to add <code>/opt/cross/or1k-linux-musl/bin</code> to your PATH variable
+Below you find some '''legacy''' alternatives to the currently maintained toolchains.
 
 ==== Linux (uClibc) toolchain (or1k-linux-uclibc) ====
 
@@ -266,7 +138,6 @@ Robert Guenzel has provided an [http://chschroeder.gamiro.de/rg/or1ksim_macOS10.
 
 It seems Guenzel was able to install the toolchain without hick-ups. This is not the case anymore, please follow the instructions below to install the newlib toolchain.  
 
-===== Newlib toolchain (or1k-elf) =====
 
 See the following links for the appropriate development versions of the tools and libraries: [[OpenRISC_GNU_tool_chain#Development_version|binutils]], [[OpenRISC_GNU_tool_chain#Development_version_2|gcc]], [[OpenRISC_GNU_tool_chain#Development_version_3|newlib]]
 
@@ -299,10 +170,18 @@ Build the first set of tools, binutils etc.
  make install
 
 Build gcc
+
+ Download and unpack libgmp
+ Rename to gmp and move to or1k-gcc/.
+ Download and unpack libmpfr
+ Rename to mpfr and move to or1k-gcc/.
+ Download and unpack libmpc
+ Rename to mpc and move to or1k-gcc/.
+ 
  cd ../bld-or1k-gcc
  
  ../or1k-gcc/configure --target=or1k-elf --prefix=/opt/or1k-toolchain --enable-languages=c \
- --disable-shared --disable-libssp
+ --disable-shared --disable-libssp --disable-werror
  make
  make install
 

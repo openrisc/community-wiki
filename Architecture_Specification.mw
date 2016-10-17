@@ -38,43 +38,84 @@ Feel free to add ideas and comment (please sign your name.) It also helps to pos
 
 The spec update process will occur from time to time and all proposals largely agreed to by the community will make it in.
 
-=== Typos, Clarifications ===
+The current working copy of accepted proposals for architecture version 1.2 can be found [https://github.com/openrisc/doc/blob/arch-1.2-proposal/openrisc-arch-1.2-rev0.odt here].
 
-The following section should be used to list proposed typos and clarifications which need to be made to future revisions of the architecture spec document.
+== Core Identifier and Number of Cores (P1) ==
 
-==== Misspellings, Typos ====
+To enable multicore systems, a Special Purpose Register 'Core ID' is needed. Although it is principally not necessary, but allows for a self-contained solution, I furthermore propose a 'Number of Cores' register, which contains the number of cores in a SMP cluster.
 
-''Synchronization'' is misspelled as ''Syncronization'' on pages 44, 82, 92, 284, and 340.
+Proposal: Use system status register address space 128+ for multicore specifics. I think there may further things come up, so that it may make sense to reserve some space.
 
-In Table 4-7 on page 31, "EEA" label should be "ESR".
+This is already in mor1kx..
 
-==== SPRs ====
+Therefore, in table on page 24 add:
 
-At present the fixed-one bit in the supervision register (<tt>SR[FO]</tt>) is listed as readable ''and'' writable. It should be listed as readable only.
+ Grp #: 0
+ Reg #: 128
+ Reg Name: COREID
+ USER MODE: -
+ SUPV MODE: R
+ Description: Core Identifier Register
 
-Move the section about GPRs from the NPC section (4.10, page 31) into its own section.  Better explain how GPRs from other contexts are accessed (section 6.4.3, page 257).
+ Grp #: 0
+ Reg #: 129
+ Reg Name: NUMCORES
+ USER MODE: -
+ SUPV MODE: R
+ Description: Number of Cores Register
 
-PPC should be read-only (table 4-2, page 24).
+Add 4.12, explaining those.
 
-For backwards compatibility, the AECR register (section 15.14, page 326) should be initialized to a state that has behavior identical to a machine without AECR support, instead of the current "0".  I believe this would be the value (OVADDE|OVMULE|OVMACADDE).
+== Optional user-mode support (P2) ==
 
-ESR (section 4.9, page 30) should have the same bit layout as SR0.
+As some processors designed for embedded applications won't necessarily run software with a user/supervisor-mode split of operation, it's not necessary for them to implement user-mode features (eg. protect from unprivileged access to SPRs and the like.) Obviously this lack of support for user mode should be indicated via a bit in the CPUCFGR. So I propose a bit is added so that implementations without user-mode support can be detected by software which requires user-mode.
 
-==== Cache Registers Marked as Optional ====
+''Comment:'' I think this is maybe too much of generalization. Except there is a specific plan to also implement a core without it, I don't think we should over-complicate the spec. [[User:Wallento|Wallento]] 11:51, 3 March 2015 (CET)
 
-From [http://bugzilla.opencores.org/show_bug.cgi?id=79 bug #79].
+== SPR access updates (P3) ==
 
-Changes to the spec document to make it clearer which cache control registers are optional.
+There has been a discussion about different SPRs and the possibility to access them from user space.
 
-Mark the following registers as optional to implement, as they have a "present" bit in the I/DCCFGR:
+The topic can be split in two aspects: Defining privileges on instruction and defining the behavior for insufficient privileges.
 
-* Data Cache Control Register
-* Instruction Cache Control Register
-* Data Cache Block Write-Back Register
+=== SPR privileges ===
 
-Instruction and data block invalidate and data block flush registers are mandatory, and their presence bits in the I/DCCFGR should be marked as always '1'.
+Essentially the idea is to allow user space access to certain configuration registers: VR, UPR, CPUCFGR, DMMUCFGR, IMMUCFGR, DCCFGR, ICCFGR, VR2, AVR. (Potentially add COREID and NUMCORES)
 
-==== l.lw assembly mnemonic ====
+During discussion it turned out, that we might consider splitting the user space access to SPRs into configuration and state registers. We thereby allow to expose information about the core, but not about the current execution state.
+
+The proposal is to add an extra field CSUMRA to SR for the configuration registers.
+
+=== Accessing SPRs with insufficient privileges ===
+
+At present there is no comment on what should happen in the event that l.mtspr/l.mfspr are used on SPRs which require supervisor mode to access, or if l.rfe is used in user mode.
+
+There are currently two proposals for handling this:
+
+The first is to leave the behavior in these cases implementation defined or completely undefined.  If this option is chosen, the manual should be changed to state this explicitly.
+
+The first proposal (by Julius) is for a l.mtspr (write to an SPR) requiring write in supervisor mode while in user mode makes that instruction equivalent to an l.nop. Also that l.mfspr (read from an SPR) with insufficient privileges returns 0, just like an unimplemented SPR would.
+
+The second proposal, by firefalcon and pgavin, is that we keep in line with other ISAs and make the ISA fully virtualizable by throwing an exception in this case.
+
+Some elaboration by pgavin: I think we should actually *use* the definition of "privileged" as given on page 15 of the manual (section 1.6).  It is defined, but never used in the manual, from what I've found.  Additionally, I think we should raise an exception whenever a privileged instruction has been executed while in user mode.  For example, the l.rfe instruction should always raise this exception when executed in user mode.  Additionally, in user mode, an attempt to read or write an SPR that is not permitted as indicated on Table 4-2 of the manual should raise this exception.  An instruction that accesses a privileged resource in user mode should raise a privileged instruction exception.  We can either reuse the current illegal instruction for this purpose, or add a new exception type.
+
+l.rfe should always be privileged.  It seems to me that allowing this instruction from user mode makes little sense, and could, in fact, be dangerous.  l.mtspr would be privileged whenever the address does not have a W in the "user mode" column of table 4-2, and l.mfspr would be privileged whenever the address does not have an R in that column.  The descriptions for these instructions would need to be changed to indicate that they may cause exceptions; it currently says that they do not.
+
+Incidentally, some bits in the SR register (F, CY, OV) are not accessible from user mode, and so these bits should be mirrored in a separate SPR that is R/W from user mode. Or alternatively, we could add new instructions to read/write them.
+
+Also incidentally, I also think l.mtspr/l.mfspr on an unimplemented register should raise an illegal instruction exception.  The presence of SPRs that are optional should be indicated by a bit in the UPR, and so this should be checked prior to accessing them.  If some registers are not covered by presence bits, the bits should be added.  However, the behavior currently defined by the standard is not a problem for virtualization, as far as I can tell, provided that l.mtspr/l.mfspr behave identically on unimplemented registers whether in user or supervisor mode.
+
+=== Summarized proposals ===
+
+Proposal A:
+
+* Add CSUMRA bit (17) to SR: Allow user-mode access to configuration SPRs
+* Set of configuration SPRs: VR, UPR, CPUCFGR, DMMUCFGR, IMMUCFGR, DCCFGR, ICCFGR, VR2, AVR
+* Add exception at 0xf00: Access violation from user mode
+* Add exception 0xf00 to l.mfspr, l.mtspr and l.rfe
+
+== l.lw assembly mnemonic (P4) ==
 
 Add the l.lw assembly mnemonic, which encodes as a l.lwz instruction.
 
@@ -91,65 +132,7 @@ The l.lwz definition page in the spec should have:
 
 rdiez: For the 32-bit architecture, in order to reduce confusion it would be best to remove the l.lws opcode, and remove the l.lws and l.lwz mnemonics, then add an "l.lw" mnemonic which maps to the old l.lwz opcode. or1200 hasn't implemented (or didn't implement) the l.lws opcode for a long time anyway. By the way, l.extws and l.extwz should also be marked as obsolete, as l.ori can achieve the same results. For the 64-bit architecture, l.lw shouldn't be a valid mnemonic, so the programmer must think whether he wants the l.lwz or the l.lws behaviour.
 
-==== l.msbu name ====
-
-There exist a typo in the name of l.msbu. The current name is "Multiply and Subtract Signed" but it should be "Multiply and Subtract Unsigned".
-
-==== l.ff1 and l.fl1 format ====
-
-There exist a typo in the format of l.ff1 and l.fl1. They both include the rB register, even though it is not part of the instruction.
-
-Format:
-
- before: l.ff1 rD,rA,rB
- after:  l.ff1 rD,rA
-
- before: l.fl1 rD,rA,rB
- after:  l.fl1 rD,rA
-
-==== bit representation of l.ff1, l.fl1, l.muld and l.muldu ====
-
-There exist a typo in the bit representation of l.ff1 and l.fl1. They both include the rB register, even though it is not part of the instruction.
-
-Format: l.ff1 rD,rA
- bits before: 111000DDDDDAAAAABBBBB-00----1111
- bits after:  111000DDDDDAAAAA------00----1111
-
-Format: l.fl1 rD,rA
- bits before: 111000DDDDDAAAAABBBBB-01----1111
- bits after:  111000DDDDDAAAAA------01----1111
-
-There exist a typo in the bit representation of l.muld and l.muldu. They both include the rD register, even though it is not part of the instruction.
-
-Format: l.muld rA,rB
- bits before: 111000DDDDDAAAAABBBBB-11----0111
- bits after:  111000-----AAAAABBBBB-11----0111
-
-Format: l.muldu rA,rB
- bits before: 111000DDDDDAAAAABBBBB-11----1100
- bits after:  111000-----AAAAABBBBB-11----1100
-
-==== Accessing SPRs with insufficient privileges ====
-
-At present there is no comment on what should happen in the event that l.mtspr/l.mfspr are used on SPRs which require supervisor mode to access, or if l.rfe is used in user mode.
-
-There are currently two proposals for handling this:
-
-The first is to leave the behavior in these cases implementation defined or completely undefined.  If this option is chosen, the manual should be changed to state this explicitly.
-
-The first proposal (by Julius) is for a l.mtspr (write to an SPR) requiring write in supervisor mode while in user mode makes that instruction equivalent to an l.nop. Also that l.mfspr (read from an SPR) with insufficient privileges returns 0, just like an unimplemented SPR would.
-
-The second proposal, by firefalcon and pgavin, is that we keep in line with other ISAs and make the ISA fully virtualizable by throwing an exception in this case.
-
-Some elaboration by pgavin: I think we should actually *use* the definition of "privileged" as given on page 15 of the manual (section 1.6).  It is defined, but never used in the manual, from what I've found.  Additionally, I think we should raise an exception whenever a privileged instruction has been executed while in user mode.  For example, the l.rfe instruction should always raise this exception when executed in user mode.  Additionally, in user mode, an attempt to read or write an SPR that is not permitted as indicated on Table 4-2 of the manual should raise this exception.  An instruction that accesses a privileged resource in user mode should raise a privileged instruction exception.  We can either reuse the current illegal instruction for this purpose, or add a new exception type.
-
-l.rfe should always be privileged.  It seems to me that allowing this instruction from user mode makes little sense, and could, in fact, be dangerous.  l.mtspr would be privileged whenever the address does not have a W in the "user mode" column of table 4-2, and l.mfspr would be privileged whenever the address does not have an R in that column.  The descriptions for these instructions would need to be changed to indicate that they may cause exceptions; it currently says that they do not.
-
-Incidentally, some bits in the SR register (F, CY, OV) are not accessible from user mode, and so these bits should be mirrored in a separate SPR that is R/W from user mode.  Or alternatively, we could add new instructions to read/write them.
-
-Also incidentally, I also think l.mtspr/l.mfspr on an unimplemented register should raise an illegal instruction exception.  The presence of SPRs that are optional should be indicated by a bit in the UPR, and so this should be checked prior to accessing them.  If some registers are not covered by presence bits, the bits should be added.  However, the behavior currently defined by the standard is not a problem for virtualization, as far as I can tell, provided that l.mtspr/l.mfspr behave identically on unimplemented registers whether in user or supervisor mode.
-
-=== Instruction Classes ===
+== Instruction Classes (P5) ==
 
 At present, there are class I and II instructions. Class I must always be implemented. Class II may be optionally implemented.
 
@@ -161,7 +144,7 @@ There are a few problems with the current scheme.
 
 Reorganising these will make it clearer which functionality should be tested and expected to be present in an implementation. It will also make it easier for software libraries to be prepared for a particular combination of supported instructions.
 
-==== Current ORBIS32 Class II instructions ====
+=== Current ORBIS32 Class II instructions ===
 
 As of revision 0 of the specification, the following are marked as ORBIS32 class II:
 
@@ -179,7 +162,7 @@ As of revision 0 of the specification, the following are marked as ORBIS32 class
 * l.sf*i (l.sfeqi,l.sfgesi etc.)
 * l.trap
 
-==== Proposed ORBIS Classifications ====
+=== Proposed ORBIS Classifications ===
 
 Class I should remain mandatory to implement.
 
@@ -194,7 +177,9 @@ Classes II-IV will be all-or-nothing support classes, with class V individually 
 
 l.sf*i and l.trap should be made class I.
 
-==== Presence bits ====
+[rth: l.cmov is much more important to good code generation than all of the class III instructions.  I would not move it out of class II.  l.msync at least should be moved to class I, as it needs to be used in conjunction with l.lwa and l.swa.  I see no reason why l.csync and l.psync couldn't be class I as well, since in the simplest implementations they should be nops.]
+
+=== Presence bits ===
 
 Presence bits in a new register should be added for classes II-IV, with a bit for each instruction in class V.
 
@@ -217,14 +202,485 @@ The CPUCFGR should be extended beyond bit 9 to contain:
  [11] Class III instruction supported
  [10] Class II instruction supported
 
-=== Atomic operations ===
-One of the bigger deficiencies of the OpenRISC 1000 ISA is the lack of support for atomic operations.
-This should be addressed, but a discussion whether it should be implemented as a load/link-store conditional or a atomic-rmw is needed.
-This functionality should of course be optional to implement.
+== ORFPX32/ORFPX64 ==
 
-=== Optional user-mode support ===
+=== lf.madd (P6) ===
 
-As some processors designed for embedded applications won't necessarily run software with a user/supervisor-mode split of operation, it's not necessary for them to implement user-mode features (eg. protect from unprivileged access to SPRs and the like.) Obviously this lack of support for user mode should be indicated via a bit in the CPUCFGR. So I propose a bit is added so that implementations without user-mode support can be detected by software which requires user-mode.
+The description of these instructions needs to make it clear that the result is computed without
+intermediate rounding.  See the ISO C 99 functions fma and fmaf.
+
+With no other changes, this would suggest a definition of
+
+<pre>
+rD <- rD + rA * rB
+</pre>
+
+However, there's nearly room in the instruction set to make this a full 3-operand insn.
+The bits at fault are l.cust1.s, l.cust1.d, whose opcode spills over into bit 6.  As I doubt there
+are any users of these opcodes, I propose removing them.  One can always use one of the l.cust*
+major opcodes to interact with your custom fp hardware.
+
+This lets us define a family of madd instructions as 
+
+<pre>
+31    26  21  16  11   6     0
+[ 0x32 | D | A | B | C | opc ]
+
+Mnemonic  NegA  NegP  BaseOpc
+-----------------------------
+lf.madds  0     0     0b000111
+lf.msub   1     0     0b100000
+lf.nmadd  0     1     0b100001
+lf.nmsub  1     1     0b100011
+
+Define inv(x,y) to return x with the sign-bit xor'd with y
+
+rD <- (rA * inv(rB,NegP)) + inv(rC,NegA)
+</pre>
+
+=== lf.sf* (P7) ===
+
+The current definitions of comparisons do not allow easily testing the "unordered" property, which is
+important in the presence of NaNs.  There are four conditions for which we might want to test, which
+when combined produce all of the possible results.  Referencing the ISO C 99 <math.h> functions:
+
+<pre>
+31    26    21   16   11     6     0
+[ 0x32 | res | rA | rB | res | opc ]
+
+                            Setup
+          Mnemonic    Opc   U E L G X
+          ---------------------------
+Existing  lf.sfeq.s   0x08  0 1 0 0 0
+          lf.sfne.s   0x09  1 0 1 1 0
+          lf.sfgt.s   0x0a  0 0 0 1 1
+          lf.sfge.s   0x0b  0 1 0 1 1
+          lf.sflt.s   0x0c  0 0 1 0 1
+          lf.sfle.s   0x0d  0 1 1 0 1
+
+New       lf.sfun.s   0x28  1 0 0 0 0  /* isunordered(rA,rB) */
+          lf.sfult.s  0x29  1 0 1 0 0  /* !isgreaterequal(rA,rB) */
+          lf.sfule.s  0x2a  1 1 1 0 0  /* !isgreater(rA,rB) */
+          lf.sfueq.s  0x2b  1 1 0 0 0  /* !islessgreater(rA,rB) */
+
+un <- isnan(rA) | isnan(rB)
+eq <- rA == rB
+lt <- rA < rB
+gt <- rB < rA
+
+SR[F] <- (u & un) | (e & eq) | (l & lt) | (g & gt)
+
+if (X & un)
+  raise INVALID_OPERAND exception
+</pre>
+
+The hardware that produces the existing comparisons must be able to
+produce all of the proper intermediate conditions.  It's merely a 
+matter of exposing all of the conditions we need to be able to test
+in order to implement <math.h> properly.
+
+If we drop backward compatibility, i.e. drop lf.sfgt and lf.sfge,
+there are only 8 comparisons and we can fit them into 0b0-1xxx.
+Which has a nice bit of symmetry to it.
+
+== ORBIS64/ORFPX64 ==
+
+=== Additions ===
+
+==== l.lda, l.sda (P8) ====
+
+We need 64-bit atomic memory ops, akin to the l.lwa and l.swa instructions for ORBIS32.
+Use major opcodes 0x3a (l.lda) and 0x3b (l.sda).
+
+==== l.adrp (P9) ====
+
+We need an efficient method of forming 64-bit addresses.  The fact that this will improve
+-fpic code generation in 32-bit mode too is an added bonus.
+
+<pre>
+31    26   21   0
+[ 0x03 | rD | N ]
+
+rD <- exts(Immediate << 13) + (InsnAddr & -8192)
+</pre>
+
+That is, it computes the address of the page of the target from the address of the page of the insn.
+The balance of the address is the 13 bit page offset, computable at link time.
+This can be added to the page in several ways:
+
+<pre>
+l.adrp  r3, foo
+l.ori   r4, r3, po(foo)
+l.lbz   r5, po(foo)(r3)
+l.sb    po(foo)(r3), r6
+</pre>
+
+Where the assembler function "po" (page offset) produces the new relocations.
+
+==== l.movl, l.addl (P10) ====
+
+We need an efficient method of forming 64-bit constants.  Currently it takes 5 insns and two registers,
+or 6 insns and one register to form a full 64-bit constant.  Propose extending opcode 0x06 (l.movhi/l.macrc)
+to be able to form a 64-bit constant (or add a 64-bit displacement!) in only 4 insns:
+
+<pre>
+31    26   21  20  19  18    17    16     0
+[ 0x06 | rD | A | U | L | SH1 | SH2 |  K  ]
+
+shift = (SH1:~SH2) << 4
+lower = (L << shift) - 1
+const = exts(U:K) << shift | lower
+input = (A ? rD : 0)                /* l.addl vs l.movl */
+
+rD <- input + const
+</pre>
+
+The strange encoding of the shift count (SH1:~SH2) is due to being backward compatible with l.movhi.
+By representing the low bit of the shift inverted, we map (0b00) -> 16.
+
+The U ("upper") and L ("lower") bits produce all ones above and below the shifted K, respectively.
+Note that the concatenation of U and K essentially forms a 17-bit signed constant.
+This allows the easy formation of both large negative numbers and powers-of-two-minus-one.  E.g.
+
+<pre>
+l.movl  r3, 0xfffffffff0600000  (U=1,L=0,SH=16,K=0xf060 : -262144000)
+l.movl  r3, 0x00007fffffffffff  (U=0,L=1,SH=32,K=0x7fff)
+l.movl  r3, 0xffff0000ffffffff  (U=1,L=1,SH=32,K=0x0000)
+</pre>
+
+Note that because of the conflict with the existing l.macrc instruction, which overlaps with the SH2 bit,
+one must ensure that one of A, U, or L is set when encoding SH=0 (0b00001).  Setting L is trivial, as it
+makes no change to the constant produced; with a zero shift, "lower" is 0.
+
+One can now form arbitrary 64-bit constants with one l.movl and three l.addl.
+
+<pre>
+l.movl  r3, 0x1234000000000000  (SH=48,K=0x1234)
+l.addl  r3, 0x0000567800000000  (SH=32,K=0x5678)
+l.addl  r3, 0x000000009abc0000  (SH=16,K=0x9abc)
+l.addl  r3, 0x000000000000def0  (SH=00,K=0xdef0)
+</pre>
+
+Note that since the intent of l.addl is both constant formation and address arithmetic, no overflow
+and carry bits will be computed.  If overflow or carry is desired, form the 64-bit constant into a
+register and then use l.add.
+
+==== l.stod, l.dtos (P11)  ====
+
+The ORFPX64 extension is missing instructions to convert between single and double precision.
+
+==== ACC instructions (P12) ====
+
+At present, the SPRs are defined to be 32-bits wide, which restricts the width of the MACHI:MACLO
+accumulator register.  This is emphasized by the definition of the l.macrc instruction.  Further,
+user-space access to MACHI and MACLO SPRs may be disabled by the kernel via SR[SUMRA].  Better to
+introduce another method of performing double-word arithmetic and accumulation that does not depend
+on SPRs at all.
+
+For the purposes of discussion, name this set of instructions "ACC" (Alternate aCCumulate).
+
+<pre>
+31    26   21   16   11    6     5     4     0
+[ 0x14 | rD | rA | rB | rC | SOV | SCY | opc ]
+
+Mnemonic    Opc   Setup
+---------------------------------------------
+l.aadd      0000  a=D:A, m=0, c=0, s=0
+l.asub      0001  a=D:A, m=0, c=1, s=1
+l.aadc      0010  a=D:A, m=0, c=SR[CY], s=0
+l.asbb      0011  a=D:A, m=0, c=~SR[CY], s=1
+l.amul      0100  a=0, m=1, e=1, c=0, s=0
+l.amulu     0101  a=0, m=1, e=0, c=0, s=0
+l.amac      0110  a=D:A, m=1, e=1, c=0, s=0
+l.amacu     0111  a=D:A, m=1, e=0, c=0, s=0
+l.amsb      1000  a=D:A, m=1, e=1, c=1, s=1
+l.amsbu     1001  a=D:A, m=1, e=0, c=1, s=1
+
+if (m)
+  x = (e ? exts(rB) : extz(rB))
+  y = (e ? exts(rC) : extz(rC))
+  p = x * y
+else
+  p = rB:rC
+
+rD:rA <- a + (s ? ~p : p) + c
+
+if (~SCY)
+  SR[CY] <- (s ? ~carry-out : carry-out) (unsigned overflow)
+if (~SOV)
+  SR[OV] <- signed overflow
+</pre>
+
+The circuits needed to implement these insns are virtually identical to
+that needed to implement the MAC instructions.  Only the sources and
+destinations differ.
+
+This uses pairs of registers to perform the same double-word arithmetic
+that's currently possible with the MAC instructions, but leaves the result
+in general registers.  This makes it simple to organize coding of general
+multi-word arithmetic (libgmp), the performance of which is crucial for
+implementing public-key encryption.
+
+Note the l.aadc and l.asbb instructions include the carry-in, and so can
+be strung together to produce two words of a multi-word addition each.
+
+Note that unlike l.mac vs l.macu, these instructions produce both SR[CY]
+and SR[OV] from the addition stage.  Whether or not the multiply stage is
+zero-extended or not should not imply anything about the signed-ness of
+the addition.
+
+Note the SOV and SCY bits to "suppress" generation of either SR[OV] or
+SR[CY] from the addition when they're not desired by the programmer.
+The inverted sense of these bits (set to suppress rather than set to
+generate) will tie in to another proposal for normal arithmetic.
+
+=== Corrections (P13) ===
+
+==== l.ftoi.s ====
+
+The 64-bit version of this instruction should produce a 64-bit signed integer result, rather
+than truncating to a 32-bit unsigned number.
+
+==== l.itof.s ====
+
+The 64-bit version of this instruction should use a 64-bit signed integer as input, rather
+than reading only the low 32 bits.  This does mean that 64-bit code wanting to convert a
+real 32-bit integer to single-precision must sign-extend beforehand, but that is also the
+case for more fundamental instructions like l.sfeq, and so should not be a burden.
+
+==== l.ext* ====
+
+These should be class I mandatory for ORBIS64, not relegated to class III optional.
+
+In particular, there are no comparison instructions that ignore the high 32-bits, and one
+cannot simply use l.andi to discard the high 32 bits, so l.extw* will be used often prior
+to comparisons.
+
+== ORFPX64A32 ==
+Adaptation double precision floating point ISA for 32-bit OR1K architecture.
+The idea is analogue to other 32-bit architectures. Namely use paired GPRs for perform operations with double precision floating point data.
+Example:
+<pre>
+lf.add.d rD,rA,rB
+
+32-bit Implementation (ORFPX64A32):
+{rD[31:0],(rD+1)[31:0]} ← {rA[31:0],(rA+1)[31:0]} + {rB[31:0],(rB+1)[31:0]}
+
+64-bit Implementation (ORFPX64):
+rD[63:0] ← rA[63:0] + rB[63:0]
+</pre>
+
+
+If R2 is not used for frame pointer, than the following GPRs could be paired:
+<pre>
+{R2,R3} … {R6,R7}, {R11,R12} … {R29,R30}
+</pre>
+''As far as I understand it is the case of current implementation in GCC. GCC operates with 64-bit data as structured type and uses stack to transmit such parameters into a function.''
+
+
+For case when R2 is used for frame pointer:
+<pre>
+{R3,R4} … {R7,R8}, {R11,R12} … {R29,R30}
+</pre>
+''For the case we also able to extend binary interface by allow for a compiler to transmit up to three 64-bit values as function parameters through R3 … R8. Personally, I would like to vote for this variant. Even so, the approach leads to binary backward incompatibility; I don’t think that could be a big problem for such open source project as OpenRISC and its application.''
+
+[[User:BAndViG|BAndViG]] 15:35, 12 March 2015 (CET)
+
+== Fine grained control of SR[OV] and SR[CY] (P14) ==
+
+With more precise control over which instructions set these status bits, the compiler can do a better
+job of producing multi-word arithmetic.  At present the compiler must represent multi-word arithmetic
+as a single indivisible unit until quite late in the compilation process.
+
+The primary factor is that the register allocator must be able to insert instructions to compute addresses
+at any point in the function.  This happens as the allocator runs out of registers, inserts a spill to
+(or fill from) the local stack frame, and grows the size of the stack frame beyond the range addressable
+from the stack or frame pointers.
+
+A secondary factor is freedom to schedule instructions without unnecessary constraints.  If most arithmetic
+modifies the carry flag, then the window in which we can schedule a block of multi-word arithmetic is small.
+However if most arithmetic is not interested in carry or overflow, and is able to avoid modifying those
+flags, the scheduling window grows significantly.
+
+A third factor unrelated to multi-word arithmetic is being able to indicate to the SR[OVE] and AECR exceptions
+which arithmetic insns are signed and which are unsigned.  Thus an add with OV disabled, but CY enabled, must
+indicate an unsigned add.  While the reverse would indicate a signed add.
+
+There are five major opcodes that modify these bits: 0x13 (maci), 0x27 (addi), 0x28 (addic), 0x31 (mac), 0x38 (alu).
+
+The MAC and ALU major opcodes both currently have bits 4 and 5 reserved, and thus currently 0-filled.
+As a backward-compatible change, propose decoding bit 4 as SCY (Suppress CY), and bit 5 as SOV (Suppress OV).
+Propose changing the assembly to use "/modifier" mnemonic suffixes: "/c", "/co", "/o" to indicate setting of these bits.
+
+<pre>
+l.add     r2,r3,r4   OV and CY set
+l.addc    r2,r3,r4
+l.sub     r2,r3,r4
+
+l.mac     r3,r4      OV set
+l.msb     r3,r4
+l.mul     r2,r3,r4
+l.muld    r3,r4
+l.div     r2,r3,r4
+l.add/c   r2,r3,r4
+l.addc/c  r2,r3,r4
+l.sub/c   r2,r3,r4
+
+l.macu    r3,r4      CY set
+l.msbu    r3,r4
+l.mulu    r2,r3,r4
+l.divu    r2,r3,r4
+l.muldu   r3,r4
+l.add/o   r2,r3,r4
+l.addc/o  r2,r3,r4
+l.sub/o   r2,r3,r4
+
+l.mac/o   r3,r4      No bits set
+l.msb/o   r3,r4
+l.mul/o   r2,r3,r4
+l.muld/o  r3,r4
+l.div/o   r2,r3,r4
+l.macu/c  r3,r4
+l.msbu/c  r3,r4
+l.mulu/c  r2,r3,r4
+l.muldu/c r3,r4
+l.divu/c  r2,r3,r4
+l.add/co  r2,r3,r4
+l.addc/co r2,r3,r4
+l.sub/co  r2,r3,r4
+</pre>
+
+The syntax isn't pretty, but all other alternatives seemed worse.  At least the syntax is clear, and backward
+compatible with existing assembly.
+
+Note that this introduces some overlap between l.mul and l.mulu, so it might be less confusing to create aliases
+
+<pre>
+l.mul/c   (l.mul with SOV and SCY clear)
+l.mul/o   (l.mulu with SOV and SCY clear)
+l.mul/co  (l.mul with SOV set)
+</pre>
+
+and then deprecate the l.mulu mnemonic.
+
+For the the three insns using immediates: l.maci, l.addi, l.addic, all bits are decoded and so we cannot make
+any adjustments.  However, addition is important enough to register allocation and address formation to make
+it worth while to add a "l.addi/co" like l.addi except that both CY and OV are suppressed.  The alternative
+is to spill yet another register in which to load the offset and then use l.add/co.  Propose reserving major 
+opcode 0x07 for "l.addi/co".
+
+The change in assembly syntax would call for the "l.addl" instruction proposed above to be spelled "l.addl/co".
+
+== FPCSR Extension ==
+
+The proposal is to extend FPCSR (Floating Point Control and Status Register) with mask bits to have an ability to enable/disable each FPU related exception flag independently.
+
+The additional bits:
+<pre>
+[12] Enable (1) / Disable (0) Overflow Flag
+[13] Enable (1) / Disable (0) Underflow Flag
+....
+[20] Enable (1) / Disable (0) Division by Zero Flag
+</pre>
+
+The bit [0] "FPU Exception  Enable (FPEE)" keeps it's global behavior.
+<pre>
+if FPEE == 0 than all FPU related exceptions are disabled
+if FPEE == 1 than FPU related exceptions are controlled by Enable / Disable Flags listed above
+</pre>
+
+<s>The proposed default value:</s>
+<s><pre>
+0x1C5001
+</pre></s>
+
+* <s>deactivates minimally useful flags ("Quiet NaN", "Zero", "Inexact" and "Underflow")</s>
+* <s>activates most useful exceptions ( "Div by zero", "Inf", "Invalid", "Signaling NaN" and "Overflow")</s>
+* <s>set mode "round to nearest even"</s>
+* <s>enables exceptions listed above as "most useful exceptions"</s>
+
+[rth: The default value should almost certainly remain 0: all exceptions disabled and round to nearest.
+That's the same default as virtually every other cpu, including x86.  Anything else would be surprising.]
+
+Edited: remove non-zero default value as Richard Henderson (?) stays that “0x0” is unofficial industry standard.
+
+[[User:BAndViG|BAndViG]] 15:35, 12 March 2015 (CET)
+
+== Work in Progress ==
+
+Remove "1.4 Work in Progress". Reason: The architecture revision should be stable and the remaining parts are essentially community stuff, not for the spec.
+
+== Typos, Clarifications ==
+
+The following section should be used to list proposed typos and clarifications which need to be made to future revisions of the architecture spec document.
+
+=== Misspellings, Typos ===
+
+* <s>''Synchronization'' is misspelled as ''Syncronization'' on pages 44, 82, 92, 284, and 340.</s> (fixed in proposal, [[User:Wallento|Wallento]] 11:35, 3 March 2015 (CET))
+
+* <s>In Table 4-7 on page 31, "EEA" label should be "ESR".</s> (fixed in proposal, [[User:Wallento|Wallento]] 11:35, 3 March 2015 (CET))
+
+* <s>At present the fixed-one bit in the supervision register (<tt>SR[FO]</tt>) is listed as readable ''and'' writable. It should be listed as readable only.</s> (fixed in proposal, [[User:Wallento|Wallento]] 11:37, 3 March 2015 (CET))
+
+* Move the section about GPRs from the NPC section (4.10, page 31) into its own section. Better explain how GPRs from other contexts are accessed (section 6.4.3, page 257).
+
+* <s>PPC should be read-only (table 4-2, page 24).</s> (fixed in proposal, [[User:Wallento|Wallento]] 11:58, 3 March 2015 (CET))
+
+* For backwards compatibility, the AECR register (section 15.14, page 326) should be initialized to a state that has behavior identical to a machine without AECR support, instead of the current "0".  I believe this would be the value (OVADDE|OVMULE|OVMACADDE).
+
+* ESR (section 4.9, page 30) should have the same bit layout as SR0.
+
+* <s>There exist a typo in the name of l.msbu. The current name is "Multiply and Subtract Signed" but it should be "Multiply and Subtract Unsigned".</s> (fixed in proposal, [[User:Wallento|Wallento]] 13:01, 3 March 2015 (CET))
+
+* <s>There exist a typo in the format of l.ff1 and l.fl1. They both include the rB register, even though it is not part of the instruction.</s> (fixed in proposal, [[User:Wallento|Wallento]] 13:01, 3 March 2015 (CET))
+
+<s>
+Format:
+
+ before: l.ff1 rD,rA,rB
+ after:  l.ff1 rD,rA
+
+ before: l.fl1 rD,rA,rB
+ after:  l.fl1 rD,rA
+</s>
+
+* <s>There exist a typo in the bit representation of l.ff1 and l.fl1. They both include the rB register, even though it is not part of the instruction.</s> (fixed in proposal, [[User:Wallento|Wallento]] 13:01, 3 March 2015 (CET))
+
+<s>
+Format: l.ff1 rD,rA
+ bits before: 111000DDDDDAAAAABBBBB-00----1111
+ bits after:  111000DDDDDAAAAA------00----1111
+
+Format: l.fl1 rD,rA
+ bits before: 111000DDDDDAAAAABBBBB-01----1111
+ bits after:  111000DDDDDAAAAA------01----1111
+</s>
+
+* <s>There exist a typo in the bit representation of l.muld and l.muldu. They both include the rD register, even though it is not part of the instruction.</s> (fixed in proposal, [[User:Wallento|Wallento]] 13:01, 3 March 2015 (CET))
+
+<s>
+Format: l.muld rA,rB
+ bits before: 111000DDDDDAAAAABBBBB-11----0111
+ bits after:  111000-----AAAAABBBBB-11----0111
+
+Format: l.muldu rA,rB
+ bits before: 111000DDDDDAAAAABBBBB-11----1100
+ bits after:  111000-----AAAAABBBBB-11----1100
+</s>
+
+==== Cache Registers Marked as Optional ====
+
+From [http://bugzilla.opencores.org/show_bug.cgi?id=79 bug #79].
+
+Changes to the spec document to make it clearer which cache control registers are optional.
+
+Mark the following registers as optional to implement, as they have a "present" bit in the I/DCCFGR:
+
+* Data Cache Control Register
+* Instruction Cache Control Register
+* Data Cache Block Write-Back Register
+
+Instruction and data block invalidate and data block flush registers are mandatory, and their presence bits in the I/DCCFGR should be marked as always '1'.
 
 === Consistency ===
 
@@ -243,8 +699,9 @@ immediate value (I, K or L).
 From a consistency stand point it would be nice if all of these instructions
 agreed on using the same letter to represent an immediate value.
 
-For instance why should the opperand representation of l.andi and l.ori differ
-from the opperand representation of l.xori?
+<s>For instance why should the opperand representation of l.andi and l.ori differ
+from the operand representation of l.xori?</s>
+[rth: Because l.andi and l.ori have unsigned immediates and l.xori has a signed immediate.]
 
  Format: l.andi rD,rA,K
  Format: l.ori rD,rA,K
@@ -254,6 +711,7 @@ from the opperand representation of l.xori?
 The goal is to reach a consensus on how to make the operand representations
 consistent. Which letter should be used for immediate values (I, K, L or N) and
 which register name should be used in the various cases.
+[rth: We're currently fairly consistent in using I for signed 16 bit, K for unsigned 16 bit, and L for the 6-bit shift count.]
 
 The following page contains a list of all instructions arranged by their operand representations:
 http://opencores.org/or1k/Operand_representation
@@ -284,30 +742,6 @@ Currently there exist three naming patterns.
 ==== Whitespace ====
 
 To be consistent with l.add and l.addc an empty new line should be inserted between the two paragraphs in the description of l.addi and l.addic.
-
-=== Core Identifier and Number of Cores ===
-
-To enable multicore systems, a Special Purpose Register 'Core ID' is needed. Although it is principally not necessary, but allows for a self-contained solution, I furthermore propose a 'Number of Cores' register, which contains the number of cores in a SMP cluster.
-
-Proposal: Use system status register address space 128+ for multicore specifics. I think there may further things come up, so that it may make sense to reserve some space.
-
-Therefore, in table on page 24 add:
-
- Grp #: 0
- Reg #: 128
- Reg Name: COREID
- USER MODE: -
- SUPV MODE: R
- Description: Core Identifier Register
-
- Grp #: 0
- Reg #: 129
- Reg Name: NUMCORES
- USER MODE: -
- SUPV MODE: R
- Description: Number of Cores Register
-
-From my point of view it is not necessary to add section 4.12 to explain this. Instead, we should add an extended explanation of the multicore capabilities if all are integrated.
 
 = Previous proposals =
 
